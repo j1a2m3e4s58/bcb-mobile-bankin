@@ -1,0 +1,213 @@
+type UserProfile = 
+ record {
+   createdAt: Timestamp;
+   email: text;
+   ghanaCard: text;
+   id: text;
+   kycStatus: text;
+   name: text;
+   phone: text;
+ };
+type TransferRequest = 
+ record {
+   amountPesewas: Amount;
+   bankCode: text;
+   description: text;
+   fromAccountNumber: text;
+   network: text;
+   toAccountNumber: text;
+   transferType: text;
+ };
+type TransactionRecord = 
+ record {
+   amountPesewas: Amount;
+   category: text;
+   counterpartyAccount: text;
+   counterpartyName: text;
+   createdAt: Timestamp;
+   description: text;
+   id: text;
+   reference: text;
+   status: text;
+   txType: text;
+ };
+type TransactionError = 
+ variant {
+   accountNotFound;
+   insufficientFunds;
+   invalidAmount;
+   transferFailed;
+   unauthorized;
+ };
+type Timestamp = int;
+type RepaymentScheduleEntry = 
+ record {
+   amountPesewas: Amount;
+   dueDate: Timestamp;
+   isPaid: bool;
+   paidAt: opt Timestamp;
+ };
+type RegisterRequest = 
+ record {
+   email: text;
+   ghanaCard: text;
+   name: text;
+   phone: text;
+   pin: text;
+ };
+type PaymentRequest = 
+ record {
+   accountNumber: text;
+   amountPesewas: Amount;
+   description: text;
+   meterOrSmartCard: text;
+   paymentType: text;
+ };
+type NotificationRecord = 
+ record {
+   body: text;
+   createdAt: Timestamp;
+   id: text;
+   isRead: bool;
+   notifType: text;
+   title: text;
+ };
+type NotificationError = 
+ variant {
+   notificationNotFound;
+   unauthorized;
+ };
+type LoginRequest = 
+ record {
+   phone: text;
+   pin: text;
+ };
+type LoanInfo = 
+ record {
+   appliedAt: Timestamp;
+   approvedAt: opt Timestamp;
+   disbursedAt: opt Timestamp;
+   id: text;
+   interestRateBps: nat;
+   loanType: text;
+   principalPesewas: Amount;
+   repaymentSchedule: vec RepaymentScheduleEntry;
+   status: text;
+   termMonths: nat;
+ };
+type LoanError = 
+ variant {
+   alreadyApplied;
+   invalidAmount;
+   loanNotFound;
+   unauthorized;
+ };
+type LoanApplicationRequest = 
+ record {
+   amountPesewas: Amount;
+   loanType: text;
+   purpose: text;
+   termMonths: nat;
+ };
+type CardInfo = 
+ record {
+   cardNetwork: text;
+   cardholderName: text;
+   createdAt: Timestamp;
+   dailyLimitPesewas: Amount;
+   expiryMonth: nat;
+   expiryYear: nat;
+   id: text;
+   maskedPan: text;
+   monthlyLimitPesewas: Amount;
+   status: text;
+ };
+type CardError = 
+ variant {
+   alreadyActive;
+   alreadyFrozen;
+   cardNotFound;
+   invalidLimit;
+   unauthorized;
+ };
+type AuthError = 
+ variant {
+   invalidPin;
+   phoneAlreadyExists;
+   unauthorized;
+   userNotFound;
+ };
+type Amount = nat;
+type AccountInfo = 
+ record {
+   accountNumber: text;
+   accountType: text;
+   balancePesewas: Amount;
+   createdAt: Timestamp;
+   id: text;
+   isActive: bool;
+ };
+service : {
+  applyForLoan: (req: LoanApplicationRequest) ->
+   (variant {
+      err: LoanError;
+      ok: LoanInfo;
+    });
+  changePin: (oldPin: text, newPin: text) -> (variant {
+                                                err: AuthError;
+                                                ok;
+                                              });
+  freezeCard: (cardId: text) -> (variant {
+                                   err: CardError;
+                                   ok;
+                                 });
+  getAccount: (accountNumber: text) -> (opt AccountInfo) query;
+  getCard: (cardId: text) -> (opt CardInfo) query;
+  getLoan: (loanId: text) -> (opt LoanInfo) query;
+  getMyAccounts: () -> (vec AccountInfo) query;
+  getMyCards: () -> (vec CardInfo) query;
+  getMyLoans: () -> (vec LoanInfo) query;
+  getMyNotifications: () -> (vec NotificationRecord) query;
+  getMyProfile: () -> (opt UserProfile);
+  getMyTransactions: () -> (vec TransactionRecord) query;
+  getTransaction: (txId: text) -> (opt TransactionRecord) query;
+  login: (req: LoginRequest) -> (variant {
+                                   err: AuthError;
+                                   ok: UserProfile;
+                                 });
+  makePayment: (req: PaymentRequest) ->
+   (variant {
+      err: TransactionError;
+      ok: TransactionRecord;
+    });
+  markAllNotificationsRead: () -> ();
+  markNotificationRead: (notifId: text) ->
+   (variant {
+      err: NotificationError;
+      ok;
+    });
+  register: (req: RegisterRequest) -> (variant {
+                                         err: AuthError;
+                                         ok;
+                                       });
+  requestCard: (networkText: text) -> (CardInfo);
+  setSpendingLimits: (cardId: text, dailyLimitPesewas: nat,
+   monthlyLimitPesewas: nat) -> (variant {
+                                   err: CardError;
+                                   ok;
+                                 });
+  transfer: (req: TransferRequest) ->
+   (variant {
+      err: TransactionError;
+      ok: TransactionRecord;
+    });
+  unfreezeCard: (cardId: text) -> (variant {
+                                     err: CardError;
+                                     ok;
+                                   });
+  updateMyProfile: (name: text, email: text, ghanaCard: text) ->
+   (variant {
+      err: AuthError;
+      ok;
+    });
+}

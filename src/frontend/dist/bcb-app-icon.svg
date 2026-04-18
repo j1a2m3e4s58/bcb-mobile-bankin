@@ -1,0 +1,16 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="120" fill="url(#bg)" />
+  <circle cx="256" cy="256" r="164" fill="#FCFDF9" />
+  <circle cx="256" cy="256" r="176" stroke="#0F7A42" stroke-width="24" />
+  <circle cx="256" cy="256" r="138" stroke="#17894E" stroke-width="8" />
+  <path d="M162 344H350" stroke="#B28A2E" stroke-width="10" stroke-linecap="round" />
+  <path d="M188 374H324" stroke="#D7B04E" stroke-width="6" stroke-linecap="round" opacity="0.9" />
+  <text x="256" y="286" text-anchor="middle" font-size="142" font-weight="800" font-family="Georgia, 'Times New Roman', serif" fill="#0F7A42" letter-spacing="2">BCB</text>
+  <text x="256" y="170" text-anchor="middle" font-size="34" font-weight="700" font-family="Arial, sans-serif" fill="#17894E" letter-spacing="8">MOBILE</text>
+  <defs>
+    <linearGradient id="bg" x1="40" y1="28" x2="468" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20995A" />
+      <stop offset="1" stop-color="#0F6A39" />
+    </linearGradient>
+  </defs>
+</svg>

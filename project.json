@@ -1,0 +1,26 @@
+{
+  "overview": "Production-grade mobile banking web app for Bawjiase Community Bank (BCB), Ghana. Features full authentication, account management, transfers, payments, loans, and more — all with BCB's green brand identity.",
+  "features": [
+    "Animated splash screen with BCB logo",
+    "Login with any phone number + PIN + OTP simulation",
+    "Dashboard with account balances (savings + current)",
+    "Transfers: intra-bank, interbank (GhIPSS), Mobile Money (MTN/Vodafone/AirtelTigo)",
+    "Payments: utilities (ECG/water), TV subscriptions, airtime and data",
+    "Full transaction history with search, filter, and receipt download",
+    "Card management: virtual card, freeze/unfreeze, spending limits",
+    "Loan application, approval tracker, and repayment schedule",
+    "Push notifications with mark-as-read",
+    "Profile with KYC upload, PIN change, dark mode, and auto-logout",
+    "GHS currency with Ghana-specific providers throughout"
+  ],
+  "category": "finance",
+  "tags": [
+    "banking",
+    "fintech",
+    "ghana",
+    "mobile",
+    "payments",
+    "transfers"
+  ],
+  "last_updated": "2026-04-18T12:38:59.254Z"
+}

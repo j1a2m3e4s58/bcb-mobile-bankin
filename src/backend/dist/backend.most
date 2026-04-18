@@ -1,0 +1,174 @@
+// Version: 1.0.0
+type AccountType__246857537 = {#current; #savings};
+type Account__1026151617 =
+  {
+    accountNumber : Text;
+    var accountType : AccountType__246857537;
+    var balancePesewas : Amount__769397665;
+    createdAt : Timestamp__918952663;
+    id : Text;
+    var isActive : Bool;
+    userId : UserId__196540555
+  };
+type Amount__460182544 = Nat;
+type Amount__501383707 = Amount__460182544;
+type Amount__583106263 = Amount__460182544;
+type Amount__769397665 = Amount__460182544;
+type Amount__87362905 = Amount__460182544;
+type CardNetwork__545135296 = {#mastercard; #visa};
+type CardStatus__1071336750 = {#active; #expired; #frozen};
+type Card__103730850 =
+  {
+    var cardNetwork : CardNetwork__545135296;
+    cardholderName : Text;
+    createdAt : Timestamp__330920694;
+    var dailyLimitPesewas : Amount__87362905;
+    expiryMonth : Nat;
+    expiryYear : Nat;
+    id : Text;
+    maskedPan : Text;
+    var monthlyLimitPesewas : Amount__87362905;
+    var status : CardStatus__1071336750;
+    userId : UserId__678712279
+  };
+type KycStatus__81535411 = {#pending; #rejected; #verified};
+type LoanStatus__480727638 =
+  {#approved; #disbursed; #pending; #rejected; #repaid};
+type LoanType__343364545 = {#business; #mortgage; #personal};
+type Loan__111832984 =
+  {
+    appliedAt : Timestamp__915689071;
+    var approvedAt : ?Timestamp__915689071;
+    var disbursedAt : ?Timestamp__915689071;
+    id : Text;
+    var interestRateBps : Nat;
+    loanType : LoanType__343364545;
+    var principalPesewas : Amount__501383707;
+    var repaymentSchedule : [RepaymentScheduleEntry__983428147];
+    var status : LoanStatus__480727638;
+    var termMonths : Nat;
+    userId : UserId__517065740
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NotificationType__908192046 =
+  {
+    #cardAlert;
+    #loanUpdate;
+    #promotionalOffer;
+    #systemMessage;
+    #transactionAlert
+  };
+type Notification__264708741 =
+  {
+    body : Text;
+    createdAt : Timestamp__515776233;
+    id : Text;
+    var isRead : Bool;
+    notifType : NotificationType__908192046;
+    title : Text;
+    userId : UserId__990689167
+  };
+type RepaymentScheduleEntry__983428147 =
+  {
+    amountPesewas : Amount__501383707;
+    dueDate : Timestamp__915689071;
+    isPaid : Bool;
+    paidAt : ?Timestamp__915689071
+  };
+type Timestamp__223287625 = Timestamp__301639476;
+type Timestamp__301639476 = Int;
+type Timestamp__330920694 = Timestamp__301639476;
+type Timestamp__515776233 = Timestamp__301639476;
+type Timestamp__608627923 = Timestamp__301639476;
+type Timestamp__915689071 = Timestamp__301639476;
+type Timestamp__918952663 = Timestamp__301639476;
+type TransactionCategory__441222277 =
+  {
+    #airtimeData;
+    #deposit;
+    #interbankTransfer;
+    #intraTransfer;
+    #loanDisbursement;
+    #loanRepayment;
+    #mobileMoney;
+    #tvSubscription;
+    #utilityPayment;
+    #withdrawal
+  };
+type TransactionStatus__628660341 = {#completed; #failed; #pending};
+type TransactionType__47031955 = {#credit; #debit};
+type Transaction__822992244 =
+  {
+    amountPesewas : Amount__583106263;
+    category : TransactionCategory__441222277;
+    counterpartyAccount : Text;
+    counterpartyName : Text;
+    createdAt : Timestamp__223287625;
+    description : Text;
+    id : Text;
+    reference : Text;
+    status : TransactionStatus__628660341;
+    txType : TransactionType__47031955;
+    userId : UserId__356286356
+  };
+type UserId__196540555 = Principal;
+type UserId__356286356 = Principal;
+type UserId__517065740 = Principal;
+type UserId__678712279 = Principal;
+type UserId__911210446 = Principal;
+type UserId__990689167 = Principal;
+type User__455962502 =
+  {
+    var createdAt : Timestamp__608627923;
+    var email : Text;
+    var ghanaCard : Text;
+    id : UserId__911210446;
+    var kycStatus : KycStatus__81535411;
+    var name : Text;
+    var phone : Text;
+    var pin : Text
+  };
+actor {
+  stable accounts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Account__1026151617]];
+      var elementIndex : Nat__490723111
+    };
+  stable cards :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Card__103730850]];
+      var elementIndex : Nat__490723111
+    };
+  stable loans :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Loan__111832984]];
+      var elementIndex : Nat__490723111
+    };
+  stable nextCardId : Nat;
+  stable nextLoanId : Nat;
+  stable nextNotifId : Nat;
+  stable nextTxId : Nat;
+  stable nextUserId : Nat;
+  stable notifications :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Notification__264708741]];
+      var elementIndex : Nat__490723111
+    };
+  stable transactions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Transaction__822992244]];
+      var elementIndex : Nat__490723111
+    };
+  stable users :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?User__455962502]];
+      var elementIndex : Nat__490723111
+    }
+};
