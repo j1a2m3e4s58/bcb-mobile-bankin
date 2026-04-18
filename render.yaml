@@ -2,9 +2,9 @@ services:
   - type: web
     name: bcb-mobile-bankin
     runtime: static
-    rootDir: src/frontend
-    buildCommand: npm install --legacy-peer-deps && npm run build
-    staticPublishPath: dist
+    rootDir: .
+    buildCommand: corepack enable && corepack pnpm install --frozen-lockfile && corepack pnpm --dir src/frontend build
+    staticPublishPath: src/frontend/dist
     routes:
       - type: rewrite
         source: /*
