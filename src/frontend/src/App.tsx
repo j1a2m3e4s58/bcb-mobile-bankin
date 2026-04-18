@@ -17,6 +17,7 @@ import { useAuthStore } from "@/store/auth-store";
 import {
   Outlet,
   RouterProvider,
+  createHashHistory,
   createRootRoute,
   createRoute,
   createRouter,
@@ -150,6 +151,7 @@ const routeTree = rootRoute.addChildren([
 const router = createRouter({
   routeTree,
   defaultPreload: "intent",
+  history: createHashHistory(),
 });
 
 declare module "@tanstack/react-router" {

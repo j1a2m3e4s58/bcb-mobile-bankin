@@ -18836,17 +18836,17 @@ function assignKeyAndIndex(index2, state) {
 }
 function createBrowserHistory(opts) {
   var _a2, _b2;
-  const win = typeof document !== "undefined" ? window : void 0;
+  const win = (opts == null ? void 0 : opts.window) ?? (typeof document !== "undefined" ? window : void 0);
   const originalPushState = win.history.pushState;
   const originalReplaceState = win.history.replaceState;
   let blockers = [];
   const _getBlockers = () => blockers;
   const _setBlockers = (newBlockers) => blockers = newBlockers;
-  const createHref = (path) => path;
-  const parseLocation = () => parseHref(
+  const createHref = (opts == null ? void 0 : opts.createHref) ?? ((path) => path);
+  const parseLocation = (opts == null ? void 0 : opts.parseLocation) ?? (() => parseHref(
     `${win.location.pathname}${win.location.search}${win.location.hash}`,
     win.history.state
-  );
+  ));
   if (!((_a2 = win.history.state) == null ? void 0 : _a2.__TSR_key) && !((_b2 = win.history.state) == null ? void 0 : _b2.key)) {
     const addedKey = createRandomKey();
     win.history.replaceState(
@@ -19020,6 +19020,22 @@ function createBrowserHistory(opts) {
     return res;
   };
   return history;
+}
+function createHashHistory(opts) {
+  const win = typeof document !== "undefined" ? window : void 0;
+  return createBrowserHistory({
+    window: win,
+    parseLocation: () => {
+      const hashSplit = win.location.hash.split("#").slice(1);
+      const pathPart = hashSplit[0] ?? "/";
+      const searchPart = win.location.search;
+      const hashEntries = hashSplit.slice(1);
+      const hashPart = hashEntries.length === 0 ? "" : `#${hashEntries.join("#")}`;
+      const hashHref = `${pathPart}${searchPart}${hashPart}`;
+      return parseHref(hashHref, win.history.state);
+    },
+    createHref: (href) => `${win.location.pathname}${win.location.search}#${href}`
+  });
 }
 function createMemoryHistory(opts = {
   initialEntries: ["/"]
@@ -45205,7 +45221,8 @@ const routeTree = rootRoute.addChildren([
 ]);
 const router = createRouter({
   routeTree,
-  defaultPreload: "intent"
+  defaultPreload: "intent",
+  history: createHashHistory()
 });
 function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(RouterProvider, { router });
