@@ -6788,7 +6788,7 @@ function mergeLoginOptions(loginOptions, otherLoginOptions) {
   };
 }
 const ONE_HOUR_IN_NANOSECONDS = BigInt(36e11);
-const DEFAULT_IDENTITY_PROVIDER = "https://id.ai";
+const DEFAULT_IDENTITY_PROVIDER = "https://identity.internetcomputer.org/";
 const InternetIdentityReactContext = reactExports.createContext(void 0);
 async function createAuthClient(createOptions) {
   const config = await loadConfig();
@@ -26217,11 +26217,46 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$$ = [
+const __iconNode$12 = [
   ["path", { d: "M17 7 7 17", key: "15tmo1" }],
   ["path", { d: "M17 17H7V7", key: "1org7z" }]
 ];
-const ArrowDownLeft = createLucideIcon("arrow-down-left", __iconNode$$);
+const ArrowDownLeft = createLucideIcon("arrow-down-left", __iconNode$12);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$11 = [
+  ["path", { d: "M8 3 4 7l4 4", key: "9rb6wj" }],
+  ["path", { d: "M4 7h16", key: "6tx8e3" }],
+  ["path", { d: "m16 21 4-4-4-4", key: "siv7j2" }],
+  ["path", { d: "M20 17H4", key: "h6l3hr" }]
+];
+const ArrowLeftRight = createLucideIcon("arrow-left-right", __iconNode$11);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$10 = [
+  ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
+  ["path", { d: "M19 12H5", key: "x3x0zl" }]
+];
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$10);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$$ = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
+];
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$$);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26229,12 +26264,10 @@ const ArrowDownLeft = createLucideIcon("arrow-down-left", __iconNode$$);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$_ = [
-  ["path", { d: "M8 3 4 7l4 4", key: "9rb6wj" }],
-  ["path", { d: "M4 7h16", key: "6tx8e3" }],
-  ["path", { d: "m16 21 4-4-4-4", key: "siv7j2" }],
-  ["path", { d: "M20 17H4", key: "h6l3hr" }]
+  ["path", { d: "M7 7h10v10", key: "1tivn9" }],
+  ["path", { d: "M7 17 17 7", key: "1vkiza" }]
 ];
-const ArrowLeftRight = createLucideIcon("arrow-left-right", __iconNode$_);
+const ArrowUpRight = createLucideIcon("arrow-up-right", __iconNode$_);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26242,10 +26275,11 @@ const ArrowLeftRight = createLucideIcon("arrow-left-right", __iconNode$_);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$Z = [
-  ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
-  ["path", { d: "M19 12H5", key: "x3x0zl" }]
+  ["rect", { width: "20", height: "12", x: "2", y: "6", rx: "2", key: "9lu3g6" }],
+  ["circle", { cx: "12", cy: "12", r: "2", key: "1c9p78" }],
+  ["path", { d: "M6 12h.01M18 12h.01", key: "113zkx" }]
 ];
-const ArrowLeft = createLucideIcon("arrow-left", __iconNode$Z);
+const Banknote = createLucideIcon("banknote", __iconNode$Z);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26253,28 +26287,6 @@ const ArrowLeft = createLucideIcon("arrow-left", __iconNode$Z);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$Y = [
-  ["path", { d: "M5 12h14", key: "1ays0h" }],
-  ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
-];
-const ArrowRight = createLucideIcon("arrow-right", __iconNode$Y);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$X = [
-  ["path", { d: "M7 7h10v10", key: "1tivn9" }],
-  ["path", { d: "M7 17 17 7", key: "1vkiza" }]
-];
-const ArrowUpRight = createLucideIcon("arrow-up-right", __iconNode$X);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$W = [
   ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
   [
     "path",
@@ -26286,14 +26298,14 @@ const __iconNode$W = [
   ["path", { d: "m2 2 20 20", key: "1ooewy" }],
   ["path", { d: "M8.668 3.01A6 6 0 0 1 18 8c0 2.687.77 4.653 1.707 6.05", key: "1hqiys" }]
 ];
-const BellOff = createLucideIcon("bell-off", __iconNode$W);
+const BellOff = createLucideIcon("bell-off", __iconNode$Y);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$V = [
+const __iconNode$X = [
   ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
   [
     "path",
@@ -26303,25 +26315,25 @@ const __iconNode$V = [
     }
   ]
 ];
-const Bell = createLucideIcon("bell", __iconNode$V);
+const Bell = createLucideIcon("bell", __iconNode$X);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$U = [
+const __iconNode$W = [
   ["path", { d: "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16", key: "jecpp" }],
   ["rect", { width: "20", height: "14", x: "2", y: "6", rx: "2", key: "i6l2r4" }]
 ];
-const Briefcase = createLucideIcon("briefcase", __iconNode$U);
+const Briefcase = createLucideIcon("briefcase", __iconNode$W);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$T = [
+const __iconNode$V = [
   ["path", { d: "M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z", key: "1b4qmf" }],
   ["path", { d: "M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2", key: "i71pzd" }],
   ["path", { d: "M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2", key: "10jefs" }],
@@ -26330,50 +26342,73 @@ const __iconNode$T = [
   ["path", { d: "M10 14h4", key: "kelpxr" }],
   ["path", { d: "M10 18h4", key: "1ulq68" }]
 ];
-const Building2 = createLucideIcon("building-2", __iconNode$T);
+const Building2 = createLucideIcon("building-2", __iconNode$V);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$S = [
+const __iconNode$U = [
   ["path", { d: "M18 6 7 17l-5-5", key: "116fxf" }],
   ["path", { d: "m22 10-7.5 7.5L13 16", key: "ke71qq" }]
 ];
-const CheckCheck = createLucideIcon("check-check", __iconNode$S);
+const CheckCheck = createLucideIcon("check-check", __iconNode$U);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$R = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$R);
+const __iconNode$T = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$T);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$Q = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$Q);
+const __iconNode$S = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$S);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$P = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-const ChevronRight = createLucideIcon("chevron-right", __iconNode$P);
+const __iconNode$R = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = createLucideIcon("chevron-right", __iconNode$R);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$O = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$O);
+const __iconNode$Q = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$Q);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$P = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
+  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+];
+const CircleAlert = createLucideIcon("circle-alert", __iconNode$P);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$O = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+];
+const CircleCheck = createLucideIcon("circle-check", __iconNode$O);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26382,10 +26417,10 @@ const ChevronUp = createLucideIcon("chevron-up", __iconNode$O);
  */
 const __iconNode$N = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
-  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+  ["path", { d: "m15 9-6 6", key: "1uzhvr" }],
+  ["path", { d: "m9 9 6 6", key: "z0biqf" }]
 ];
-const CircleAlert = createLucideIcon("circle-alert", __iconNode$N);
+const CircleX = createLucideIcon("circle-x", __iconNode$N);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26394,9 +26429,9 @@ const CircleAlert = createLucideIcon("circle-alert", __iconNode$N);
  */
 const __iconNode$M = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+  ["polyline", { points: "12 6 12 12 16.5 12", key: "1aq6pp" }]
 ];
-const CircleCheck = createLucideIcon("circle-check", __iconNode$M);
+const Clock3 = createLucideIcon("clock-3", __iconNode$M);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26405,10 +26440,9 @@ const CircleCheck = createLucideIcon("circle-check", __iconNode$M);
  */
 const __iconNode$L = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m15 9-6 6", key: "1uzhvr" }],
-  ["path", { d: "m9 9 6 6", key: "z0biqf" }]
+  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
 ];
-const CircleX = createLucideIcon("circle-x", __iconNode$L);
+const Clock = createLucideIcon("clock", __iconNode$L);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26416,10 +26450,10 @@ const CircleX = createLucideIcon("circle-x", __iconNode$L);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$K = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
+  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
+  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
 ];
-const Clock = createLucideIcon("clock", __iconNode$K);
+const Copy = createLucideIcon("copy", __iconNode$K);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26427,10 +26461,10 @@ const Clock = createLucideIcon("clock", __iconNode$K);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$J = [
-  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
-  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
+  ["rect", { width: "20", height: "14", x: "2", y: "5", rx: "2", key: "ynyp8z" }],
+  ["line", { x1: "2", x2: "22", y1: "10", y2: "10", key: "1b3vmo" }]
 ];
-const Copy = createLucideIcon("copy", __iconNode$J);
+const CreditCard = createLucideIcon("credit-card", __iconNode$J);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26438,10 +26472,11 @@ const Copy = createLucideIcon("copy", __iconNode$J);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$I = [
-  ["rect", { width: "20", height: "14", x: "2", y: "5", rx: "2", key: "ynyp8z" }],
-  ["line", { x1: "2", x2: "22", y1: "10", y2: "10", key: "1b3vmo" }]
+  ["path", { d: "M12 15V3", key: "m9g1x1" }],
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
+  ["path", { d: "m7 10 5 5 5-5", key: "brsn70" }]
 ];
-const CreditCard = createLucideIcon("credit-card", __iconNode$I);
+const Download = createLucideIcon("download", __iconNode$I);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26449,18 +26484,6 @@ const CreditCard = createLucideIcon("credit-card", __iconNode$I);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$H = [
-  ["path", { d: "M12 15V3", key: "m9g1x1" }],
-  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
-  ["path", { d: "m7 10 5 5 5-5", key: "brsn70" }]
-];
-const Download = createLucideIcon("download", __iconNode$H);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$G = [
   [
     "path",
     {
@@ -26476,14 +26499,14 @@ const __iconNode$G = [
     }
   ]
 ];
-const Droplets = createLucideIcon("droplets", __iconNode$G);
+const Droplets = createLucideIcon("droplets", __iconNode$H);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$F = [
+const __iconNode$G = [
   [
     "path",
     {
@@ -26501,14 +26524,14 @@ const __iconNode$F = [
   ],
   ["path", { d: "m2 2 20 20", key: "1ooewy" }]
 ];
-const EyeOff = createLucideIcon("eye-off", __iconNode$F);
+const EyeOff = createLucideIcon("eye-off", __iconNode$G);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$E = [
+const __iconNode$F = [
   [
     "path",
     {
@@ -26518,7 +26541,21 @@ const __iconNode$E = [
   ],
   ["circle", { cx: "12", cy: "12", r: "3", key: "1v7zrd" }]
 ];
-const Eye = createLucideIcon("eye", __iconNode$E);
+const Eye = createLucideIcon("eye", __iconNode$F);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$E = [
+  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
+  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
+  ["path", { d: "M10 9H8", key: "b1mrlr" }],
+  ["path", { d: "M16 13H8", key: "t4e002" }],
+  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+];
+const FileText = createLucideIcon("file-text", __iconNode$E);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26544,11 +26581,18 @@ const Fingerprint = createLucideIcon("fingerprint", __iconNode$D);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$C = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
-  ["path", { d: "M2 12h20", key: "9i4pu4" }]
+  ["rect", { x: "3", y: "8", width: "18", height: "4", rx: "1", key: "bkv52" }],
+  ["path", { d: "M12 8v13", key: "1c76mn" }],
+  ["path", { d: "M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7", key: "6wjy6b" }],
+  [
+    "path",
+    {
+      d: "M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5",
+      key: "1ihvrl"
+    }
+  ]
 ];
-const Globe = createLucideIcon("globe", __iconNode$C);
+const Gift = createLucideIcon("gift", __iconNode$C);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26556,6 +26600,18 @@ const Globe = createLucideIcon("globe", __iconNode$C);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$B = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
+  ["path", { d: "M2 12h20", key: "9i4pu4" }]
+];
+const Globe = createLucideIcon("globe", __iconNode$B);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$A = [
   [
     "path",
     {
@@ -26566,21 +26622,7 @@ const __iconNode$B = [
   ["path", { d: "M22 10v6", key: "1lu8f3" }],
   ["path", { d: "M6 12.5V16a6 3 0 0 0 12 0v-3.5", key: "1r8lef" }]
 ];
-const GraduationCap = createLucideIcon("graduation-cap", __iconNode$B);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$A = [
-  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
-  ["path", { d: "M3 9h18", key: "1pudct" }],
-  ["path", { d: "M3 15h18", key: "5xshup" }],
-  ["path", { d: "M9 3v18", key: "fh3hqa" }],
-  ["path", { d: "M15 3v18", key: "14nvp0" }]
-];
-const Grid3x3 = createLucideIcon("grid-3x3", __iconNode$A);
+const GraduationCap = createLucideIcon("graduation-cap", __iconNode$A);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26588,6 +26630,20 @@ const Grid3x3 = createLucideIcon("grid-3x3", __iconNode$A);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$z = [
+  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
+  ["path", { d: "M3 9h18", key: "1pudct" }],
+  ["path", { d: "M3 15h18", key: "5xshup" }],
+  ["path", { d: "M9 3v18", key: "fh3hqa" }],
+  ["path", { d: "M15 3v18", key: "14nvp0" }]
+];
+const Grid3x3 = createLucideIcon("grid-3x3", __iconNode$z);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$y = [
   ["path", { d: "M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8", key: "5wwlr5" }],
   [
     "path",
@@ -26597,19 +26653,7 @@ const __iconNode$z = [
     }
   ]
 ];
-const House = createLucideIcon("house", __iconNode$z);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$y = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "M12 16v-4", key: "1dtifu" }],
-  ["path", { d: "M12 8h.01", key: "e9boi3" }]
-];
-const Info = createLucideIcon("info", __iconNode$y);
+const House = createLucideIcon("house", __iconNode$y);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26715,9 +26759,9 @@ const Mail = createLucideIcon("mail", __iconNode$q);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$p = [
-  ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
+  ["path", { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z", key: "a7tn18" }]
 ];
-const MessageSquare = createLucideIcon("message-square", __iconNode$p);
+const Moon = createLucideIcon("moon", __iconNode$p);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26725,16 +26769,6 @@ const MessageSquare = createLucideIcon("message-square", __iconNode$p);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$o = [
-  ["path", { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z", key: "a7tn18" }]
-];
-const Moon = createLucideIcon("moon", __iconNode$o);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$n = [
   [
     "path",
     {
@@ -26743,7 +26777,18 @@ const __iconNode$n = [
     }
   ]
 ];
-const Phone = createLucideIcon("phone", __iconNode$n);
+const Phone = createLucideIcon("phone", __iconNode$o);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$n = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "M12 5v14", key: "s699le" }]
+];
+const Plus = createLucideIcon("plus", __iconNode$n);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26751,17 +26796,6 @@ const Phone = createLucideIcon("phone", __iconNode$n);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$m = [
-  ["path", { d: "M5 12h14", key: "1ays0h" }],
-  ["path", { d: "M12 5v14", key: "s699le" }]
-];
-const Plus = createLucideIcon("plus", __iconNode$m);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$l = [
   ["rect", { width: "5", height: "5", x: "3", y: "3", rx: "1", key: "1tu5fj" }],
   ["rect", { width: "5", height: "5", x: "16", y: "3", rx: "1", key: "1v8r4q" }],
   ["rect", { width: "5", height: "5", x: "3", y: "16", rx: "1", key: "1x03jg" }],
@@ -26775,28 +26809,14 @@ const __iconNode$l = [
   ["path", { d: "M21 12v.01", key: "1lwtk9" }],
   ["path", { d: "M12 21v-1", key: "1880an" }]
 ];
-const QrCode = createLucideIcon("qr-code", __iconNode$l);
+const QrCode = createLucideIcon("qr-code", __iconNode$m);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$k = [
-  ["path", { d: "M4.9 19.1C1 15.2 1 8.8 4.9 4.9", key: "1vaf9d" }],
-  ["path", { d: "M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5", key: "u1ii0m" }],
-  ["circle", { cx: "12", cy: "12", r: "2", key: "1c9p78" }],
-  ["path", { d: "M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5", key: "1j5fej" }],
-  ["path", { d: "M19.1 4.9C23 8.8 23 15.1 19.1 19", key: "10b0cb" }]
-];
-const Radio = createLucideIcon("radio", __iconNode$k);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$j = [
+const __iconNode$l = [
   [
     "path",
     { d: "M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z", key: "q3az6g" }
@@ -26804,7 +26824,33 @@ const __iconNode$j = [
   ["path", { d: "M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8", key: "1h4pet" }],
   ["path", { d: "M12 17.5v-11", key: "1jc1ny" }]
 ];
-const Receipt = createLucideIcon("receipt", __iconNode$j);
+const Receipt = createLucideIcon("receipt", __iconNode$l);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$k = [
+  ["path", { d: "M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "14sxne" }],
+  ["path", { d: "M3 3v5h5", key: "1xhq8a" }],
+  ["path", { d: "M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16", key: "1hlbsb" }],
+  ["path", { d: "M16 16h5v5", key: "ccwih5" }]
+];
+const RefreshCcw = createLucideIcon("refresh-ccw", __iconNode$k);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$j = [
+  ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
+  ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
+  ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
+  ["path", { d: "M8 16H3v5", key: "1cv678" }]
+];
+const RefreshCw = createLucideIcon("refresh-cw", __iconNode$j);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26812,12 +26858,10 @@ const Receipt = createLucideIcon("receipt", __iconNode$j);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$i = [
-  ["path", { d: "M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "14sxne" }],
-  ["path", { d: "M3 3v5h5", key: "1xhq8a" }],
-  ["path", { d: "M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16", key: "1hlbsb" }],
-  ["path", { d: "M16 16h5v5", key: "ccwih5" }]
+  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
+  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
 ];
-const RefreshCcw = createLucideIcon("refresh-ccw", __iconNode$i);
+const Search = createLucideIcon("search", __iconNode$i);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26825,12 +26869,16 @@ const RefreshCcw = createLucideIcon("refresh-ccw", __iconNode$i);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$h = [
-  ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
-  ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
-  ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
-  ["path", { d: "M8 16H3v5", key: "1cv678" }]
+  [
+    "path",
+    {
+      d: "M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z",
+      key: "1ffxy3"
+    }
+  ],
+  ["path", { d: "m21.854 2.147-10.94 10.939", key: "12cjpa" }]
 ];
-const RefreshCw = createLucideIcon("refresh-cw", __iconNode$h);
+const Send = createLucideIcon("send", __iconNode$h);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26838,10 +26886,13 @@ const RefreshCw = createLucideIcon("refresh-cw", __iconNode$h);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$g = [
-  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
-  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
+  ["circle", { cx: "18", cy: "5", r: "3", key: "gq8acd" }],
+  ["circle", { cx: "6", cy: "12", r: "3", key: "w7nqdw" }],
+  ["circle", { cx: "18", cy: "19", r: "3", key: "1xt0gg" }],
+  ["line", { x1: "8.59", x2: "15.42", y1: "13.51", y2: "17.49", key: "47mynk" }],
+  ["line", { x1: "15.41", x2: "8.59", y1: "6.51", y2: "10.49", key: "1n3mei" }]
 ];
-const Search = createLucideIcon("search", __iconNode$g);
+const Share2 = createLucideIcon("share-2", __iconNode$g);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26852,13 +26903,14 @@ const __iconNode$f = [
   [
     "path",
     {
-      d: "M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z",
-      key: "1ffxy3"
+      d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+      key: "oel41y"
     }
   ],
-  ["path", { d: "m21.854 2.147-10.94 10.939", key: "12cjpa" }]
+  ["path", { d: "M12 8v4", key: "1got3b" }],
+  ["path", { d: "M12 16h.01", key: "1drbdi" }]
 ];
-const Send = createLucideIcon("send", __iconNode$f);
+const ShieldAlert = createLucideIcon("shield-alert", __iconNode$f);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26866,13 +26918,16 @@ const Send = createLucideIcon("send", __iconNode$f);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$e = [
-  ["circle", { cx: "18", cy: "5", r: "3", key: "gq8acd" }],
-  ["circle", { cx: "6", cy: "12", r: "3", key: "w7nqdw" }],
-  ["circle", { cx: "18", cy: "19", r: "3", key: "1xt0gg" }],
-  ["line", { x1: "8.59", x2: "15.42", y1: "13.51", y2: "17.49", key: "47mynk" }],
-  ["line", { x1: "15.41", x2: "8.59", y1: "6.51", y2: "10.49", key: "1n3mei" }]
+  [
+    "path",
+    {
+      d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+      key: "oel41y"
+    }
+  ],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ];
-const Share2 = createLucideIcon("share-2", __iconNode$e);
+const ShieldCheck = createLucideIcon("shield-check", __iconNode$e);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26886,11 +26941,9 @@ const __iconNode$d = [
       d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
       key: "oel41y"
     }
-  ],
-  ["path", { d: "M12 8v4", key: "1got3b" }],
-  ["path", { d: "M12 16h.01", key: "1drbdi" }]
+  ]
 ];
-const ShieldAlert = createLucideIcon("shield-alert", __iconNode$d);
+const Shield = createLucideIcon("shield", __iconNode$d);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26898,39 +26951,6 @@ const ShieldAlert = createLucideIcon("shield-alert", __iconNode$d);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$c = [
-  [
-    "path",
-    {
-      d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
-      key: "oel41y"
-    }
-  ],
-  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
-];
-const ShieldCheck = createLucideIcon("shield-check", __iconNode$c);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$b = [
-  [
-    "path",
-    {
-      d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
-      key: "oel41y"
-    }
-  ]
-];
-const Shield = createLucideIcon("shield", __iconNode$b);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$a = [
   ["line", { x1: "21", x2: "14", y1: "4", y2: "4", key: "obuewd" }],
   ["line", { x1: "10", x2: "3", y1: "4", y2: "4", key: "1q6298" }],
   ["line", { x1: "21", x2: "12", y1: "12", y2: "12", key: "1iu8h1" }],
@@ -26941,25 +26961,25 @@ const __iconNode$a = [
   ["line", { x1: "8", x2: "8", y1: "10", y2: "14", key: "1i6ji0" }],
   ["line", { x1: "16", x2: "16", y1: "18", y2: "22", key: "1lctlv" }]
 ];
-const SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode$a);
+const SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode$c);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$9 = [
+const __iconNode$b = [
   ["rect", { width: "14", height: "20", x: "5", y: "2", rx: "2", ry: "2", key: "1yt0o3" }],
   ["path", { d: "M12 18h.01", key: "mhygvu" }]
 ];
-const Smartphone = createLucideIcon("smartphone", __iconNode$9);
+const Smartphone = createLucideIcon("smartphone", __iconNode$b);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$8 = [
+const __iconNode$a = [
   ["path", { d: "m10 20-1.25-2.5L6 18", key: "18frcb" }],
   ["path", { d: "M10 4 8.75 6.5 6 6", key: "7mghy3" }],
   ["path", { d: "m14 20 1.25-2.5L18 18", key: "1chtki" }],
@@ -26973,14 +26993,34 @@ const __iconNode$8 = [
   ["path", { d: "m7 21 3-6-1.5-3", key: "j8hb9u" }],
   ["path", { d: "m7 3 3 6h4", key: "1otusx" }]
 ];
-const Snowflake = createLucideIcon("snowflake", __iconNode$8);
+const Snowflake = createLucideIcon("snowflake", __iconNode$a);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$7 = [
+const __iconNode$9 = [
+  [
+    "path",
+    {
+      d: "M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z",
+      key: "4pj2yx"
+    }
+  ],
+  ["path", { d: "M20 3v4", key: "1olli1" }],
+  ["path", { d: "M22 5h-4", key: "1gvqau" }],
+  ["path", { d: "M4 17v2", key: "vumght" }],
+  ["path", { d: "M5 18H3", key: "zchphs" }]
+];
+const Sparkles = createLucideIcon("sparkles", __iconNode$9);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$8 = [
   ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
   ["path", { d: "M12 2v2", key: "tus03m" }],
   ["path", { d: "M12 20v2", key: "1lh1kg" }],
@@ -26991,7 +27031,18 @@ const __iconNode$7 = [
   ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
   ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
 ];
-const Sun = createLucideIcon("sun", __iconNode$7);
+const Sun = createLucideIcon("sun", __iconNode$8);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$7 = [
+  ["path", { d: "M16 7h6v6", key: "box55l" }],
+  ["path", { d: "m22 7-8.5 8.5-5-5L2 17", key: "1t1m79" }]
+];
+const TrendingUp = createLucideIcon("trending-up", __iconNode$7);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26999,17 +27050,6 @@ const Sun = createLucideIcon("sun", __iconNode$7);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$6 = [
-  ["path", { d: "M16 7h6v6", key: "box55l" }],
-  ["path", { d: "m22 7-8.5 8.5-5-5L2 17", key: "1t1m79" }]
-];
-const TrendingUp = createLucideIcon("trending-up", __iconNode$6);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$5 = [
   [
     "path",
     {
@@ -27020,7 +27060,18 @@ const __iconNode$5 = [
   ["path", { d: "M12 9v4", key: "juzpu7" }],
   ["path", { d: "M12 17h.01", key: "p32p05" }]
 ];
-const TriangleAlert = createLucideIcon("triangle-alert", __iconNode$5);
+const TriangleAlert = createLucideIcon("triangle-alert", __iconNode$6);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$5 = [
+  ["path", { d: "m17 2-5 5-5-5", key: "16satq" }],
+  ["rect", { width: "20", height: "15", x: "2", y: "7", rx: "2", key: "1e6viu" }]
+];
+const Tv = createLucideIcon("tv", __iconNode$5);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27028,10 +27079,11 @@ const TriangleAlert = createLucideIcon("triangle-alert", __iconNode$5);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$4 = [
-  ["path", { d: "m17 2-5 5-5-5", key: "16satq" }],
-  ["rect", { width: "20", height: "15", x: "2", y: "7", rx: "2", key: "1e6viu" }]
+  ["path", { d: "M12 3v12", key: "1x0j5s" }],
+  ["path", { d: "m17 8-5-5-5 5", key: "7q97r8" }],
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }]
 ];
-const Tv = createLucideIcon("tv", __iconNode$4);
+const Upload = createLucideIcon("upload", __iconNode$4);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27039,11 +27091,10 @@ const Tv = createLucideIcon("tv", __iconNode$4);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$3 = [
-  ["path", { d: "M12 3v12", key: "1x0j5s" }],
-  ["path", { d: "m17 8-5-5-5 5", key: "7q97r8" }],
-  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }]
+  ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
+  ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
 ];
-const Upload = createLucideIcon("upload", __iconNode$3);
+const User = createLucideIcon("user", __iconNode$3);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27051,10 +27102,16 @@ const Upload = createLucideIcon("upload", __iconNode$3);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$2 = [
-  ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
-  ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
+  [
+    "path",
+    {
+      d: "M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1",
+      key: "18etb6"
+    }
+  ],
+  ["path", { d: "M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4", key: "xoc0q4" }]
 ];
-const User = createLucideIcon("user", __iconNode$2);
+const Wallet = createLucideIcon("wallet", __iconNode$2);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27466,6 +27523,8 @@ const Toaster = ({ ...props }) => {
     }
   );
 };
+const INITIAL_CURRENT_BALANCE = 12800.5;
+const INITIAL_SAVINGS_BALANCE = 4250;
 const mockTransactions = [
   {
     id: "txn001",
@@ -27478,7 +27537,7 @@ const mockTransactions = [
     time: "08:00 AM",
     reference: "SAL-20260415-001",
     status: "completed",
-    icon: "💼"
+    icon: "briefcase"
   },
   {
     id: "txn002",
@@ -27491,7 +27550,7 @@ const mockTransactions = [
     time: "10:23 AM",
     reference: "ECG-20260414-889",
     status: "completed",
-    icon: "⚡"
+    icon: "bolt"
   },
   {
     id: "txn003",
@@ -27504,7 +27563,7 @@ const mockTransactions = [
     time: "02:45 PM",
     reference: "MOMO-20260413-452",
     status: "completed",
-    icon: "📱"
+    icon: "smartphone"
   },
   {
     id: "txn004",
@@ -27517,7 +27576,7 @@ const mockTransactions = [
     time: "09:15 AM",
     reference: "AIR-20260412-321",
     status: "completed",
-    icon: "📞"
+    icon: "phone"
   },
   {
     id: "txn005",
@@ -27530,7 +27589,7 @@ const mockTransactions = [
     time: "04:30 PM",
     reference: "TRF-20260411-777",
     status: "completed",
-    icon: "↙️"
+    icon: "arrow-down-left"
   },
   {
     id: "txn006",
@@ -27543,7 +27602,7 @@ const mockTransactions = [
     time: "11:00 AM",
     reference: "DSTV-20260410-555",
     status: "completed",
-    icon: "📺"
+    icon: "tv"
   },
   {
     id: "txn007",
@@ -27556,7 +27615,7 @@ const mockTransactions = [
     time: "01:20 PM",
     reference: "GW-20260409-234",
     status: "completed",
-    icon: "💧"
+    icon: "droplets"
   },
   {
     id: "txn008",
@@ -27569,7 +27628,7 @@ const mockTransactions = [
     time: "03:10 PM",
     reference: "BCB-20260408-199",
     status: "completed",
-    icon: "🏦"
+    icon: "building-bank"
   },
   {
     id: "txn009",
@@ -27582,7 +27641,7 @@ const mockTransactions = [
     time: "05:55 PM",
     reference: "VCASH-20260407-811",
     status: "completed",
-    icon: "📲"
+    icon: "smartphone"
   },
   {
     id: "txn010",
@@ -27595,7 +27654,7 @@ const mockTransactions = [
     time: "12:00 AM",
     reference: "INT-20260406-001",
     status: "completed",
-    icon: "💰"
+    icon: "wallet"
   },
   {
     id: "txn011",
@@ -27608,7 +27667,7 @@ const mockTransactions = [
     time: "07:30 AM",
     reference: "DATA-20260405-678",
     status: "completed",
-    icon: "🌐"
+    icon: "globe"
   },
   {
     id: "txn012",
@@ -27621,7 +27680,7 @@ const mockTransactions = [
     time: "09:00 AM",
     reference: "LOAN-20260405-002",
     status: "completed",
-    icon: "🏛️"
+    icon: "landmark"
   }
 ];
 const mockCards = [
@@ -27633,7 +27692,7 @@ const mockCards = [
     cardHolder: "KOFI MENSAH",
     expiry: "08/28",
     cvv: "***",
-    balance: 12800.5,
+    balance: INITIAL_CURRENT_BALANCE,
     isActive: true,
     isFrozen: false,
     spendingLimit: 5e3,
@@ -27647,7 +27706,7 @@ const mockCards = [
     cardHolder: "KOFI MENSAH",
     expiry: "03/27",
     cvv: "***",
-    balance: 4250,
+    balance: INITIAL_SAVINGS_BALANCE,
     isActive: true,
     isFrozen: false,
     spendingLimit: 2e3,
@@ -27679,17 +27738,17 @@ const mockNotifications = [
     date: "2026-04-15",
     time: "08:00 AM",
     isRead: false,
-    icon: "💼"
+    icon: "briefcase"
   },
   {
     id: "notif002",
     type: "transaction",
     title: "ECG Bill Paid",
-    message: "GHS 185.50 debited for ECG electricity bill payment.",
+    message: "GHS 185.50 was debited for ECG electricity bill payment.",
     date: "2026-04-14",
     time: "10:23 AM",
     isRead: false,
-    icon: "⚡"
+    icon: "bolt"
   },
   {
     id: "notif003",
@@ -27699,7 +27758,7 @@ const mockNotifications = [
     date: "2026-04-13",
     time: "09:00 AM",
     isRead: true,
-    icon: "🔐"
+    icon: "shield-alert"
   },
   {
     id: "notif004",
@@ -27709,17 +27768,17 @@ const mockNotifications = [
     date: "2026-04-12",
     time: "11:00 AM",
     isRead: true,
-    icon: "🎁"
+    icon: "gift"
   },
   {
     id: "notif005",
     type: "transaction",
     title: "Transfer Received",
-    message: "GHS 1,200.00 received from Kwame Boateng.",
+    message: "GHS 1,200.00 was received from Kwame Boateng.",
     date: "2026-04-11",
     time: "04:30 PM",
     isRead: true,
-    icon: "💸"
+    icon: "arrow-down-left"
   },
   {
     id: "notif006",
@@ -27729,17 +27788,17 @@ const mockNotifications = [
     date: "2026-04-10",
     time: "08:00 AM",
     isRead: true,
-    icon: "📄"
+    icon: "file-text"
   },
   {
     id: "notif007",
     type: "transaction",
     title: "DStv Subscription Renewed",
-    message: "GHS 120.00 debited for DStv Premium subscription renewal.",
+    message: "GHS 120.00 was debited for DStv Premium subscription renewal.",
     date: "2026-04-10",
     time: "11:00 AM",
     isRead: true,
-    icon: "📺"
+    icon: "tv"
   },
   {
     id: "notif008",
@@ -27749,7 +27808,7 @@ const mockNotifications = [
     date: "2026-04-08",
     time: "02:00 PM",
     isRead: true,
-    icon: "🔒"
+    icon: "lock"
   },
   {
     id: "notif009",
@@ -27759,7 +27818,7 @@ const mockNotifications = [
     date: "2026-04-07",
     time: "10:00 AM",
     isRead: true,
-    icon: "🌟"
+    icon: "sparkles"
   },
   {
     id: "notif010",
@@ -27769,7 +27828,7 @@ const mockNotifications = [
     date: "2026-04-06",
     time: "09:00 AM",
     isRead: true,
-    icon: "⏰"
+    icon: "clock"
   }
 ];
 const createStoreImpl = (createState2) => {
@@ -27811,12 +27870,42 @@ const createImpl = (createState2) => {
   return useBoundStore;
 };
 const create = (createState2) => createState2 ? createImpl(createState2) : createImpl;
+function nowDate() {
+  return (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
+}
+function nowTime() {
+  return (/* @__PURE__ */ new Date()).toLocaleTimeString("en-GH", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  });
+}
+function buildNotificationId() {
+  return `notif_${Date.now()}`;
+}
+function updateBalances(state, tx, account) {
+  const amount = Math.abs(tx.amount);
+  const delta = tx.type === "credit" ? amount : -amount;
+  const currentBalance = account === "current" ? Math.max(0, state.currentBalance + delta) : state.currentBalance;
+  const savingsBalance = account === "savings" ? Math.max(0, state.savingsBalance + delta) : state.savingsBalance;
+  const cards = state.cards.map((card, index2) => {
+    if (index2 !== 0 || card.type !== "debit") return card;
+    return {
+      ...card,
+      balance: Math.max(0, card.balance + delta),
+      spentToday: tx.type === "debit" ? card.spentToday + amount : Math.max(0, card.spentToday - amount)
+    };
+  });
+  return { currentBalance, savingsBalance, cards };
+}
 const useBankStore = create((set, get) => ({
   transactions: mockTransactions,
   cards: mockCards,
   loans: mockLoans,
   notifications: mockNotifications,
   unreadCount: mockNotifications.filter((n) => !n.isRead).length,
+  currentBalance: INITIAL_CURRENT_BALANCE,
+  savingsBalance: INITIAL_SAVINGS_BALANCE,
   toggleFreezeCard: (cardId) => {
     set((state) => ({
       cards: state.cards.map(
@@ -27848,10 +27937,54 @@ const useBankStore = create((set, get) => ({
       unreadCount: 0
     }));
   },
-  addTransaction: (tx) => {
-    set((state) => ({
-      transactions: [tx, ...state.transactions]
-    }));
+  addTransaction: (tx, account = "current") => {
+    set((state) => {
+      const next = updateBalances(state, tx, account);
+      return {
+        transactions: [tx, ...state.transactions],
+        currentBalance: next.currentBalance,
+        savingsBalance: next.savingsBalance,
+        cards: next.cards
+      };
+    });
+  },
+  postNotification: (notification) => {
+    set((state) => {
+      const notifications = [notification, ...state.notifications];
+      return {
+        notifications,
+        unreadCount: notifications.filter((n) => !n.isRead).length
+      };
+    });
+  },
+  recordActivity: (input) => {
+    const transaction = {
+      id: input.reference,
+      type: input.type,
+      category: input.category,
+      title: input.title,
+      description: input.description,
+      amount: Math.abs(input.amount),
+      date: nowDate(),
+      time: nowTime(),
+      reference: input.reference,
+      status: "completed",
+      icon: input.icon
+    };
+    get().addTransaction(transaction, input.account ?? "current");
+    if (input.notification) {
+      get().postNotification({
+        id: buildNotificationId(),
+        type: input.notification.type,
+        title: input.notification.title,
+        message: input.notification.message,
+        date: transaction.date,
+        time: transaction.time,
+        isRead: false,
+        icon: input.notification.icon ?? input.icon
+      });
+    }
+    return transaction;
   }
 }));
 function AppBar({
@@ -31496,7 +31629,7 @@ function Switch({
   );
 }
 function formatGHS(amount) {
-  return `GHS ${amount.toLocaleString("en-GH", {
+  return `GHS ${Math.abs(amount).toLocaleString("en-GH", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   })}`;
@@ -39600,8 +39733,6 @@ function VirtualCard({
   onSelect,
   index: index2
 }) {
-  const displayNumber = card.network === "visa" ? "•••• •••• •••• 4521" : "•••• •••• •••• 8847";
-  const displayExpiry = card.network === "visa" ? "12/27" : "08/26";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     motion.button,
     {
@@ -39610,56 +39741,27 @@ function VirtualCard({
       "data-ocid": `cards.card.${index2}`,
       initial: { opacity: 0, y: 20 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.4, delay: (index2 - 1) * 0.12 },
-      whileTap: { scale: 0.97 },
+      transition: { duration: 0.35, delay: (index2 - 1) * 0.08 },
+      whileTap: { scale: 0.98 },
       className: cn(
-        "relative flex-shrink-0 w-[320px] rounded-3xl overflow-hidden text-left focus-visible:outline-none",
-        "transition-smooth shadow-elevated",
-        isSelected ? "ring-2 ring-accent ring-offset-4 ring-offset-background" : "opacity-90"
+        "relative h-[202px] w-[320px] flex-shrink-0 overflow-hidden rounded-3xl p-5 text-left text-white shadow-elevated transition-smooth",
+        isSelected ? "ring-2 ring-accent ring-offset-4 ring-offset-background" : "opacity-95"
       ),
-      style: { aspectRatio: "1.586" },
+      style: {
+        background: card.network === "visa" ? "linear-gradient(135deg, oklch(0.34 0.13 148) 0%, oklch(0.46 0.14 148) 45%, oklch(0.58 0.12 145) 72%, oklch(0.66 0.15 70) 100%)" : "linear-gradient(135deg, oklch(0.25 0.06 250) 0%, oklch(0.34 0.08 230) 48%, oklch(0.48 0.12 185) 100%)"
+      },
       "aria-label": `${card.network} ${card.type} card`,
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            className: "absolute inset-0",
-            style: {
-              background: "linear-gradient(135deg, oklch(0.34 0.13 148) 0%, oklch(0.46 0.14 148) 45%, oklch(0.58 0.12 145) 72%, oklch(0.66 0.15 70) 100%)"
-            }
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-8 -right-8 w-36 h-36 rounded-full bg-white/[0.05]" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-10 -left-10 w-44 h-44 rounded-full bg-white/[0.04]" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/3 right-5 w-14 h-14 rounded-full border border-white/10" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            className: "absolute rounded-md opacity-80",
-            style: {
-              top: "42%",
-              left: "5.5%",
-              width: "32px",
-              height: "24px",
-              background: "linear-gradient(135deg, #e8c97a 0%, #c8a84b 50%, #e8c97a 100%)",
-              boxShadow: "inset 0 0 4px rgba(0,0,0,0.2)"
-            }
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative h-full flex flex-col justify-between p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/10" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-10 -left-8 h-40 w-40 rounded-full bg-white/5" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute right-6 top-1/3 h-16 w-16 rounded-full border border-white/10" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex h-full flex-col justify-between", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "img",
-                {
-                  src: "/assets/bcb-logo.png",
-                  alt: "BCB",
-                  className: "w-8 h-8 object-contain drop-shadow"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[9px] text-white/55 uppercase tracking-widest font-bold leading-none", children: "BCB" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[9px] text-white/65 uppercase tracking-wide capitalize", children: card.type })
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] font-semibold uppercase tracking-[0.35em] text-white/70", children: "BCB" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs capitalize text-white/80", children: [
+                card.type,
+                " card"
               ] })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -39667,38 +39769,37 @@ function VirtualCard({
               {
                 variant: "outline",
                 className: cn(
-                  "text-[9px] uppercase font-bold px-2 py-0.5",
-                  card.isFrozen ? "bg-blue-900/40 border-blue-400/40 text-blue-200" : "bg-white/10 border-white/25 text-white/80"
+                  "border px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide",
+                  card.isFrozen ? "border-blue-300/40 bg-blue-950/30 text-blue-100" : "border-white/25 bg-white/10 text-white/80"
                 ),
                 children: card.isFrozen ? "Frozen" : "Active"
               }
             )
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-white/88 text-sm font-mono tracking-[0.2em] mt-auto px-0.5", children: displayNumber }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-end justify-between mt-2", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[9px] text-white/48 uppercase tracking-widest", children: "Card Holder" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] font-bold text-white tracking-wider", children: card.cardHolder })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[9px] text-white/48 uppercase tracking-widest", children: "Expires" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] font-bold text-white", children: displayExpiry })
-            ] }),
-            card.network === "visa" ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white font-black text-xl tracking-tight italic drop-shadow-sm", children: "VISA" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "div",
-                {
-                  className: "w-6 h-6 rounded-full",
-                  style: { background: "rgba(220,50,50,0.85)" }
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "div",
+              {
+                className: "h-9 w-12 rounded-md",
+                style: {
+                  background: "linear-gradient(135deg, #e8c97a 0%, #c8a84b 50%, #e8c97a 100%)"
                 }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "div",
-                {
-                  className: "w-6 h-6 rounded-full -ml-3",
-                  style: { background: "rgba(245,180,0,0.85)" }
-                }
-              )
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-mono text-base tracking-[0.28em] text-white/90", children: card.cardNumber }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-end justify-between", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[9px] uppercase tracking-[0.25em] text-white/55", children: "Card Holder" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-bold tracking-[0.18em]", children: card.cardHolder })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[9px] uppercase tracking-[0.25em] text-white/55", children: "Expires" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-bold", children: card.expiry })
+              ] }),
+              card.network === "visa" ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-black italic tracking-tight", children: "VISA" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-6 w-6 rounded-full bg-red-500/85" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "-ml-3 h-6 w-6 rounded-full bg-amber-400/85" })
+              ] })
             ] })
           ] })
         ] }),
@@ -39708,14 +39809,10 @@ function VirtualCard({
             initial: { opacity: 0 },
             animate: { opacity: 1 },
             exit: { opacity: 0 },
-            className: "absolute inset-0 flex flex-col items-center justify-center gap-2",
-            style: {
-              background: "rgba(8,22,40,0.58)",
-              backdropFilter: "blur(2px)"
-            },
+            className: "absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-950/55 backdrop-blur-[2px]",
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center w-12 h-12 rounded-full border border-blue-400/30 bg-blue-900/50", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Snowflake, { className: "w-6 h-6 text-blue-300" }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white font-extrabold tracking-[0.3em] text-sm uppercase drop-shadow", children: "FROZEN" })
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-12 w-12 items-center justify-center rounded-full border border-blue-300/35 bg-blue-950/40", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Snowflake, { className: "h-6 w-6 text-blue-200" }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-extrabold uppercase tracking-[0.35em]", children: "Frozen" })
             ]
           }
         ) })
@@ -39725,19 +39822,18 @@ function VirtualCard({
 }
 function SpendingBar({ card }) {
   const monthlySpent = card.network === "visa" ? 2340 : 680;
-  const monthlyLimit = card.spendingLimit;
-  const pct = Math.min(monthlySpent / monthlyLimit * 100, 100);
-  const isWarm = pct >= 60;
+  const monthlyLimit = Math.max(card.spendingLimit * 6, 1);
+  const percentage = Math.min(monthlySpent / monthlyLimit * 100, 100);
+  const isWarm = percentage >= 60;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     motion.div,
     {
       initial: { opacity: 0, y: 8 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.35, delay: 0.05 },
-      className: "bg-card rounded-2xl px-4 py-3.5 shadow-card",
+      className: "rounded-2xl bg-card px-4 py-3.5 shadow-card",
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-semibold text-foreground", children: "Monthly Spend" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-2 flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-semibold text-foreground", children: "Monthly spend" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
             "span",
             {
@@ -39746,26 +39842,26 @@ function SpendingBar({ card }) {
                 isWarm ? "text-accent" : "text-primary"
               ),
               children: [
-                Math.round(pct),
+                Math.round(percentage),
                 "% used"
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 bg-muted rounded-full overflow-hidden mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2 h-2.5 overflow-hidden rounded-full bg-muted", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
           motion.div,
           {
+            initial: { width: 0 },
+            animate: { width: `${percentage}%` },
+            transition: { duration: 0.6, ease: "easeOut" },
             className: cn(
               "h-full rounded-full",
               isWarm ? "bg-accent" : "bg-primary"
-            ),
-            initial: { width: 0 },
-            animate: { width: `${pct}%` },
-            transition: { duration: 0.7, ease: "easeOut", delay: 0.1 }
+            )
           }
         ) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between text-[11px] text-muted-foreground", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "font-medium", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             formatGHS(monthlySpent),
             " spent"
           ] }),
@@ -39784,36 +39880,36 @@ function SpendingLimitDialog({
   open,
   onClose
 }) {
-  const { setSpendingLimit } = useBankStore();
+  const setSpendingLimit = useBankStore((state) => state.setSpendingLimit);
   const [daily, setDaily] = reactExports.useState(card.spendingLimit);
   const [monthly, setMonthly] = reactExports.useState(card.spendingLimit * 6);
   const handleSave = () => {
     setSpendingLimit(card.id, daily);
-    ue.success("Spending Limits Updated", {
-      description: `Daily: ${formatGHS(daily)} · Monthly: ${formatGHS(monthly)}`
+    ue.success("Spending limits updated", {
+      description: `Daily ${formatGHS(daily)} | Monthly ${formatGHS(monthly)}`
     });
     onClose();
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: onClose, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "max-w-sm", "data-ocid": "cards.limit_dialog", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogHeader, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display", children: "Set Spending Limits" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display", children: "Set spending limits" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(DialogDescription, { className: "text-xs text-muted-foreground", children: "Adjust daily and monthly transaction limits for this card." })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-5 py-1", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2.5", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Daily Limit" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Daily limit" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: "GHS" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               Input,
               {
                 type: "number",
-                className: "w-24 h-8 text-sm text-right font-display font-bold",
-                value: daily,
                 min: 100,
                 max: 5e4,
-                onChange: (e) => setDaily(Number(e.target.value)),
+                value: daily,
+                onChange: (event) => setDaily(Number(event.target.value)),
+                className: "h-8 w-24 text-right text-sm font-bold",
                 "data-ocid": "cards.daily_limit_input"
               }
             )
@@ -39826,30 +39922,26 @@ function SpendingLimitDialog({
             min: 100,
             max: 2e4,
             step: 100,
-            onValueChange: ([v2]) => setDaily(v2),
+            onValueChange: ([value]) => setDaily(value),
             "data-ocid": "cards.daily_limit_slider"
           }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between text-[10px] text-muted-foreground", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "GHS 100" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "GHS 20,000" })
-        ] })
+        )
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2.5", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Monthly Limit" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Monthly limit" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: "GHS" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               Input,
               {
                 type: "number",
-                className: "w-24 h-8 text-sm text-right font-display font-bold",
-                value: monthly,
                 min: 500,
                 max: 2e5,
-                onChange: (e) => setMonthly(Number(e.target.value)),
+                value: monthly,
+                onChange: (event) => setMonthly(Number(event.target.value)),
+                className: "h-8 w-24 text-right text-sm font-bold",
                 "data-ocid": "cards.monthly_limit_input"
               }
             )
@@ -39862,14 +39954,10 @@ function SpendingLimitDialog({
             min: 500,
             max: 1e5,
             step: 500,
-            onValueChange: ([v2]) => setMonthly(v2),
+            onValueChange: ([value]) => setMonthly(value),
             "data-ocid": "cards.monthly_limit_slider"
           }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between text-[10px] text-muted-foreground", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "GHS 500" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "GHS 100,000" })
-        ] })
+        )
       ] })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { className: "gap-2", children: [
@@ -39882,7 +39970,7 @@ function SpendingLimitDialog({
           children: "Cancel"
         }
       ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: handleSave, "data-ocid": "cards.limit_confirm_button", children: "Save Limits" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: handleSave, "data-ocid": "cards.limit_confirm_button", children: "Save limits" })
     ] })
   ] }) });
 }
@@ -39893,45 +39981,41 @@ function ReportLostDialog({
 }) {
   const [confirmed, setConfirmed] = reactExports.useState(false);
   const [done, setDone] = reactExports.useState(false);
-  const tail = card.network === "visa" ? "4521" : "8847";
   const handleReport = () => {
     setDone(true);
     setTimeout(() => {
-      ue.success("Card Reported", {
-        description: "A replacement card will be issued within 5–7 business days."
+      ue.success("Card reported", {
+        description: "A replacement card will be issued within 5 to 7 business days."
       });
       setDone(false);
       setConfirmed(false);
       onClose();
-    }, 1400);
+    }, 1200);
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: onClose, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "max-w-sm", "data-ocid": "cards.report_dialog", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogHeader, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-1", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center w-10 h-10 rounded-full bg-destructive/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldAlert, { className: "w-5 h-5 text-destructive" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display text-destructive", children: "Report Lost / Stolen" })
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-1 flex items-center gap-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-10 w-10 items-center justify-center rounded-full bg-destructive/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldAlert, { className: "h-5 w-5 text-destructive" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display text-destructive", children: "Report lost or stolen" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogDescription, { className: "text-sm", children: [
-        "This will immediately block card ending",
+        "This will immediately block card ending in",
         " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("strong", { children: [
-          "•••• ",
-          tail
-        ] }),
-        " and freeze all transactions. A replacement will be issued automatically."
+        /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: card.cardNumber.slice(-4) }),
+        " and stop all transactions."
       ] })
     ] }),
     done ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-3 py-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-12 h-12 text-primary" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: "Card Blocked Successfully" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-12 w-12 text-primary" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: "Card blocked successfully" })
     ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 p-3 rounded-xl bg-destructive/5 border border-destructive/20", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 rounded-xl border border-destructive/20 bg-destructive/5 p-3", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Checkbox,
           {
             id: "report-confirm",
             checked: confirmed,
-            onCheckedChange: (v2) => setConfirmed(!!v2),
+            onCheckedChange: (value) => setConfirmed(Boolean(value)),
             "data-ocid": "cards.report_confirm_checkbox"
           }
         ),
@@ -39939,8 +40023,8 @@ function ReportLostDialog({
           Label,
           {
             htmlFor: "report-confirm",
-            className: "text-xs text-muted-foreground leading-relaxed cursor-pointer",
-            children: "I confirm this card has been lost or stolen and authorise BCB to block it immediately."
+            className: "cursor-pointer text-xs leading-relaxed text-muted-foreground",
+            children: "I confirm this card has been lost or stolen and authorize BCB to block it immediately."
           }
         )
       ] }),
@@ -39961,7 +40045,7 @@ function ReportLostDialog({
             disabled: !confirmed,
             onClick: handleReport,
             "data-ocid": "cards.report_submit_button",
-            children: "Report Card"
+            children: "Report card"
           }
         )
       ] })
@@ -39984,12 +40068,12 @@ function RequestCardDialog({
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: handleClose, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "max-w-sm", "data-ocid": "cards.request_dialog", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogHeader, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-1", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center w-10 h-10 rounded-full bg-primary/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "w-5 h-5 text-primary" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-1 flex items-center gap-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-10 w-10 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "h-5 w-5 text-primary" }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogTitle, { className: "font-display capitalize", children: [
           "Request ",
           cardType,
-          " Card"
+          " card"
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogDescription, { className: "text-xs text-muted-foreground", children: [
@@ -40005,10 +40089,10 @@ function RequestCardDialog({
         animate: { opacity: 1, scale: 1 },
         className: "flex flex-col items-center gap-4 py-5 text-center",
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center w-16 h-16 rounded-full bg-primary/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-8 h-8 text-primary" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-16 w-16 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-8 w-8 text-primary" }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-foreground font-display", children: "Request Submitted!" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground leading-relaxed", children: "Your card request has been submitted. Allow 5–7 business days." })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display font-bold text-foreground", children: "Request submitted" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm leading-relaxed text-muted-foreground", children: "Your card request has been received. Please allow 5 to 7 business days." })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             Button,
@@ -40024,12 +40108,12 @@ function RequestCardDialog({
     ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4 py-1", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground", children: "Card Type" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 h-10 px-3 rounded-xl border border-input bg-muted/40", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "w-4 h-4 text-muted-foreground" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-sm font-medium text-foreground capitalize", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground", children: "Card type" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-10 items-center gap-2 rounded-xl border border-input bg-muted/40 px-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "h-4 w-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-sm font-medium capitalize text-foreground", children: [
               cardType,
-              " Card (Visa)"
+              " card"
             ] })
           ] })
         ] }),
@@ -40039,28 +40123,28 @@ function RequestCardDialog({
             {
               htmlFor: "delivery-address",
               className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-              children: "Delivery Address"
+              children: "Delivery address"
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             Input,
             {
               id: "delivery-address",
-              placeholder: "e.g. House 12, Bawjiase Road, Central Region",
+              placeholder: "House 12, Bawjiase Road, Central Region",
               value: address,
-              onChange: (e) => setAddress(e.target.value),
+              onChange: (event) => setAddress(event.target.value),
               className: "rounded-xl",
               "data-ocid": "cards.request_address_input"
             }
           )
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 p-3 rounded-xl bg-muted/40 border border-border", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 rounded-xl border border-border bg-muted/40 p-3", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             Checkbox,
             {
               id: "identity-confirm",
               checked: identityConfirmed,
-              onCheckedChange: (v2) => setIdentityConfirmed(!!v2),
+              onCheckedChange: (value) => setIdentityConfirmed(Boolean(value)),
               "data-ocid": "cards.request_identity_checkbox"
             }
           ),
@@ -40068,8 +40152,8 @@ function RequestCardDialog({
             Label,
             {
               htmlFor: "identity-confirm",
-              className: "text-xs text-muted-foreground leading-relaxed cursor-pointer",
-              children: "I confirm my identity as a verified BCB account holder and agree to card issuance terms."
+              className: "cursor-pointer text-xs leading-relaxed text-muted-foreground",
+              children: "I confirm my identity as a verified BCB account holder and agree to the card issuance terms."
             }
           )
         ] })
@@ -40090,7 +40174,7 @@ function RequestCardDialog({
             disabled: !address.trim() || !identityConfirmed,
             onClick: () => setSubmitted(true),
             "data-ocid": "cards.request_submit_button",
-            children: "Submit Request"
+            children: "Submit request"
           }
         )
       ] })
@@ -40099,84 +40183,84 @@ function RequestCardDialog({
 }
 function CardsPage() {
   var _a2;
-  const { cards, toggleFreezeCard } = useBankStore();
+  const cards = useBankStore((state) => state.cards);
+  const toggleFreezeCard = useBankStore((state) => state.toggleFreezeCard);
   const [activeCardId, setActiveCardId] = reactExports.useState(((_a2 = cards[0]) == null ? void 0 : _a2.id) ?? "");
   const [showLimitDialog, setShowLimitDialog] = reactExports.useState(false);
   const [showReportDialog, setShowReportDialog] = reactExports.useState(false);
   const [showRequestDialog, setShowRequestDialog] = reactExports.useState(null);
-  const activeCard = cards.find((c) => c.id === activeCardId) ?? cards[0];
+  const activeCard = cards.find((card) => card.id === activeCardId) ?? cards[0];
   const handleFreezeToggle = () => {
     if (!activeCard) return;
     const wasFrozen = activeCard.isFrozen;
     toggleFreezeCard(activeCard.id);
-    ue.success(wasFrozen ? "Card Unfrozen" : "Card Frozen", {
+    ue.success(wasFrozen ? "Card unfrozen" : "Card frozen", {
       description: wasFrozen ? "Your card is active and ready for transactions." : "All transactions on this card have been paused."
     });
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-h-full bg-background pb-safe", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-h-full flex-col bg-background pb-safe", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(AppBar, { title: "My Cards", showLogo: true }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card border-b border-border pt-4 pb-5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "overflow-x-auto scrollbar-hide", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-4 px-4 w-max", children: cards.map((card, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-b border-border bg-card pb-5 pt-4", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "overflow-x-auto scrollbar-hide", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex w-max gap-4 px-4", children: cards.map((card, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         VirtualCard,
         {
           card,
-          index: idx + 1,
+          index: index2 + 1,
           isSelected: card.id === activeCardId,
           onSelect: () => setActiveCardId(card.id)
         },
         card.id
       )) }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center gap-2 mt-4", children: cards.map((card, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4 flex justify-center gap-2", children: cards.map((card, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         "button",
         {
           type: "button",
           onClick: () => setActiveCardId(card.id),
-          "data-ocid": `cards.dot_indicator.${idx + 1}`,
-          "aria-label": `Select card ${idx + 1}`,
+          "data-ocid": `cards.dot_indicator.${index2 + 1}`,
+          "aria-label": `Select card ${index2 + 1}`,
           className: cn(
             "rounded-full transition-smooth",
-            card.id === activeCardId ? "w-5 h-2 bg-primary" : "w-2 h-2 bg-muted-foreground/25"
+            card.id === activeCardId ? "h-2 w-5 bg-primary" : "h-2 w-2 bg-muted-foreground/25"
           )
         },
         card.id
       )) })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 pt-4 space-y-3", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 px-4 pt-4", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { mode: "wait", children: activeCard && /* @__PURE__ */ jsxRuntimeExports.jsxs(
         motion.div,
         {
           initial: { opacity: 0, y: 10 },
           animate: { opacity: 1, y: 0 },
           exit: { opacity: 0, y: -8 },
-          transition: { duration: 0.28 },
           className: "space-y-3",
           children: [
             !activeCard.isFrozen && /* @__PURE__ */ jsxRuntimeExports.jsx(SpendingBar, { card: activeCard }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card rounded-2xl px-4 py-3.5 shadow-card flex items-center justify-between", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between rounded-2xl bg-card px-4 py-3.5 shadow-card", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground mb-0.5", children: "Available Balance" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xl font-bold text-foreground font-display tabular-nums", children: formatGHS(activeCard.balance) })
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-0.5 text-xs text-muted-foreground", children: "Available balance" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-xl font-bold text-foreground tabular-nums", children: formatGHS(activeCard.balance) })
               ] }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-right", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground mb-0.5", children: "Spent Today" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-base font-semibold text-foreground font-display tabular-nums", children: formatGHS(activeCard.spentToday) })
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-0.5 text-xs text-muted-foreground", children: "Spent today" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-base font-semibold text-foreground tabular-nums", children: formatGHS(activeCard.spentToday) })
               ] })
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card rounded-2xl shadow-card overflow-hidden", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "overflow-hidden rounded-2xl bg-card shadow-card", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-4 py-4", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "div",
                     {
                       className: cn(
-                        "flex items-center justify-center w-9 h-9 rounded-xl",
+                        "flex h-9 w-9 items-center justify-center rounded-xl",
                         activeCard.isFrozen ? "bg-blue-900/20" : "bg-primary/10"
                       ),
-                      children: activeCard.isFrozen ? /* @__PURE__ */ jsxRuntimeExports.jsx(Snowflake, { className: "w-5 h-5 text-blue-400" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { className: "w-5 h-5 text-primary" })
+                      children: activeCard.isFrozen ? /* @__PURE__ */ jsxRuntimeExports.jsx(Snowflake, { className: "h-5 w-5 text-blue-400" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { className: "h-5 w-5 text-primary" })
                     }
                   ),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: activeCard.isFrozen ? "Unfreeze Card" : "Freeze Card" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: activeCard.isFrozen ? "Unfreeze card" : "Freeze card" }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: activeCard.isFrozen ? "Card is currently frozen" : "Temporarily block transactions" })
                   ] })
                 ] }),
@@ -40197,19 +40281,19 @@ function CardsPage() {
                   type: "button",
                   onClick: () => setShowLimitDialog(true),
                   "data-ocid": "cards.set_limit_button",
-                  className: "flex items-center justify-between px-4 py-4 w-full text-left hover:bg-muted/40 transition-smooth",
+                  className: "flex w-full items-center justify-between px-4 py-4 text-left transition-smooth hover:bg-muted/40",
                   children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center w-9 h-9 rounded-xl bg-accent/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SlidersHorizontal, { className: "w-5 h-5 text-accent" }) }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SlidersHorizontal, { className: "h-5 w-5 text-accent" }) }),
                       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: "Spending Limit" }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: "Spending limit" }),
                         /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
                           "Daily: ",
                           formatGHS(activeCard.spendingLimit)
                         ] })
                       ] })
                     ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4 text-muted-foreground" })
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "h-4 w-4 text-muted-foreground" })
                   ]
                 }
               ),
@@ -40220,16 +40304,16 @@ function CardsPage() {
                   type: "button",
                   onClick: () => setShowReportDialog(true),
                   "data-ocid": "cards.report_lost_button",
-                  className: "flex items-center justify-between px-4 py-4 w-full text-left hover:bg-destructive/5 transition-smooth",
+                  className: "flex w-full items-center justify-between px-4 py-4 text-left transition-smooth hover:bg-destructive/5",
                   children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center w-9 h-9 rounded-xl bg-destructive/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { className: "w-5 h-5 text-destructive" }) }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-9 w-9 items-center justify-center rounded-xl bg-destructive/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { className: "h-5 w-5 text-destructive" }) }),
                       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-destructive", children: "Report Lost / Stolen" }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-destructive", children: "Report lost or stolen" }),
                         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Block this card immediately" })
                       ] })
                     ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4 text-muted-foreground" })
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "h-4 w-4 text-muted-foreground" })
                   ]
                 }
               )
@@ -40243,13 +40327,13 @@ function CardsPage() {
         {
           initial: { opacity: 0, y: 10 },
           animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.4, delay: 0.18 },
-          className: "bg-card rounded-2xl p-4 shadow-card",
+          transition: { duration: 0.35, delay: 0.12 },
+          className: "rounded-2xl bg-card p-4 shadow-card",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-4", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center w-9 h-9 rounded-xl bg-primary/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "w-5 h-5 text-primary" }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold text-foreground", children: "Need a new card?" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-4 flex items-center gap-3", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "h-5 w-5 text-primary" }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold text-foreground", children: "Need a new card" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Request a physical debit or credit card" })
               ] })
             ] }),
@@ -40260,9 +40344,9 @@ function CardsPage() {
                   variant: "outline",
                   onClick: () => setShowRequestDialog("debit"),
                   "data-ocid": "cards.request_debit_button",
-                  className: "h-12 flex-col gap-1 text-xs font-semibold border-primary/30 text-primary hover:bg-primary/5 hover:border-primary/50",
+                  className: "h-12 flex-col gap-1 border-primary/30 text-xs font-semibold text-primary hover:bg-primary/5 hover:border-primary/50",
                   children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "w-4 h-4" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "h-4 w-4" }),
                     "Debit Card"
                   ]
                 }
@@ -40273,9 +40357,9 @@ function CardsPage() {
                   variant: "outline",
                   onClick: () => setShowRequestDialog("credit"),
                   "data-ocid": "cards.request_credit_button",
-                  className: "h-12 flex-col gap-1 text-xs font-semibold border-accent/30 text-accent hover:bg-accent/5 hover:border-accent/50",
+                  className: "h-12 flex-col gap-1 border-accent/30 text-xs font-semibold text-accent hover:bg-accent/5 hover:border-accent/50",
                   children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "w-4 h-4" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "h-4 w-4" }),
                     "Credit Card"
                   ]
                 }
@@ -40313,6 +40397,33 @@ function CardsPage() {
       }
     )
   ] });
+}
+const ICON_MAP = {
+  briefcase: Briefcase,
+  bolt: Zap,
+  smartphone: Smartphone,
+  phone: Phone,
+  "arrow-down-left": ArrowDownLeft,
+  tv: Tv,
+  droplets: Droplets,
+  "building-bank": Building2,
+  wallet: Wallet,
+  globe: Globe,
+  landmark: Landmark,
+  lock: Lock,
+  gift: Gift,
+  "file-text": FileText,
+  sparkles: Sparkles,
+  clock: Clock3,
+  "shield-alert": ShieldAlert,
+  "triangle-alert": TriangleAlert
+};
+function ActivityIconGlyph({
+  icon,
+  className
+}) {
+  const Icon2 = ICON_MAP[icon] ?? Banknote;
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: cn("w-5 h-5", className) });
 }
 function createJSONStorage(getStorage, options) {
   let storage;
@@ -40608,11 +40719,12 @@ const categoryColors = {
   loan: "bg-destructive/10 text-destructive"
 };
 function DashboardPage() {
-  var _a2;
   const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const transactions = useBankStore((s) => s.transactions);
+  const currentBalance = useBankStore((s) => s.currentBalance);
+  const savingsBalance = useBankStore((s) => s.savingsBalance);
   const [hideBalance, setHideBalance] = reactExports.useState(false);
   const [showIdleModal, setShowIdleModal] = reactExports.useState(false);
   const [countdown, setCountdown] = reactExports.useState(COUNTDOWN_SECONDS);
@@ -40662,9 +40774,9 @@ function DashboardPage() {
       if (countdownTimerRef.current) clearInterval(countdownTimerRef.current);
     };
   }, [resetIdleTimer]);
-  const totalBalance = ((user == null ? void 0 : user.savingsBalance) ?? 0) + ((user == null ? void 0 : user.currentBalance) ?? 0);
+  const totalBalance = savingsBalance + currentBalance;
   const recentTxns = transactions.slice(0, 5);
-  const firstName = ((_a2 = user == null ? void 0 : user.name) == null ? void 0 : _a2.split(" ")[0]) ?? "Kofi";
+  const firstName = (user == null ? void 0 : user.name.split(" ")[0]) ?? "Kofi";
   const accountNumber = (user == null ? void 0 : user.accountNumber) ?? "1234567890";
   const hour = (/* @__PURE__ */ new Date()).getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
@@ -40728,7 +40840,7 @@ function DashboardPage() {
               animate: { opacity: 1, y: 0 },
               transition: { duration: 0.2 },
               className: "text-3xl font-bold text-primary-foreground font-display mb-1 relative z-10 tracking-tight",
-              children: hideBalance ? "GHS ••••••" : formatGHS(totalBalance)
+              children: hideBalance ? "GHS XXXXXX" : formatGHS(totalBalance)
             },
             hideBalance ? "hidden" : "shown"
           ),
@@ -40739,12 +40851,12 @@ function DashboardPage() {
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-4 pt-4 border-t border-primary-foreground/15 relative z-10", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-primary-foreground/55 mb-0.5", children: "Savings Account" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold text-primary-foreground font-display", children: hideBalance ? "GHS ••••" : formatGHS((user == null ? void 0 : user.savingsBalance) ?? 0) })
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold text-primary-foreground font-display", children: hideBalance ? "GHS XXXX" : formatGHS(savingsBalance) })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-px bg-primary-foreground/20 self-stretch" }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-primary-foreground/55 mb-0.5", children: "Current Account" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold text-primary-foreground font-display", children: hideBalance ? "GHS ••••" : formatGHS((user == null ? void 0 : user.currentBalance) ?? 0) })
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold text-primary-foreground font-display", children: hideBalance ? "GHS XXXX" : formatGHS(currentBalance) })
             ] })
           ] })
         ]
@@ -40766,7 +40878,7 @@ function DashboardPage() {
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-4 -right-4 w-16 h-16 rounded-full bg-primary/5 pointer-events-none" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-muted-foreground uppercase tracking-wider mb-1", children: "Savings" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-base font-bold text-foreground font-display leading-tight", children: hideBalance ? "GHS ••••" : formatGHS((user == null ? void 0 : user.savingsBalance) ?? 0) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-base font-bold text-foreground font-display leading-tight", children: hideBalance ? "GHS XXXX" : formatGHS(savingsBalance) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-success/10", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rounded-full bg-success" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-success font-medium", children: "Active" })
@@ -40782,7 +40894,7 @@ function DashboardPage() {
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-4 -right-4 w-16 h-16 rounded-full bg-accent/5 pointer-events-none" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-muted-foreground uppercase tracking-wider mb-1", children: "Current" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-base font-bold text-foreground font-display leading-tight", children: hideBalance ? "GHS ••••" : formatGHS((user == null ? void 0 : user.currentBalance) ?? 0) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-base font-bold text-foreground font-display leading-tight", children: hideBalance ? "GHS XXXX" : formatGHS(currentBalance) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rounded-full bg-primary" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-primary font-medium", children: "Active" })
@@ -40870,7 +40982,7 @@ function DashboardPage() {
                       "w-10 h-10 rounded-full flex items-center justify-center text-base flex-shrink-0",
                       categoryColors[txn.category] ?? "bg-muted text-muted-foreground"
                     ),
-                    children: txn.icon
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(ActivityIconGlyph, { icon: txn.icon, className: "w-4 h-4" })
                   }
                 ),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
@@ -40886,7 +40998,7 @@ function DashboardPage() {
                         txn.type === "credit" ? "text-success" : "text-destructive"
                       ),
                       children: [
-                        txn.type === "credit" ? "+" : "−",
+                        txn.type === "credit" ? "+" : "-",
                         " ",
                         formatGHS(txn.amount)
                       ]
@@ -42233,315 +42345,119 @@ function LoginPage() {
     }
   ) });
 }
-const extraNotifications = [
+const EXTRA_NOTIFICATIONS = [
   {
-    id: "notif_x1",
+    id: "notif_extra_1",
     type: "transaction",
     title: "Money Received",
     message: "You received GHS 500.00 from Ama Adjei. Your account balance has been updated.",
     date: "2026-04-17",
     time: "03:12 PM",
     isRead: false,
-    icon: "credit"
+    icon: "arrow-down-left"
   },
   {
-    id: "notif_x2",
+    id: "notif_extra_2",
     type: "security",
     title: "Unusual Login Detected",
-    message: "Unusual login detected from a new device in Kumasi. Was this you? Tap to review your account security.",
+    message: "Unusual login detected from a new device in Kumasi. Review your account security.",
     date: "2026-04-17",
     time: "01:47 PM",
     isRead: false,
-    icon: "fraud"
-  },
-  {
-    id: "notif_x3",
-    type: "transaction",
-    title: "ECG Payment Confirmed",
-    message: "ECG electricity payment of GHS 50.00 was successful. Reference: ECG-APR-2026-7821.",
-    date: "2026-04-16",
-    time: "11:30 AM",
-    isRead: false,
-    icon: "debit"
-  },
-  {
-    id: "notif_x4",
-    type: "system",
-    title: "Loan Application Approved",
-    message: "Congratulations! Your loan application for GHS 10,000 has been approved. Funds have been disbursed to your current account.",
-    date: "2026-04-16",
-    time: "09:00 AM",
-    isRead: false,
-    icon: "bank"
-  },
-  {
-    id: "notif_x5",
-    type: "system",
-    title: "Low Balance Alert",
-    message: "Your savings account balance has fallen below GHS 500.00. Current balance: GHS 420.00. Consider topping up.",
-    date: "2026-04-15",
-    time: "06:00 AM",
-    isRead: false,
-    icon: "alert"
+    icon: "shield-alert"
   }
 ];
-const TABS = [
-  { key: "all", label: "All" },
-  { key: "transactions", label: "Transactions" },
-  { key: "alerts", label: "Alerts" },
-  { key: "bank", label: "Bank Messages" }
-];
-function filterNotifs(notifs, tab) {
-  switch (tab) {
-    case "transactions":
-      return notifs.filter((n) => n.type === "transaction");
-    case "alerts":
-      return notifs.filter(
-        (n) => n.type === "security" || n.icon === "alert" || n.title.toLowerCase().includes("low balance")
-      );
-    case "bank":
-      return notifs.filter(
-        (n) => n.type === "system" || n.type === "promotion"
-      );
-    default:
-      return notifs;
-  }
-}
-function NotifIcon({ notif }) {
-  const { icon, type, message, title } = notif;
-  if (icon === "fraud" || type === "security" && icon !== "lock") {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldAlert, { className: "w-5 h-5 text-destructive" }) });
-  }
-  if (type === "security") {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldAlert, { className: "w-5 h-5 text-destructive" }) });
-  }
-  if (icon === "credit") {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowDownLeft, { className: "w-5 h-5 text-primary" }) });
-  }
-  if (icon === "debit") {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowUpRight, { className: "w-5 h-5 text-destructive" }) });
-  }
-  if (type === "transaction") {
-    const isCreditMsg = message.toLowerCase().includes("received") || message.toLowerCase().includes("credited") || message.toLowerCase().includes("interest") || title.toLowerCase().includes("received") || title.toLowerCase().includes("salary") || title.toLowerCase().includes("interest");
-    return isCreditMsg ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowDownLeft, { className: "w-5 h-5 text-primary" }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowUpRight, { className: "w-5 h-5 text-destructive" }) });
-  }
-  if (icon === "bank" || title.toLowerCase().includes("loan")) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Landmark, { className: "w-5 h-5 text-blue-600 dark:text-blue-400" }) });
-  }
-  if (icon === "alert" || title.toLowerCase().includes("low balance")) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { className: "w-5 h-5 text-accent" }) });
-  }
-  if (type === "promotion") {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Zap, { className: "w-5 h-5 text-accent" }) });
-  }
-  if (type === "system") {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Info, { className: "w-5 h-5 text-blue-600 dark:text-blue-400" }) });
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-muted flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "w-5 h-5 text-muted-foreground" }) });
-}
-function TypeBadge({ type }) {
-  const map = {
-    transaction: {
-      cls: "bg-primary/10 text-primary border-primary/20",
-      label: "Transaction",
-      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(CreditCard, { className: "w-3 h-3" })
-    },
-    security: {
-      cls: "bg-destructive/10 text-destructive border-destructive/20",
-      label: "Security",
-      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldAlert, { className: "w-3 h-3" })
-    },
-    promotion: {
-      cls: "bg-accent/15 text-accent-foreground border-accent/30",
-      label: "Offer",
-      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Zap, { className: "w-3 h-3" })
-    },
-    system: {
-      cls: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-      label: "Bank",
-      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "w-3 h-3" })
-    }
-  };
-  const { cls, label, icon } = map[type];
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    "span",
-    {
-      className: cn(
-        "inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full border",
-        cls
-      ),
-      children: [
-        icon,
-        label
-      ]
-    }
-  );
+function matchesTab(notification, tab) {
+  if (tab === "all") return true;
+  if (tab === "transactions") return notification.type === "transaction";
+  if (tab === "alerts") return notification.type === "security";
+  return notification.type === "system" || notification.type === "promotion";
 }
 function NotificationItem({
-  notif,
-  index: index2,
-  isExpanded,
+  notification,
+  expanded,
   onToggle
 }) {
-  const markRead = useBankStore((s) => s.markNotificationRead);
-  function handleClick() {
-    if (!notif.isRead) markRead(notif.id);
-    onToggle();
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    motion.div,
-    {
-      initial: { opacity: 0, y: 10 },
-      animate: { opacity: 1, y: 0 },
-      transition: {
-        delay: index2 * 0.035,
-        duration: 0.26,
-        ease: [0.4, 0, 0.2, 1]
-      },
-      className: cn(
-        "relative rounded-2xl overflow-hidden transition-smooth shadow-card hover:shadow-elevated",
-        !notif.isRead ? "bg-primary/5 dark:bg-primary/8 ring-1 ring-primary/20" : "bg-card"
-      ),
-      "data-ocid": `notifications.item.${index2 + 1}`,
-      children: [
-        !notif.isRead && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-primary" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "button",
-          {
-            type: "button",
-            className: "w-full text-left px-4 py-3.5 flex items-start gap-3",
-            onClick: handleClick,
-            "aria-expanded": isExpanded,
-            "aria-label": notif.title,
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(NotifIcon, { notif }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-2 mb-0.5", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    "p",
-                    {
-                      className: cn(
-                        "text-sm font-semibold leading-snug flex-1 min-w-0",
-                        !notif.isRead ? "text-foreground" : "text-foreground/80"
-                      ),
-                      children: notif.title
-                    }
-                  ),
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 flex-shrink-0 mt-0.5", children: [
-                    !notif.isRead && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      "span",
-                      {
-                        className: "w-2 h-2 rounded-full bg-primary flex-shrink-0",
-                        "aria-label": "Unread"
-                      }
-                    ),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      ChevronDown,
-                      {
-                        className: cn(
-                          "w-4 h-4 text-muted-foreground transition-transform duration-200",
-                          isExpanded && "rotate-180"
-                        )
-                      }
-                    )
-                  ] })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "p",
-                  {
-                    className: cn(
-                      "text-xs text-muted-foreground leading-relaxed",
-                      !isExpanded && "line-clamp-2"
-                    ),
-                    children: notif.message
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[10px] text-muted-foreground/60 mt-1.5 font-mono", children: [
-                  formatRelativeTime(notif.date),
-                  " · ",
-                  notif.time
-                ] })
-              ] })
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { children: isExpanded && /* @__PURE__ */ jsxRuntimeExports.jsx(
-          motion.div,
-          {
-            initial: { height: 0, opacity: 0 },
-            animate: { height: "auto", opacity: 1 },
-            exit: { height: 0, opacity: 0 },
-            transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] },
-            className: "overflow-hidden",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-t border-border/40 mx-4 pt-3 pb-4 flex items-center justify-between gap-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-xs text-muted-foreground space-y-0.5", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-foreground/60 font-medium", children: "Date: " }),
-                  formatDate(notif.date),
-                  " at ",
-                  notif.time
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "capitalize", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-foreground/60 font-medium", children: [
-                    "Category:",
-                    " "
-                  ] }),
-                  notif.type
-                ] })
+  const markRead = useBankStore((state) => state.markNotificationRead);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { layout: true, className: "overflow-hidden rounded-2xl bg-card shadow-card", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "button",
+      {
+        type: "button",
+        className: "flex w-full items-start gap-3 px-4 py-4 text-left",
+        onClick: () => {
+          if (!notification.isRead) markRead(notification.id);
+          onToggle();
+        },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: cn(
+                "flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full",
+                notification.isRead ? "bg-muted text-muted-foreground" : "bg-primary/10 text-primary"
+              ),
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ActivityIconGlyph, { icon: notification.icon, className: "h-5 w-5" })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-3", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: cn("text-sm font-semibold", !notification.isRead && "text-foreground"), children: notification.title }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 line-clamp-2 text-xs text-muted-foreground", children: notification.message })
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(TypeBadge, { type: notif.type })
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                ChevronDown,
+                {
+                  className: cn(
+                    "mt-1 h-4 w-4 flex-shrink-0 text-muted-foreground transition-transform",
+                    expanded && "rotate-180"
+                  )
+                }
+              )
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-2 text-[11px] text-muted-foreground", children: [
+              formatRelativeTime(notification.date),
+              " · ",
+              notification.time
             ] })
-          },
-          "expand"
-        ) })
-      ]
-    }
-  );
-}
-function EmptyState() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    motion.div,
-    {
-      initial: { opacity: 0, scale: 0.94 },
-      animate: { opacity: 1, scale: 1 },
-      transition: { duration: 0.3 },
-      className: "flex flex-col items-center justify-center py-20 px-8 gap-4 text-center",
-      "data-ocid": "notifications.empty_state",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-20 h-20 rounded-full bg-muted flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BellOff, { className: "w-9 h-9 text-muted-foreground/40" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-base font-semibold text-foreground", children: "You're all caught up!" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground max-w-[230px]", children: "No notifications here. We'll alert you when something needs attention." })
-        ] })
-      ]
-    }
-  );
+          ] })
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { children: expanded && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      motion.div,
+      {
+        initial: { height: 0, opacity: 0 },
+        animate: { height: "auto", opacity: 1 },
+        exit: { height: 0, opacity: 0 },
+        className: "overflow-hidden border-t border-border/60 px-4 py-3",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between text-xs", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Date" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: formatDate(notification.date) })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-2 flex items-center justify-between text-xs", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Category" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium capitalize", children: notification.type })
+          ] })
+        ]
+      }
+    ) })
+  ] });
 }
 function NotificationsPage() {
-  var _a2;
-  const {
-    notifications: storeNotifs,
-    unreadCount,
-    markAllRead
-  } = useBankStore();
-  const [activeTab, setActiveTab] = reactExports.useState("all");
+  const { notifications, unreadCount, markAllRead } = useBankStore();
+  const [tab, setTab] = reactExports.useState("all");
   const [expandedId, setExpandedId] = reactExports.useState(null);
-  const storeIdSet = new Set(storeNotifs.map((n) => n.id));
-  const allNotifs = [
-    ...extraNotifications.filter((n) => !storeIdSet.has(n.id)),
-    ...storeNotifs
-  ].sort((a, b) => {
-    const tA = (/* @__PURE__ */ new Date(`${a.date}T${a.time}`)).getTime();
-    const tB = (/* @__PURE__ */ new Date(`${b.date}T${b.time}`)).getTime();
-    const diff = tB - tA;
-    return Number.isNaN(diff) ? 0 : diff;
-  });
-  const filtered = filterNotifs(allNotifs, activeTab);
-  const filteredUnread = filtered.filter((n) => !n.isRead).length;
-  function handleToggle(id2) {
-    setExpandedId((prev) => prev === id2 ? null : id2);
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-h-full bg-background", children: [
+  const merged = reactExports.useMemo(() => {
+    const ids = new Set(notifications.map((item) => item.id));
+    return [...EXTRA_NOTIFICATIONS.filter((item) => !ids.has(item.id)), ...notifications].sort(
+      (a, b) => `${b.date} ${b.time}`.localeCompare(`${a.date} ${a.time}`)
+    );
+  }, [notifications]);
+  const filtered = merged.filter((notification) => matchesTab(notification, tab));
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-h-full flex-col bg-background", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       AppBar,
       {
@@ -42549,86 +42465,45 @@ function NotificationsPage() {
         showBack: true,
         showNotifications: false,
         rightSlot: unreadCount > 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          Button,
+          "button",
           {
-            variant: "ghost",
-            size: "sm",
+            type: "button",
             onClick: markAllRead,
-            "data-ocid": "notifications.mark_all_read_button",
-            className: "flex items-center gap-1.5 text-xs text-primary font-semibold h-8 px-2 hover:bg-primary/10 hover:text-primary",
+            className: "mr-2 flex items-center gap-1 text-xs font-semibold text-primary",
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(CheckCheck, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(CheckCheck, { className: "h-3.5 w-3.5" }),
               "Mark all read"
             ]
           }
         ) : void 0
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "sticky top-14 z-30 bg-card border-b border-border", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex overflow-x-auto scrollbar-hide px-2", children: TABS.map((tab) => {
-      const isActive = activeTab === tab.key;
-      const tabUnread = tab.key === "all" ? allNotifs.filter((n) => !n.isRead).length : filterNotifs(allNotifs, tab.key).filter((n) => !n.isRead).length;
-      return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          type: "button",
-          "data-ocid": `notifications.filter.${tab.key}`,
-          onClick: () => setActiveTab(tab.key),
-          className: cn(
-            "relative flex items-center gap-1.5 px-3 py-3.5 text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors duration-200",
-            isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
-          ),
-          children: [
-            tab.label,
-            tabUnread > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "span",
-              {
-                className: cn(
-                  "flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full text-[9px] font-bold",
-                  isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-                ),
-                children: tabUnread > 9 ? "9+" : tabUnread
-              }
-            ),
-            isActive && /* @__PURE__ */ jsxRuntimeExports.jsx(
-              motion.div,
-              {
-                layoutId: "notif-tab-indicator",
-                className: "absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-t-full",
-                transition: { type: "spring", stiffness: 400, damping: 30 }
-              }
-            )
-          ]
-        },
-        tab.key
-      );
-    }) }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 px-4 py-4", children: [
-      filteredUnread > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        motion.div,
-        {
-          initial: { opacity: 0, y: -4 },
-          animate: { opacity: 1, y: 0 },
-          className: "flex items-center gap-2 mb-3",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { className: "text-[11px] px-2.5 py-0.5 rounded-full bg-primary text-primary-foreground font-semibold", children: [
-              filteredUnread,
-              " unread"
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: activeTab === "all" ? "new notifications" : `in ${((_a2 = TABS.find((t) => t.key === activeTab)) == null ? void 0 : _a2.label) ?? ""}` })
-          ]
-        }
-      ),
-      filtered.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(EmptyState, {}) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2.5", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { mode: "popLayout", children: filtered.map((notif, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-        NotificationItem,
-        {
-          notif,
-          index: idx,
-          isExpanded: expandedId === notif.id,
-          onToggle: () => handleToggle(notif.id)
-        },
-        notif.id
-      )) }) })
-    ] })
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "sticky top-14 z-20 border-b border-border bg-card px-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-1 overflow-x-auto py-2", children: ["all", "transactions", "alerts", "bank"].map((item) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "button",
+      {
+        type: "button",
+        onClick: () => setTab(item),
+        className: cn(
+          "rounded-full px-3 py-1.5 text-xs font-medium capitalize transition-smooth",
+          tab === item ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+        ),
+        children: item === "bank" ? "Bank Messages" : item
+      },
+      item
+    )) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 px-4 py-4", children: filtered.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center justify-center gap-3 py-20 text-center", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-16 w-16 items-center justify-center rounded-full bg-muted", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BellOff, { className: "h-8 w-8 text-muted-foreground/50" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold", children: "You're all caught up" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "max-w-xs text-xs text-muted-foreground", children: "No notifications match this filter right now." })
+    ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", children: filtered.map((notification) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      NotificationItem,
+      {
+        notification,
+        expanded: expandedId === notification.id,
+        onToggle: () => setExpandedId((current) => current === notification.id ? null : notification.id)
+      },
+      notification.id
+    )) }) })
   ] });
 }
 const OTP_POSITIONS = [0, 1, 2, 3, 4, 5];
@@ -42900,1045 +42775,290 @@ function OtpPage() {
     }
   ) });
 }
-const CATEGORIES = [
-  {
-    id: "utilities",
-    label: "Utilities",
-    description: "ECG, Water bills",
-    Icon: Zap,
-    color: "text-blue-600 dark:text-blue-400",
-    bg: "bg-blue-50 dark:bg-blue-950/40",
-    border: "border-blue-200 dark:border-blue-800/50",
-    iconBg: "bg-blue-100 dark:bg-blue-900/60"
+const CATEGORY_META = {
+  ecg: {
+    label: "ECG Electricity",
+    description: "Prepaid and postpaid meter top-up",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Zap, { className: "h-5 w-5" }),
+    iconKey: "bolt",
+    category: "payment",
+    presets: [20, 50, 100, 200],
+    referenceLabel: "Meter Number"
   },
-  {
-    id: "tv",
-    label: "TV Subscriptions",
-    description: "DStv, GOtv packages",
-    Icon: Tv,
-    color: "text-purple-600 dark:text-purple-400",
-    bg: "bg-purple-50 dark:bg-purple-950/40",
-    border: "border-purple-200 dark:border-purple-800/50",
-    iconBg: "bg-purple-100 dark:bg-purple-900/60"
+  water: {
+    label: "Ghana Water",
+    description: "Water bill payments",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Droplets, { className: "h-5 w-5" }),
+    iconKey: "droplets",
+    category: "payment",
+    presets: [20, 40, 80, 120],
+    referenceLabel: "Account Number"
   },
-  {
-    id: "airtime",
+  dstv: {
+    label: "DStv",
+    description: "Subscription renewal",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Tv, { className: "h-5 w-5" }),
+    iconKey: "tv",
+    category: "payment",
+    presets: [85, 120, 180, 220],
+    referenceLabel: "Smart Card Number"
+  },
+  airtime: {
     label: "Airtime & Data",
-    description: "MTN, Vodafone, AirtelTigo",
-    Icon: Smartphone,
-    color: "text-orange-600 dark:text-orange-400",
-    bg: "bg-orange-50 dark:bg-orange-950/40",
-    border: "border-orange-200 dark:border-orange-800/50",
-    iconBg: "bg-orange-100 dark:bg-orange-900/60"
-  },
-  {
-    id: "insurance",
-    label: "Insurance",
-    description: "Premiums & renewals",
-    Icon: Shield,
-    color: "text-slate-600 dark:text-slate-400",
-    bg: "bg-slate-50 dark:bg-slate-900/40",
-    border: "border-slate-200 dark:border-slate-700/50",
-    iconBg: "bg-slate-100 dark:bg-slate-800/60"
-  }
-];
-const SERVICES = [
-  {
-    id: "ecg",
-    name: "ECG Electricity",
-    description: "Electricity Company of Ghana — prepaid & postpaid meter top-up",
-    color: "text-amber-700 dark:text-amber-400",
-    bgColor: "bg-amber-50 dark:bg-amber-950/40",
-    iconBg: "bg-amber-100 dark:bg-amber-900/50",
-    borderColor: "border-amber-200 dark:border-amber-800/40",
-    categoryId: "utilities"
-  },
-  {
-    id: "water",
-    name: "Ghana Water",
-    description: "Ghana Water Company Ltd — water bill payments",
-    color: "text-blue-700 dark:text-blue-400",
-    bgColor: "bg-blue-50 dark:bg-blue-950/40",
-    iconBg: "bg-blue-100 dark:bg-blue-900/50",
-    borderColor: "border-blue-200 dark:border-blue-800/40",
-    categoryId: "utilities"
-  },
-  {
-    id: "dstv",
-    name: "DStv",
-    description: "Pay your DStv subscription to keep entertainment going",
-    color: "text-blue-800 dark:text-blue-300",
-    bgColor: "bg-blue-50 dark:bg-blue-950/40",
-    iconBg: "bg-blue-100 dark:bg-blue-900/50",
-    borderColor: "border-blue-200 dark:border-blue-800/40",
-    categoryId: "tv"
-  },
-  {
-    id: "gotv",
-    name: "GOtv",
-    description: "Renew your GOtv subscription for uninterrupted viewing",
-    color: "text-green-700 dark:text-green-400",
-    bgColor: "bg-green-50 dark:bg-green-950/40",
-    iconBg: "bg-green-100 dark:bg-green-900/50",
-    borderColor: "border-green-200 dark:border-green-800/40",
-    categoryId: "tv"
-  }
-];
-const DSTV_PACKAGES = [
-  { name: "Padi", price: 25 },
-  { name: "Yethu", price: 45 },
-  { name: "Compact", price: 120 },
-  { name: "Premium", price: 200 }
-];
-const GOTV_PACKAGES = [
-  { name: "Lite", price: 15 },
-  { name: "Value", price: 30 },
-  { name: "Plus", price: 55 },
-  { name: "Max", price: 75 }
-];
-const ECG_PRESETS = [20, 50, 100, 200];
-const AIRTIME_PRESETS = [1, 2, 5, 10, 20, 50];
-const DATA_BUNDLES = {
-  MTN: [
-    { label: "1GB / 24hrs", price: 5 },
-    { label: "3GB / 7days", price: 12 },
-    { label: "5GB / 30days", price: 25 },
-    { label: "10GB / 30days", price: 45 },
-    { label: "20GB / 30days", price: 80 },
-    { label: "50GB / 30days", price: 150 }
-  ],
-  Vodafone: [
-    { label: "1GB / 24hrs", price: 5 },
-    { label: "2.5GB / 7days", price: 10 },
-    { label: "6GB / 30days", price: 25 },
-    { label: "12GB / 30days", price: 45 },
-    { label: "25GB / 30days", price: 80 },
-    { label: "60GB / 30days", price: 150 }
-  ],
-  AirtelTigo: [
-    { label: "1GB / 24hrs", price: 4 },
-    { label: "3GB / 7days", price: 11 },
-    { label: "5GB / 30days", price: 22 },
-    { label: "10GB / 30days", price: 40 },
-    { label: "22GB / 30days", price: 75 },
-    { label: "55GB / 30days", price: 140 }
-  ]
-};
-const NETWORK_STYLES = {
-  MTN: {
-    text: "text-yellow-700 dark:text-yellow-400",
-    bg: "bg-yellow-50 dark:bg-yellow-950/40",
-    border: "border-yellow-400 dark:border-yellow-600"
-  },
-  Vodafone: {
-    text: "text-red-600 dark:text-red-400",
-    bg: "bg-red-50 dark:bg-red-950/40",
-    border: "border-red-400 dark:border-red-600"
-  },
-  AirtelTigo: {
-    text: "text-rose-700 dark:text-rose-400",
-    bg: "bg-rose-50 dark:bg-rose-950/40",
-    border: "border-rose-400 dark:border-rose-600"
+    description: "Top up your mobile number",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "h-5 w-5" }),
+    iconKey: "phone",
+    category: "airtime",
+    presets: [1, 2, 5, 10, 20, 50],
+    referenceLabel: "Phone Number"
   }
 };
 function generateRef$1() {
-  return `BCB${Math.floor(1e9 + Math.random() * 9e9).toString()}`;
+  return `BCB${Math.floor(1e9 + Math.random() * 9e9)}`;
 }
-function ServiceIconAtom({ id: id2 }) {
-  if (id2 === "ecg")
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Zap, { className: "w-6 h-6 text-amber-600 dark:text-amber-400" });
-  if (id2 === "water")
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Droplets, { className: "w-6 h-6 text-blue-600 dark:text-blue-400" });
-  if (id2 === "dstv")
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Tv, { className: "w-6 h-6 text-blue-700 dark:text-blue-400" });
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Radio, { className: "w-6 h-6 text-green-600 dark:text-green-400" });
-}
-function PresetGrid({
-  presets,
-  selected,
-  onSelect
+function PaymentSuccess({
+  state,
+  reference,
+  onDone
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-3 gap-2", children: presets.map((p) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-    "button",
-    {
-      type: "button",
-      "data-ocid": `payments.preset.${p}`,
-      onClick: () => onSelect(String(p)),
-      className: cn(
-        "py-2.5 rounded-xl border-2 text-sm font-semibold transition-smooth",
-        selected === String(p) ? "border-primary bg-primary/8 text-primary" : "border-border text-muted-foreground bg-card"
-      ),
-      children: formatGHS(p)
-    },
-    p
-  )) });
+  const meta = CATEGORY_META[state.category];
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 py-8", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto flex max-w-md flex-col items-center rounded-3xl bg-card p-6 text-center shadow-card", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-10 w-10 text-primary" }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-bold font-display", children: "Payment Successful" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-2 text-sm text-muted-foreground", children: [
+      meta.label,
+      " paid successfully."
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 w-full rounded-2xl border border-border p-4 text-left", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between text-sm", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Service" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: meta.label })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 flex items-center justify-between text-sm", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Amount" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-primary", children: formatGHS(Number(state.amount)) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 flex items-center justify-between text-sm", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Reference" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-mono text-xs font-semibold", children: reference })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: "mt-6 w-full", onClick: onDone, children: "Done" })
+  ] }) });
 }
 function PaymentsPage() {
-  const [screen, setScreen] = reactExports.useState("home");
-  const [activeCategory, setActiveCategory] = reactExports.useState(null);
-  const [isLoading, setIsLoading] = reactExports.useState(false);
+  const recordActivity = useBankStore((state) => state.recordActivity);
+  const [busy, setBusy] = reactExports.useState(false);
+  const [confirmOpen, setConfirmOpen] = reactExports.useState(false);
   const [successRef, setSuccessRef] = reactExports.useState("");
-  const [pay, setPay] = reactExports.useState({
-    serviceId: null,
+  const [showSuccess, setShowSuccess] = reactExports.useState(false);
+  const [payment, setPayment] = reactExports.useState({
+    category: "ecg",
     reference: "",
     amount: "",
     network: "MTN",
-    tvPackage: "",
-    dataBundle: "",
-    isDataMode: false
+    packageName: ""
   });
-  const update = reactExports.useCallback((patch) => {
-    setPay((prev) => ({ ...prev, ...patch }));
-  }, []);
-  const resetPay = () => {
-    setPay({
-      serviceId: null,
-      reference: "",
-      amount: "",
-      network: "MTN",
-      tvPackage: "",
-      dataBundle: "",
-      isDataMode: false
-    });
+  const meta = CATEGORY_META[payment.category];
+  const canContinue = reactExports.useMemo(
+    () => payment.reference.trim().length >= 4 && Number(payment.amount) > 0,
+    [payment.amount, payment.reference]
+  );
+  const updateField = (field, value) => {
+    setPayment((current) => ({ ...current, [field]: value }));
   };
-  const svc = SERVICES.find((s) => s.id === pay.serviceId) ?? null;
-  const computedAmount = () => {
-    var _a2, _b2, _c2;
-    if (pay.serviceId === "dstv") {
-      return ((_a2 = DSTV_PACKAGES.find((p) => p.name === pay.tvPackage)) == null ? void 0 : _a2.price) ?? 0;
-    }
-    if (pay.serviceId === "gotv") {
-      return ((_b2 = GOTV_PACKAGES.find((p) => p.name === pay.tvPackage)) == null ? void 0 : _b2.price) ?? 0;
-    }
-    if (pay.isDataMode && pay.dataBundle) {
-      return ((_c2 = DATA_BUNDLES[pay.network].find((b) => b.label === pay.dataBundle)) == null ? void 0 : _c2.price) ?? 0;
-    }
-    return Number.parseFloat(pay.amount) || 0;
-  };
-  const formValid = () => {
-    if (!pay.reference.trim()) return false;
-    if (pay.serviceId === "dstv" || pay.serviceId === "gotv")
-      return !!pay.tvPackage;
-    if (activeCategory === "airtime" && pay.isDataMode) return !!pay.dataBundle;
-    return !!pay.amount && Number.parseFloat(pay.amount) > 0;
-  };
-  const airtimeValid = () => {
-    if (!pay.reference.trim()) return false;
-    if (pay.isDataMode) return !!pay.dataBundle;
-    return !!pay.amount && Number.parseFloat(pay.amount) > 0;
-  };
-  const isValid = activeCategory === "airtime" ? airtimeValid() : formValid();
-  const handleSelectCategory = (id2) => {
-    setActiveCategory(id2);
-    resetPay();
-    if (id2 === "airtime") {
-      setScreen("form");
-    } else {
-      setScreen("category");
-    }
-  };
-  const handleSelectService = (id2) => {
-    update({
-      serviceId: id2,
-      reference: "",
-      amount: "",
-      tvPackage: "",
-      dataBundle: ""
-    });
-    setScreen("form");
-  };
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    setScreen("confirm");
-  };
-  const handleConfirmPay = async () => {
-    setIsLoading(true);
-    await new Promise((r2) => setTimeout(r2, 1600));
-    setIsLoading(false);
-    setSuccessRef(generateRef$1());
-    setScreen("success");
-  };
-  const handleDone = () => {
-    setScreen("home");
-    setActiveCategory(null);
-    resetPay();
-  };
-  const catMeta = CATEGORIES.find((c) => c.id === activeCategory);
-  const appBarTitle = screen === "success" ? "Payment Successful" : screen === "confirm" ? "Confirm Payment" : screen === "form" && svc ? svc.name : screen === "form" && activeCategory === "airtime" ? "Airtime & Data" : screen === "category" ? (catMeta == null ? void 0 : catMeta.label) ?? "Payments" : "Payments";
-  const showBack = screen !== "home";
-  const totalAmount = computedAmount();
-  const serviceName = (svc == null ? void 0 : svc.name) ?? (activeCategory === "airtime" ? `${pay.network} ${pay.isDataMode ? "Data" : "Airtime"}` : "Payment");
-  const refLabel = pay.serviceId === "ecg" ? "Meter Number" : pay.serviceId === "water" ? "Account Number" : pay.serviceId === "dstv" || pay.serviceId === "gotv" ? "Smart Card" : "Phone Number";
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-h-full bg-background", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      AppBar,
-      {
-        title: appBarTitle,
-        showBack,
-        showNotifications: false,
-        rightSlot: showBack && screen !== "success" ? /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            type: "button",
-            "data-ocid": "payments.cancel_button",
-            onClick: handleDone,
-            className: "text-xs text-muted-foreground hover:text-foreground transition-colors px-1 py-0.5",
-            children: "Cancel"
-          }
-        ) : void 0
+  const handleConfirm = async () => {
+    setBusy(true);
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    const ref = generateRef$1();
+    recordActivity({
+      type: "debit",
+      category: meta.category,
+      title: `${meta.label} Payment`,
+      description: payment.reference,
+      amount: Number(payment.amount),
+      reference: ref,
+      icon: meta.iconKey,
+      notification: {
+        type: "transaction",
+        title: "Payment Completed",
+        message: `${formatGHS(Number(payment.amount))} was paid for ${meta.label}.`
       }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(AnimatePresence, { mode: "wait", children: [
-      screen === "home" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        motion.div,
+    });
+    setBusy(false);
+    setConfirmOpen(false);
+    setSuccessRef(ref);
+    setShowSuccess(true);
+    ue.success("Payment completed", {
+      description: `${formatGHS(Number(payment.amount))} paid for ${meta.label}`
+    });
+  };
+  if (showSuccess) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-h-full flex-col bg-background", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(AppBar, { title: "Payment Successful", showBack: false, showNotifications: false }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        PaymentSuccess,
         {
-          initial: { opacity: 0 },
-          animate: { opacity: 1 },
-          exit: { opacity: 0, x: -20 },
-          transition: { duration: 0.22 },
-          className: "flex-1 px-4 pt-5 pb-10",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mb-5", children: "Pay bills, buy airtime, renew subscriptions and more" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 gap-3", children: CATEGORIES.map(
-              ({ id: id2, label, description, Icon: Icon2, color: color2, bg, border, iconBg }, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                motion.button,
-                {
-                  type: "button",
-                  "data-ocid": `payments.category.${id2}`,
-                  initial: { opacity: 0, y: 14 },
-                  animate: { opacity: 1, y: 0 },
-                  transition: { delay: i * 0.07, duration: 0.3 },
-                  onClick: () => handleSelectCategory(id2),
-                  className: cn(
-                    "flex flex-col items-start gap-3 rounded-2xl p-4 border text-left",
-                    "active:scale-[0.97] transition-smooth shadow-card hover:shadow-elevated",
-                    bg,
-                    border
-                  ),
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      "div",
-                      {
-                        className: cn(
-                          "w-11 h-11 rounded-xl flex items-center justify-center",
-                          iconBg
-                        ),
-                        children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: cn("w-5 h-5", color2) })
-                      }
-                    ),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        "p",
-                        {
-                          className: cn(
-                            "text-sm font-semibold font-display",
-                            color2
-                          ),
-                          children: label
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-muted-foreground leading-tight mt-0.5", children: description })
-                    ] })
-                  ]
-                },
-                id2
-              )
-            ) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-sm font-semibold text-foreground font-display mb-3", children: "Quick Actions" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                motion.button,
-                {
-                  type: "button",
-                  "data-ocid": "payments.quick_airtime_button",
-                  initial: { opacity: 0, y: 10 },
-                  animate: { opacity: 1, y: 0 },
-                  transition: { delay: 0.34, duration: 0.3 },
-                  onClick: () => handleSelectCategory("airtime"),
-                  className: "w-full flex items-center gap-4 bg-card rounded-2xl p-4 shadow-card border border-border active:scale-[0.98] transition-smooth hover:shadow-elevated text-left",
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-11 h-11 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "w-5 h-5 text-orange-600 dark:text-orange-400" }) }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground font-display", children: "Buy Airtime / Data" }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "MTN • Vodafone • AirtelTigo" })
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4 text-muted-foreground flex-shrink-0" })
-                  ]
-                }
-              )
-            ] })
-          ]
-        },
-        "home"
-      ),
-      screen === "category" && activeCategory && activeCategory !== "airtime" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        motion.div,
-        {
-          initial: { opacity: 0, x: 24 },
-          animate: { opacity: 1, x: 0 },
-          exit: { opacity: 0, x: -24 },
-          transition: { duration: 0.25 },
-          className: "flex-1 px-4 pt-5 pb-10",
-          "data-ocid": `payments.${activeCategory}_section`,
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground mb-4", children: [
-              activeCategory === "utilities" && "Choose a utility provider to pay your bill",
-              activeCategory === "tv" && "Select your TV subscription provider to renew",
-              activeCategory === "insurance" && "Manage your insurance premium payments"
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-3", children: activeCategory === "insurance" ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              motion.div,
-              {
-                initial: { opacity: 0, y: 10 },
-                animate: { opacity: 1, y: 0 },
-                className: "flex flex-col items-center gap-3 py-16 text-center",
-                "data-ocid": "payments.insurance.empty_state",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Shield, { className: "w-8 h-8 text-slate-400 dark:text-slate-500" }) }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-muted-foreground", children: "Coming Soon" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground/70 max-w-48", children: "Insurance premium payments will be available in a future update." })
-                ]
-              }
-            ) : SERVICES.filter((s) => s.categoryId === activeCategory).map(
-              (service, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                motion.button,
-                {
-                  type: "button",
-                  "data-ocid": `payments.service.${service.id}`,
-                  initial: { opacity: 0, x: -12 },
-                  animate: { opacity: 1, x: 0 },
-                  transition: { delay: i * 0.08, duration: 0.28 },
-                  onClick: () => handleSelectService(service.id),
-                  className: cn(
-                    "w-full flex items-center gap-4 rounded-2xl p-4 border text-left",
-                    "active:scale-[0.98] transition-smooth shadow-card hover:shadow-elevated",
-                    service.bgColor,
-                    service.borderColor
-                  ),
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      "div",
-                      {
-                        className: cn(
-                          "w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center",
-                          service.iconBg
-                        ),
-                        children: /* @__PURE__ */ jsxRuntimeExports.jsx(ServiceIconAtom, { id: service.id })
-                      }
-                    ),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        "p",
-                        {
-                          className: cn(
-                            "text-sm font-semibold font-display",
-                            service.color
-                          ),
-                          children: service.name
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground leading-tight mt-0.5 line-clamp-2", children: service.description })
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4 text-muted-foreground flex-shrink-0" })
-                  ]
-                },
-                service.id
-              )
-            ) })
-          ]
-        },
-        `cat-${activeCategory}`
-      ),
-      screen === "form" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        motion.div,
-        {
-          initial: { opacity: 0, x: 24 },
-          animate: { opacity: 1, x: 0 },
-          exit: { opacity: 0, x: -24 },
-          transition: { duration: 0.25 },
-          className: "flex-1 px-4 pt-4 pb-10",
-          children: [
-            svc && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "div",
-              {
-                className: cn(
-                  "flex items-center gap-3 rounded-2xl p-4 mb-5 border",
-                  svc.bgColor,
-                  svc.borderColor
-                ),
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    "div",
-                    {
-                      className: cn(
-                        "w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0",
-                        svc.iconBg
-                      ),
-                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(ServiceIconAtom, { id: svc.id })
-                    }
-                  ),
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      "p",
-                      {
-                        className: cn(
-                          "text-sm font-semibold font-display",
-                          svc.color
-                        ),
-                        children: svc.name
-                      }
-                    ),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground leading-tight mt-0.5 line-clamp-2", children: svc.description })
-                  ] })
-                ]
-              }
-            ),
-            activeCategory === "airtime" && !svc && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 rounded-2xl p-4 mb-5 border bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-800/40", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-orange-100 dark:bg-orange-900/50", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "w-5 h-5 text-orange-600 dark:text-orange-400" }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold font-display text-orange-700 dark:text-orange-400", children: "Airtime & Data" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Select network and enter amount" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "form",
-              {
-                onSubmit: handleSubmitForm,
-                className: "flex flex-col gap-5",
-                "data-ocid": "payments.form",
-                children: [
-                  activeCategory === "airtime" && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Network Provider" }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2", children: ["MTN", "Vodafone", "AirtelTigo"].map(
-                        (n) => {
-                          const s = NETWORK_STYLES[n];
-                          return /* @__PURE__ */ jsxRuntimeExports.jsx(
-                            "button",
-                            {
-                              type: "button",
-                              "data-ocid": `payments.network.${n.toLowerCase()}`,
-                              onClick: () => update({
-                                network: n,
-                                dataBundle: "",
-                                amount: ""
-                              }),
-                              className: cn(
-                                "flex-1 py-2.5 rounded-xl border-2 text-xs font-semibold transition-smooth",
-                                pay.network === n ? cn(s.bg, s.border, s.text) : "border-border text-muted-foreground bg-card"
-                              ),
-                              children: n
-                            },
-                            n
-                          );
-                        }
-                      ) })
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Label,
-                        {
-                          htmlFor: "airtime-phone",
-                          className: "text-sm font-semibold",
-                          children: "Phone Number"
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Input,
-                        {
-                          id: "airtime-phone",
-                          type: "tel",
-                          placeholder: "e.g. 0241234567",
-                          value: pay.reference,
-                          onChange: (e) => update({ reference: e.target.value }),
-                          className: "h-12 text-base",
-                          maxLength: 10,
-                          "data-ocid": "payments.phone_input"
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex bg-muted rounded-xl p-1 gap-1", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        "button",
-                        {
-                          type: "button",
-                          "data-ocid": "payments.airtime_tab",
-                          onClick: () => update({
-                            isDataMode: false,
-                            dataBundle: "",
-                            amount: ""
-                          }),
-                          className: cn(
-                            "flex-1 py-2 rounded-lg text-sm font-semibold transition-smooth",
-                            !pay.isDataMode ? "bg-card shadow-card text-foreground" : "text-muted-foreground"
-                          ),
-                          children: "Airtime"
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        "button",
-                        {
-                          type: "button",
-                          "data-ocid": "payments.data_tab",
-                          onClick: () => update({ isDataMode: true, amount: "" }),
-                          className: cn(
-                            "flex-1 py-2 rounded-lg text-sm font-semibold transition-smooth",
-                            pay.isDataMode ? "bg-card shadow-card text-foreground" : "text-muted-foreground"
-                          ),
-                          children: "Data"
-                        }
-                      )
-                    ] }),
-                    !pay.isDataMode && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Select Amount" }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        PresetGrid,
-                        {
-                          presets: AIRTIME_PRESETS,
-                          selected: pay.amount,
-                          onSelect: (v2) => update({ amount: v2 })
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Label,
-                        {
-                          htmlFor: "airtime-custom",
-                          className: "text-xs text-muted-foreground mt-1",
-                          children: "Or enter custom amount"
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Input,
-                        {
-                          id: "airtime-custom",
-                          type: "number",
-                          placeholder: "Custom amount (GHS)",
-                          value: AIRTIME_PRESETS.includes(Number(pay.amount)) ? "" : pay.amount,
-                          onChange: (e) => update({ amount: e.target.value }),
-                          className: "h-11",
-                          min: "1",
-                          "data-ocid": "payments.custom_amount_input"
-                        }
-                      )
-                    ] }),
-                    pay.isDataMode && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsxs(Label, { className: "text-sm font-semibold", children: [
-                        "Data Bundles — ",
-                        pay.network
-                      ] }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 gap-2", children: DATA_BUNDLES[pay.network].map((b, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                        "button",
-                        {
-                          type: "button",
-                          "data-ocid": `payments.bundle.${i + 1}`,
-                          onClick: () => update({ dataBundle: b.label }),
-                          className: cn(
-                            "flex flex-col items-center py-3 px-2 rounded-xl border-2 transition-smooth text-center",
-                            pay.dataBundle === b.label ? "border-primary bg-primary/8 text-primary" : "border-border text-muted-foreground bg-card"
-                          ),
-                          children: [
-                            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-semibold leading-tight", children: b.label }),
-                            /* @__PURE__ */ jsxRuntimeExports.jsx(
-                              "span",
-                              {
-                                className: cn(
-                                  "text-sm font-bold mt-1",
-                                  pay.dataBundle === b.label ? "text-primary" : "text-foreground"
-                                ),
-                                children: formatGHS(b.price)
-                              }
-                            )
-                          ]
-                        },
-                        b.label
-                      )) })
-                    ] })
-                  ] }),
-                  (pay.serviceId === "ecg" || pay.serviceId === "water") && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Label,
-                        {
-                          htmlFor: "utility-ref",
-                          className: "text-sm font-semibold",
-                          children: pay.serviceId === "ecg" ? "Meter Number" : "Account Number"
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Input,
-                        {
-                          id: "utility-ref",
-                          placeholder: pay.serviceId === "ecg" ? "Enter ECG meter number" : "Enter water account number",
-                          value: pay.reference,
-                          onChange: (e) => update({ reference: e.target.value }),
-                          className: "h-12 text-base",
-                          "data-ocid": "payments.reference_input"
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Select Amount" }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        PresetGrid,
-                        {
-                          presets: ECG_PRESETS,
-                          selected: pay.amount,
-                          onSelect: (v2) => update({ amount: v2 })
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Label,
-                        {
-                          htmlFor: "utility-custom",
-                          className: "text-xs text-muted-foreground mt-1",
-                          children: "Or enter custom amount"
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Input,
-                        {
-                          id: "utility-custom",
-                          type: "number",
-                          placeholder: "Custom amount (GHS)",
-                          value: ECG_PRESETS.includes(Number(pay.amount)) ? "" : pay.amount,
-                          onChange: (e) => update({ amount: e.target.value }),
-                          className: "h-11",
-                          min: "1",
-                          "data-ocid": "payments.custom_amount_input"
-                        }
-                      )
-                    ] })
-                  ] }),
-                  pay.serviceId === "dstv" && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Label,
-                        {
-                          htmlFor: "dstv-card",
-                          className: "text-sm font-semibold",
-                          children: "Smart Card Number"
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Input,
-                        {
-                          id: "dstv-card",
-                          placeholder: "Enter DStv smart card number",
-                          value: pay.reference,
-                          onChange: (e) => update({ reference: e.target.value }),
-                          className: "h-12 text-base",
-                          "data-ocid": "payments.reference_input"
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Select Package" }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 gap-2", children: DSTV_PACKAGES.map((p, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                        "button",
-                        {
-                          type: "button",
-                          "data-ocid": `payments.dstv_package.${i + 1}`,
-                          onClick: () => update({ tvPackage: p.name }),
-                          className: cn(
-                            "flex flex-col items-center py-3 rounded-xl border-2 transition-smooth",
-                            pay.tvPackage === p.name ? "border-primary bg-primary/8 text-primary" : "border-border text-muted-foreground bg-card"
-                          ),
-                          children: [
-                            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-xs font-semibold", children: [
-                              "DStv ",
-                              p.name
-                            ] }),
-                            /* @__PURE__ */ jsxRuntimeExports.jsx(
-                              "span",
-                              {
-                                className: cn(
-                                  "text-sm font-bold mt-0.5",
-                                  pay.tvPackage === p.name ? "text-primary" : "text-foreground"
-                                ),
-                                children: formatGHS(p.price)
-                              }
-                            )
-                          ]
-                        },
-                        p.name
-                      )) })
-                    ] })
-                  ] }),
-                  pay.serviceId === "gotv" && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Label,
-                        {
-                          htmlFor: "gotv-card",
-                          className: "text-sm font-semibold",
-                          children: "Smart Card Number"
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Input,
-                        {
-                          id: "gotv-card",
-                          placeholder: "Enter GOtv smart card number",
-                          value: pay.reference,
-                          onChange: (e) => update({ reference: e.target.value }),
-                          className: "h-12 text-base",
-                          "data-ocid": "payments.reference_input"
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { className: "text-sm font-semibold", children: "Select Package" }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 gap-2", children: GOTV_PACKAGES.map((p, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                        "button",
-                        {
-                          type: "button",
-                          "data-ocid": `payments.gotv_package.${i + 1}`,
-                          onClick: () => update({ tvPackage: p.name }),
-                          className: cn(
-                            "flex flex-col items-center py-3 rounded-xl border-2 transition-smooth",
-                            pay.tvPackage === p.name ? "border-primary bg-primary/8 text-primary" : "border-border text-muted-foreground bg-card"
-                          ),
-                          children: [
-                            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-xs font-semibold", children: [
-                              "GOtv ",
-                              p.name
-                            ] }),
-                            /* @__PURE__ */ jsxRuntimeExports.jsx(
-                              "span",
-                              {
-                                className: cn(
-                                  "text-sm font-bold mt-0.5",
-                                  pay.tvPackage === p.name ? "text-primary" : "text-foreground"
-                                ),
-                                children: formatGHS(p.price)
-                              }
-                            )
-                          ]
-                        },
-                        p.name
-                      )) })
-                    ] })
-                  ] }),
-                  totalAmount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                    motion.div,
-                    {
-                      initial: { opacity: 0, y: 6 },
-                      animate: { opacity: 1, y: 0 },
-                      className: "flex items-center justify-between bg-primary/8 rounded-xl px-4 py-3 border border-primary/20",
-                      children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground", children: "Total to pay" }),
-                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-bold text-primary font-display", children: formatGHS(totalAmount) })
-                      ]
-                    }
-                  ),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    Button,
-                    {
-                      type: "submit",
-                      className: "h-12 text-base font-semibold w-full mt-1",
-                      disabled: !isValid,
-                      "data-ocid": "payments.submit_button",
-                      children: "Continue to Confirm"
-                    }
-                  )
-                ]
-              }
-            )
-          ]
-        },
-        "form"
-      ),
-      screen === "confirm" && /* @__PURE__ */ jsxRuntimeExports.jsx(
-        motion.div,
-        {
-          initial: { opacity: 0, y: 20 },
-          animate: { opacity: 1, y: 0 },
-          exit: { opacity: 0, y: -20 },
-          transition: { duration: 0.25 },
-          className: "flex-1 px-4 pt-4 pb-10 flex flex-col",
-          "data-ocid": "payments.confirm_dialog",
-          children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card rounded-2xl border border-border shadow-card overflow-hidden flex flex-col", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bcb-card-gradient px-5 py-5 text-primary-foreground", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-medium opacity-80", children: "Payment Summary" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-3xl font-bold font-display mt-1", children: formatGHS(totalAmount) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm opacity-70 mt-1", children: serviceName })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-5 flex flex-col gap-3.5", children: [
-              { label: "Service", value: serviceName },
-              { label: refLabel, value: pay.reference },
-              pay.tvPackage ? { label: "Package", value: pay.tvPackage } : null,
-              pay.isDataMode && pay.dataBundle ? { label: "Bundle", value: pay.dataBundle } : null,
-              { label: "Amount", value: formatGHS(totalAmount) }
-            ].filter(Boolean).map(
-              (row) => row && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                "div",
-                {
-                  className: "flex items-center justify-between py-1 border-b border-border last:border-0",
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground", children: row.label }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-semibold text-foreground text-right max-w-[55%] break-all", children: row.value })
-                  ]
-                },
-                row.label
-              )
-            ) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-5 pb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground leading-relaxed bg-muted/60 rounded-xl p-3", children: [
-              "By tapping ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "Pay Now" }),
-              ", you authorise BCB to debit your account. Transactions are processed immediately and cannot be reversed."
-            ] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-5 pb-5 pt-4 flex flex-col gap-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  type: "button",
-                  className: "h-12 text-base font-semibold w-full",
-                  onClick: handleConfirmPay,
-                  disabled: isLoading,
-                  "data-ocid": "payments.confirm_button",
-                  children: isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "w-4 h-4 mr-2 animate-spin" }),
-                    "Processing…"
-                  ] }) : `Pay ${formatGHS(totalAmount)}`
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                Button,
-                {
-                  type: "button",
-                  variant: "outline",
-                  className: "h-11 w-full",
-                  onClick: () => setScreen("form"),
-                  disabled: isLoading,
-                  "data-ocid": "payments.back_button",
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeft, { className: "w-4 h-4 mr-2" }),
-                    "Edit Details"
-                  ]
-                }
-              )
-            ] })
-          ] })
-        },
-        "confirm"
-      ),
-      screen === "success" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        motion.div,
-        {
-          initial: { opacity: 0, scale: 0.96 },
-          animate: { opacity: 1, scale: 1 },
-          exit: { opacity: 0 },
-          transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
-          className: "flex-1 px-4 pt-8 pb-10 flex flex-col items-center",
-          "data-ocid": "payments.success_state",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              motion.div,
-              {
-                initial: { scale: 0.4, opacity: 0 },
-                animate: { scale: 1, opacity: 1 },
-                transition: {
-                  delay: 0.1,
-                  duration: 0.5,
-                  type: "spring",
-                  stiffness: 220,
-                  damping: 14
-                },
-                className: "w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mb-6",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  CircleCheck,
-                  {
-                    className: "w-14 h-14 text-primary",
-                    strokeWidth: 1.5
-                  }
-                )
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              motion.div,
-              {
-                initial: { opacity: 0, y: 10 },
-                animate: { opacity: 1, y: 0 },
-                transition: { delay: 0.28 },
-                className: "text-center mb-6",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-bold font-display text-foreground", children: "Payment Successful" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm mt-1", children: "Your payment has been processed successfully" })
-                ]
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              motion.div,
-              {
-                initial: { opacity: 0, y: 10 },
-                animate: { opacity: 1, y: 0 },
-                transition: { delay: 0.4 },
-                className: "w-full bg-card rounded-2xl border border-border shadow-card p-5 flex flex-col gap-3 mb-8",
-                children: [
-                  { label: "Service", value: serviceName },
-                  {
-                    label: "Amount Paid",
-                    value: formatGHS(totalAmount),
-                    highlight: true
-                  },
-                  pay.tvPackage ? { label: "Package", value: pay.tvPackage } : null,
-                  pay.isDataMode && pay.dataBundle ? { label: "Bundle", value: pay.dataBundle } : null,
-                  { label: "Reference", value: successRef },
-                  {
-                    label: "Date",
-                    value: (/* @__PURE__ */ new Date()).toLocaleString("en-GH", {
-                      dateStyle: "medium",
-                      timeStyle: "short"
-                    })
-                  }
-                ].filter(Boolean).map(
-                  (row) => row && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                    "div",
-                    {
-                      className: "flex items-start justify-between py-1 border-b border-border last:border-0",
-                      children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground flex-shrink-0", children: row.label }),
-                        /* @__PURE__ */ jsxRuntimeExports.jsx(
-                          "span",
-                          {
-                            className: cn(
-                              "text-sm font-semibold text-right max-w-[58%] break-all",
-                              row.highlight ? "text-primary" : "text-foreground"
-                            ),
-                            children: row.value
-                          }
-                        )
-                      ]
-                    },
-                    row.label
-                  )
-                )
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              motion.div,
-              {
-                initial: { opacity: 0, y: 8 },
-                animate: { opacity: 1, y: 0 },
-                transition: { delay: 0.52 },
-                className: "w-full",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  Button,
-                  {
-                    type: "button",
-                    className: "h-12 w-full text-base font-semibold",
-                    onClick: handleDone,
-                    "data-ocid": "payments.done_button",
-                    children: "Done"
-                  }
-                )
-              }
-            )
-          ]
-        },
-        "success"
+          state: payment,
+          reference: successRef,
+          onDone: () => {
+            setShowSuccess(false);
+            setPayment({
+              category: "ecg",
+              reference: "",
+              amount: "",
+              network: "MTN",
+              packageName: ""
+            });
+          }
+        }
       )
-    ] })
+    ] });
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-h-full flex-col bg-background", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(AppBar, { title: "Payments", showBack: true }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 px-4 py-5", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-3xl bg-card p-5 shadow-card", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 gap-3", children: Object.keys(CATEGORY_META).map((category) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "button",
+        {
+          type: "button",
+          onClick: () => updateField("category", category),
+          className: cn(
+            "rounded-2xl border p-4 text-left transition-smooth",
+            payment.category === category ? "border-primary bg-primary/5" : "border-border bg-background"
+          ),
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary", children: CATEGORY_META[category].icon }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold", children: CATEGORY_META[category].label }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-xs text-muted-foreground", children: CATEGORY_META[category].description })
+          ]
+        },
+        category
+      )) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 space-y-4", children: [
+        payment.category === "airtime" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "network", children: "Network" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "select",
+            {
+              id: "network",
+              value: payment.network,
+              onChange: (event) => updateField("network", event.target.value),
+              className: "h-12 w-full rounded-md border border-input bg-background px-3 text-sm",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "MTN", children: "MTN" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "Vodafone", children: "Vodafone" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "AirtelTigo", children: "AirtelTigo" })
+              ]
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "reference", children: meta.referenceLabel }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Input,
+            {
+              id: "reference",
+              value: payment.reference,
+              onChange: (event) => updateField("reference", event.target.value),
+              placeholder: `Enter ${meta.referenceLabel.toLowerCase()}`,
+              className: "h-12"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Quick Amounts" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-3 gap-2", children: meta.presets.map((preset) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              type: "button",
+              className: cn(
+                "rounded-xl border px-3 py-2 text-sm font-semibold transition-smooth",
+                payment.amount === String(preset) ? "border-primary bg-primary/8 text-primary" : "border-border bg-background"
+              ),
+              onClick: () => updateField("amount", String(preset)),
+              children: formatGHS(preset)
+            },
+            preset
+          )) })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "amount", children: "Amount" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground", children: "GHS" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Input,
+              {
+                id: "amount",
+                value: payment.amount,
+                onChange: (event) => updateField("amount", event.target.value),
+                placeholder: "0.00",
+                className: "h-12 pl-14",
+                inputMode: "decimal"
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-2xl bg-muted/50 p-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between text-sm", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Service" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: meta.label })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 flex items-center justify-between text-sm", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Amount" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-primary", children: formatGHS(Number(payment.amount || 0)) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: "w-full", disabled: !canContinue, onClick: () => setConfirmOpen(true), children: "Continue to Confirm" })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { children: confirmOpen && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      motion.div,
+      {
+        className: "fixed inset-0 z-50 flex items-end justify-center bg-black/45 p-4",
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        onClick: () => !busy && setConfirmOpen(false),
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          motion.div,
+          {
+            className: "w-full max-w-[430px] rounded-3xl bg-card p-6 shadow-elevated",
+            initial: { y: "100%" },
+            animate: { y: 0 },
+            exit: { y: "100%" },
+            transition: { type: "spring", stiffness: 320, damping: 28 },
+            onClick: (event) => event.stopPropagation(),
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto mb-5 h-1 w-10 rounded-full bg-border" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-lg font-bold font-display", children: "Confirm Payment" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-5 text-sm text-muted-foreground", children: meta.label }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 rounded-2xl border border-border p-4", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-3 text-sm", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Service" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: meta.label })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-3 text-sm", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: meta.referenceLabel }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium text-right", children: payment.reference })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-3 text-sm", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Amount" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-primary", children: formatGHS(Number(payment.amount)) })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-5 flex gap-3", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", className: "flex-1", disabled: busy, onClick: () => setConfirmOpen(false), children: "Cancel" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: "flex-1", disabled: busy, onClick: handleConfirm, children: busy ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "mr-2 h-4 w-4 animate-spin" }),
+                  "Processing..."
+                ] }) : `Pay ${formatGHS(Number(payment.amount))}` })
+              ] })
+            ]
+          }
+        )
+      }
+    ) })
   ] });
 }
 const KYC_DOCS = [
@@ -43947,7 +43067,7 @@ const KYC_DOCS = [
   { label: "Proof of Address", status: "pending", ocidKey: "proof_of_address" }
 ];
 function SectionHeader({ title }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 mb-1 mt-5", children: title });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-1 mt-5 px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground", children: title });
 }
 function RowItem({
   icon,
@@ -43956,141 +43076,113 @@ function RowItem({
   trailing,
   ocid,
   onClick,
-  danger
+  danger = false
 }) {
-  const isClickable = !!onClick;
-  const Comp = isClickable ? "button" : "div";
+  const clickable = Boolean(onClick);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    Comp,
+    "button",
     {
-      ...isClickable ? { type: "button", onClick } : {},
+      type: "button",
+      onClick,
       "data-ocid": ocid,
-      className: [
-        "flex items-center gap-3 px-4 py-3.5 w-full text-left",
-        isClickable ? "hover:bg-muted/40 active:bg-muted/60 transition-smooth" : "",
-        danger ? "hover:bg-destructive/5" : ""
-      ].join(" "),
+      disabled: !clickable,
+      className: cnRow(
+        "flex w-full items-center gap-3 px-4 py-3.5 text-left",
+        clickable && "transition-smooth hover:bg-muted/40 active:bg-muted/60",
+        danger && "hover:bg-destructive/5",
+        !clickable && "cursor-default"
+      ),
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            className: `flex-shrink-0 ${danger ? "text-destructive" : "text-primary"}`,
-            children: icon
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "p",
-            {
-              className: `text-sm font-semibold ${danger ? "text-destructive" : "text-foreground"}`,
-              children: label
-            }
-          ),
-          desc && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground truncate", children: desc })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: danger ? "text-destructive" : "text-primary", children: icon }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: danger ? "text-sm font-semibold text-destructive" : "text-sm font-semibold text-foreground", children: label }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "truncate text-xs text-muted-foreground", children: desc })
         ] }),
-        trailing ?? (isClickable && !danger ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4 text-muted-foreground flex-shrink-0" }) : null)
+        trailing ?? (clickable && !danger ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "h-4 w-4 text-muted-foreground" }) : null)
       ]
     }
   );
 }
-function EditProfileModal({ open, onClose, user }) {
+function cnRow(...parts) {
+  return parts.filter(Boolean).join(" ");
+}
+function EditProfileModal({
+  open,
+  onClose,
+  user
+}) {
   const [name, setName] = reactExports.useState(user.name);
   const [email, setEmail] = reactExports.useState(user.email);
   const [address, setAddress] = reactExports.useState("14 Airport Rd, Accra, Ghana");
   const [saving, setSaving] = reactExports.useState(false);
   const handleSave = async () => {
     setSaving(true);
-    await new Promise((r2) => setTimeout(r2, 900));
+    await new Promise((resolve) => setTimeout(resolve, 900));
     setSaving(false);
     onClose();
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: (v2) => !v2 && onClose(), children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    DialogContent,
-    {
-      className: "w-[92vw] max-w-sm",
-      "data-ocid": "profile.edit_profile_dialog",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(DialogHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display", children: "Edit Profile" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4 py-1", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "edit-name", children: "Full Name" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "edit-name",
-                value: name,
-                onChange: (e) => setName(e.target.value),
-                placeholder: "Full name",
-                "data-ocid": "profile.edit_name_input"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "edit-email", children: "Email" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "edit-email",
-                type: "email",
-                value: email,
-                onChange: (e) => setEmail(e.target.value),
-                placeholder: "email@example.com",
-                "data-ocid": "profile.edit_email_input"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "edit-phone", children: "Phone (read-only)" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "edit-phone",
-                value: user.phone,
-                readOnly: true,
-                disabled: true,
-                className: "opacity-60 cursor-not-allowed"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "edit-address", children: "Address" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "edit-address",
-                value: address,
-                onChange: (e) => setAddress(e.target.value),
-                placeholder: "Home address",
-                "data-ocid": "profile.edit_address_input"
-              }
-            )
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { className: "flex gap-2 mt-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              variant: "outline",
-              onClick: onClose,
-              className: "flex-1",
-              "data-ocid": "profile.edit_cancel_button",
-              children: "Cancel"
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              onClick: handleSave,
-              disabled: saving,
-              className: "flex-1 bcb-card-gradient text-primary-foreground",
-              "data-ocid": "profile.edit_save_button",
-              children: saving ? "Saving…" : "Save Changes"
-            }
-          )
-        ] })
-      ]
-    }
-  ) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: (value) => !value && onClose(), children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "w-[92vw] max-w-sm", "data-ocid": "profile.edit_profile_dialog", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(DialogHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display", children: "Edit Profile" }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4 py-1", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "edit-name", children: "Full Name" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "edit-name",
+            value: name,
+            onChange: (event) => setName(event.target.value),
+            placeholder: "Full name",
+            "data-ocid": "profile.edit_name_input"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "edit-email", children: "Email" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "edit-email",
+            type: "email",
+            value: email,
+            onChange: (event) => setEmail(event.target.value),
+            placeholder: "email@example.com",
+            "data-ocid": "profile.edit_email_input"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "edit-phone", children: "Phone (read-only)" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Input, { id: "edit-phone", value: user.phone, readOnly: true, disabled: true, className: "cursor-not-allowed opacity-60" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "edit-address", children: "Address" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "edit-address",
+            value: address,
+            onChange: (event) => setAddress(event.target.value),
+            placeholder: "Home address",
+            "data-ocid": "profile.edit_address_input"
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { className: "mt-2 flex gap-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: onClose, className: "flex-1", "data-ocid": "profile.edit_cancel_button", children: "Cancel" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Button,
+        {
+          onClick: handleSave,
+          disabled: saving,
+          className: "flex-1 bcb-card-gradient text-primary-foreground",
+          "data-ocid": "profile.edit_save_button",
+          children: saving ? "Saving..." : "Save Changes"
+        }
+      )
+    ] })
+  ] }) });
 }
 function ChangePinModal({
   open,
@@ -44101,6 +43193,13 @@ function ChangePinModal({
   const [confirmPin, setConfirmPin] = reactExports.useState("");
   const [saving, setSaving] = reactExports.useState(false);
   const [error, setError] = reactExports.useState("");
+  const handleClose = () => {
+    setOldPin("");
+    setNewPin("");
+    setConfirmPin("");
+    setError("");
+    onClose();
+  };
   const handleSave = async () => {
     setError("");
     if (newPin.length < 4) {
@@ -44112,178 +43211,155 @@ function ChangePinModal({
       return;
     }
     setSaving(true);
-    await new Promise((r2) => setTimeout(r2, 800));
+    await new Promise((resolve) => setTimeout(resolve, 800));
     setSaving(false);
-    setOldPin("");
-    setNewPin("");
-    setConfirmPin("");
-    onClose();
+    handleClose();
   };
-  const handleClose = () => {
-    setOldPin("");
-    setNewPin("");
-    setConfirmPin("");
-    setError("");
-    onClose();
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: (v2) => !v2 && handleClose(), children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    DialogContent,
-    {
-      className: "w-[92vw] max-w-sm",
-      "data-ocid": "profile.change_pin_dialog",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(DialogHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display", children: "Change PIN" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4 py-1", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "old-pin", children: "Old PIN" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "old-pin",
-                type: "password",
-                inputMode: "numeric",
-                maxLength: 6,
-                value: oldPin,
-                onChange: (e) => setOldPin(e.target.value.replace(/\D/g, "")),
-                placeholder: "••••",
-                "data-ocid": "profile.old_pin_input"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "new-pin", children: "New PIN" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "new-pin",
-                type: "password",
-                inputMode: "numeric",
-                maxLength: 6,
-                value: newPin,
-                onChange: (e) => setNewPin(e.target.value.replace(/\D/g, "")),
-                placeholder: "••••",
-                "data-ocid": "profile.new_pin_input"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "confirm-pin", children: "Confirm New PIN" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "confirm-pin",
-                type: "password",
-                inputMode: "numeric",
-                maxLength: 6,
-                value: confirmPin,
-                onChange: (e) => setConfirmPin(e.target.value.replace(/\D/g, "")),
-                placeholder: "••••",
-                "data-ocid": "profile.confirm_pin_input"
-              }
-            )
-          ] }),
-          error && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "p",
-            {
-              className: "text-xs text-destructive flex items-center gap-1",
-              "data-ocid": "profile.pin_error_state",
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(CircleAlert, { className: "w-3.5 h-3.5 flex-shrink-0" }),
-                " ",
-                error
-              ]
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { className: "flex gap-2 mt-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              variant: "outline",
-              onClick: handleClose,
-              className: "flex-1",
-              "data-ocid": "profile.pin_cancel_button",
-              children: "Cancel"
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              onClick: handleSave,
-              disabled: saving || !oldPin || !newPin || !confirmPin,
-              className: "flex-1 bcb-card-gradient text-primary-foreground",
-              "data-ocid": "profile.pin_confirm_button",
-              children: saving ? "Updating…" : "Update PIN"
-            }
-          )
-        ] })
-      ]
-    }
-  ) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: (value) => !value && handleClose(), children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "w-[92vw] max-w-sm", "data-ocid": "profile.change_pin_dialog", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(DialogHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display", children: "Change PIN" }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4 py-1", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "old-pin", children: "Old PIN" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "old-pin",
+            type: "password",
+            inputMode: "numeric",
+            maxLength: 6,
+            value: oldPin,
+            onChange: (event) => setOldPin(event.target.value.replace(/\D/g, "")),
+            placeholder: "****",
+            "data-ocid": "profile.old_pin_input"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "new-pin", children: "New PIN" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "new-pin",
+            type: "password",
+            inputMode: "numeric",
+            maxLength: 6,
+            value: newPin,
+            onChange: (event) => setNewPin(event.target.value.replace(/\D/g, "")),
+            placeholder: "****",
+            "data-ocid": "profile.new_pin_input"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "confirm-pin", children: "Confirm New PIN" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "confirm-pin",
+            type: "password",
+            inputMode: "numeric",
+            maxLength: 6,
+            value: confirmPin,
+            onChange: (event) => setConfirmPin(event.target.value.replace(/\D/g, "")),
+            placeholder: "****",
+            "data-ocid": "profile.confirm_pin_input"
+          }
+        )
+      ] }),
+      error && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "flex items-center gap-1 text-xs text-destructive", "data-ocid": "profile.pin_error_state", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(CircleAlert, { className: "h-3.5 w-3.5 flex-shrink-0" }),
+        error
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { className: "mt-2 flex gap-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: handleClose, className: "flex-1", "data-ocid": "profile.pin_cancel_button", children: "Cancel" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Button,
+        {
+          onClick: handleSave,
+          disabled: saving || !oldPin || !newPin || !confirmPin,
+          className: "flex-1 bcb-card-gradient text-primary-foreground",
+          "data-ocid": "profile.pin_confirm_button",
+          children: saving ? "Updating..." : "Update PIN"
+        }
+      )
+    ] })
+  ] }) });
 }
 function ProfilePage() {
   const navigate = useNavigate();
-  const user = useAuthStore((s2) => s2.user);
-  const darkMode = useAuthStore((s2) => s2.darkMode);
-  const toggleDarkMode = useAuthStore((s2) => s2.toggleDarkMode);
-  const logout = useAuthStore((s2) => s2.logout);
-  const loans = useBankStore((s2) => s2.loans);
+  const user = useAuthStore((state) => state.user);
+  const darkMode = useAuthStore((state) => state.darkMode);
+  const toggleDarkMode = useAuthStore((state) => state.toggleDarkMode);
+  const logout = useAuthStore((state) => state.logout);
+  const loans = useBankStore((state) => state.loans);
+  const currentBalance = useBankStore((state) => state.currentBalance);
+  const savingsBalance = useBankStore((state) => state.savingsBalance);
   const [modal, setModal] = reactExports.useState("none");
   const [biometric, setBiometric] = reactExports.useState(false);
   const [twoFA, setTwoFA] = reactExports.useState(false);
   const [notifications, setNotifications] = reactExports.useState(true);
   const [language, setLanguage] = reactExports.useState("English");
-  const totalBalance = ((user == null ? void 0 : user.savingsBalance) ?? 0) + ((user == null ? void 0 : user.currentBalance) ?? 0);
+  const totalBalance = currentBalance + savingsBalance;
   const handleLogout = () => {
     logout();
     navigate({ to: "/login" });
   };
-  const s = (i) => ({
+  const sectionAnimation = (index2) => ({
     initial: { opacity: 0, y: 14 },
     animate: { opacity: 1, y: 0 },
-    transition: { delay: 0.05 * i, duration: 0.35 }
+    transition: { delay: 0.05 * index2, duration: 0.35 }
   });
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-h-full bg-background pb-24", children: [
+  const safeUser = {
+    name: (user == null ? void 0 : user.name) ?? "Kofi Mensah",
+    phone: (user == null ? void 0 : user.phone) ?? "0241234567",
+    email: (user == null ? void 0 : user.email) ?? "kofi.mensah@gmail.com",
+    accountNumber: (user == null ? void 0 : user.accountNumber) ?? "1234567890",
+    avatarInitials: (user == null ? void 0 : user.avatarInitials) ?? "KM",
+    kycVerified: (user == null ? void 0 : user.kycVerified) ?? true,
+    memberSince: (user == null ? void 0 : user.memberSince) ?? "2022-03-15"
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-h-full flex-col bg-background pb-24", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(AppBar, { title: "Profile", showLogo: true, showNotifications: false }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       motion.div,
       {
-        ...s(0),
-        className: "mx-4 mt-4 bg-card rounded-2xl shadow-card overflow-hidden",
+        ...sectionAnimation(0),
+        className: "mx-4 mt-4 overflow-hidden rounded-2xl bg-card shadow-card",
         "data-ocid": "profile.header_card",
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bcb-card-gradient h-1.5 w-full" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-1.5 w-full bcb-card-gradient" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-4", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-shrink-0", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-[72px] h-[72px] rounded-full bcb-card-gradient flex items-center justify-center text-2xl font-bold text-primary-foreground font-display shadow-elevated border-2 border-card", children: (user == null ? void 0 : user.avatarInitials) ?? "KM" }),
-                (user == null ? void 0 : user.kycVerified) && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-card bcb-card-gradient font-display text-2xl font-bold text-primary-foreground shadow-elevated", children: safeUser.avatarInitials }),
+                safeUser.kycVerified && /* @__PURE__ */ jsxRuntimeExports.jsx(
                   "span",
                   {
-                    className: "absolute -bottom-0.5 -right-0.5 flex items-center justify-center w-5 h-5 rounded-full bg-success text-success-foreground shadow-sm",
+                    className: "absolute -bottom-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-success text-success-foreground shadow-sm",
                     "aria-label": "KYC Verified",
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-3 h-3" })
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-3 w-3" })
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0 pt-1", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-lg font-bold text-foreground font-display leading-tight", children: (user == null ? void 0 : user.name) ?? "Kofi Mensah" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-0.5", children: (user == null ? void 0 : user.phone) ?? "0241234567" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground truncate", children: (user == null ? void 0 : user.email) ?? "kofi.mensah@gmail.com" })
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1 pt-1", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-display text-lg font-bold leading-tight text-foreground", children: safeUser.name }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-0.5 text-sm text-muted-foreground", children: safeUser.phone }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "truncate text-xs text-muted-foreground", children: safeUser.email })
               ] })
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-border", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 grid grid-cols-3 gap-3 border-t border-border pt-4", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-muted-foreground", children: "Account" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold text-foreground font-mono", children: formatAccountNumber((user == null ? void 0 : user.accountNumber) ?? "1234567890") })
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-mono text-xs font-semibold text-foreground", children: formatAccountNumber(safeUser.accountNumber) })
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center border-x border-border", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-x border-border text-center", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-muted-foreground", children: "Total Balance" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold text-foreground font-display", children: formatGHS(totalBalance) })
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-xs font-semibold text-foreground", children: formatGHS(totalBalance) })
               ] }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-muted-foreground", children: "Member Since" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold text-foreground", children: formatDate((user == null ? void 0 : user.memberSince) ?? "2022-03-15") })
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold text-foreground", children: formatDate(safeUser.memberSince) })
               ] })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -44291,7 +43367,7 @@ function ProfilePage() {
               {
                 variant: "outline",
                 size: "sm",
-                className: "mt-4 w-full h-9 border-primary/30 text-primary hover:bg-primary/5 font-semibold",
+                className: "mt-4 h-9 w-full border-primary/30 font-semibold text-primary hover:bg-primary/5",
                 onClick: () => setModal("editProfile"),
                 "data-ocid": "profile.edit_profile_button",
                 children: "Edit Profile"
@@ -44304,144 +43380,130 @@ function ProfilePage() {
     loans.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
       motion.div,
       {
-        ...s(1),
-        className: "mx-4 mt-3 bg-primary/5 border border-primary/15 rounded-2xl p-4",
+        ...sectionAnimation(1),
+        className: "mx-4 mt-3 rounded-2xl border border-primary/15 bg-primary/5 p-4",
         children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Active Loan" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mt-1", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground font-display", children: loans[0].type }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold text-primary font-display", children: formatGHS(loans[0].outstanding) })
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-1 flex items-center justify-between", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-sm font-semibold text-foreground", children: loans[0].type }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-sm font-bold text-primary", children: formatGHS(loans[0].outstanding) })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[10px] text-muted-foreground mt-0.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-0.5 text-[10px] text-muted-foreground", children: [
             "Next payment: ",
             formatDate(loans[0].nextPaymentDate)
           ] })
         ]
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...s(2), children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...sectionAnimation(2), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(SectionHeader, { title: "KYC Verification" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "mx-4 bg-card rounded-2xl shadow-card overflow-hidden",
-          "data-ocid": "profile.kyc_card",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-4 py-3.5 border-b border-border", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Shield, { className: "w-4 h-4 text-primary" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-semibold text-foreground", children: "KYC Status" })
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-4 overflow-hidden rounded-2xl bg-card shadow-card", "data-ocid": "profile.kyc_card", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between border-b border-border px-4 py-3.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Shield, { className: "h-4 w-4 text-primary" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-semibold text-foreground", children: "KYC Status" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { className: "gap-1 border border-success/25 bg-success/12 px-2 py-0.5 text-xs font-semibold text-success", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-3 w-3" }),
+            "Verified"
+          ] })
+        ] }),
+        KYC_DOCS.map((doc) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "div",
+          {
+            className: "flex items-center justify-between border-b border-border px-4 py-3 last:border-0",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5", children: [
+                doc.status === "verified" ? /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-4 w-4 flex-shrink-0 text-success" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "h-4 w-4 flex-shrink-0 text-accent-foreground" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-foreground", children: doc.label })
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { className: "bg-success/12 text-success border border-success/25 text-xs font-semibold gap-1 px-2 py-0.5", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-3 h-3" }),
-                " Verified"
-              ] })
-            ] }),
-            KYC_DOCS.map((doc) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "div",
-              {
-                className: "flex items-center justify-between px-4 py-3 border-b border-border last:border-0",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5", children: [
-                    doc.status === "verified" ? /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-4 h-4 text-success flex-shrink-0" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "w-4 h-4 text-accent-foreground flex-shrink-0" }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-foreground", children: doc.label })
-                  ] }),
-                  doc.status === "verified" ? /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { className: "bg-success/10 text-success border-0 text-[10px]", children: "Verified" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                    "button",
-                    {
-                      type: "button",
-                      "data-ocid": `profile.kyc_upload_${doc.ocidKey}_button`,
-                      className: "flex items-center gap-1 text-xs font-semibold text-primary bg-primary/8 hover:bg-primary/15 transition-smooth px-2.5 py-1 rounded-lg",
-                      onClick: () => {
-                        const inp = document.createElement("input");
-                        inp.type = "file";
-                        inp.accept = "image/*,.pdf";
-                        inp.click();
-                      },
-                      children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx(Upload, { className: "w-3 h-3" }),
-                        " Upload"
-                      ]
-                    }
-                  )
-                ]
-              },
-              doc.label
-            ))
-          ]
-        }
-      )
+              doc.status === "verified" ? /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { className: "border-0 bg-success/10 text-[10px] text-success", children: "Verified" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "button",
+                {
+                  type: "button",
+                  "data-ocid": `profile.kyc_upload_${doc.ocidKey}_button`,
+                  className: "flex items-center gap-1 rounded-lg bg-primary/8 px-2.5 py-1 text-xs font-semibold text-primary transition-smooth hover:bg-primary/15",
+                  onClick: () => {
+                    const input = document.createElement("input");
+                    input.type = "file";
+                    input.accept = "image/*,.pdf";
+                    input.click();
+                  },
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(Upload, { className: "h-3 w-3" }),
+                    "Upload"
+                  ]
+                }
+              )
+            ]
+          },
+          doc.label
+        ))
+      ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...s(3), children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...sectionAnimation(3), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(SectionHeader, { title: "Security" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "mx-4 bg-card rounded-2xl shadow-card divide-y divide-border",
-          "data-ocid": "profile.security_card",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              RowItem,
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-4 divide-y divide-border rounded-2xl bg-card shadow-card", "data-ocid": "profile.security_card", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          RowItem,
+          {
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { className: "h-5 w-5" }),
+            label: "Change PIN",
+            desc: "Update your 4-digit secure PIN",
+            ocid: "profile.change_pin_button",
+            onClick: () => setModal("changePin")
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          RowItem,
+          {
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Fingerprint, { className: "h-5 w-5" }),
+            label: "Biometric Login",
+            desc: biometric ? "Fingerprint or Face ID enabled" : "Use fingerprint or Face ID",
+            ocid: "profile.biometric_item",
+            trailing: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Switch,
               {
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { className: "w-5 h-5" }),
-                label: "Change PIN",
-                desc: "Update your 4-digit secure PIN",
-                ocid: "profile.change_pin_button",
-                onClick: () => setModal("changePin")
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              RowItem,
-              {
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Fingerprint, { className: "w-5 h-5" }),
-                label: "Biometric Login",
-                desc: biometric ? "Fingerprint / Face ID enabled" : "Use fingerprint or Face ID",
-                ocid: "profile.biometric_item",
-                trailing: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  Switch,
-                  {
-                    checked: biometric,
-                    onCheckedChange: setBiometric,
-                    "data-ocid": "profile.biometric_toggle",
-                    "aria-label": "Toggle biometric login"
-                  }
-                )
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              RowItem,
-              {
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "w-5 h-5" }),
-                label: "Two-Factor Authentication",
-                desc: twoFA ? "2FA enabled via SMS" : "Add extra account security",
-                ocid: "profile.twofa_item",
-                trailing: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  Switch,
-                  {
-                    checked: twoFA,
-                    onCheckedChange: setTwoFA,
-                    "data-ocid": "profile.twofa_toggle",
-                    "aria-label": "Toggle two-factor authentication"
-                  }
-                )
+                checked: biometric,
+                onCheckedChange: setBiometric,
+                "data-ocid": "profile.biometric_toggle",
+                "aria-label": "Toggle biometric login"
               }
             )
-          ]
-        }
-      )
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          RowItem,
+          {
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "h-5 w-5" }),
+            label: "Two-Factor Authentication",
+            desc: twoFA ? "2FA enabled via SMS" : "Add extra account security",
+            ocid: "profile.twofa_item",
+            trailing: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Switch,
+              {
+                checked: twoFA,
+                onCheckedChange: setTwoFA,
+                "data-ocid": "profile.twofa_toggle",
+                "aria-label": "Toggle two-factor authentication"
+              }
+            )
+          }
+        )
+      ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...s(4), children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...sectionAnimation(4), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(SectionHeader, { title: "Preferences" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "div",
         {
-          className: "mx-4 bg-card rounded-2xl shadow-card divide-y divide-border",
+          className: "mx-4 divide-y divide-border rounded-2xl bg-card shadow-card",
           "data-ocid": "profile.preferences_card",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               RowItem,
               {
-                icon: darkMode ? /* @__PURE__ */ jsxRuntimeExports.jsx(Moon, { className: "w-5 h-5" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Sun, { className: "w-5 h-5" }),
+                icon: darkMode ? /* @__PURE__ */ jsxRuntimeExports.jsx(Moon, { className: "h-5 w-5" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Sun, { className: "h-5 w-5" }),
                 label: "Dark Mode",
                 desc: darkMode ? "Dark theme active" : "Light theme active",
                 ocid: "profile.dark_mode_item",
@@ -44459,7 +43521,7 @@ function ProfilePage() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               RowItem,
               {
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Globe, { className: "w-5 h-5" }),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Globe, { className: "h-5 w-5" }),
                 label: "Language",
                 desc: language,
                 ocid: "profile.language_item",
@@ -44468,8 +43530,8 @@ function ProfilePage() {
                   {
                     type: "button",
                     "data-ocid": "profile.language_toggle",
-                    onClick: () => setLanguage((l) => l === "English" ? "Twi" : "English"),
-                    className: "text-xs font-semibold text-primary bg-primary/8 hover:bg-primary/15 transition-smooth px-3 py-1 rounded-lg",
+                    onClick: () => setLanguage((value) => value === "English" ? "Twi" : "English"),
+                    className: "rounded-lg bg-primary/8 px-3 py-1 text-xs font-semibold text-primary transition-smooth hover:bg-primary/15",
                     children: language === "English" ? "Switch to Twi" : "Switch to English"
                   }
                 )
@@ -44478,7 +43540,7 @@ function ProfilePage() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               RowItem,
               {
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Bell, { className: "w-5 h-5" }),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Bell, { className: "h-5 w-5" }),
                 label: "Notifications",
                 desc: notifications ? "Transaction alerts on" : "Alerts disabled",
                 ocid: "profile.notifications_item",
@@ -44497,67 +43559,50 @@ function ProfilePage() {
         }
       )
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...s(5), children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...sectionAnimation(5), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(SectionHeader, { title: "Active Sessions" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "mx-4 bg-card rounded-2xl shadow-card overflow-hidden",
-          "data-ocid": "profile.sessions_card",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 px-4 py-3.5 border-b border-border", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(LaptopMinimal, { className: "w-5 h-5 text-primary flex-shrink-0 mt-0.5" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: "This device" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Active now" })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { className: "bg-success/10 text-success border-0 text-[10px] self-center", children: "Active" })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 px-4 py-3 border-b border-border", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { className: "w-4 h-4 text-muted-foreground flex-shrink-0" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground", children: [
-                "Auto-logout after",
-                " ",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-foreground", children: "5 min" }),
-                " ",
-                "inactivity"
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 px-4 py-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-4 h-4 text-success flex-shrink-0" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground", children: [
-                "Last login:",
-                " ",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-foreground", children: "Today 9:41 AM" })
-              ] })
-            ] })
-          ]
-        }
-      )
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-4 overflow-hidden rounded-2xl bg-card shadow-card", "data-ocid": "profile.sessions_card", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 border-b border-border px-4 py-3.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(LaptopMinimal, { className: "mt-0.5 h-5 w-5 flex-shrink-0 text-primary" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: "This device" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Active now" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { className: "self-center border-0 bg-success/10 text-[10px] text-success", children: "Active" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 border-b border-border px-4 py-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { className: "h-4 w-4 flex-shrink-0 text-muted-foreground" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground", children: [
+            "Auto-logout after ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-foreground", children: "5 min" }),
+            " inactivity"
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 px-4 py-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-4 w-4 flex-shrink-0 text-success" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground", children: [
+            "Last login: ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-foreground", children: "Today 9:41 AM" })
+          ] })
+        ] })
+      ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...s(6), className: "mx-4 mt-6 space-y-4", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { ...sectionAnimation(6), className: "mx-4 mt-6 space-y-4", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2 py-1", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "img",
-          {
-            src: "/assets/bcb-logo.png",
-            alt: "BCB",
-            className: "w-7 h-7 object-contain opacity-70"
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground font-semibold", children: "Bawjiase Community Bank" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground", children: "BCB" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Bawjiase Community Bank" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         Button,
         {
           variant: "outline",
-          className: "w-full h-12 border-destructive/35 text-destructive hover:bg-destructive/5 hover:border-destructive/50 gap-2 font-semibold transition-smooth",
+          className: "h-12 w-full gap-2 border-destructive/35 font-semibold text-destructive transition-smooth hover:border-destructive/50 hover:bg-destructive/5",
           onClick: () => setModal("logout"),
           "data-ocid": "profile.logout_button",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(LogOut, { className: "w-4 h-4" }),
-            " Sign Out"
+            /* @__PURE__ */ jsxRuntimeExports.jsx(LogOut, { className: "h-4 w-4" }),
+            "Sign Out"
           ]
         }
       )
@@ -44568,62 +43613,42 @@ function ProfilePage() {
         open: modal === "editProfile",
         onClose: () => setModal("none"),
         user: {
-          name: (user == null ? void 0 : user.name) ?? "Kofi Mensah",
-          phone: (user == null ? void 0 : user.phone) ?? "0241234567",
-          email: (user == null ? void 0 : user.email) ?? "kofi.mensah@gmail.com"
+          name: safeUser.name,
+          phone: safeUser.phone,
+          email: safeUser.email
         }
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      ChangePinModal,
-      {
-        open: modal === "changePin",
-        onClose: () => setModal("none")
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Dialog,
-      {
-        open: modal === "logout",
-        onOpenChange: (v2) => !v2 && setModal("none"),
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          DialogContent,
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ChangePinModal, { open: modal === "changePin", onClose: () => setModal("none") }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open: modal === "logout", onOpenChange: (value) => !value && setModal("none"), children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "w-[92vw] max-w-sm", "data-ocid": "profile.logout_dialog", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display", children: "Sign Out" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "Are you sure you want to sign out of your BCB account? You will need your PIN to log back in." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { className: "mt-2 flex gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button,
           {
-            className: "w-[92vw] max-w-sm",
-            "data-ocid": "profile.logout_dialog",
+            variant: "outline",
+            onClick: () => setModal("none"),
+            className: "flex-1",
+            "data-ocid": "profile.logout_cancel_button",
+            children: "Cancel"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          Button,
+          {
+            variant: "destructive",
+            onClick: handleLogout,
+            className: "flex-1",
+            "data-ocid": "profile.logout_confirm_button",
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(DialogHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { className: "font-display", children: "Sign Out" }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "Are you sure you want to sign out of your BCB account? You'll need your PIN to log back in." }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { className: "flex gap-2 mt-2", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  Button,
-                  {
-                    variant: "outline",
-                    onClick: () => setModal("none"),
-                    className: "flex-1",
-                    "data-ocid": "profile.logout_cancel_button",
-                    children: "Cancel"
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  Button,
-                  {
-                    variant: "destructive",
-                    onClick: handleLogout,
-                    className: "flex-1",
-                    "data-ocid": "profile.logout_confirm_button",
-                    children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(LogOut, { className: "w-4 h-4 mr-1.5" }),
-                      " Sign Out"
-                    ]
-                  }
-                )
-              ] })
+              /* @__PURE__ */ jsxRuntimeExports.jsx(LogOut, { className: "mr-1.5 h-4 w-4" }),
+              "Sign Out"
             ]
           }
         )
-      }
-    ),
+      ] })
+    ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, {})
   ] });
 }
@@ -45177,29 +44202,32 @@ function getDateLabel(dateStr) {
 function getDateRangeCutoff(range) {
   const now2 = /* @__PURE__ */ new Date();
   if (range === "this_week") {
-    const d = new Date(now2);
-    d.setDate(now2.getDate() - 7);
-    return d;
+    const date = new Date(now2);
+    date.setDate(now2.getDate() - 7);
+    return date;
   }
   if (range === "this_month") {
     return new Date(now2.getFullYear(), now2.getMonth(), 1);
   }
   if (range === "last_3_months") {
-    const d = new Date(now2);
-    d.setMonth(now2.getMonth() - 3);
-    return d;
+    const date = new Date(now2);
+    date.setMonth(now2.getMonth() - 3);
+    return date;
   }
   return /* @__PURE__ */ new Date(0);
 }
 function matchesChip(txn, chip) {
   if (chip === "all") return true;
   if (chip === "deposits") return txn.type === "credit";
-  if (chip === "withdrawals")
+  if (chip === "withdrawals") {
     return txn.type === "debit" && txn.category !== "transfer" && txn.category !== "payment";
-  if (chip === "transfers")
+  }
+  if (chip === "transfers") {
     return txn.category === "transfer" || txn.category === "momo";
-  if (chip === "payments")
+  }
+  if (chip === "payments") {
     return txn.category === "payment" || txn.category === "airtime";
+  }
   return true;
 }
 function TxnIcon({ txn }) {
@@ -45211,26 +44239,26 @@ function TxnIcon({ txn }) {
     "div",
     {
       className: cn(
-        "w-11 h-11 rounded-full flex items-center justify-center text-xl flex-shrink-0 ring-2",
+        "flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full ring-2",
         ringColor
       ),
-      children: txn.icon
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(ActivityIconGlyph, { icon: txn.icon, className: "h-5 w-5" })
     }
   );
 }
 function StatusBadge({ status }) {
-  const cfg = STATUS_CONFIG[status];
-  const Icon2 = cfg.icon;
+  const config = STATUS_CONFIG[status];
+  const Icon2 = config.icon;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "span",
     {
       className: cn(
-        "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold",
-        cfg.className
+        "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold",
+        config.className
       ),
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "w-2.5 h-2.5" }),
-        cfg.label
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "h-2.5 w-2.5" }),
+        config.label
       ]
     }
   );
@@ -45239,10 +44267,22 @@ function ReceiptModal({
   txn,
   onClose
 }) {
+  const amountText = `${txn.type === "credit" ? "+" : "-"}${formatGHS(txn.amount)}`;
+  const receiptRows = [
+    ["Reference", txn.reference],
+    ["Transaction ID", txn.id],
+    ["Type", CATEGORY_CONFIG[txn.category].label],
+    ["Amount", amountText],
+    ["Date", formatDate(txn.date)],
+    ["Time", txn.time],
+    ["Status", txn.status.charAt(0).toUpperCase() + txn.status.slice(1)],
+    ["Account", "Kofi Mensah - 1234567890"],
+    ["Description", txn.description]
+  ];
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     motion.div,
     {
-      className: "fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/40 backdrop-blur-sm",
+      className: "fixed inset-0 z-[60] flex items-center justify-center bg-foreground/40 p-4 backdrop-blur-sm",
       initial: { opacity: 0 },
       animate: { opacity: 1 },
       exit: { opacity: 0 },
@@ -45251,94 +44291,60 @@ function ReceiptModal({
       children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
         motion.div,
         {
-          className: "w-full max-w-sm bg-card rounded-2xl overflow-hidden shadow-elevated",
+          className: "w-full max-w-sm overflow-hidden rounded-2xl bg-card shadow-elevated",
           initial: { scale: 0.92, opacity: 0, y: 24 },
           animate: { scale: 1, opacity: 1, y: 0 },
           exit: { scale: 0.92, opacity: 0, y: 24 },
           transition: { type: "spring", damping: 22, stiffness: 300 },
-          onClick: (e) => e.stopPropagation(),
+          onClick: (event) => event.stopPropagation(),
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bcb-card-gradient px-6 py-5 flex flex-col items-center gap-2 text-primary-foreground", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "img",
-                {
-                  src: "/assets/bcb-logo.png",
-                  alt: "BCB",
-                  className: "w-10 h-10 object-contain brightness-0 invert"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold tracking-widest uppercase opacity-80", children: "Bawjiase Community Bank" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] font-bold tracking-wider border border-primary-foreground/30 px-3 py-0.5 rounded-full", children: "OFFICIAL RECEIPT" })
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bcb-card-gradient flex flex-col items-center gap-2 px-6 py-5 text-primary-foreground", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-[0.35em] opacity-80", children: "BCB" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] font-bold tracking-wider", children: "OFFICIAL RECEIPT" })
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-2.5 px-6 py-4 text-xs", children: receiptRows.map(([label, value]) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "div",
               {
-                className: "h-3 bg-background",
-                style: {
-                  backgroundImage: "radial-gradient(circle at 50% 100%, transparent 8px, var(--card) 8px)",
-                  backgroundSize: "16px 100%"
-                }
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 py-4 space-y-2.5 text-xs divide-y divide-border/40", children: [
-              ["Reference", txn.reference],
-              ["Transaction ID", txn.id],
-              ["Type", CATEGORY_CONFIG[txn.category].label],
-              [
-                "Amount",
-                (txn.type === "credit" ? "+" : "−") + formatGHS(txn.amount)
-              ],
-              ["Date", formatDate(txn.date)],
-              ["Time", txn.time],
-              [
-                "Status",
-                txn.status.charAt(0).toUpperCase() + txn.status.slice(1)
-              ],
-              ["Account", "Kofi Mensah — 1234567890"],
-              ["Description", txn.description]
-            ].map(([label, value]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between gap-4 py-1.5", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground shrink-0", children: label }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "span",
-                {
-                  className: cn(
-                    "font-semibold text-foreground text-right",
-                    label === "Amount" && txn.type === "credit" ? "text-success" : "",
-                    label === "Amount" && txn.type === "debit" ? "text-destructive" : ""
-                  ),
-                  children: value
-                }
-              )
-            ] }, label)) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center pb-4 gap-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-20 h-20 bg-muted rounded-xl flex items-center justify-center border border-border", children: /* @__PURE__ */ jsxRuntimeExports.jsx(QrCode, { className: "w-10 h-10 text-muted-foreground" }) }),
+                className: "flex justify-between gap-4 border-b border-border/40 py-2 last:border-b-0",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "shrink-0 text-muted-foreground", children: label }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "span",
+                    {
+                      className: cn(
+                        "text-right font-semibold text-foreground",
+                        label === "Amount" && txn.type === "credit" && "text-success",
+                        label === "Amount" && txn.type === "debit" && "text-destructive"
+                      ),
+                      children: value
+                    }
+                  )
+                ]
+              },
+              label
+            )) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-2 pb-4", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-20 w-20 items-center justify-center rounded-xl border border-border bg-muted", children: /* @__PURE__ */ jsxRuntimeExports.jsx(QrCode, { className: "h-10 w-10 text-muted-foreground" }) }),
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-muted-foreground", children: "Scan to verify authenticity" })
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3 px-6 py-4 bg-muted/40 border-t border-border", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3 border-t border-border bg-muted/40 px-6 py-4", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs(
                 Button,
                 {
                   variant: "outline",
-                  className: "flex-1 gap-2 text-xs h-10",
-                  "data-ocid": "receipt.close_button",
+                  className: "h-10 flex-1 gap-2 text-xs",
                   onClick: onClose,
+                  "data-ocid": "receipt.close_button",
                   children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "w-3.5 h-3.5" }),
-                    " Close"
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "h-3.5 w-3.5" }),
+                    "Close"
                   ]
                 }
               ),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                Button,
-                {
-                  className: "flex-1 gap-2 text-xs h-10",
-                  "data-ocid": "receipt.share_button",
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(Share2, { className: "w-3.5 h-3.5" }),
-                    " Share"
-                  ]
-                }
-              )
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { className: "h-10 flex-1 gap-2 text-xs", "data-ocid": "receipt.share_button", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Share2, { className: "h-3.5 w-3.5" }),
+                "Share"
+              ] })
             ] })
           ]
         }
@@ -45352,17 +44358,17 @@ function TransactionDetailSheet({
 }) {
   const [showReceipt, setShowReceipt] = reactExports.useState(false);
   const isCredit = txn.type === "credit";
-  const catCfg = CATEGORY_CONFIG[txn.category];
+  const categoryConfig = CATEGORY_CONFIG[txn.category];
   const detailRows = [
     ["Transaction ID", txn.id],
     ["Reference No.", txn.reference],
     ["Type", isCredit ? "Credit" : "Debit"],
-    ["Category", catCfg.label],
+    ["Category", categoryConfig.label],
     ["Date", formatDate(txn.date)],
     ["Time", txn.time],
     ["Status", txn.status.charAt(0).toUpperCase() + txn.status.slice(1)],
-    [`${isCredit ? "From" : "To"}`, txn.description],
-    ["Account", "Kofi Mensah — 1234567890"],
+    [isCredit ? "From" : "To", txn.description],
+    ["Account", "Kofi Mensah - 1234567890"],
     ["Narration", txn.description]
   ];
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
@@ -45378,71 +44384,71 @@ function TransactionDetailSheet({
         children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
           motion.div,
           {
-            className: "w-full max-w-[430px] bg-card rounded-t-3xl overflow-hidden shadow-elevated max-h-[90dvh] flex flex-col",
+            className: "flex max-h-[90dvh] w-full max-w-[430px] flex-col overflow-hidden rounded-t-3xl bg-card shadow-elevated",
             initial: { y: "100%" },
             animate: { y: 0 },
             exit: { y: "100%" },
             transition: { type: "spring", damping: 28, stiffness: 300 },
-            onClick: (e) => e.stopPropagation(),
+            onClick: (event) => event.stopPropagation(),
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center pt-3 pb-1 flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-1 rounded-full bg-border" }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-5 pb-3 flex-shrink-0", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-base font-semibold text-foreground font-display", children: "Transaction Details" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center pb-1 pt-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-1 w-10 rounded-full bg-border" }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-5 pb-3", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-display text-base font-semibold text-foreground", children: "Transaction Details" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(
                   "button",
                   {
                     type: "button",
                     onClick: onClose,
+                    className: "flex h-8 w-8 items-center justify-center rounded-full bg-muted transition-smooth hover:bg-muted/80",
                     "data-ocid": "transaction_detail.close_button",
-                    className: "w-8 h-8 rounded-full bg-muted flex items-center justify-center hover:bg-muted/80 transition-smooth",
                     "aria-label": "Close",
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "w-4 h-4 text-foreground" })
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "h-4 w-4 text-foreground" })
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-2 py-5 bg-muted/40 mx-5 rounded-2xl mb-4 flex-shrink-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-5 mb-4 flex flex-col items-center gap-2 rounded-2xl bg-muted/40 py-5", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(TxnIcon, { txn }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs(
                   "p",
                   {
                     className: cn(
-                      "text-2xl font-bold font-display mt-1",
+                      "mt-1 font-display text-2xl font-bold",
                       isCredit ? "text-success" : "text-destructive"
                     ),
                     children: [
-                      isCredit ? "+" : "−",
+                      isCredit ? "+" : "-",
                       formatGHS(txn.amount)
                     ]
                   }
                 ),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-foreground font-semibold", children: txn.title }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: txn.title }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(StatusBadge, { status: txn.status }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "span",
                     {
                       className: cn(
-                        "text-[10px] font-semibold px-2 py-0.5 rounded-full",
-                        catCfg.bg,
-                        catCfg.text
+                        "rounded-full px-2 py-0.5 text-[10px] font-semibold",
+                        categoryConfig.bg,
+                        categoryConfig.text
                       ),
-                      children: catCfg.label
+                      children: categoryConfig.label
                     }
                   )
                 ] })
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto px-5 divide-y divide-border/60 scrollbar-hide", children: detailRows.map(([label, value]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between gap-4 py-2.5", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground shrink-0", children: label }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-medium text-foreground text-right break-all", children: value })
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "scrollbar-hide flex-1 divide-y divide-border/60 overflow-y-auto px-5", children: detailRows.map(([label, value]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between gap-4 py-2.5", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "shrink-0 text-xs text-muted-foreground", children: label }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "break-all text-right text-xs font-medium text-foreground", children: value })
               ] }, label)) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-5 pt-4 pb-6 flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-5 pb-6 pt-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
                 Button,
                 {
-                  className: "w-full gap-2 h-12",
+                  className: "h-12 w-full gap-2",
                   onClick: () => setShowReceipt(true),
                   "data-ocid": "transaction_detail.download_receipt_button",
                   children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "w-4 h-4" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "h-4 w-4" }),
                     "Download Receipt"
                   ]
                 }
@@ -45457,30 +44463,31 @@ function TransactionDetailSheet({
 }
 function TransactionsPage() {
   var _a2;
-  const transactions = useBankStore((s) => s.transactions);
+  const transactions = useBankStore((state) => state.transactions);
   const [filter2, setFilter] = reactExports.useState("all");
   const [dateRange, setDateRange] = reactExports.useState("last_3_months");
   const [search, setSearch] = reactExports.useState("");
   const [showDateMenu, setShowDateMenu] = reactExports.useState(false);
   const [selectedTxn, setSelectedTxn] = reactExports.useState(null);
-  const currentDateLabel = ((_a2 = DATE_RANGES.find((d) => d.value === dateRange)) == null ? void 0 : _a2.label) ?? "Last 3 Months";
+  const currentDateLabel = ((_a2 = DATE_RANGES.find((item) => item.value === dateRange)) == null ? void 0 : _a2.label) ?? "Last 3 Months";
   const filtered = reactExports.useMemo(() => {
     const cutoff = getDateRangeCutoff(dateRange);
-    const q = search.toLowerCase();
+    const query = search.toLowerCase();
     return transactions.filter((txn) => {
       if (new Date(txn.date) < cutoff) return false;
       if (!matchesChip(txn, filter2)) return false;
-      if (q && !txn.title.toLowerCase().includes(q) && !txn.description.toLowerCase().includes(q) && !txn.reference.toLowerCase().includes(q))
+      if (query && !txn.title.toLowerCase().includes(query) && !txn.description.toLowerCase().includes(query) && !txn.reference.toLowerCase().includes(query)) {
         return false;
+      }
       return true;
     });
   }, [transactions, filter2, dateRange, search]);
   const grouped = reactExports.useMemo(() => {
     const map = /* @__PURE__ */ new Map();
     for (const txn of filtered) {
-      const existing = map.get(txn.date);
-      if (existing) {
-        existing.items.push(txn);
+      const group = map.get(txn.date);
+      if (group) {
+        group.items.push(txn);
       } else {
         map.set(txn.date, { label: getDateLabel(txn.date), items: [txn] });
       }
@@ -45490,22 +44497,22 @@ function TransactionsPage() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "div",
     {
-      className: "flex flex-col min-h-full bg-background",
+      className: "flex min-h-full flex-col bg-background",
       onClick: () => showDateMenu && setShowDateMenu(false),
       onKeyDown: () => showDateMenu && setShowDateMenu(false),
       role: "presentation",
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(AppBar, { title: "Transactions", showBack: true, showNotifications: false }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "sticky top-14 z-30 bg-background border-b border-border px-4 pt-3 pb-3 space-y-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "sticky top-14 z-30 space-y-3 border-b border-border bg-background px-4 pb-3 pt-3", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Search, { className: "absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Search, { className: "absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               Input,
               {
-                placeholder: "Search by name, description, or reference…",
+                placeholder: "Search by name, description, or reference...",
                 value: search,
-                onChange: (e) => setSearch(e.target.value),
-                className: "pl-9 pr-9 h-10 text-sm",
+                onChange: (event) => setSearch(event.target.value),
+                className: "h-10 pl-9 pr-9 text-sm",
                 "data-ocid": "transactions.search_input"
               }
             ),
@@ -45516,20 +44523,20 @@ function TransactionsPage() {
                 onClick: () => setSearch(""),
                 className: "absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground",
                 "aria-label": "Clear search",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "w-3.5 h-3.5" })
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "h-3.5 w-3.5" })
               }
             )
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2 overflow-x-auto scrollbar-hide flex-1 pb-0.5", children: FILTER_CHIPS.map(({ value, label }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "scrollbar-hide flex flex-1 gap-2 overflow-x-auto pb-0.5", children: FILTER_CHIPS.map(({ value, label }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
                 type: "button",
                 onClick: () => setFilter(value),
                 "data-ocid": `transactions.filter.${value}`,
                 className: cn(
-                  "flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-medium transition-smooth border",
-                  filter2 === value ? "bg-primary text-primary-foreground border-primary shadow-sm" : "bg-card text-muted-foreground border-border hover:border-primary/50 hover:text-foreground"
+                  "flex-shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-medium transition-smooth",
+                  filter2 === value ? "border-primary bg-primary text-primary-foreground shadow-sm" : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
                 ),
                 children: label
               },
@@ -45539,27 +44546,24 @@ function TransactionsPage() {
               "div",
               {
                 className: "relative flex-shrink-0",
-                onClick: (e) => e.stopPropagation(),
-                onKeyDown: (e) => e.stopPropagation(),
+                onClick: (event) => event.stopPropagation(),
+                onKeyDown: (event) => event.stopPropagation(),
                 role: "presentation",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsxs(
                     "button",
                     {
                       type: "button",
-                      onClick: () => setShowDateMenu((p) => !p),
+                      onClick: () => setShowDateMenu((previous) => !previous),
                       "data-ocid": "transactions.date_filter",
-                      className: "flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground transition-smooth whitespace-nowrap",
+                      className: "flex items-center gap-1 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-smooth hover:border-primary/50 hover:text-foreground",
                       children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx(RefreshCcw, { className: "w-3 h-3" }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(RefreshCcw, { className: "h-3 w-3" }),
                         currentDateLabel,
                         /* @__PURE__ */ jsxRuntimeExports.jsx(
                           ChevronDown,
                           {
-                            className: cn(
-                              "w-3 h-3 transition-smooth",
-                              showDateMenu && "rotate-180"
-                            )
+                            className: cn("h-3 w-3 transition-smooth", showDateMenu && "rotate-180")
                           }
                         )
                       ]
@@ -45572,7 +44576,7 @@ function TransactionsPage() {
                       animate: { opacity: 1, y: 0, scale: 1 },
                       exit: { opacity: 0, y: -6, scale: 0.96 },
                       transition: { duration: 0.15 },
-                      className: "absolute right-0 top-full mt-1 w-40 bg-card border border-border rounded-xl shadow-elevated z-50 overflow-hidden",
+                      className: "absolute right-0 top-full z-50 mt-1 w-40 overflow-hidden rounded-xl border border-border bg-card shadow-elevated",
                       "data-ocid": "transactions.date_filter.popover",
                       children: DATE_RANGES.map(({ value, label }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
                         "button",
@@ -45584,8 +44588,8 @@ function TransactionsPage() {
                           },
                           "data-ocid": `transactions.date_range.${value}`,
                           className: cn(
-                            "w-full text-left px-4 py-2.5 text-xs font-medium transition-smooth",
-                            dateRange === value ? "text-primary bg-primary/8" : "text-foreground hover:bg-muted"
+                            "w-full px-4 py-2.5 text-left text-xs font-medium transition-smooth",
+                            dateRange === value ? "bg-primary/8 text-primary" : "text-foreground hover:bg-muted"
                           ),
                           children: label
                         },
@@ -45603,12 +44607,12 @@ function TransactionsPage() {
           {
             initial: { opacity: 0, y: 16 },
             animate: { opacity: 1, y: 0 },
-            className: "flex flex-col items-center justify-center py-20 gap-3",
+            className: "flex flex-col items-center justify-center gap-3 py-20",
             "data-ocid": "transactions.empty_state",
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 rounded-full bg-muted flex items-center justify-center text-3xl", children: "🔍" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-16 w-16 items-center justify-center rounded-full bg-muted text-3xl", children: "🔍" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground", children: "No transactions found" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground text-center max-w-[200px]", children: "Try adjusting your search or filters." }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "max-w-[220px] text-center text-xs text-muted-foreground", children: "Try adjusting your search or filters." }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "button",
                 {
@@ -45618,7 +44622,7 @@ function TransactionsPage() {
                     setFilter("all");
                     setDateRange("last_3_months");
                   },
-                  className: "text-xs text-primary font-semibold mt-1 hover:underline",
+                  className: "mt-1 text-xs font-semibold text-primary hover:underline",
                   "data-ocid": "transactions.reset_filters_button",
                   children: "Clear all filters"
                 }
@@ -45626,18 +44630,18 @@ function TransactionsPage() {
             ]
           }
         ) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-5", children: [
-          grouped.map(([dateKey, group], groupIdx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          grouped.map(([dateKey, group], groupIndex) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               motion.div,
               {
                 initial: { opacity: 0 },
                 animate: { opacity: 1 },
-                transition: { delay: groupIdx * 0.05 },
-                className: "flex items-center gap-3 mb-2",
+                transition: { delay: groupIndex * 0.05 },
+                className: "mb-2 flex items-center gap-3",
                 children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] font-bold text-muted-foreground uppercase tracking-wider whitespace-nowrap", children: group.label }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 h-px bg-border" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[10px] text-muted-foreground whitespace-nowrap", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-muted-foreground", children: group.label }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-px flex-1 bg-border" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "whitespace-nowrap text-[10px] text-muted-foreground", children: [
                     group.items.length,
                     " txn",
                     group.items.length !== 1 ? "s" : ""
@@ -45645,9 +44649,9 @@ function TransactionsPage() {
                 ]
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-2", children: group.items.map((txn, idx) => {
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-2", children: group.items.map((txn, index2) => {
               const isCredit = txn.type === "credit";
-              const globalIdx = filtered.indexOf(txn);
+              const globalIndex = filtered.indexOf(txn);
               return /* @__PURE__ */ jsxRuntimeExports.jsxs(
                 motion.button,
                 {
@@ -45655,39 +44659,39 @@ function TransactionsPage() {
                   initial: { opacity: 0, y: 10 },
                   animate: { opacity: 1, y: 0 },
                   transition: {
-                    delay: groupIdx * 0.04 + idx * 0.04,
+                    delay: groupIndex * 0.04 + index2 * 0.04,
                     duration: 0.3
                   },
                   whileTap: { scale: 0.98 },
-                  className: "w-full flex items-center gap-3 bg-card rounded-xl px-4 py-3.5 shadow-card hover:shadow-elevated transition-smooth text-left",
-                  "data-ocid": `transactions.item.${globalIdx + 1}`,
+                  className: "flex w-full items-center gap-3 rounded-xl bg-card px-4 py-3.5 text-left shadow-card transition-smooth hover:shadow-elevated",
+                  "data-ocid": `transactions.item.${globalIndex + 1}`,
                   onClick: () => setSelectedTxn(txn),
                   children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsx(TxnIcon, { txn }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
                       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-2", children: [
                         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-foreground truncate", children: txn.title }),
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground truncate", children: txn.description })
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "truncate text-sm font-semibold text-foreground", children: txn.title }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "truncate text-xs text-muted-foreground", children: txn.description })
                         ] }),
-                        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-right flex-shrink-0", children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-shrink-0 text-right", children: [
                           /* @__PURE__ */ jsxRuntimeExports.jsxs(
                             "p",
                             {
                               className: cn(
-                                "text-sm font-bold font-display",
+                                "font-display text-sm font-bold",
                                 isCredit ? "text-success" : "text-destructive"
                               ),
                               children: [
-                                isCredit ? "+" : "−",
+                                isCredit ? "+" : "-",
                                 formatGHS(txn.amount)
                               ]
                             }
                           ),
-                          isCredit ? /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowDownLeft, { className: "w-3 h-3 text-success ml-auto mt-0.5" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowUpRight, { className: "w-3 h-3 text-destructive/70 ml-auto mt-0.5" })
+                          isCredit ? /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowDownLeft, { className: "ml-auto mt-0.5 h-3 w-3 text-success" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowUpRight, { className: "ml-auto mt-0.5 h-3 w-3 text-destructive/70" })
                         ] })
                       ] }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mt-1.5", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-1.5 flex items-center gap-2", children: [
                         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-muted-foreground", children: txn.time }),
                         /* @__PURE__ */ jsxRuntimeExports.jsx(StatusBadge, { status: txn.status }),
                         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -45695,7 +44699,7 @@ function TransactionsPage() {
                           {
                             variant: "outline",
                             className: cn(
-                              "text-[9px] py-0 px-1.5 h-auto border-0 ml-auto",
+                              "ml-auto h-auto border-0 px-1.5 py-0 text-[9px]",
                               CATEGORY_CONFIG[txn.category].bg,
                               CATEGORY_CONFIG[txn.category].text
                             ),
@@ -45710,12 +44714,11 @@ function TransactionsPage() {
               );
             }) })
           ] }, dateKey)),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center pt-2 pb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center pb-4 pt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
             filtered.length,
             " transaction",
             filtered.length !== 1 ? "s" : "",
-            " ",
-            "shown"
+            " shown"
           ] }) })
         ] }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { children: selectedTxn && /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -45729,647 +44732,135 @@ function TransactionsPage() {
     }
   );
 }
-const ghanabanks = [
+const BANKS = [
   "GCB Bank",
   "Ecobank Ghana",
   "Stanbic Bank",
   "Fidelity Bank",
   "Absa Bank Ghana",
-  "CalBank",
-  "Access Bank Ghana",
-  "Standard Chartered",
-  "Zenith Bank Ghana",
-  "UBA Ghana",
-  "First Atlantic Bank",
-  "OmniBank Ghana",
-  "Republic Bank Ghana",
-  "Prudential Bank",
-  "Agriculture Development Bank (ADB)"
+  "CalBank"
 ];
-const momoProviders = [
-  {
-    id: "mtn",
-    name: "MTN MoMo",
-    shortName: "MTN",
-    bgClass: "bg-yellow-400",
-    textClass: "text-yellow-900",
-    borderActive: "border-yellow-400",
-    bgActive: "bg-yellow-50 dark:bg-yellow-900/20"
-  },
-  {
-    id: "vodafone",
-    name: "Vodafone Cash",
-    shortName: "Vodafone",
-    bgClass: "bg-red-500",
-    textClass: "text-red-900",
-    borderActive: "border-red-500",
-    bgActive: "bg-red-50 dark:bg-red-900/20"
-  },
-  {
-    id: "airteltigo",
-    name: "AirtelTigo Money",
-    shortName: "AirtelTigo",
-    bgClass: "bg-blue-600",
-    textClass: "text-blue-900",
-    borderActive: "border-blue-600",
-    bgActive: "bg-blue-50 dark:bg-blue-900/20"
-  }
-];
+const PROVIDERS = ["MTN MoMo", "Vodafone Cash", "AirtelTigo Money"];
 function generateRef() {
-  return `BCB${Date.now().toString().slice(-8).toUpperCase()}`;
+  return `BCB${Date.now().toString().slice(-8)}`;
 }
-function nowTime() {
-  return (/* @__PURE__ */ new Date()).toLocaleTimeString("en-GH", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true
-  });
-}
-function nowDate() {
-  return (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
-}
-function TabButton({ active, onClick, icon, label, ocid }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    "button",
-    {
-      type: "button",
-      onClick,
-      "data-ocid": ocid,
-      className: cn(
-        "flex-1 flex flex-col items-center gap-1 py-2.5 px-1 relative transition-smooth",
-        active ? "text-primary" : "text-muted-foreground"
-      ),
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "leading-none", children: icon }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] font-medium leading-tight whitespace-nowrap", children: label }),
-        active && /* @__PURE__ */ jsxRuntimeExports.jsx(
-          motion.span,
-          {
-            layoutId: "tab-underline",
-            className: "absolute bottom-0 left-2 right-2 h-0.5 bg-primary rounded-full",
-            transition: { type: "spring", stiffness: 500, damping: 35 }
-          }
-        )
-      ]
-    }
-  );
-}
-function BankSelector({ value, onChange }) {
-  const [open, setOpen] = reactExports.useState(false);
-  const ref = reactExports.useRef(null);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      "button",
-      {
-        type: "button",
-        "data-ocid": "transfers.bank_select",
-        onClick: () => setOpen((p) => !p),
-        className: cn(
-          "w-full h-12 px-4 flex items-center justify-between rounded-md border bg-background text-sm transition-smooth",
-          open ? "border-primary ring-2 ring-primary/20" : "border-input",
-          !value && "text-muted-foreground"
-        ),
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-2 min-w-0", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Building2, { className: "w-4 h-4 shrink-0 text-muted-foreground" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "truncate", children: value || "Select bank" })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            ChevronDown,
-            {
-              className: cn(
-                "w-4 h-4 shrink-0 text-muted-foreground transition-smooth",
-                open && "rotate-180"
-              )
-            }
-          )
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { children: open && /* @__PURE__ */ jsxRuntimeExports.jsx(
-      motion.div,
-      {
-        initial: { opacity: 0, y: -6, scale: 0.98 },
-        animate: { opacity: 1, y: 0, scale: 1 },
-        exit: { opacity: 0, y: -6, scale: 0.98 },
-        transition: { duration: 0.15 },
-        className: "absolute z-50 left-0 right-0 top-[calc(100%+4px)] bg-popover border border-border rounded-xl shadow-elevated overflow-auto max-h-52 scrollbar-hide",
-        children: ghanabanks.map((bank) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "button",
-          {
-            type: "button",
-            onClick: () => {
-              onChange(bank);
-              setOpen(false);
-            },
-            className: cn(
-              "w-full px-4 py-2.5 text-sm text-left hover:bg-muted transition-smooth flex items-center gap-2",
-              value === bank && "bg-primary/5 text-primary font-medium"
-            ),
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Building2, { className: "w-3.5 h-3.5 shrink-0 text-muted-foreground" }),
-              bank
-            ]
-          },
-          bank
-        ))
-      }
-    ) })
-  ] });
-}
-function BcbForm({ onContinue }) {
-  const [form, setForm] = reactExports.useState({
-    account: "",
-    recipientName: "",
-    amount: "",
-    description: ""
-  });
-  const handleAccountChange = (e) => {
-    const val = e.target.value.replace(/\D/g, "").slice(0, 10);
-    setForm((p) => ({
-      ...p,
-      account: val,
-      recipientName: val.length >= 6 ? "Kofi Mensah" : ""
-    }));
-  };
-  const set = (field) => (e) => setForm((p) => ({ ...p, [field]: e.target.value }));
-  const canContinue = form.account.length >= 6 && !!form.amount && Number(form.amount) > 0;
-  const handleContinue = () => {
-    onContinue({
+function buildPayload(tab, form) {
+  if (tab === "bcb") {
+    return {
       type: "bcb",
-      from: "My BCB Account (*** 890)",
+      from: "My BCB Current Account",
       to: form.account,
       recipientName: form.recipientName || "BCB Customer",
       amount: Number(form.amount),
       description: form.description
-    });
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "bcb-account", children: "Recipient Account Number" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Input,
-        {
-          id: "bcb-account",
-          inputMode: "numeric",
-          placeholder: "Enter 10-digit BCB account number",
-          value: form.account,
-          onChange: handleAccountChange,
-          className: "h-12",
-          maxLength: 10,
-          "data-ocid": "transfers.bcb.account_input"
-        }
-      )
-    ] }),
-    form.recipientName && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      motion.div,
-      {
-        initial: { opacity: 0, height: 0 },
-        animate: { opacity: 1, height: "auto" },
-        className: "flex items-center gap-2 px-3 py-2.5 rounded-lg bg-primary/8 border border-primary/20",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-4 h-4 text-primary shrink-0" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium text-primary", children: form.recipientName }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground ml-auto", children: "Verified" })
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "bcb-amount", children: "Amount" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground select-none", children: "GHS" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Input,
-          {
-            id: "bcb-amount",
-            inputMode: "decimal",
-            placeholder: "0.00",
-            value: form.amount,
-            onChange: set("amount"),
-            className: "h-12 pl-14 text-lg font-semibold",
-            "data-ocid": "transfers.bcb.amount_input"
-          }
-        )
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Label, { htmlFor: "bcb-desc", children: [
-        "Description / Narration",
-        " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground font-normal", children: "(optional)" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Input,
-        {
-          id: "bcb-desc",
-          placeholder: "e.g. Rent payment",
-          value: form.description,
-          onChange: set("description"),
-          className: "h-12",
-          "data-ocid": "transfers.bcb.description_input"
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      Button,
-      {
-        type: "button",
-        className: "h-12 text-base font-semibold w-full",
-        disabled: !canContinue,
-        onClick: handleContinue,
-        "data-ocid": "transfers.bcb.continue_button",
-        children: [
-          "Continue ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "w-4 h-4 ml-2" })
-        ]
-      }
-    )
-  ] });
-}
-function InterbankForm({
-  onContinue
-}) {
-  const [form, setForm] = reactExports.useState({
-    bank: "",
-    account: "",
-    accountName: "",
-    swiftCode: "",
-    amount: "",
-    description: ""
-  });
-  const set = (field) => (e) => setForm((p) => ({ ...p, [field]: e.target.value }));
-  const canContinue = !!form.bank && form.account.length >= 6 && !!form.amount && Number(form.amount) > 0;
-  const handleContinue = () => {
-    onContinue({
+    };
+  }
+  if (tab === "interbank") {
+    return {
       type: "interbank",
-      from: "My BCB Account (*** 890)",
+      from: "My BCB Current Account",
       to: `${form.bank} — ${form.account}`,
-      recipientName: form.accountName || "Account Holder",
+      recipientName: form.recipientName || "Bank Account Holder",
       amount: Number(form.amount),
       description: form.description
-    });
+    };
+  }
+  return {
+    type: "momo",
+    from: "My BCB Current Account",
+    to: `${form.provider} — ${form.phone}`,
+    recipientName: form.recipientName || "MoMo Subscriber",
+    amount: Number(form.amount),
+    description: form.description
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Destination Bank" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        BankSelector,
-        {
-          value: form.bank,
-          onChange: (v2) => setForm((p) => ({ ...p, bank: v2 }))
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "ib-account", children: "Account Number" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Input,
-        {
-          id: "ib-account",
-          inputMode: "numeric",
-          placeholder: "Enter account number",
-          value: form.account,
-          onChange: set("account"),
-          className: "h-12",
-          "data-ocid": "transfers.interbank.account_input"
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Label, { htmlFor: "ib-name", children: [
-        "Account Name",
-        " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground font-normal", children: "(optional)" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Input,
-        {
-          id: "ib-name",
-          placeholder: "e.g. Ama Owusu",
-          value: form.accountName,
-          onChange: set("accountName"),
-          className: "h-12",
-          "data-ocid": "transfers.interbank.account_name_input"
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Label, { htmlFor: "ib-swift", children: [
-        "SWIFT / Sort Code",
-        " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground font-normal", children: "(optional)" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Input,
-        {
-          id: "ib-swift",
-          placeholder: "e.g. ECOCGHAC",
-          value: form.swiftCode,
-          onChange: set("swiftCode"),
-          className: "h-12 font-mono tracking-wider uppercase",
-          "data-ocid": "transfers.interbank.swift_input"
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "ib-amount", children: "Amount" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground select-none", children: "GHS" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Input,
-          {
-            id: "ib-amount",
-            inputMode: "decimal",
-            placeholder: "0.00",
-            value: form.amount,
-            onChange: set("amount"),
-            className: "h-12 pl-14 text-lg font-semibold",
-            "data-ocid": "transfers.interbank.amount_input"
-          }
-        )
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Label, { htmlFor: "ib-desc", children: [
-        "Description",
-        " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground font-normal", children: "(optional)" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Input,
-        {
-          id: "ib-desc",
-          placeholder: "e.g. Invoice payment",
-          value: form.description,
-          onChange: set("description"),
-          className: "h-12",
-          "data-ocid": "transfers.interbank.description_input"
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-3 py-2 rounded-lg bg-muted/60 border border-border", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-xs text-muted-foreground", children: [
-        "Powered by ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-foreground", children: "GhIPSS" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-muted-foreground", children: "1–2 business days" })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      Button,
-      {
-        type: "button",
-        className: "h-12 text-base font-semibold w-full",
-        disabled: !canContinue,
-        onClick: handleContinue,
-        "data-ocid": "transfers.interbank.continue_button",
-        children: [
-          "Continue ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "w-4 h-4 ml-2" })
-        ]
-      }
-    )
-  ] });
 }
-function MomoForm({ onContinue }) {
-  const [form, setForm] = reactExports.useState({
-    provider: "",
-    phone: "",
-    name: "",
-    amount: ""
-  });
-  const set = (field) => (e) => setForm((p) => ({ ...p, [field]: e.target.value }));
-  const selectedProvider = momoProviders.find((p) => p.id === form.provider);
-  const canContinue = !!form.provider && form.phone.replace(/\s/g, "").length >= 10 && !!form.amount && Number(form.amount) > 0;
-  const handleContinue = () => {
-    onContinue({
-      type: "momo",
-      from: "My BCB Account (*** 890)",
-      to: `${(selectedProvider == null ? void 0 : selectedProvider.name) ?? "MoMo"} — ${form.phone}`,
-      recipientName: form.name || "MoMo Subscriber",
-      amount: Number(form.amount)
-    });
+function tabMeta(tab) {
+  if (tab === "bcb") {
+    return {
+      label: "BCB Transfer",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeftRight, { className: "w-4 h-4" }),
+      helper: "Instant · Free · 24/7",
+      category: "transfer",
+      iconKey: "building-bank"
+    };
+  }
+  if (tab === "interbank") {
+    return {
+      label: "Interbank",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Building2, { className: "w-4 h-4" }),
+      helper: "GhIPSS · GHS 5.00 fee · 1-2 business days",
+      category: "transfer",
+      iconKey: "landmark"
+    };
+  }
+  return {
+    label: "Mobile Money",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "w-4 h-4" }),
+    helper: "MTN · Vodafone · AirtelTigo · GHS 1.00 fee",
+    category: "momo",
+    iconKey: "smartphone"
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Network Provider" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "div",
-        {
-          className: "grid grid-cols-3 gap-2",
-          "data-ocid": "transfers.momo.provider_selector",
-          children: momoProviders.map((p) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "button",
-            {
-              type: "button",
-              onClick: () => setForm((prev) => ({ ...prev, provider: p.id })),
-              "data-ocid": `transfers.momo.provider.${p.id}`,
-              className: cn(
-                "flex flex-col items-center gap-2 py-3 rounded-xl border-2 transition-smooth",
-                form.provider === p.id ? `${p.borderActive} ${p.bgActive}` : "border-border bg-card hover:border-muted-foreground/30"
-              ),
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "div",
-                  {
-                    className: cn(
-                      "w-9 h-9 rounded-full flex items-center justify-center",
-                      p.bgClass
-                    ),
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: cn("w-4 h-4", p.textClass) })
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "span",
-                  {
-                    className: cn(
-                      "text-[10px] font-semibold leading-tight text-center",
-                      form.provider === p.id ? "text-foreground" : "text-muted-foreground"
-                    ),
-                    children: p.shortName
-                  }
-                )
-              ]
-            },
-            p.id
-          ))
-        }
-      ),
-      selectedProvider && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        motion.p,
-        {
-          initial: { opacity: 0 },
-          animate: { opacity: 1 },
-          className: "text-xs text-muted-foreground",
-          children: [
-            "Sending via",
-            " ",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium text-foreground", children: selectedProvider.name })
-          ]
-        },
-        selectedProvider.id
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "momo-phone", children: "Mobile Number" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Input,
-        {
-          id: "momo-phone",
-          type: "tel",
-          inputMode: "tel",
-          placeholder: "024 xxx xxxx",
-          value: form.phone,
-          onChange: set("phone"),
-          className: "h-12",
-          maxLength: 12,
-          "data-ocid": "transfers.momo.phone_input"
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Label, { htmlFor: "momo-name", children: [
-        "Recipient Name",
-        " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground font-normal", children: "(optional)" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Input,
-        {
-          id: "momo-name",
-          placeholder: "e.g. Kwame Asante",
-          value: form.name,
-          onChange: set("name"),
-          className: "h-12",
-          "data-ocid": "transfers.momo.name_input"
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1.5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "momo-amount", children: "Amount" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground select-none", children: "GHS" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Input,
-          {
-            id: "momo-amount",
-            inputMode: "decimal",
-            placeholder: "0.00",
-            value: form.amount,
-            onChange: set("amount"),
-            className: "h-12 pl-14 text-lg font-semibold",
-            "data-ocid": "transfers.momo.amount_input"
-          }
-        )
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      Button,
-      {
-        type: "button",
-        className: "h-12 text-base font-semibold w-full",
-        disabled: !canContinue,
-        onClick: handleContinue,
-        "data-ocid": "transfers.momo.continue_button",
-        children: [
-          "Continue ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "w-4 h-4 ml-2" })
-        ]
-      }
-    )
-  ] });
 }
 function ConfirmSheet({
   payload,
-  onClose,
-  onConfirm,
-  isProcessing
+  busy,
+  onCancel,
+  onConfirm
 }) {
-  const typeLabel = {
-    bcb: "BCB Transfer",
-    interbank: "Interbank (GhIPSS)",
-    momo: "Mobile Money"
-  }[payload.type];
-  const feeLabel = { bcb: "Free", interbank: "GHS 5.00", momo: "GHS 1.00" }[payload.type];
-  const rows = [
-    { label: "From", value: payload.from },
-    { label: "To", value: payload.to },
-    { label: "Recipient", value: payload.recipientName },
-    { label: "Amount", value: formatGHS(payload.amount), highlight: true },
-    { label: "Transfer Fee", value: feeLabel },
-    ...payload.description ? [{ label: "Note", value: payload.description, highlight: false }] : []
-  ];
+  const fee = payload.type === "bcb" ? "Free" : payload.type === "interbank" ? "GHS 5.00" : "GHS 1.00";
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     motion.div,
     {
+      className: "fixed inset-0 z-50 flex items-end justify-center bg-black/45 p-4",
       initial: { opacity: 0 },
       animate: { opacity: 1 },
       exit: { opacity: 0 },
-      className: "fixed inset-0 z-50 flex flex-col justify-end",
-      style: { background: "rgba(0,0,0,0.45)" },
-      onClick: () => !isProcessing && onClose(),
+      onClick: onCancel,
       children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
         motion.div,
         {
+          className: "w-full max-w-[430px] rounded-3xl bg-card p-6 shadow-elevated",
           initial: { y: "100%" },
           animate: { y: 0 },
           exit: { y: "100%" },
-          transition: { type: "spring", stiffness: 380, damping: 32 },
-          className: "bg-card rounded-t-3xl p-6 pb-10 shadow-elevated max-w-[430px] w-full mx-auto",
-          onClick: (e) => e.stopPropagation(),
-          "data-ocid": "transfers.confirm_sheet",
+          transition: { type: "spring", stiffness: 320, damping: 28 },
+          onClick: (event) => event.stopPropagation(),
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-1 rounded-full bg-border mx-auto mb-5" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-lg font-bold font-display text-foreground mb-0.5", children: "Confirm Transfer" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mb-5", children: typeLabel }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-xl overflow-hidden border border-border mb-5", children: rows.map((row, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "div",
-              {
-                className: cn(
-                  "flex items-start justify-between px-4 py-3 text-sm gap-3",
-                  i > 0 && "border-t border-border",
-                  row.highlight && "bg-primary/5"
-                ),
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground shrink-0", children: row.label }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    "span",
-                    {
-                      className: cn(
-                        "font-medium text-right break-words min-w-0",
-                        row.highlight && "text-primary font-bold text-base"
-                      ),
-                      children: row.value
-                    }
-                  )
-                ]
-              },
-              row.label
-            )) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  variant: "outline",
-                  className: "flex-1 h-12",
-                  onClick: onClose,
-                  disabled: isProcessing,
-                  "data-ocid": "transfers.confirm_sheet.cancel_button",
-                  children: "Cancel"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  className: "flex-1 h-12 font-semibold",
-                  onClick: onConfirm,
-                  disabled: isProcessing,
-                  "data-ocid": "transfers.confirm_sheet.confirm_button",
-                  children: isProcessing ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "w-4 h-4 mr-2 animate-spin" }),
-                    "Processing…"
-                  ] }) : "Confirm Transfer"
-                }
-              )
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto mb-5 h-1 w-10 rounded-full bg-border" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-lg font-bold font-display", children: "Confirm Transfer" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-5 text-sm text-muted-foreground", children: tabMeta(payload.type).label }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 rounded-2xl border border-border p-4", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-4 text-sm", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "From" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium text-right", children: payload.from })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-4 text-sm", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "To" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium text-right", children: payload.to })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-4 text-sm", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Recipient" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium text-right", children: payload.recipientName })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-4 text-sm", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Amount" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-primary", children: formatGHS(payload.amount) })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-4 text-sm", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Transfer Fee" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: fee })
+              ] }),
+              payload.description && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-4 text-sm", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Note" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium text-right", children: payload.description })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-5 flex gap-3", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", className: "flex-1", disabled: busy, onClick: onCancel, children: "Cancel" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: "flex-1", disabled: busy, onClick: onConfirm, children: busy ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "mr-2 h-4 w-4 animate-spin" }),
+                "Processing..."
+              ] }) : "Confirm Transfer" })
             ] })
           ]
         }
@@ -46377,321 +44868,237 @@ function ConfirmSheet({
     }
   );
 }
-function SuccessScreen({ payload, txRef, onDone }) {
+function SuccessView({
+  payload,
+  reference,
+  onDone
+}) {
   const [copied, setCopied] = reactExports.useState(false);
-  const handleCopy = () => {
-    navigator.clipboard.writeText(txRef).catch(() => {
-    });
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2e3);
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    motion.div,
-    {
-      initial: { opacity: 0, scale: 0.96 },
-      animate: { opacity: 1, scale: 1 },
-      transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
-      className: "flex flex-col items-center px-6 pt-10 pb-8",
-      "data-ocid": "transfers.success_screen",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative mb-7", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            motion.div,
-            {
-              initial: { scale: 0 },
-              animate: { scale: 1 },
-              transition: {
-                delay: 0.1,
-                type: "spring",
-                stiffness: 400,
-                damping: 20
-              },
-              className: "w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center",
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                motion.div,
-                {
-                  initial: { scale: 0 },
-                  animate: { scale: 1 },
-                  transition: {
-                    delay: 0.25,
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 18
-                  },
-                  className: "w-16 h-16 rounded-full bg-primary flex items-center justify-center",
-                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-8 h-8 text-primary-foreground" })
-                }
-              )
-            }
-          ),
-          [0, 1].map((i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-            motion.div,
-            {
-              initial: { scale: 0.6, opacity: 0.5 },
-              animate: { scale: 2.4, opacity: 0 },
-              transition: {
-                delay: 0.3 + i * 0.2,
-                duration: 0.75,
-                ease: "easeOut"
-              },
-              className: "absolute inset-0 rounded-full border-2 border-primary"
-            },
-            i
-          ))
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          motion.h2,
-          {
-            initial: { opacity: 0, y: 12 },
-            animate: { opacity: 1, y: 0 },
-            transition: { delay: 0.4 },
-            className: "text-2xl font-bold font-display text-foreground mb-1",
-            children: "Transfer Successful!"
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          motion.p,
-          {
-            initial: { opacity: 0, y: 8 },
-            animate: { opacity: 1, y: 0 },
-            transition: { delay: 0.5 },
-            className: "text-sm text-muted-foreground mb-2 text-center",
-            children: [
-              "Sent to ",
-              payload.recipientName
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          motion.p,
-          {
-            initial: { opacity: 0, y: 8 },
-            animate: { opacity: 1, y: 0 },
-            transition: { delay: 0.55 },
-            className: "text-3xl font-bold text-primary font-display mb-8",
-            children: formatGHS(payload.amount)
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          motion.div,
-          {
-            initial: { opacity: 0, y: 12 },
-            animate: { opacity: 1, y: 0 },
-            transition: { delay: 0.6 },
-            className: "w-full bg-muted/50 rounded-2xl p-4 mb-3 border border-border",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground mb-1.5", children: "Transaction Reference" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-2", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-mono text-sm font-semibold text-foreground tracking-wider", children: txRef }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  "button",
-                  {
-                    type: "button",
-                    onClick: handleCopy,
-                    "data-ocid": "transfers.success_screen.copy_button",
-                    className: "flex items-center gap-1.5 text-xs text-primary font-medium hover:opacity-70 transition-smooth shrink-0",
-                    children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { className: "w-3.5 h-3.5" }),
-                      copied ? "Copied!" : "Copy"
-                    ]
-                  }
-                )
-              ] })
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          motion.div,
-          {
-            initial: { opacity: 0, y: 8 },
-            animate: { opacity: 1, y: 0 },
-            transition: { delay: 0.7 },
-            className: "w-full bg-muted/30 rounded-xl p-4 mb-8 border border-border",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between text-sm", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Destination" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium text-foreground text-right ml-4 break-words min-w-0 max-w-[60%]", children: payload.to })
-            ] })
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          motion.div,
-          {
-            initial: { opacity: 0, y: 8 },
-            animate: { opacity: 1, y: 0 },
-            transition: { delay: 0.75 },
-            className: "w-full",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              Button,
-              {
-                className: "w-full h-12 font-semibold",
-                onClick: onDone,
-                "data-ocid": "transfers.success_screen.done_button",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(House, { className: "w-4 h-4 mr-2" }),
-                  "Back to Dashboard"
-                ]
-              }
-            )
-          }
-        )
-      ]
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(reference);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
     }
-  );
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 py-8", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto flex max-w-md flex-col items-center rounded-3xl bg-card p-6 text-center shadow-card", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-10 w-10 text-primary" }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-bold font-display", children: "Transfer Successful" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-2 text-sm text-muted-foreground", children: [
+      formatGHS(payload.amount),
+      " sent to ",
+      payload.recipientName
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 w-full rounded-2xl border border-border p-4 text-left", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: "Reference" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "button", onClick: handleCopy, className: "text-xs font-semibold text-primary", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { className: "mr-1 inline h-3.5 w-3.5" }),
+          copied ? "Copied" : "Copy"
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 font-mono text-sm font-semibold", children: reference }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-xs text-muted-foreground", children: "Destination" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-medium", children: payload.to })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { className: "mt-6 w-full", onClick: onDone, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(House, { className: "mr-2 h-4 w-4" }),
+      "Back to Dashboard"
+    ] })
+  ] }) });
 }
 function TransfersPage() {
   const navigate = useNavigate();
-  const addTransaction = useBankStore((s) => s.addTransaction);
-  const [activeTab, setActiveTab] = reactExports.useState("bcb");
-  const [confirmPayload, setConfirmPayload] = reactExports.useState(
-    null
-  );
-  const [isProcessing, setIsProcessing] = reactExports.useState(false);
-  const [pageState, setPageState] = reactExports.useState("form");
-  const [txRef, setTxRef] = reactExports.useState("");
-  const [successPayload, setSuccessPayload] = reactExports.useState(
-    null
-  );
-  const tabs = [
-    {
-      id: "bcb",
-      label: "BCB Transfer",
-      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeftRight, { className: "w-[18px] h-[18px]" })
-    },
-    {
-      id: "interbank",
-      label: "Interbank",
-      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Building2, { className: "w-[18px] h-[18px]" })
-    },
-    {
-      id: "momo",
-      label: "Mobile Money",
-      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "w-[18px] h-[18px]" })
-    }
-  ];
+  const recordActivity = useBankStore((state) => state.recordActivity);
+  const [tab, setTab] = reactExports.useState("bcb");
+  const [busy, setBusy] = reactExports.useState(false);
+  const [confirmPayload, setConfirmPayload] = reactExports.useState(null);
+  const [successPayload, setSuccessPayload] = reactExports.useState(null);
+  const [reference, setReference] = reactExports.useState("");
+  const [form, setForm] = reactExports.useState({
+    account: "",
+    recipientName: "",
+    amount: "",
+    description: "",
+    bank: BANKS[0],
+    provider: PROVIDERS[0],
+    phone: ""
+  });
+  const meta = tabMeta(tab);
+  const canContinue = reactExports.useMemo(() => {
+    const amountValid = Number(form.amount) > 0;
+    if (tab === "bcb") return form.account.trim().length >= 10 && amountValid;
+    if (tab === "interbank") return form.bank.trim().length > 0 && form.account.trim().length >= 6 && amountValid;
+    return form.phone.trim().length >= 10 && amountValid;
+  }, [form, tab]);
+  const updateField = (field, value) => {
+    setForm((current) => ({ ...current, [field]: value }));
+  };
+  const handleContinue = () => {
+    setConfirmPayload(buildPayload(tab, form));
+  };
   const handleConfirm = async () => {
     if (!confirmPayload) return;
-    setIsProcessing(true);
-    await new Promise((r2) => setTimeout(r2, 1500));
-    setIsProcessing(false);
+    setBusy(true);
+    await new Promise((resolve) => setTimeout(resolve, 1200));
     const ref = generateRef();
-    setTxRef(ref);
-    setSuccessPayload(confirmPayload);
-    const categoryMap = {
-      bcb: "transfer",
-      interbank: "transfer",
-      momo: "momo"
-    };
-    const iconMap = {
-      bcb: "🏦",
-      interbank: "🏛️",
-      momo: "📱"
-    };
-    addTransaction({
-      id: ref,
+    recordActivity({
       type: "debit",
+      category: meta.category,
       title: `Transfer to ${confirmPayload.recipientName}`,
       description: confirmPayload.description || confirmPayload.to,
-      amount: -confirmPayload.amount,
-      date: nowDate(),
-      time: nowTime(),
+      amount: confirmPayload.amount,
       reference: ref,
-      status: "completed",
-      category: categoryMap[confirmPayload.type],
-      icon: iconMap[confirmPayload.type]
+      icon: meta.iconKey,
+      notification: {
+        type: "transaction",
+        title: "Transfer Completed",
+        message: `${formatGHS(confirmPayload.amount)} was sent to ${confirmPayload.recipientName}.`
+      }
     });
-    ue.success("Transfer completed!", {
+    setReference(ref);
+    setSuccessPayload(confirmPayload);
+    setConfirmPayload(null);
+    setBusy(false);
+    ue.success("Transfer completed", {
       description: `${formatGHS(confirmPayload.amount)} sent to ${confirmPayload.recipientName}`
     });
-    setConfirmPayload(null);
-    setPageState("success");
   };
-  const handleDone = () => {
-    navigate({ to: "/dashboard" });
-  };
-  if (pageState === "success" && successPayload) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-h-full bg-background", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        AppBar,
-        {
-          title: "Transfer Receipt",
-          showBack: false,
-          showNotifications: false
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        SuccessScreen,
-        {
-          payload: successPayload,
-          txRef,
-          onDone: handleDone
-        }
-      )
+  if (successPayload) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-h-full flex-col bg-background", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(AppBar, { title: "Transfer Receipt", showBack: false, showNotifications: false }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(SuccessView, { payload: successPayload, reference, onDone: () => navigate({ to: "/dashboard" }) })
     ] });
   }
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-h-full bg-background", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-h-full flex-col bg-background", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(AppBar, { title: "Transfers", showBack: true }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "div",
-      {
-        className: "bg-card border-b border-border px-2 sticky top-14 z-30",
-        "data-ocid": "transfers.tabs",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex", children: tabs.map((tab) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-          TabButton,
-          {
-            active: activeTab === tab.id,
-            onClick: () => setActiveTab(tab.id),
-            icon: tab.icon,
-            label: tab.label,
-            ocid: `transfers.${tab.id}_tab`
-          },
-          tab.id
-        )) })
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { mode: "wait", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      motion.div,
-      {
-        initial: { opacity: 0, x: 16 },
-        animate: { opacity: 1, x: 0 },
-        exit: { opacity: 0, x: -16 },
-        transition: { duration: 0.22 },
-        className: "flex-1 px-4 pt-5 pb-10",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card rounded-2xl p-5 shadow-card", children: [
-          activeTab === "bcb" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bcb-card-gradient flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeftRight, { className: "w-5 h-5 text-primary-foreground" }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-semibold text-foreground font-display", children: "BCB Internal Transfer" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Instant · Free · 24/7" })
-            ] })
-          ] }),
-          activeTab === "interbank" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Building2, { className: "w-5 h-5 text-blue-600 dark:text-blue-400" }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-semibold text-foreground font-display", children: "Interbank Transfer" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Via GhIPSS · GHS 5 fee · 1–2 business days" })
-            ] })
-          ] }),
-          activeTab === "momo" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "w-5 h-5 text-yellow-600 dark:text-yellow-400" }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-semibold text-foreground font-display", children: "Mobile Money Transfer" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "MTN · Vodafone · AirtelTigo · GHS 1 fee" })
-            ] })
-          ] }),
-          activeTab === "bcb" && /* @__PURE__ */ jsxRuntimeExports.jsx(BcbForm, { onContinue: setConfirmPayload }),
-          activeTab === "interbank" && /* @__PURE__ */ jsxRuntimeExports.jsx(InterbankForm, { onContinue: setConfirmPayload }),
-          activeTab === "momo" && /* @__PURE__ */ jsxRuntimeExports.jsx(MomoForm, { onContinue: setConfirmPayload })
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "sticky top-14 z-20 border-b border-border bg-card px-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex", children: ["bcb", "interbank", "momo"].map((item) => {
+      const itemMeta = tabMeta(item);
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "button",
+        {
+          type: "button",
+          className: cn(
+            "flex flex-1 flex-col items-center gap-1 px-2 py-3 text-xs font-medium transition-smooth",
+            tab === item ? "text-primary" : "text-muted-foreground"
+          ),
+          onClick: () => setTab(item),
+          children: [
+            itemMeta.icon,
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: itemMeta.label })
+          ]
+        },
+        item
+      );
+    }) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 px-4 py-5", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-3xl bg-card p-5 shadow-card", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-5 flex items-center gap-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary", children: meta.icon }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-semibold font-display", children: meta.label }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: meta.helper })
         ] })
-      },
-      activeTab
-    ) }),
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+        tab === "interbank" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "bank", children: "Destination Bank" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "select",
+            {
+              id: "bank",
+              value: form.bank,
+              onChange: (event) => updateField("bank", event.target.value),
+              className: "h-12 w-full rounded-md border border-input bg-background px-3 text-sm",
+              children: BANKS.map((bank) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: bank, children: bank }, bank))
+            }
+          )
+        ] }),
+        tab === "momo" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "provider", children: "Network Provider" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "select",
+            {
+              id: "provider",
+              value: form.provider,
+              onChange: (event) => updateField("provider", event.target.value),
+              className: "h-12 w-full rounded-md border border-input bg-background px-3 text-sm",
+              children: PROVIDERS.map((provider) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: provider, children: provider }, provider))
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "destination", children: tab === "momo" ? "Mobile Number" : "Recipient Account Number" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Input,
+            {
+              id: "destination",
+              value: tab === "momo" ? form.phone : form.account,
+              onChange: (event) => updateField(tab === "momo" ? "phone" : "account", event.target.value),
+              placeholder: tab === "momo" ? "0241234567" : "Enter account number",
+              className: "h-12"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "recipient", children: "Recipient Name" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Input,
+            {
+              id: "recipient",
+              value: form.recipientName,
+              onChange: (event) => updateField("recipientName", event.target.value),
+              placeholder: "Enter recipient name",
+              className: "h-12"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "amount", children: "Amount" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground", children: "GHS" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Input,
+              {
+                id: "amount",
+                value: form.amount,
+                onChange: (event) => updateField("amount", event.target.value),
+                placeholder: "0.00",
+                className: "h-12 pl-14",
+                inputMode: "decimal"
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Label, { htmlFor: "description", children: [
+            "Description ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-normal text-muted-foreground", children: "(optional)" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Input,
+            {
+              id: "description",
+              value: form.description,
+              onChange: (event) => updateField("description", event.target.value),
+              placeholder: "e.g. Rent payment",
+              className: "h-12"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { className: "w-full", disabled: !canContinue, onClick: handleContinue, children: [
+          "Continue",
+          /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "ml-2 h-4 w-4" })
+        ] })
+      ] })
+    ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { children: confirmPayload && /* @__PURE__ */ jsxRuntimeExports.jsx(
       ConfirmSheet,
       {
         payload: confirmPayload,
-        onClose: () => !isProcessing && setConfirmPayload(null),
-        onConfirm: handleConfirm,
-        isProcessing
+        busy,
+        onCancel: () => !busy && setConfirmPayload(null),
+        onConfirm: handleConfirm
       }
     ) })
   ] });
@@ -46810,3 +45217,10 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx(InternetIdentityProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) }) })
 );
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch((error) => {
+      console.error("Service worker registration failed", error);
+    });
+  });
+}

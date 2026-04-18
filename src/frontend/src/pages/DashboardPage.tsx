@@ -1,4 +1,5 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { ActivityIconGlyph } from "@/lib/activity-icons";
 import { Button } from "@/components/ui/button";
 import { formatAccountNumber, formatDate, formatGHS } from "@/lib/formatters";
 import { cn } from "@/lib/utils";
@@ -20,7 +21,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 // ─── Constants ──────────────────────────────────────────────────────────────
 
-const IDLE_TIMEOUT_MS = 5 * 60 * 1000; // 5 minutes
+const IDLE_TIMEOUT_MS = 5 * 60 * 1000;
 const COUNTDOWN_SECONDS = 30;
 
 // ─── Quick actions ───────────────────────────────────────────────────────────
@@ -72,6 +73,8 @@ export default function DashboardPage() {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const transactions = useBankStore((s) => s.transactions);
+  const currentBalance = useBankStore((s) => s.currentBalance);
+  const savingsBalance = useBankStore((s) => s.savingsBalance);
 
   const [hideBalance, setHideBalance] = useState(false);
   const [showIdleModal, setShowIdleModal] = useState(false);
@@ -129,10 +132,9 @@ export default function DashboardPage() {
     };
   }, [resetIdleTimer]);
 
-  const totalBalance =
-    (user?.savingsBalance ?? 0) + (user?.currentBalance ?? 0);
+  const totalBalance = savingsBalance + currentBalance;
   const recentTxns = transactions.slice(0, 5);
-  const firstName = user?.name?.split(" ")[0] ?? "Kofi";
+  const firstName = user?.name.split(" ")[0] ?? "Kofi";
   const accountNumber = user?.accountNumber ?? "1234567890";
 
   const hour = new Date().getHours();
@@ -214,7 +216,7 @@ export default function DashboardPage() {
           transition={{ duration: 0.2 }}
           className="text-3xl font-bold text-primary-foreground font-display mb-1 relative z-10 tracking-tight"
         >
-          {hideBalance ? "GHS ••••••" : formatGHS(totalBalance)}
+          {hideBalance ? "GHS XXXXXX" : formatGHS(totalBalance)}
         </motion.p>
 
         {/* Account number */}
@@ -229,7 +231,7 @@ export default function DashboardPage() {
               Savings Account
             </p>
             <p className="text-sm font-bold text-primary-foreground font-display">
-              {hideBalance ? "GHS ••••" : formatGHS(user?.savingsBalance ?? 0)}
+              {hideBalance ? "GHS XXXX" : formatGHS(savingsBalance)}
             </p>
           </div>
           <div className="w-px bg-primary-foreground/20 self-stretch" />
@@ -238,7 +240,7 @@ export default function DashboardPage() {
               Current Account
             </p>
             <p className="text-sm font-bold text-primary-foreground font-display">
-              {hideBalance ? "GHS ••••" : formatGHS(user?.currentBalance ?? 0)}
+              {hideBalance ? "GHS XXXX" : formatGHS(currentBalance)}
             </p>
           </div>
         </div>
@@ -261,7 +263,7 @@ export default function DashboardPage() {
             Savings
           </p>
           <p className="text-base font-bold text-foreground font-display leading-tight">
-            {hideBalance ? "GHS ••••" : formatGHS(user?.savingsBalance ?? 0)}
+            {hideBalance ? "GHS XXXX" : formatGHS(savingsBalance)}
           </p>
           <div className="mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-success/10">
             <div className="w-1.5 h-1.5 rounded-full bg-success" />
@@ -279,7 +281,7 @@ export default function DashboardPage() {
             Current
           </p>
           <p className="text-base font-bold text-foreground font-display leading-tight">
-            {hideBalance ? "GHS ••••" : formatGHS(user?.currentBalance ?? 0)}
+            {hideBalance ? "GHS XXXX" : formatGHS(currentBalance)}
           </p>
           <div className="mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10">
             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -372,7 +374,7 @@ export default function DashboardPage() {
                     "bg-muted text-muted-foreground",
                 )}
               >
-                {txn.icon}
+                <ActivityIconGlyph icon={txn.icon} className="w-4 h-4" />
               </div>
 
               {/* Description */}
@@ -393,7 +395,7 @@ export default function DashboardPage() {
                     txn.type === "credit" ? "text-success" : "text-destructive",
                   )}
                 >
-                  {txn.type === "credit" ? "+" : "−"}&nbsp;
+                  {txn.type === "credit" ? "+" : "-"}&nbsp;
                   {formatGHS(txn.amount)}
                 </p>
                 <div className="flex justify-end mt-0.5">

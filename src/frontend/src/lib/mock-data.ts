@@ -1,3 +1,23 @@
+export type ActivityIcon =
+  | "briefcase"
+  | "bolt"
+  | "smartphone"
+  | "phone"
+  | "arrow-down-left"
+  | "tv"
+  | "droplets"
+  | "building-bank"
+  | "wallet"
+  | "globe"
+  | "landmark"
+  | "lock"
+  | "gift"
+  | "file-text"
+  | "sparkles"
+  | "clock"
+  | "shield-alert"
+  | "triangle-alert";
+
 export type TransactionType = "credit" | "debit";
 export type TransactionCategory =
   | "transfer"
@@ -19,7 +39,7 @@ export interface Transaction {
   time: string;
   reference: string;
   status: "completed" | "pending" | "failed";
-  icon: string;
+  icon: ActivityIcon;
 }
 
 export interface BankCard {
@@ -60,8 +80,11 @@ export interface Notification {
   date: string;
   time: string;
   isRead: boolean;
-  icon: string;
+  icon: ActivityIcon;
 }
+
+export const INITIAL_CURRENT_BALANCE = 12800.5;
+export const INITIAL_SAVINGS_BALANCE = 4250.0;
 
 export const mockTransactions: Transaction[] = [
   {
@@ -70,12 +93,12 @@ export const mockTransactions: Transaction[] = [
     category: "salary",
     title: "Salary Credit",
     description: "Monthly salary - Accra Metro Assembly",
-    amount: 3200.0,
+    amount: 3200,
     date: "2026-04-15",
     time: "08:00 AM",
     reference: "SAL-20260415-001",
     status: "completed",
-    icon: "💼",
+    icon: "briefcase",
   },
   {
     id: "txn002",
@@ -88,7 +111,7 @@ export const mockTransactions: Transaction[] = [
     time: "10:23 AM",
     reference: "ECG-20260414-889",
     status: "completed",
-    icon: "⚡",
+    icon: "bolt",
   },
   {
     id: "txn003",
@@ -96,12 +119,12 @@ export const mockTransactions: Transaction[] = [
     category: "momo",
     title: "MTN MoMo Transfer",
     description: "Sent to Ama Asante - 0554321876",
-    amount: 500.0,
+    amount: 500,
     date: "2026-04-13",
     time: "02:45 PM",
     reference: "MOMO-20260413-452",
     status: "completed",
-    icon: "📱",
+    icon: "smartphone",
   },
   {
     id: "txn004",
@@ -109,12 +132,12 @@ export const mockTransactions: Transaction[] = [
     category: "airtime",
     title: "MTN Airtime Top-up",
     description: "Airtime for 0241234567",
-    amount: 50.0,
+    amount: 50,
     date: "2026-04-12",
     time: "09:15 AM",
     reference: "AIR-20260412-321",
     status: "completed",
-    icon: "📞",
+    icon: "phone",
   },
   {
     id: "txn005",
@@ -122,12 +145,12 @@ export const mockTransactions: Transaction[] = [
     category: "transfer",
     title: "Fund Transfer Received",
     description: "From Kwame Boateng - 0209876543",
-    amount: 1200.0,
+    amount: 1200,
     date: "2026-04-11",
     time: "04:30 PM",
     reference: "TRF-20260411-777",
     status: "completed",
-    icon: "↙️",
+    icon: "arrow-down-left",
   },
   {
     id: "txn006",
@@ -135,12 +158,12 @@ export const mockTransactions: Transaction[] = [
     category: "payment",
     title: "DStv Subscription",
     description: "DStv Premium - Smart Card 123456789",
-    amount: 120.0,
+    amount: 120,
     date: "2026-04-10",
     time: "11:00 AM",
     reference: "DSTV-20260410-555",
     status: "completed",
-    icon: "📺",
+    icon: "tv",
   },
   {
     id: "txn007",
@@ -148,12 +171,12 @@ export const mockTransactions: Transaction[] = [
     category: "payment",
     title: "Ghana Water Bill",
     description: "Water bill - Madina area",
-    amount: 75.0,
+    amount: 75,
     date: "2026-04-09",
     time: "01:20 PM",
     reference: "GW-20260409-234",
     status: "completed",
-    icon: "💧",
+    icon: "droplets",
   },
   {
     id: "txn008",
@@ -161,12 +184,12 @@ export const mockTransactions: Transaction[] = [
     category: "transfer",
     title: "BCB Intra-bank Transfer",
     description: "Sent to Akosua Frimpong - 1234509876",
-    amount: 800.0,
+    amount: 800,
     date: "2026-04-08",
     time: "03:10 PM",
     reference: "BCB-20260408-199",
     status: "completed",
-    icon: "🏦",
+    icon: "building-bank",
   },
   {
     id: "txn009",
@@ -174,12 +197,12 @@ export const mockTransactions: Transaction[] = [
     category: "momo",
     title: "Vodafone Cash Transfer",
     description: "Sent to Emmanuel Tetteh - 0204567890",
-    amount: 250.0,
+    amount: 250,
     date: "2026-04-07",
     time: "05:55 PM",
     reference: "VCASH-20260407-811",
     status: "completed",
-    icon: "📲",
+    icon: "smartphone",
   },
   {
     id: "txn010",
@@ -192,7 +215,7 @@ export const mockTransactions: Transaction[] = [
     time: "12:00 AM",
     reference: "INT-20260406-001",
     status: "completed",
-    icon: "💰",
+    icon: "wallet",
   },
   {
     id: "txn011",
@@ -200,12 +223,12 @@ export const mockTransactions: Transaction[] = [
     category: "airtime",
     title: "AirtelTigo Data Bundle",
     description: "5GB data bundle for 0277654321",
-    amount: 35.0,
+    amount: 35,
     date: "2026-04-05",
     time: "07:30 AM",
     reference: "DATA-20260405-678",
     status: "completed",
-    icon: "🌐",
+    icon: "globe",
   },
   {
     id: "txn012",
@@ -213,12 +236,12 @@ export const mockTransactions: Transaction[] = [
     category: "loan",
     title: "Loan Repayment",
     description: "Personal loan installment - April 2026",
-    amount: 450.0,
+    amount: 450,
     date: "2026-04-05",
     time: "09:00 AM",
     reference: "LOAN-20260405-002",
     status: "completed",
-    icon: "🏛️",
+    icon: "landmark",
   },
 ];
 
@@ -231,7 +254,7 @@ export const mockCards: BankCard[] = [
     cardHolder: "KOFI MENSAH",
     expiry: "08/28",
     cvv: "***",
-    balance: 12800.5,
+    balance: INITIAL_CURRENT_BALANCE,
     isActive: true,
     isFrozen: false,
     spendingLimit: 5000,
@@ -245,11 +268,11 @@ export const mockCards: BankCard[] = [
     cardHolder: "KOFI MENSAH",
     expiry: "03/27",
     cvv: "***",
-    balance: 4250.0,
+    balance: INITIAL_SAVINGS_BALANCE,
     isActive: true,
     isFrozen: false,
     spendingLimit: 2000,
-    spentToday: 50.0,
+    spentToday: 50,
   },
 ];
 
@@ -257,9 +280,9 @@ export const mockLoans: Loan[] = [
   {
     id: "loan001",
     type: "Personal Loan",
-    amount: 10000.0,
-    outstanding: 7650.0,
-    monthlyPayment: 450.0,
+    amount: 10000,
+    outstanding: 7650,
+    monthlyPayment: 450,
     interestRate: 18.5,
     startDate: "2025-10-01",
     dueDate: "2027-09-30",
@@ -279,17 +302,17 @@ export const mockNotifications: Notification[] = [
     date: "2026-04-15",
     time: "08:00 AM",
     isRead: false,
-    icon: "💼",
+    icon: "briefcase",
   },
   {
     id: "notif002",
     type: "transaction",
     title: "ECG Bill Paid",
-    message: "GHS 185.50 debited for ECG electricity bill payment.",
+    message: "GHS 185.50 was debited for ECG electricity bill payment.",
     date: "2026-04-14",
     time: "10:23 AM",
     isRead: false,
-    icon: "⚡",
+    icon: "bolt",
   },
   {
     id: "notif003",
@@ -299,7 +322,7 @@ export const mockNotifications: Notification[] = [
     date: "2026-04-13",
     time: "09:00 AM",
     isRead: true,
-    icon: "🔐",
+    icon: "shield-alert",
   },
   {
     id: "notif004",
@@ -309,17 +332,17 @@ export const mockNotifications: Notification[] = [
     date: "2026-04-12",
     time: "11:00 AM",
     isRead: true,
-    icon: "🎁",
+    icon: "gift",
   },
   {
     id: "notif005",
     type: "transaction",
     title: "Transfer Received",
-    message: "GHS 1,200.00 received from Kwame Boateng.",
+    message: "GHS 1,200.00 was received from Kwame Boateng.",
     date: "2026-04-11",
     time: "04:30 PM",
     isRead: true,
-    icon: "💸",
+    icon: "arrow-down-left",
   },
   {
     id: "notif006",
@@ -329,17 +352,17 @@ export const mockNotifications: Notification[] = [
     date: "2026-04-10",
     time: "08:00 AM",
     isRead: true,
-    icon: "📄",
+    icon: "file-text",
   },
   {
     id: "notif007",
     type: "transaction",
     title: "DStv Subscription Renewed",
-    message: "GHS 120.00 debited for DStv Premium subscription renewal.",
+    message: "GHS 120.00 was debited for DStv Premium subscription renewal.",
     date: "2026-04-10",
     time: "11:00 AM",
     isRead: true,
-    icon: "📺",
+    icon: "tv",
   },
   {
     id: "notif008",
@@ -350,7 +373,7 @@ export const mockNotifications: Notification[] = [
     date: "2026-04-08",
     time: "02:00 PM",
     isRead: true,
-    icon: "🔒",
+    icon: "lock",
   },
   {
     id: "notif009",
@@ -361,7 +384,7 @@ export const mockNotifications: Notification[] = [
     date: "2026-04-07",
     time: "10:00 AM",
     isRead: true,
-    icon: "🌟",
+    icon: "sparkles",
   },
   {
     id: "notif010",
@@ -371,6 +394,6 @@ export const mockNotifications: Notification[] = [
     date: "2026-04-06",
     time: "09:00 AM",
     isRead: true,
-    icon: "⏰",
+    icon: "clock",
   },
 ];
