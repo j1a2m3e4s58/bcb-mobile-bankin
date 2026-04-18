@@ -3,7 +3,7 @@ services:
     name: bcb-mobile-bankin
     runtime: static
     rootDir: .
-    buildCommand: corepack enable && corepack pnpm install --frozen-lockfile && corepack pnpm --dir src/frontend build
+    buildCommand: corepack pnpm install --frozen-lockfile && corepack pnpm --dir src/frontend build
     staticPublishPath: src/frontend/dist
     routes:
       - type: rewrite
