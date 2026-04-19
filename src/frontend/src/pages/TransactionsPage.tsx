@@ -29,6 +29,8 @@ import { toast } from "sonner";
 
 type FilterChip = "all" | "transfers" | "payments" | "deposits" | "withdrawals";
 type DateRange = "this_week" | "this_month" | "last_3_months" | "custom";
+type StatusFilter = "all" | Transaction["status"];
+type CategoryFilter = "all" | TransactionCategory;
 
 const FILTER_CHIPS: { value: FilterChip; label: string }[] = [
   { value: "all", label: "All" },
@@ -198,9 +200,11 @@ function buildTransactionRows(transactions: Transaction[]) {
 function ReceiptModal({
   txn,
   onClose,
+  onReport,
 }: {
   txn: Transaction;
   onClose: () => void;
+  onReport: (reason: string, note: string) => string;
 }) {
   const [reported, setReported] = useState(false);
   const [issueReason, setIssueReason] = useState("Wrong amount");
@@ -221,9 +225,10 @@ function ReceiptModal({
   ];
 
   const handleReportIssue = () => {
+    const ticketId = onReport(issueReason, issueNote);
     setReported(true);
     toast.success("Dispute submitted", {
-      description: `Ticket opened for ${txn.reference}: ${issueReason}.`,
+      description: `Ticket ${ticketId} opened for ${txn.reference}.`,
     });
   };
 
@@ -306,9 +311,11 @@ function ReceiptModal({
 function TransactionDetailSheet({
   txn,
   onClose,
+  onReport,
 }: {
   txn: Transaction;
   onClose: () => void;
+  onReport: (txn: Transaction, reason: string, note: string) => string;
 }) {
   const [showReceipt, setShowReceipt] = useState(false);
   const [reported, setReported] = useState(false);
@@ -329,9 +336,10 @@ function TransactionDetailSheet({
   ];
 
   const handleReportIssue = () => {
+    const ticketId = onReport(txn, "Customer reported from transaction details", "");
     setReported(true);
     toast.success("Issue reported", {
-      description: `Support ticket opened for ${txn.reference}.`,
+      description: `Ticket ${ticketId} opened for ${txn.reference}.`,
     });
   };
 
@@ -433,7 +441,13 @@ function TransactionDetailSheet({
       </motion.div>
 
       <AnimatePresence>
-        {showReceipt && <ReceiptModal txn={txn} onClose={() => setShowReceipt(false)} />}
+        {showReceipt && (
+          <ReceiptModal
+            txn={txn}
+            onClose={() => setShowReceipt(false)}
+            onReport={(reason, note) => onReport(txn, reason, note)}
+          />
+        )}
       </AnimatePresence>
     </>
   );
@@ -441,8 +455,13 @@ function TransactionDetailSheet({
 
 export default function TransactionsPage() {
   const transactions = useBankStore((state) => state.transactions);
+  const reportDispute = useBankStore((state) => state.reportDispute);
   const [filter, setFilter] = useState<FilterChip>("all");
   const [dateRange, setDateRange] = useState<DateRange>("last_3_months");
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
+  const [minAmount, setMinAmount] = useState("");
+  const [maxAmount, setMaxAmount] = useState("");
   const [search, setSearch] = useState("");
   const [showDateMenu, setShowDateMenu] = useState(false);
   const [showExportMenu, setShowExportMenu] = useState(false);
@@ -458,6 +477,10 @@ export default function TransactionsPage() {
     return transactions.filter((txn) => {
       if (new Date(txn.date) < cutoff) return false;
       if (!matchesChip(txn, filter)) return false;
+      if (statusFilter !== "all" && txn.status !== statusFilter) return false;
+      if (categoryFilter !== "all" && txn.category !== categoryFilter) return false;
+      if (minAmount && txn.amount < Number(minAmount)) return false;
+      if (maxAmount && txn.amount > Number(maxAmount)) return false;
 
       if (
         query &&
@@ -470,7 +493,7 @@ export default function TransactionsPage() {
 
       return true;
     });
-  }, [transactions, filter, dateRange, search]);
+  }, [transactions, filter, dateRange, search, statusFilter, categoryFilter, minAmount, maxAmount]);
 
   const grouped = useMemo(() => {
     const map = new Map<string, { label: string; items: Transaction[] }>();
@@ -516,6 +539,17 @@ export default function TransactionsPage() {
     ]);
     downloadSimplePdf("BCB-transactions.pdf", "BCB Transaction Statement", lines);
     setShowExportMenu(false);
+  };
+
+  const handleReportDispute = (txn: Transaction, reason: string, note: string) => {
+    const ticket = reportDispute({
+      reference: txn.reference,
+      transactionTitle: txn.title,
+      amount: txn.amount,
+      reason,
+      note,
+    });
+    return ticket.id;
   };
 
   return (
@@ -674,6 +708,47 @@ export default function TransactionsPage() {
             </AnimatePresence>
           </div>
         </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          <select
+            value={statusFilter}
+            onChange={(event) => setStatusFilter(event.target.value as StatusFilter)}
+            className="h-10 rounded-xl border border-input bg-card px-3 text-xs"
+            data-ocid="transactions.status_filter"
+          >
+            <option value="all">All statuses</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+            <option value="failed">Failed</option>
+          </select>
+          <select
+            value={categoryFilter}
+            onChange={(event) => setCategoryFilter(event.target.value as CategoryFilter)}
+            className="h-10 rounded-xl border border-input bg-card px-3 text-xs"
+            data-ocid="transactions.category_filter"
+          >
+            <option value="all">All categories</option>
+            {(Object.keys(CATEGORY_CONFIG) as TransactionCategory[]).map((category) => (
+              <option key={category} value={category}>{CATEGORY_CONFIG[category].label}</option>
+            ))}
+          </select>
+          <Input
+            value={minAmount}
+            onChange={(event) => setMinAmount(event.target.value)}
+            placeholder="Min amount"
+            inputMode="decimal"
+            className="h-10 text-xs"
+            data-ocid="transactions.min_amount_filter"
+          />
+          <Input
+            value={maxAmount}
+            onChange={(event) => setMaxAmount(event.target.value)}
+            placeholder="Max amount"
+            inputMode="decimal"
+            className="h-10 text-xs"
+            data-ocid="transactions.max_amount_filter"
+          />
+        </div>
       </div>
 
       <div className="flex-1 px-4 py-4">
@@ -811,6 +886,7 @@ export default function TransactionsPage() {
           <TransactionDetailSheet
             txn={selectedTxn}
             onClose={() => setSelectedTxn(null)}
+            onReport={handleReportDispute}
           />
         )}
       </AnimatePresence>

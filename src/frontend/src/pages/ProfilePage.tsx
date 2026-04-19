@@ -23,6 +23,7 @@ import {
   ChevronRight,
   ClipboardCheck,
   Clock,
+  FileText,
   Fingerprint,
   Globe,
   Headphones,
@@ -602,6 +603,20 @@ export default function ProfilePage() {
             desc="Find verified branch contacts"
             ocid="profile.branches_button"
             onClick={() => navigate({ to: "/branches" })}
+          />
+          <RowItem
+            icon={<FileText className="h-5 w-5" />}
+            label="Account Statement"
+            desc="Download statement CSV or PDF"
+            ocid="profile.statements_button"
+            onClick={() => navigate({ to: "/statements" })}
+          />
+          <RowItem
+            icon={<AlertCircle className="h-5 w-5" />}
+            label="Dispute Tracking"
+            desc="Track reported transaction issues"
+            ocid="profile.disputes_button"
+            onClick={() => navigate({ to: "/disputes" })}
           />
           <RowItem
             icon={<ClipboardCheck className="h-5 w-5" />}

@@ -33,6 +33,18 @@ interface ActivityInput {
   };
 }
 
+export interface DisputeTicket {
+  id: string;
+  reference: string;
+  transactionTitle: string;
+  amount: number;
+  reason: string;
+  note: string;
+  status: "open" | "under_review" | "resolved";
+  createdAt: string;
+  updatedAt: string;
+}
+
 interface BankState {
   transactions: Transaction[];
   cards: BankCard[];
@@ -42,6 +54,7 @@ interface BankState {
   currentBalance: number;
   savingsBalance: number;
   walletBalance: number;
+  disputes: DisputeTicket[];
 
   toggleFreezeCard: (cardId: string) => void;
   setSpendingLimit: (cardId: string, limit: number) => void;
@@ -53,6 +66,7 @@ interface BankState {
   topUpSavings: (amount: number, reference: string) => Transaction;
   transferAccountToWallet: (amount: number, reference: string, note?: string) => Transaction;
   transferWalletToAccount: (amount: number, reference: string, note?: string) => Transaction;
+  reportDispute: (input: Omit<DisputeTicket, "id" | "status" | "createdAt" | "updatedAt">) => DisputeTicket;
 }
 
 function nowDate(): string {
@@ -111,6 +125,7 @@ export const useBankStore = create<BankState>((set, get) => ({
   currentBalance: INITIAL_CURRENT_BALANCE,
   savingsBalance: INITIAL_SAVINGS_BALANCE,
   walletBalance: 350.0,
+  disputes: [],
 
   toggleFreezeCard: (cardId: string) => {
     set((state) => ({
@@ -356,5 +371,38 @@ export const useBankStore = create<BankState>((set, get) => ({
     });
 
     return transaction;
+  },
+
+  reportDispute: (input) => {
+    const now = new Date().toISOString();
+    const ticket: DisputeTicket = {
+      ...input,
+      id: `DSP-${Date.now().toString().slice(-6)}`,
+      status: "open",
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    set((state) => {
+      const notification: Notification = {
+        id: buildNotificationId(),
+        type: "system",
+        title: "Dispute Submitted",
+        message: `Ticket ${ticket.id} was opened for ${ticket.reference}.`,
+        date: nowDate(),
+        time: nowTime(),
+        isRead: false,
+        icon: "shield-alert",
+      };
+      const notifications = [notification, ...state.notifications];
+
+      return {
+        disputes: [ticket, ...state.disputes],
+        notifications,
+        unreadCount: notifications.filter((n) => !n.isRead).length,
+      };
+    });
+
+    return ticket;
   },
 }));

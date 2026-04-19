@@ -25,11 +25,14 @@ import {
   CheckCircle2,
   ChevronRight,
   CreditCard,
+  Globe2,
   Plus,
   ShieldAlert,
+  SmartphoneNfc,
   SlidersHorizontal,
   Snowflake,
   Unlock,
+  Wifi,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
@@ -561,8 +564,16 @@ export default function CardsPage() {
     "debit" | "credit" | null
   >(null);
   const [pinOpen, setPinOpen] = useState(false);
+  const [pendingControl, setPendingControl] = useState<string | null>(null);
+  const [cardControls, setCardControls] = useState<Record<string, Record<string, boolean>>>({});
 
   const activeCard = cards.find((card) => card.id === activeCardId) ?? cards[0];
+  const activeControls = cardControls[activeCard?.id ?? ""] ?? {
+    online: true,
+    international: false,
+    contactless: true,
+    atm: true,
+  };
 
   const handleFreezeToggle = () => {
     setPinOpen(true);
@@ -578,6 +589,28 @@ export default function CardsPage() {
         ? "Your card is active and ready for transactions."
         : "All transactions on this card have been paused.",
     });
+  };
+
+  const handleControlToggle = (control: string) => {
+    setPendingControl(control);
+    setPinOpen(true);
+  };
+
+  const handleControlPinConfirmed = () => {
+    if (!activeCard || !pendingControl) return;
+    setCardControls((current) => {
+      const existing = current[activeCard.id] ?? activeControls;
+      return {
+        ...current,
+        [activeCard.id]: {
+          ...existing,
+          [pendingControl]: !existing[pendingControl],
+        },
+      };
+    });
+    toast.success("Card control updated");
+    setPendingControl(null);
+    setPinOpen(false);
   };
 
   return (
@@ -730,6 +763,36 @@ export default function CardsPage() {
                   <ChevronRight className="h-4 w-4 text-muted-foreground" />
                 </button>
               </div>
+
+              <div className="overflow-hidden rounded-2xl bg-card shadow-card">
+                <div className="border-b border-border px-4 py-3">
+                  <p className="text-sm font-semibold text-foreground">Card controls</p>
+                  <p className="text-xs text-muted-foreground">PIN required for every control change.</p>
+                </div>
+                {[
+                  { key: "online", label: "Online payments", desc: "Allow web and app purchases", icon: Wifi },
+                  { key: "international", label: "International use", desc: "Allow transactions outside Ghana", icon: Globe2 },
+                  { key: "contactless", label: "Contactless payments", desc: "Tap to pay at POS terminals", icon: SmartphoneNfc },
+                  { key: "atm", label: "ATM withdrawals", desc: "Allow cash withdrawals", icon: CreditCard },
+                ].map(({ key, label, desc, icon: Icon }) => (
+                  <div key={key} className="flex items-center justify-between border-b border-border px-4 py-4 last:border-b-0">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">{label}</p>
+                        <p className="text-xs text-muted-foreground">{desc}</p>
+                      </div>
+                    </div>
+                    <Switch
+                      checked={activeControls[key]}
+                      onCheckedChange={() => handleControlToggle(key)}
+                      aria-label={label}
+                    />
+                  </div>
+                ))}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -800,11 +863,14 @@ export default function CardsPage() {
 
       <PinConfirmDialog
         open={pinOpen}
-        title={activeCard?.isFrozen ? "Confirm Card Unfreeze" : "Confirm Card Freeze"}
-        description="Enter your 4-digit PIN to change this card's freeze status."
-        confirmLabel={activeCard?.isFrozen ? "Unfreeze Card" : "Freeze Card"}
-        onOpenChange={setPinOpen}
-        onConfirm={handleFreezePinConfirmed}
+        title={pendingControl ? "Confirm Card Control" : activeCard?.isFrozen ? "Confirm Card Unfreeze" : "Confirm Card Freeze"}
+        description={pendingControl ? "Enter your 4-digit PIN to update this card control." : "Enter your 4-digit PIN to change this card's freeze status."}
+        confirmLabel={pendingControl ? "Update Control" : activeCard?.isFrozen ? "Unfreeze Card" : "Freeze Card"}
+        onOpenChange={(open) => {
+          setPinOpen(open);
+          if (!open) setPendingControl(null);
+        }}
+        onConfirm={pendingControl ? handleControlPinConfirmed : handleFreezePinConfirmed}
       />
     </div>
   );

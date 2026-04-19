@@ -23,6 +23,14 @@ export function AppBar({
   const navigate = useNavigate();
   const unreadCount = useBankStore((s) => s.unreadCount);
 
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      window.history.back();
+      return;
+    }
+    navigate({ to: "/dashboard" });
+  };
+
   return (
     <header
       className={cn(
@@ -36,7 +44,7 @@ export function AppBar({
           <button
             type="button"
             data-ocid="appbar.back_button"
-            onClick={() => navigate({ to: ".." })}
+            onClick={handleBack}
             className="flex items-center justify-center w-8 h-8 rounded-full bg-muted hover:bg-muted/80 transition-smooth"
             aria-label="Go back"
           >

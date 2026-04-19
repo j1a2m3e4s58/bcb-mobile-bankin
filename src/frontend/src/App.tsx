@@ -4,6 +4,7 @@ import AdminPage from "@/pages/AdminPage";
 import BranchesPage from "@/pages/BranchesPage";
 import CardsPage from "@/pages/CardsPage";
 import DashboardPage from "@/pages/DashboardPage";
+import DisputesPage from "@/pages/DisputesPage";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import LoansPage from "@/pages/LoansPage";
 import LoginPage from "@/pages/LoginPage";
@@ -13,6 +14,7 @@ import PaymentsPage from "@/pages/PaymentsPage";
 import ProfilePage from "@/pages/ProfilePage";
 import RegisterPage from "@/pages/RegisterPage";
 import SplashPage from "@/pages/SplashPage";
+import StatementsPage from "@/pages/StatementsPage";
 import SupportPage from "@/pages/SupportPage";
 import TransactionsPage from "@/pages/TransactionsPage";
 import TransfersPage from "@/pages/TransfersPage";
@@ -109,6 +111,18 @@ const transactionsRoute = createRoute({
   component: TransactionsPage,
 });
 
+const statementsRoute = createRoute({
+  getParentRoute: () => appLayoutRoute,
+  path: "/statements",
+  component: StatementsPage,
+});
+
+const disputesRoute = createRoute({
+  getParentRoute: () => appLayoutRoute,
+  path: "/disputes",
+  component: DisputesPage,
+});
+
 const cardsRoute = createRoute({
   getParentRoute: () => appLayoutRoute,
   path: "/cards",
@@ -162,6 +176,8 @@ const routeTree = rootRoute.addChildren([
     transfersRoute,
     paymentsRoute,
     transactionsRoute,
+    statementsRoute,
+    disputesRoute,
     cardsRoute,
     loansRoute,
     notificationsRoute,

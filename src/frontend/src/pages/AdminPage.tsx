@@ -85,6 +85,7 @@ export default function AdminPage() {
   const user = useAuthStore((state) => state.user);
   const loans = useBankStore((state) => state.loans);
   const transactions = useBankStore((state) => state.transactions);
+  const customerDisputes = useBankStore((state) => state.disputes);
   const pendingApplications = applications.filter((item) => item.status === "pending_review");
 
   return (
@@ -102,7 +103,7 @@ export default function AdminPage() {
           <StatCard label="Applications" value={String(applications.length)} icon={<UserRoundCheck className="h-4 w-4" />} />
           <StatCard label="Loans" value={String(loans.length)} icon={<Landmark className="h-4 w-4" />} />
           <StatCard label="Tickets" value={String(SUPPORT_TICKETS.length)} icon={<Headphones className="h-4 w-4" />} />
-          <StatCard label="Disputes" value={String(DISPUTES.length)} icon={<AlertTriangle className="h-4 w-4" />} />
+          <StatCard label="Disputes" value={String(customerDisputes.length + DISPUTES.length)} icon={<AlertTriangle className="h-4 w-4" />} />
         </div>
 
         <ReviewSection title="New Account Applications" icon={<ClipboardCheck className="h-5 w-5" />}>
@@ -158,6 +159,17 @@ export default function AdminPage() {
         </ReviewSection>
 
         <ReviewSection title="Disputed Transactions" icon={<AlertTriangle className="h-5 w-5" />}>
+          {customerDisputes.map((dispute) => (
+            <div key={dispute.id} className="rounded-2xl border border-border p-3">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-sm font-semibold text-foreground">{dispute.reason}</p>
+                  <p className="text-xs text-muted-foreground">{dispute.reference} | {dispute.transactionTitle}</p>
+                </div>
+                <Badge className="border-0 bg-destructive/10 text-destructive">{dispute.status.replace("_", " ")}</Badge>
+              </div>
+            </div>
+          ))}
           {DISPUTES.map((dispute) => (
             <div key={dispute.id} className="rounded-2xl border border-border p-3">
               <div className="flex items-start justify-between gap-3">

@@ -20,12 +20,23 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
 type PaymentCategory = "ecg" | "water" | "dstv" | "airtime";
+type AirtimeMode = "airtime" | "data";
 
 interface PaymentState {
   category: PaymentCategory;
   reference: string;
   amount: string;
   network: TelecomBrand;
+  airtimeMode: AirtimeMode;
+  dataBundle: string;
+}
+
+interface SavedBiller {
+  id: string;
+  category: PaymentCategory;
+  label: string;
+  reference: string;
+  network?: TelecomBrand;
 }
 
 interface CompletedPayment {
@@ -77,6 +88,19 @@ const CATEGORY_META = {
     minReferenceLength: 10,
   },
 };
+
+const DATA_BUNDLES = [
+  { label: "1GB - 7 days", amount: 10 },
+  { label: "2.5GB - 14 days", amount: 20 },
+  { label: "5GB - 30 days", amount: 45 },
+  { label: "10GB - 30 days", amount: 80 },
+];
+
+const INITIAL_BILLERS: SavedBiller[] = [
+  { id: "bill_1", category: "ecg", label: "Home ECG Meter", reference: "42100987" },
+  { id: "bill_2", category: "dstv", label: "Family DStv", reference: "123456789" },
+  { id: "bill_3", category: "airtime", label: "My MTN Line", reference: "0241234567", network: "MTN" },
+];
 
 function generateRef() {
   return `BCB${Math.floor(1_000_000_000 + Math.random() * 9_000_000_000)}`;
@@ -144,6 +168,9 @@ function PaymentReceipt({
     { label: "Service", value: meta.label },
     { label: meta.referenceLabel, value: completed.state.reference },
     ...(completed.state.category === "airtime" ? [{ label: "Network", value: completed.state.network }] : []),
+    ...(completed.state.category === "airtime" && completed.state.airtimeMode === "data"
+      ? [{ label: "Data Bundle", value: completed.state.dataBundle }]
+      : []),
     { label: "Amount", value: formatGHS(amount), tone: "danger" as const },
     { label: "Status", value: "Completed" },
   ];
@@ -180,7 +207,10 @@ export default function PaymentsPage() {
     reference: "",
     amount: "",
     network: "MTN",
+    airtimeMode: "airtime",
+    dataBundle: "",
   });
+  const [savedBillers, setSavedBillers] = useState(INITIAL_BILLERS);
 
   const meta = CATEGORY_META[payment.category];
   const errors = useMemo(
@@ -191,6 +221,35 @@ export default function PaymentsPage() {
 
   const updateField = (field: keyof PaymentState, value: string) => {
     setPayment((current) => ({ ...current, [field]: value }));
+  };
+
+  const useBiller = (biller: SavedBiller) => {
+    setPayment((current) => ({
+      ...current,
+      category: biller.category,
+      reference: biller.reference,
+      network: biller.network ?? current.network,
+    }));
+    setTouched(false);
+  };
+
+  const saveCurrentBiller = () => {
+    if (!payment.reference.trim()) {
+      toast.error("Enter a reference before saving this biller.");
+      return;
+    }
+    const biller: SavedBiller = {
+      id: `bill_${Date.now()}`,
+      category: payment.category,
+      label:
+        payment.category === "airtime"
+          ? `${payment.network} ${payment.airtimeMode === "data" ? "Data" : "Airtime"}`
+          : `${meta.label} Favorite`,
+      reference: payment.reference,
+      network: payment.category === "airtime" ? payment.network : undefined,
+    };
+    setSavedBillers((current) => [biller, ...current]);
+    toast.success("Biller saved");
   };
 
   const handleContinue = () => {
@@ -210,18 +269,26 @@ export default function PaymentsPage() {
     const ref = generateRef();
     const date = today();
     const time = nowTime();
+    const serviceTitle =
+      payment.category === "airtime" && payment.airtimeMode === "data"
+        ? `${payment.network} Data Bundle`
+        : `${meta.label} Payment`;
+
     recordActivity({
       type: "debit",
       category: meta.category,
-      title: `${meta.label} Payment`,
-      description: payment.reference,
+      title: serviceTitle,
+      description:
+        payment.category === "airtime" && payment.airtimeMode === "data"
+          ? `${payment.dataBundle} for ${payment.reference}`
+          : payment.reference,
       amount: Number(payment.amount),
       reference: ref,
       icon: meta.iconKey,
       notification: {
         type: "transaction",
         title: "Payment Completed",
-        message: `${formatGHS(Number(payment.amount))} was paid for ${meta.label}.`,
+        message: `${formatGHS(Number(payment.amount))} was paid for ${serviceTitle}.`,
       },
     });
 
@@ -230,7 +297,7 @@ export default function PaymentsPage() {
     setConfirmOpen(false);
     setCompleted({ state: payment, reference: ref, date, time });
     toast.success("Payment completed", {
-      description: `${formatGHS(Number(payment.amount))} paid for ${meta.label}`,
+      description: `${formatGHS(Number(payment.amount))} paid for ${serviceTitle}`,
     });
   };
 
@@ -248,6 +315,8 @@ export default function PaymentsPage() {
               reference: "",
               amount: "",
               network: "MTN",
+              airtimeMode: "airtime",
+              dataBundle: "",
             });
           }}
         />
@@ -260,6 +329,29 @@ export default function PaymentsPage() {
       <AppBar title="Payments" showBack />
 
       <div className="flex-1 px-4 py-5">
+        <div className="mb-4 rounded-3xl bg-card p-4 shadow-card">
+          <div className="mb-3 flex items-center justify-between">
+            <div>
+              <h2 className="font-display text-sm font-semibold">Saved Billers</h2>
+              <p className="text-xs text-muted-foreground">Tap a favorite to fill the form.</p>
+            </div>
+            <Button variant="outline" size="sm" onClick={saveCurrentBiller}>Save</Button>
+          </div>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {savedBillers.map((biller) => (
+              <button
+                key={biller.id}
+                type="button"
+                onClick={() => useBiller(biller)}
+                className="min-w-[150px] rounded-2xl border border-border bg-background p-3 text-left"
+              >
+                <p className="truncate text-xs font-semibold text-foreground">{biller.label}</p>
+                <p className="mt-1 truncate text-[11px] text-muted-foreground">{biller.reference}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="rounded-3xl bg-card p-5 shadow-card">
           <div className="grid grid-cols-2 gap-3">
             {(Object.keys(CATEGORY_META) as PaymentCategory[]).map((category) => (
@@ -318,6 +410,42 @@ export default function PaymentsPage() {
                     </button>
                   ))}
                 </div>
+                <div className="grid grid-cols-2 gap-2 pt-2">
+                  {(["airtime", "data"] as AirtimeMode[]).map((mode) => (
+                    <button
+                      key={mode}
+                      type="button"
+                      onClick={() => updateField("airtimeMode", mode)}
+                      className={cn(
+                        "rounded-xl border px-3 py-2 text-sm font-semibold capitalize",
+                        payment.airtimeMode === mode ? "border-primary bg-primary/8 text-primary" : "border-border bg-background",
+                      )}
+                    >
+                      {mode}
+                    </button>
+                  ))}
+                </div>
+                {payment.airtimeMode === "data" && (
+                  <div className="grid grid-cols-2 gap-2 pt-2">
+                    {DATA_BUNDLES.map((bundle) => (
+                      <button
+                        key={bundle.label}
+                        type="button"
+                        onClick={() => {
+                          updateField("dataBundle", bundle.label);
+                          updateField("amount", String(bundle.amount));
+                        }}
+                        className={cn(
+                          "rounded-xl border px-3 py-2 text-left text-xs font-semibold",
+                          payment.dataBundle === bundle.label ? "border-primary bg-primary/8 text-primary" : "border-border bg-background",
+                        )}
+                      >
+                        {bundle.label}
+                        <span className="block text-[11px] text-muted-foreground">{formatGHS(bundle.amount)}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
