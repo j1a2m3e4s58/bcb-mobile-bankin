@@ -3,11 +3,12 @@ import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { formatGHS } from "@/lib/formatters";
+import { formatDate, formatGHS } from "@/lib/formatters";
 import { cn } from "@/lib/utils";
 import { useBankStore } from "@/store/bank-store";
 import {
   CheckCircle2,
+  Copy,
   Droplets,
   Loader2,
   Smartphone,
@@ -25,7 +26,13 @@ interface PaymentState {
   reference: string;
   amount: string;
   network: "MTN" | "Vodafone" | "AirtelTigo";
-  packageName: string;
+}
+
+interface CompletedPayment {
+  state: PaymentState;
+  reference: string;
+  date: string;
+  time: string;
 }
 
 const CATEGORY_META = {
@@ -37,6 +44,7 @@ const CATEGORY_META = {
     category: "payment" as const,
     presets: [20, 50, 100, 200],
     referenceLabel: "Meter Number",
+    minReferenceLength: 6,
   },
   water: {
     label: "Ghana Water",
@@ -46,6 +54,7 @@ const CATEGORY_META = {
     category: "payment" as const,
     presets: [20, 40, 80, 120],
     referenceLabel: "Account Number",
+    minReferenceLength: 6,
   },
   dstv: {
     label: "DStv",
@@ -55,6 +64,7 @@ const CATEGORY_META = {
     category: "payment" as const,
     presets: [85, 120, 180, 220],
     referenceLabel: "Smart Card Number",
+    minReferenceLength: 8,
   },
   airtime: {
     label: "Airtime & Data",
@@ -64,6 +74,7 @@ const CATEGORY_META = {
     category: "airtime" as const,
     presets: [1, 2, 5, 10, 20, 50],
     referenceLabel: "Phone Number",
+    minReferenceLength: 10,
   },
 };
 
@@ -71,40 +82,104 @@ function generateRef() {
   return `BCB${Math.floor(1_000_000_000 + Math.random() * 9_000_000_000)}`;
 }
 
-function PaymentSuccess({
-  state,
-  reference,
+function today() {
+  return new Date().toISOString().split("T")[0];
+}
+
+function nowTime() {
+  return new Date().toLocaleTimeString("en-GH", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+}
+
+function digitsOnly(value: string) {
+  return value.replace(/\D/g, "");
+}
+
+function isValidGhanaPhone(value: string) {
+  const digits = digitsOnly(value);
+  return /^(0\d{9}|233\d{9})$/.test(digits);
+}
+
+function validatePayment(payment: PaymentState, currentBalance: number) {
+  const meta = CATEGORY_META[payment.category];
+  const amount = Number(payment.amount);
+  const errors: Partial<Record<"reference" | "amount" | "balance", string>> = {};
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    errors.amount = "Enter an amount greater than GHS 0.00.";
+  } else if (amount > currentBalance) {
+    errors.balance = `Insufficient balance. Available: ${formatGHS(currentBalance)}.`;
+  }
+
+  if (payment.category === "airtime") {
+    if (!isValidGhanaPhone(payment.reference)) {
+      errors.reference = "Enter a valid Ghana mobile number, e.g. 0241234567.";
+    }
+  } else if (digitsOnly(payment.reference).length < meta.minReferenceLength) {
+    errors.reference = `${meta.referenceLabel} must be at least ${meta.minReferenceLength} digits.`;
+  }
+
+  return errors;
+}
+
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return <p className="text-xs font-medium text-destructive">{message}</p>;
+}
+
+function PaymentReceipt({
+  completed,
   onDone,
 }: {
-  state: PaymentState;
-  reference: string;
+  completed: CompletedPayment;
   onDone: () => void;
 }) {
-  const meta = CATEGORY_META[state.category];
+  const [copied, setCopied] = useState(false);
+  const meta = CATEGORY_META[completed.state.category];
+  const amount = Number(completed.state.amount);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(completed.reference);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {}
+  };
+
+  const rows = [
+    ["Reference", completed.reference],
+    ["Date", `${formatDate(completed.date)} at ${completed.time}`],
+    ["Service", meta.label],
+    [meta.referenceLabel, completed.state.reference],
+    ["Amount", formatGHS(amount)],
+    ["Status", "Completed"],
+  ];
+
   return (
     <div className="px-4 py-8">
       <div className="mx-auto flex max-w-md flex-col items-center rounded-3xl bg-card p-6 text-center shadow-card">
         <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
           <CheckCircle2 className="h-10 w-10 text-primary" />
         </div>
-        <h2 className="text-2xl font-bold font-display">Payment Successful</h2>
+        <h2 className="font-display text-2xl font-bold">Payment Successful</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           {meta.label} paid successfully.
         </p>
 
         <div className="mt-6 w-full rounded-2xl border border-border p-4 text-left">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">Service</span>
-            <span className="font-medium">{meta.label}</span>
-          </div>
-          <div className="mt-3 flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">Amount</span>
-            <span className="font-semibold text-primary">{formatGHS(Number(state.amount))}</span>
-          </div>
-          <div className="mt-3 flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">Reference</span>
-            <span className="font-mono text-xs font-semibold">{reference}</span>
-          </div>
+          {rows.map(([label, value]) => (
+            <div key={label} className="flex justify-between gap-4 border-b border-border/50 py-2 text-sm last:border-b-0">
+              <span className="text-muted-foreground">{label}</span>
+              <span className="text-right font-semibold">{value}</span>
+            </div>
+          ))}
+          <button type="button" onClick={handleCopy} className="mt-3 text-xs font-semibold text-primary">
+            <Copy className="mr-1 inline h-3.5 w-3.5" />
+            {copied ? "Reference copied" : "Copy reference"}
+          </button>
         </div>
 
         <Button className="mt-6 w-full" onClick={onDone}>
@@ -117,28 +192,35 @@ function PaymentSuccess({
 
 export default function PaymentsPage() {
   const recordActivity = useBankStore((state) => state.recordActivity);
+  const currentBalance = useBankStore((state) => state.currentBalance);
 
   const [busy, setBusy] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [pinOpen, setPinOpen] = useState(false);
-  const [successRef, setSuccessRef] = useState("");
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [completed, setCompleted] = useState<CompletedPayment | null>(null);
+  const [touched, setTouched] = useState(false);
   const [payment, setPayment] = useState<PaymentState>({
     category: "ecg",
     reference: "",
     amount: "",
     network: "MTN",
-    packageName: "",
   });
 
   const meta = CATEGORY_META[payment.category];
-  const canContinue = useMemo(
-    () => payment.reference.trim().length >= 4 && Number(payment.amount) > 0,
-    [payment.amount, payment.reference],
+  const errors = useMemo(
+    () => validatePayment(payment, currentBalance),
+    [currentBalance, payment],
   );
+  const canContinue = Object.keys(errors).length === 0;
 
   const updateField = (field: keyof PaymentState, value: string) => {
     setPayment((current) => ({ ...current, [field]: value }));
+  };
+
+  const handleContinue = () => {
+    setTouched(true);
+    if (!canContinue) return;
+    setConfirmOpen(true);
   };
 
   const handleConfirm = () => {
@@ -150,6 +232,8 @@ export default function PaymentsPage() {
     await new Promise((resolve) => setTimeout(resolve, 1200));
 
     const ref = generateRef();
+    const date = today();
+    const time = nowTime();
     recordActivity({
       type: "debit",
       category: meta.category,
@@ -168,28 +252,26 @@ export default function PaymentsPage() {
     setBusy(false);
     setPinOpen(false);
     setConfirmOpen(false);
-    setSuccessRef(ref);
-    setShowSuccess(true);
+    setCompleted({ state: payment, reference: ref, date, time });
     toast.success("Payment completed", {
       description: `${formatGHS(Number(payment.amount))} paid for ${meta.label}`,
     });
   };
 
-  if (showSuccess) {
+  if (completed) {
     return (
       <div className="flex min-h-full flex-col bg-background">
-        <AppBar title="Payment Successful" showBack={false} showNotifications={false} />
-        <PaymentSuccess
-          state={payment}
-          reference={successRef}
+        <AppBar title="Payment Receipt" showBack={false} showNotifications={false} />
+        <PaymentReceipt
+          completed={completed}
           onDone={() => {
-            setShowSuccess(false);
+            setCompleted(null);
+            setTouched(false);
             setPayment({
               category: "ecg",
               reference: "",
               amount: "",
               network: "MTN",
-              packageName: "",
             });
           }}
         />
@@ -208,7 +290,10 @@ export default function PaymentsPage() {
               <button
                 key={category}
                 type="button"
-                onClick={() => updateField("category", category)}
+                onClick={() => {
+                  updateField("category", category);
+                  setTouched(false);
+                }}
                 className={cn(
                   "rounded-2xl border p-4 text-left transition-smooth",
                   payment.category === category
@@ -253,6 +338,7 @@ export default function PaymentsPage() {
                 placeholder={`Enter ${meta.referenceLabel.toLowerCase()}`}
                 className="h-12"
               />
+              <FieldError message={touched ? errors.reference : undefined} />
             </div>
 
             <div className="space-y-1.5">
@@ -291,6 +377,7 @@ export default function PaymentsPage() {
                   inputMode="decimal"
                 />
               </div>
+              <FieldError message={touched ? errors.amount ?? errors.balance : undefined} />
             </div>
 
             <div className="rounded-2xl bg-muted/50 p-4">
@@ -306,7 +393,7 @@ export default function PaymentsPage() {
               </div>
             </div>
 
-            <Button className="w-full" disabled={!canContinue} onClick={() => setConfirmOpen(true)}>
+            <Button className="w-full" onClick={handleContinue}>
               Continue to Confirm
             </Button>
           </div>
@@ -331,7 +418,7 @@ export default function PaymentsPage() {
               onClick={(event) => event.stopPropagation()}
             >
               <div className="mx-auto mb-5 h-1 w-10 rounded-full bg-border" />
-              <h2 className="text-lg font-bold font-display">Confirm Payment</h2>
+              <h2 className="font-display text-lg font-bold">Confirm Payment</h2>
               <p className="mb-5 text-sm text-muted-foreground">{meta.label}</p>
 
               <div className="space-y-3 rounded-2xl border border-border p-4">
@@ -341,7 +428,7 @@ export default function PaymentsPage() {
                 </div>
                 <div className="flex items-center justify-between gap-3 text-sm">
                   <span className="text-muted-foreground">{meta.referenceLabel}</span>
-                  <span className="font-medium text-right">{payment.reference}</span>
+                  <span className="text-right font-medium">{payment.reference}</span>
                 </div>
                 <div className="flex items-center justify-between gap-3 text-sm">
                   <span className="text-muted-foreground">Amount</span>

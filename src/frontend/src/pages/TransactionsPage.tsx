@@ -14,6 +14,7 @@ import {
   ChevronDown,
   Clock,
   Download,
+  Flag,
   QrCode,
   RefreshCcw,
   Search,
@@ -23,6 +24,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 
 type FilterChip = "all" | "transfers" | "payments" | "deposits" | "withdrawals";
 type DateRange = "this_week" | "this_month" | "last_3_months" | "custom";
@@ -182,6 +184,18 @@ function ReceiptModal({
 }) {
   const amountText = `${txn.type === "credit" ? "+" : "-"}${formatGHS(txn.amount)}`;
 
+  const handleShare = async () => {
+    const text = `BCB receipt ${txn.reference}: ${amountText} for ${txn.title} on ${formatDate(txn.date)} at ${txn.time}.`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "BCB Receipt", text });
+      } else {
+        await navigator.clipboard.writeText(text);
+        toast.success("Receipt details copied");
+      }
+    } catch {}
+  };
+
   const receiptRows: [string, string][] = [
     ["Reference", txn.reference],
     ["Transaction ID", txn.id],
@@ -257,7 +271,7 @@ function ReceiptModal({
             <X className="h-3.5 w-3.5" />
             Close
           </Button>
-          <Button className="h-10 flex-1 gap-2 text-xs" data-ocid="receipt.share_button">
+          <Button className="h-10 flex-1 gap-2 text-xs" onClick={handleShare} data-ocid="receipt.share_button">
             <Share2 className="h-3.5 w-3.5" />
             Share
           </Button>
@@ -275,6 +289,7 @@ function TransactionDetailSheet({
   onClose: () => void;
 }) {
   const [showReceipt, setShowReceipt] = useState(false);
+  const [reported, setReported] = useState(false);
   const isCredit = txn.type === "credit";
   const categoryConfig = CATEGORY_CONFIG[txn.category];
 
@@ -290,6 +305,13 @@ function TransactionDetailSheet({
     ["Account", "Kofi Mensah - 1234567890"],
     ["Narration", txn.description],
   ];
+
+  const handleReportIssue = () => {
+    setReported(true);
+    toast.success("Issue reported", {
+      description: `Support ticket opened for ${txn.reference}.`,
+    });
+  };
 
   return (
     <>
@@ -365,7 +387,7 @@ function TransactionDetailSheet({
             ))}
           </div>
 
-          <div className="px-5 pb-6 pt-4">
+          <div className="space-y-3 px-5 pb-6 pt-4">
             <Button
               className="h-12 w-full gap-2"
               onClick={() => setShowReceipt(true)}
@@ -373,6 +395,16 @@ function TransactionDetailSheet({
             >
               <Download className="h-4 w-4" />
               Download Receipt
+            </Button>
+            <Button
+              variant="outline"
+              className="h-11 w-full gap-2 text-destructive hover:text-destructive"
+              onClick={handleReportIssue}
+              disabled={reported}
+              data-ocid="transaction_detail.report_issue_button"
+            >
+              <Flag className="h-4 w-4" />
+              {reported ? "Issue Reported" : "Report an Issue"}
             </Button>
           </div>
         </motion.div>

@@ -1,9 +1,17 @@
 import { AppBar } from "@/components/layout/AppBar";
 import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { formatGHS } from "@/lib/formatters";
+import { formatDate, formatGHS } from "@/lib/formatters";
 import { cn } from "@/lib/utils";
 import { useBankStore } from "@/store/bank-store";
 import { useNavigate } from "@tanstack/react-router";
@@ -13,9 +21,12 @@ import {
   Building2,
   CheckCircle2,
   Copy,
+  Edit3,
   Home,
   Loader2,
   Smartphone,
+  Trash2,
+  UserPlus,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
@@ -33,6 +44,14 @@ interface TransferFormState {
   phone: string;
 }
 
+interface Beneficiary {
+  id: string;
+  type: TabId;
+  name: string;
+  destination: string;
+  bankOrProvider: string;
+}
+
 interface ConfirmPayload {
   type: TabId;
   from: string;
@@ -40,6 +59,14 @@ interface ConfirmPayload {
   recipientName: string;
   amount: number;
   description: string;
+  fee: number;
+}
+
+interface CompletedTransfer {
+  payload: ConfirmPayload;
+  reference: string;
+  date: string;
+  time: string;
 }
 
 const BANKS = [
@@ -53,40 +80,69 @@ const BANKS = [
 
 const PROVIDERS = ["MTN MoMo", "Vodafone Cash", "AirtelTigo Money"];
 
+const INITIAL_BENEFICIARIES: Beneficiary[] = [
+  {
+    id: "ben_1",
+    type: "bcb",
+    name: "Akosua Frimpong",
+    destination: "1234509876",
+    bankOrProvider: "BCB",
+  },
+  {
+    id: "ben_2",
+    type: "momo",
+    name: "Ama Asante",
+    destination: "0554321876",
+    bankOrProvider: "MTN MoMo",
+  },
+];
+
 function generateRef() {
   return `BCB${Date.now().toString().slice(-8)}`;
 }
 
+function today() {
+  return new Date().toISOString().split("T")[0];
+}
+
+function nowTime() {
+  return new Date().toLocaleTimeString("en-GH", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+}
+
+function digitsOnly(value: string) {
+  return value.replace(/\D/g, "");
+}
+
+function isValidGhanaPhone(value: string) {
+  const digits = digitsOnly(value);
+  return /^(0\d{9}|233\d{9})$/.test(digits);
+}
+
+function formatDestination(tab: TabId, form: TransferFormState) {
+  if (tab === "bcb") return form.account;
+  if (tab === "interbank") return `${form.bank} - ${form.account}`;
+  return `${form.provider} - ${form.phone}`;
+}
+
+function getFee(tab: TabId) {
+  if (tab === "interbank") return 5;
+  if (tab === "momo") return 1;
+  return 0;
+}
+
 function buildPayload(tab: TabId, form: TransferFormState): ConfirmPayload {
-  if (tab === "bcb") {
-    return {
-      type: "bcb",
-      from: "My BCB Current Account",
-      to: form.account,
-      recipientName: form.recipientName || "BCB Customer",
-      amount: Number(form.amount),
-      description: form.description,
-    };
-  }
-
-  if (tab === "interbank") {
-    return {
-      type: "interbank",
-      from: "My BCB Current Account",
-      to: `${form.bank} — ${form.account}`,
-      recipientName: form.recipientName || "Bank Account Holder",
-      amount: Number(form.amount),
-      description: form.description,
-    };
-  }
-
   return {
-    type: "momo",
+    type: tab,
     from: "My BCB Current Account",
-    to: `${form.provider} — ${form.phone}`,
-    recipientName: form.recipientName || "MoMo Subscriber",
+    to: formatDestination(tab, form),
+    recipientName: form.recipientName || (tab === "momo" ? "MoMo Subscriber" : "Account Holder"),
     amount: Number(form.amount),
     description: form.description,
+    fee: getFee(tab),
   };
 }
 
@@ -94,8 +150,8 @@ function tabMeta(tab: TabId) {
   if (tab === "bcb") {
     return {
       label: "BCB Transfer",
-      icon: <ArrowLeftRight className="w-4 h-4" />,
-      helper: "Instant · Free · 24/7",
+      icon: <ArrowLeftRight className="h-4 w-4" />,
+      helper: "Instant | Free | 24/7",
       category: "transfer" as const,
       iconKey: "building-bank" as const,
     };
@@ -104,8 +160,8 @@ function tabMeta(tab: TabId) {
   if (tab === "interbank") {
     return {
       label: "Interbank",
-      icon: <Building2 className="w-4 h-4" />,
-      helper: "GhIPSS · GHS 5.00 fee · 1-2 business days",
+      icon: <Building2 className="h-4 w-4" />,
+      helper: "GhIPSS | GHS 5.00 fee | 1-2 business days",
       category: "transfer" as const,
       iconKey: "landmark" as const,
     };
@@ -113,11 +169,50 @@ function tabMeta(tab: TabId) {
 
   return {
     label: "Mobile Money",
-    icon: <Smartphone className="w-4 h-4" />,
-    helper: "MTN · Vodafone · AirtelTigo · GHS 1.00 fee",
+    icon: <Smartphone className="h-4 w-4" />,
+    helper: "MTN | Vodafone | AirtelTigo | GHS 1.00 fee",
     category: "momo" as const,
     iconKey: "smartphone" as const,
   };
+}
+
+function validateTransfer(tab: TabId, form: TransferFormState, currentBalance: number) {
+  const errors: Partial<Record<keyof TransferFormState | "balance", string>> = {};
+  const amount = Number(form.amount);
+  const totalDebit = amount + getFee(tab);
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    errors.amount = "Enter an amount greater than GHS 0.00.";
+  } else if (amount < 1) {
+    errors.amount = "Minimum transfer amount is GHS 1.00.";
+  }
+
+  if (totalDebit > currentBalance) {
+    errors.balance = `Insufficient balance. Available: ${formatGHS(currentBalance)}.`;
+  }
+
+  if (!form.recipientName.trim()) {
+    errors.recipientName = "Enter the recipient name.";
+  }
+
+  if (tab === "bcb" && digitsOnly(form.account).length !== 10) {
+    errors.account = "BCB account number must be exactly 10 digits.";
+  }
+
+  if (tab === "interbank" && digitsOnly(form.account).length < 6) {
+    errors.account = "Enter a valid destination account number.";
+  }
+
+  if (tab === "momo" && !isValidGhanaPhone(form.phone)) {
+    errors.phone = "Enter a valid Ghana mobile number, e.g. 0241234567.";
+  }
+
+  return errors;
+}
+
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return <p className="text-xs font-medium text-destructive">{message}</p>;
 }
 
 function ConfirmSheet({
@@ -131,7 +226,7 @@ function ConfirmSheet({
   onCancel: () => void;
   onConfirm: () => void;
 }) {
-  const fee = payload.type === "bcb" ? "Free" : payload.type === "interbank" ? "GHS 5.00" : "GHS 1.00";
+  const totalDebit = payload.amount + payload.fee;
 
   return (
     <motion.div
@@ -150,34 +245,28 @@ function ConfirmSheet({
         onClick={(event) => event.stopPropagation()}
       >
         <div className="mx-auto mb-5 h-1 w-10 rounded-full bg-border" />
-        <h2 className="text-lg font-bold font-display">Confirm Transfer</h2>
+        <h2 className="font-display text-lg font-bold">Confirm Transfer</h2>
         <p className="mb-5 text-sm text-muted-foreground">{tabMeta(payload.type).label}</p>
 
         <div className="space-y-3 rounded-2xl border border-border p-4">
-          <div className="flex items-center justify-between gap-4 text-sm">
-            <span className="text-muted-foreground">From</span>
-            <span className="font-medium text-right">{payload.from}</span>
-          </div>
-          <div className="flex items-center justify-between gap-4 text-sm">
-            <span className="text-muted-foreground">To</span>
-            <span className="font-medium text-right">{payload.to}</span>
-          </div>
-          <div className="flex items-center justify-between gap-4 text-sm">
-            <span className="text-muted-foreground">Recipient</span>
-            <span className="font-medium text-right">{payload.recipientName}</span>
-          </div>
-          <div className="flex items-center justify-between gap-4 text-sm">
-            <span className="text-muted-foreground">Amount</span>
-            <span className="font-bold text-primary">{formatGHS(payload.amount)}</span>
-          </div>
-          <div className="flex items-center justify-between gap-4 text-sm">
-            <span className="text-muted-foreground">Transfer Fee</span>
-            <span className="font-medium">{fee}</span>
-          </div>
+          {[
+            ["From", payload.from],
+            ["To", payload.to],
+            ["Recipient", payload.recipientName],
+            ["Amount", formatGHS(payload.amount)],
+            ["Transfer Fee", payload.fee === 0 ? "Free" : formatGHS(payload.fee)],
+            ["Total Debit", formatGHS(totalDebit)],
+          ].map(([label, value]) => (
+            <div key={label} className="flex items-center justify-between gap-4 text-sm">
+              <span className="text-muted-foreground">{label}</span>
+              <span className="text-right font-medium">{value}</span>
+            </div>
+          ))}
+
           {payload.description && (
             <div className="flex items-center justify-between gap-4 text-sm">
               <span className="text-muted-foreground">Note</span>
-              <span className="font-medium text-right">{payload.description}</span>
+              <span className="text-right font-medium">{payload.description}</span>
             </div>
           )}
         </div>
@@ -202,16 +291,15 @@ function ConfirmSheet({
   );
 }
 
-function SuccessView({
-  payload,
-  reference,
+function TransferReceipt({
+  completed,
   onDone,
 }: {
-  payload: ConfirmPayload;
-  reference: string;
+  completed: CompletedTransfer;
   onDone: () => void;
 }) {
   const [copied, setCopied] = useState(false);
+  const { payload, reference, date, time } = completed;
 
   const handleCopy = async () => {
     try {
@@ -221,28 +309,38 @@ function SuccessView({
     } catch {}
   };
 
+  const rows = [
+    ["Reference", reference],
+    ["Date", `${formatDate(date)} at ${time}`],
+    ["Recipient", payload.recipientName],
+    ["Destination", payload.to],
+    ["Amount", formatGHS(payload.amount)],
+    ["Fee", payload.fee === 0 ? "Free" : formatGHS(payload.fee)],
+    ["Total Debit", formatGHS(payload.amount + payload.fee)],
+  ];
+
   return (
     <div className="px-4 py-8">
       <div className="mx-auto flex max-w-md flex-col items-center rounded-3xl bg-card p-6 text-center shadow-card">
         <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
           <CheckCircle2 className="h-10 w-10 text-primary" />
         </div>
-        <h2 className="text-2xl font-bold font-display">Transfer Successful</h2>
+        <h2 className="font-display text-2xl font-bold">Transfer Successful</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           {formatGHS(payload.amount)} sent to {payload.recipientName}
         </p>
 
         <div className="mt-6 w-full rounded-2xl border border-border p-4 text-left">
-          <div className="flex items-center justify-between gap-3">
-            <span className="text-xs text-muted-foreground">Reference</span>
-            <button type="button" onClick={handleCopy} className="text-xs font-semibold text-primary">
-              <Copy className="mr-1 inline h-3.5 w-3.5" />
-              {copied ? "Copied" : "Copy"}
-            </button>
-          </div>
-          <p className="mt-1 font-mono text-sm font-semibold">{reference}</p>
-          <p className="mt-4 text-xs text-muted-foreground">Destination</p>
-          <p className="text-sm font-medium">{payload.to}</p>
+          {rows.map(([label, value]) => (
+            <div key={label} className="flex justify-between gap-4 border-b border-border/50 py-2 text-sm last:border-b-0">
+              <span className="text-muted-foreground">{label}</span>
+              <span className="text-right font-semibold">{value}</span>
+            </div>
+          ))}
+          <button type="button" onClick={handleCopy} className="mt-3 text-xs font-semibold text-primary">
+            <Copy className="mr-1 inline h-3.5 w-3.5" />
+            {copied ? "Reference copied" : "Copy reference"}
+          </button>
         </div>
 
         <Button className="mt-6 w-full" onClick={onDone}>
@@ -254,16 +352,171 @@ function SuccessView({
   );
 }
 
+function BeneficiaryManager({
+  beneficiaries,
+  activeType,
+  onUse,
+  onSave,
+  onDelete,
+}: {
+  beneficiaries: Beneficiary[];
+  activeType: TabId;
+  onUse: (beneficiary: Beneficiary) => void;
+  onSave: (beneficiary: Beneficiary) => void;
+  onDelete: (id: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [editing, setEditing] = useState<Beneficiary | null>(null);
+  const [draft, setDraft] = useState<Beneficiary>({
+    id: "",
+    type: activeType,
+    name: "",
+    destination: "",
+    bankOrProvider: activeType === "momo" ? PROVIDERS[0] : activeType === "interbank" ? BANKS[0] : "BCB",
+  });
+
+  const filtered = beneficiaries.filter((beneficiary) => beneficiary.type === activeType);
+
+  const startAdd = () => {
+    setEditing(null);
+    setDraft({
+      id: "",
+      type: activeType,
+      name: "",
+      destination: "",
+      bankOrProvider: activeType === "momo" ? PROVIDERS[0] : activeType === "interbank" ? BANKS[0] : "BCB",
+    });
+    setOpen(true);
+  };
+
+  const startEdit = (beneficiary: Beneficiary) => {
+    setEditing(beneficiary);
+    setDraft(beneficiary);
+    setOpen(true);
+  };
+
+  const save = () => {
+    if (!draft.name.trim() || !draft.destination.trim()) return;
+    onSave({
+      ...draft,
+      id: editing?.id ?? `ben_${Date.now()}`,
+      type: activeType,
+    });
+    setOpen(false);
+  };
+
+  return (
+    <div className="rounded-3xl bg-card p-4 shadow-card">
+      <div className="mb-3 flex items-center justify-between">
+        <div>
+          <h3 className="font-display text-sm font-semibold">Beneficiaries</h3>
+          <p className="text-xs text-muted-foreground">Save people you send money to often.</p>
+        </div>
+        <Button size="sm" variant="outline" onClick={startAdd} className="gap-1">
+          <UserPlus className="h-3.5 w-3.5" />
+          Add
+        </Button>
+      </div>
+
+      {filtered.length === 0 ? (
+        <p className="rounded-2xl bg-muted/50 p-3 text-xs text-muted-foreground">
+          No saved beneficiaries for this transfer type yet.
+        </p>
+      ) : (
+        <div className="space-y-2">
+          {filtered.map((beneficiary) => (
+            <div key={beneficiary.id} className="flex items-center justify-between gap-3 rounded-2xl border border-border p-3">
+              <button type="button" className="min-w-0 flex-1 text-left" onClick={() => onUse(beneficiary)}>
+                <p className="truncate text-sm font-semibold">{beneficiary.name}</p>
+                <p className="truncate text-xs text-muted-foreground">
+                  {beneficiary.bankOrProvider} | {beneficiary.destination}
+                </p>
+              </button>
+              <button type="button" onClick={() => startEdit(beneficiary)} className="text-muted-foreground">
+                <Edit3 className="h-4 w-4" />
+              </button>
+              <button type="button" onClick={() => onDelete(beneficiary.id)} className="text-destructive">
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle>{editing ? "Edit Beneficiary" : "Add Beneficiary"}</DialogTitle>
+            <DialogDescription>
+              Save the beneficiary for faster future transfers.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-3 py-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="beneficiary-name">Name</Label>
+              <Input
+                id="beneficiary-name"
+                value={draft.name}
+                onChange={(event) => setDraft((current) => ({ ...current, name: event.target.value }))}
+                placeholder="Beneficiary name"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="beneficiary-destination">
+                {activeType === "momo" ? "Mobile number" : "Account number"}
+              </Label>
+              <Input
+                id="beneficiary-destination"
+                value={draft.destination}
+                onChange={(event) => setDraft((current) => ({ ...current, destination: event.target.value }))}
+                placeholder={activeType === "momo" ? "0241234567" : "Account number"}
+              />
+            </div>
+            {activeType !== "bcb" && (
+              <div className="space-y-1.5">
+                <Label htmlFor="beneficiary-provider">
+                  {activeType === "momo" ? "Provider" : "Bank"}
+                </Label>
+                <select
+                  id="beneficiary-provider"
+                  value={draft.bankOrProvider}
+                  onChange={(event) => setDraft((current) => ({ ...current, bankOrProvider: event.target.value }))}
+                  className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm"
+                >
+                  {(activeType === "momo" ? PROVIDERS : BANKS).map((item) => (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+            <Button onClick={save} disabled={!draft.name.trim() || !draft.destination.trim()}>
+              Save Beneficiary
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
 export default function TransfersPage() {
   const navigate = useNavigate();
   const recordActivity = useBankStore((state) => state.recordActivity);
+  const currentBalance = useBankStore((state) => state.currentBalance);
 
   const [tab, setTab] = useState<TabId>("bcb");
   const [busy, setBusy] = useState(false);
   const [confirmPayload, setConfirmPayload] = useState<ConfirmPayload | null>(null);
   const [pinOpen, setPinOpen] = useState(false);
-  const [successPayload, setSuccessPayload] = useState<ConfirmPayload | null>(null);
-  const [reference, setReference] = useState("");
+  const [completed, setCompleted] = useState<CompletedTransfer | null>(null);
+  const [beneficiaries, setBeneficiaries] = useState(INITIAL_BENEFICIARIES);
   const [form, setForm] = useState<TransferFormState>({
     account: "",
     recipientName: "",
@@ -273,27 +526,26 @@ export default function TransfersPage() {
     provider: PROVIDERS[0],
     phone: "",
   });
+  const [touched, setTouched] = useState(false);
 
   const meta = tabMeta(tab);
-
-  const canContinue = useMemo(() => {
-    const amountValid = Number(form.amount) > 0;
-    if (tab === "bcb") return form.account.trim().length >= 10 && amountValid;
-    if (tab === "interbank") return form.bank.trim().length > 0 && form.account.trim().length >= 6 && amountValid;
-    return form.phone.trim().length >= 10 && amountValid;
-  }, [form, tab]);
+  const errors = useMemo(
+    () => validateTransfer(tab, form, currentBalance),
+    [currentBalance, form, tab],
+  );
+  const canContinue = Object.keys(errors).length === 0;
 
   const updateField = (field: keyof TransferFormState, value: string) => {
     setForm((current) => ({ ...current, [field]: value }));
   };
 
   const handleContinue = () => {
+    setTouched(true);
+    if (!canContinue) return;
     setConfirmPayload(buildPayload(tab, form));
   };
 
-  const handleConfirm = () => {
-    setPinOpen(true);
-  };
+  const handleConfirm = () => setPinOpen(true);
 
   const handlePinConfirmed = async () => {
     if (!confirmPayload) return;
@@ -302,12 +554,14 @@ export default function TransfersPage() {
     await new Promise((resolve) => setTimeout(resolve, 1200));
 
     const ref = generateRef();
+    const date = today();
+    const time = nowTime();
     recordActivity({
       type: "debit",
       category: meta.category,
       title: `Transfer to ${confirmPayload.recipientName}`,
       description: confirmPayload.description || confirmPayload.to,
-      amount: confirmPayload.amount,
+      amount: confirmPayload.amount + confirmPayload.fee,
       reference: ref,
       icon: meta.iconKey,
       notification: {
@@ -317,8 +571,7 @@ export default function TransfersPage() {
       },
     });
 
-    setReference(ref);
-    setSuccessPayload(confirmPayload);
+    setCompleted({ payload: confirmPayload, reference: ref, date, time });
     setConfirmPayload(null);
     setPinOpen(false);
     setBusy(false);
@@ -327,11 +580,36 @@ export default function TransfersPage() {
     });
   };
 
-  if (successPayload) {
+  const useBeneficiary = (beneficiary: Beneficiary) => {
+    setForm((current) => ({
+      ...current,
+      recipientName: beneficiary.name,
+      account: beneficiary.type === "momo" ? current.account : beneficiary.destination,
+      phone: beneficiary.type === "momo" ? beneficiary.destination : current.phone,
+      bank: beneficiary.type === "interbank" ? beneficiary.bankOrProvider : current.bank,
+      provider: beneficiary.type === "momo" ? beneficiary.bankOrProvider : current.provider,
+    }));
+    toast.success(`${beneficiary.name} selected`);
+  };
+
+  const saveBeneficiary = (beneficiary: Beneficiary) => {
+    setBeneficiaries((current) => {
+      const exists = current.some((item) => item.id === beneficiary.id);
+      return exists
+        ? current.map((item) => (item.id === beneficiary.id ? beneficiary : item))
+        : [beneficiary, ...current];
+    });
+  };
+
+  const deleteBeneficiary = (id: string) => {
+    setBeneficiaries((current) => current.filter((item) => item.id !== id));
+  };
+
+  if (completed) {
     return (
       <div className="flex min-h-full flex-col bg-background">
         <AppBar title="Transfer Receipt" showBack={false} showNotifications={false} />
-        <SuccessView payload={successPayload} reference={reference} onDone={() => navigate({ to: "/dashboard" })} />
+        <TransferReceipt completed={completed} onDone={() => navigate({ to: "/dashboard" })} />
       </div>
     );
   }
@@ -352,7 +630,10 @@ export default function TransfersPage() {
                   "flex flex-1 flex-col items-center gap-1 px-2 py-3 text-xs font-medium transition-smooth",
                   tab === item ? "text-primary" : "text-muted-foreground",
                 )}
-                onClick={() => setTab(item)}
+                onClick={() => {
+                  setTab(item);
+                  setTouched(false);
+                }}
               >
                 {itemMeta.icon}
                 <span>{itemMeta.label}</span>
@@ -362,14 +643,22 @@ export default function TransfersPage() {
         </div>
       </div>
 
-      <div className="flex-1 px-4 py-5">
+      <div className="flex-1 space-y-4 px-4 py-5">
+        <BeneficiaryManager
+          beneficiaries={beneficiaries}
+          activeType={tab}
+          onUse={useBeneficiary}
+          onSave={saveBeneficiary}
+          onDelete={deleteBeneficiary}
+        />
+
         <div className="rounded-3xl bg-card p-5 shadow-card">
           <div className="mb-5 flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
               {meta.icon}
             </div>
             <div>
-              <h2 className="font-semibold font-display">{meta.label}</h2>
+              <h2 className="font-display font-semibold">{meta.label}</h2>
               <p className="text-xs text-muted-foreground">{meta.helper}</p>
             </div>
           </div>
@@ -385,9 +674,7 @@ export default function TransfersPage() {
                   className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm"
                 >
                   {BANKS.map((bank) => (
-                    <option key={bank} value={bank}>
-                      {bank}
-                    </option>
+                    <option key={bank} value={bank}>{bank}</option>
                   ))}
                 </select>
               </div>
@@ -403,9 +690,7 @@ export default function TransfersPage() {
                   className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm"
                 >
                   {PROVIDERS.map((provider) => (
-                    <option key={provider} value={provider}>
-                      {provider}
-                    </option>
+                    <option key={provider} value={provider}>{provider}</option>
                   ))}
                 </select>
               </div>
@@ -418,12 +703,11 @@ export default function TransfersPage() {
               <Input
                 id="destination"
                 value={tab === "momo" ? form.phone : form.account}
-                onChange={(event) =>
-                  updateField(tab === "momo" ? "phone" : "account", event.target.value)
-                }
+                onChange={(event) => updateField(tab === "momo" ? "phone" : "account", event.target.value)}
                 placeholder={tab === "momo" ? "0241234567" : "Enter account number"}
                 className="h-12"
               />
+              <FieldError message={touched ? (tab === "momo" ? errors.phone : errors.account) : undefined} />
             </div>
 
             <div className="space-y-1.5">
@@ -435,6 +719,7 @@ export default function TransfersPage() {
                 placeholder="Enter recipient name"
                 className="h-12"
               />
+              <FieldError message={touched ? errors.recipientName : undefined} />
             </div>
 
             <div className="space-y-1.5">
@@ -452,6 +737,7 @@ export default function TransfersPage() {
                   inputMode="decimal"
                 />
               </div>
+              <FieldError message={touched ? errors.amount ?? errors.balance : undefined} />
             </div>
 
             <div className="space-y-1.5">
@@ -467,7 +753,7 @@ export default function TransfersPage() {
               />
             </div>
 
-            <Button className="w-full" disabled={!canContinue} onClick={handleContinue}>
+            <Button className="w-full" onClick={handleContinue}>
               Continue
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

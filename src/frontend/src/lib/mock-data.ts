@@ -369,7 +369,7 @@ export const mockNotifications: Notification[] = [
     type: "security",
     title: "PIN Change Successful",
     message:
-      "Your transaction PIN was changed successfully. Contact us if you did not do this.",
+      "Your transaction PIN was changed successfully. Visit the nearest BCB branch or support desk immediately if you did not do this.",
     date: "2026-04-08",
     time: "02:00 PM",
     isRead: true,

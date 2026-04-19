@@ -101,7 +101,7 @@ export function PinConfirmDialog({
             </p>
           )}
           <p className="text-[11px] text-muted-foreground">
-            For this demo, any 4 digits will authorize the action.
+            Your PIN is required before this action can be completed.
           </p>
         </div>
 
