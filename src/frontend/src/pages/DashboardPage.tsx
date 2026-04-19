@@ -22,7 +22,7 @@ import {
   ArrowUpRight,
   Eye,
   EyeOff,
-  Grid3X3,
+  FileText,
   Plus,
   Receipt,
   Send,
@@ -42,26 +42,25 @@ const quickActions = [
   {
     label: "Send Money",
     icon: Send,
-    path: "/transfers",
+    target: "/transfers",
     ocid: "dashboard.send_money_button",
   },
   {
     label: "Pay Bills",
     icon: Receipt,
-    path: "/payments",
+    target: "/payments?category=ecg",
     ocid: "dashboard.pay_bills_button",
   },
   {
     label: "Top Up",
     icon: Plus,
-    path: "/transfers",
-    search: "tab=mobile-money",
+    target: "/payments?category=airtime&mode=airtime",
     ocid: "dashboard.top_up_button",
   },
   {
-    label: "More",
-    icon: Grid3X3,
-    path: "/payments",
+    label: "Statement",
+    icon: FileText,
+    target: "/statements",
     ocid: "dashboard.more_button",
   },
 ];
@@ -151,6 +150,10 @@ export default function DashboardPage() {
 
   const totalBalance = savingsBalance + currentBalance;
   const recentTxns = transactions.slice(0, 5);
+
+  const handleQuickAction = (target: string) => {
+    window.location.hash = target;
+  };
   const firstName = user?.name.split(" ")[0] ?? "Kofi";
   const accountNumber = user?.accountNumber ?? "1234567890";
 
@@ -348,13 +351,11 @@ export default function DashboardPage() {
         className="mx-4 mt-4 bg-card rounded-2xl p-4 shadow-card border border-border"
       >
         <div className="grid grid-cols-4 gap-1">
-          {quickActions.map(({ label, icon: Icon, path, ocid }, idx) => (
+          {quickActions.map(({ label, icon: Icon, target, ocid }, idx) => (
             <motion.button
               key={label}
               type="button"
-              onClick={() =>
-                navigate({ to: path as "/transfers" | "/payments" })
-              }
+              onClick={() => handleQuickAction(target)}
               data-ocid={ocid}
               whileTap={{ scale: 0.93 }}
               initial={{ opacity: 0, scale: 0.85 }}

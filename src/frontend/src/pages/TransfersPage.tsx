@@ -1,5 +1,5 @@
 import { AppBar } from "@/components/layout/AppBar";
-import { BrandLogo, type TelecomBrand } from "@/components/BrandLogo";
+import { TelecomProviderCard, type TelecomBrand } from "@/components/BrandLogo";
 import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { ProfessionalReceipt } from "@/components/ProfessionalReceipt";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 type TabId = "bcb" | "interbank" | "momo" | "account-wallet" | "wallet-account";
@@ -84,6 +84,8 @@ const PROVIDER_BRANDS: Record<string, TelecomBrand> = {
   "Telecel Cash": "Telecel",
   "AirtelTigo Money": "AirtelTigo",
 };
+
+const TRANSFER_TABS: TabId[] = ["bcb", "interbank", "momo", "account-wallet", "wallet-account"];
 
 const INITIAL_BENEFICIARIES: Beneficiary[] = [
   {
@@ -547,6 +549,17 @@ export default function TransfersPage() {
   });
   const [touched, setTouched] = useState(false);
 
+  useEffect(() => {
+    const [, query = ""] = window.location.hash.split("?");
+    const params = new URLSearchParams(query);
+    const tabParam = params.get("tab");
+
+    if (tabParam && TRANSFER_TABS.includes(tabParam as TabId)) {
+      setTab(tabParam as TabId);
+      setTouched(false);
+    }
+  }, []);
+
   const meta = tabMeta(tab);
   const errors = useMemo(
     () => validateTransfer(tab, form, currentBalance, walletBalance),
@@ -741,31 +754,16 @@ export default function TransfersPage() {
 
             {tab === "momo" && (
               <div className="space-y-1.5">
-                <Label htmlFor="provider">Network Provider</Label>
-                <select
-                  id="provider"
-                  value={form.provider}
-                  onChange={(event) => updateField("provider", event.target.value)}
-                  className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm"
-                >
+                <Label>Wallet Recipient</Label>
+                <div className="grid grid-cols-3 gap-2 pt-1">
                   {PROVIDERS.map((provider) => (
-                    <option key={provider} value={provider}>{provider}</option>
-                  ))}
-                </select>
-                <div className="flex gap-2 pt-2">
-                  {PROVIDERS.map((provider) => (
-                    <button
+                    <TelecomProviderCard
                       key={provider}
-                      type="button"
+                      brand={PROVIDER_BRANDS[provider]}
+                      label={provider}
+                      selected={form.provider === provider}
                       onClick={() => updateField("provider", provider)}
-                      className={cn(
-                        "rounded-2xl border p-1 transition-smooth",
-                        form.provider === provider ? "border-primary bg-primary/5" : "border-border bg-background",
-                      )}
-                      aria-label={`Select ${provider}`}
-                    >
-                      <BrandLogo brand={PROVIDER_BRANDS[provider]} compact />
-                    </button>
+                    />
                   ))}
                 </div>
               </div>

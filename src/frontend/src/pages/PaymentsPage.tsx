@@ -1,5 +1,5 @@
 import { AppBar } from "@/components/layout/AppBar";
-import { BrandLogo, type TelecomBrand } from "@/components/BrandLogo";
+import { TelecomProviderCard, type TelecomBrand } from "@/components/BrandLogo";
 import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { ProfessionalReceipt } from "@/components/ProfessionalReceipt";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ import {
   Zap,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 type PaymentCategory = "ecg" | "water" | "dstv" | "airtime";
@@ -100,6 +100,12 @@ const INITIAL_BILLERS: SavedBiller[] = [
   { id: "bill_1", category: "ecg", label: "Home ECG Meter", reference: "42100987" },
   { id: "bill_2", category: "dstv", label: "Family DStv", reference: "123456789" },
   { id: "bill_3", category: "airtime", label: "My MTN Line", reference: "0241234567", network: "MTN" },
+];
+
+const TELECOM_NETWORKS: Array<{ brand: TelecomBrand; label: string }> = [
+  { brand: "MTN", label: "MTN MoMo" },
+  { brand: "Telecel", label: "Telecel Cash" },
+  { brand: "AirtelTigo", label: "AirtelTigo" },
 ];
 
 function generateRef() {
@@ -211,6 +217,23 @@ export default function PaymentsPage() {
     dataBundle: "",
   });
   const [savedBillers, setSavedBillers] = useState(INITIAL_BILLERS);
+
+  useEffect(() => {
+    const [, query = ""] = window.location.hash.split("?");
+    const params = new URLSearchParams(query);
+    const category = params.get("category");
+    const mode = params.get("mode");
+
+    if (!category || !(category in CATEGORY_META)) return;
+
+    setPayment((current) => ({
+      ...current,
+      category: category as PaymentCategory,
+      airtimeMode:
+        mode === "data" || mode === "airtime" ? (mode as AirtimeMode) : current.airtimeMode,
+    }));
+    setTouched(false);
+  }, []);
 
   const meta = CATEGORY_META[payment.category];
   const errors = useMemo(
@@ -383,31 +406,16 @@ export default function PaymentsPage() {
           <div className="mt-6 space-y-4">
             {payment.category === "airtime" && (
               <div className="space-y-1.5">
-                <Label htmlFor="network">Network</Label>
-                <select
-                  id="network"
-                  value={payment.network}
-                  onChange={(event) => updateField("network", event.target.value)}
-                  className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm"
-                >
-                  <option value="MTN">MTN</option>
-                  <option value="Telecel">Telecel</option>
-                  <option value="AirtelTigo">AirtelTigo</option>
-                </select>
-                <div className="flex gap-2 pt-2">
-                  {(["MTN", "Telecel", "AirtelTigo"] as TelecomBrand[]).map((brand) => (
-                    <button
+                <Label>Network</Label>
+                <div className="grid grid-cols-3 gap-2 pt-1">
+                  {TELECOM_NETWORKS.map(({ brand, label }) => (
+                    <TelecomProviderCard
                       key={brand}
-                      type="button"
+                      brand={brand}
+                      label={label}
+                      selected={payment.network === brand}
                       onClick={() => updateField("network", brand)}
-                      className={cn(
-                        "rounded-2xl border p-1 transition-smooth",
-                        payment.network === brand ? "border-primary bg-primary/5" : "border-border bg-background",
-                      )}
-                      aria-label={`Select ${brand}`}
-                    >
-                      <BrandLogo brand={brand} compact />
-                    </button>
+                    />
                   ))}
                 </div>
                 <div className="grid grid-cols-2 gap-2 pt-2">

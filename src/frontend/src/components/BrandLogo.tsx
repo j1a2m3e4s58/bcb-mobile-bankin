@@ -8,9 +8,9 @@ interface BrandLogoProps {
   className?: string;
 }
 
-const brandStyles: Record<TelecomBrand, { wrapper: string; text: string; label: string }> = {
+const brandStyles: Record<TelecomBrand, { wrapper: string; text: string; label: string; short?: string }> = {
   MTN: {
-    wrapper: "bg-[#ffcc00] text-black border-[#111111]/15",
+    wrapper: "bg-[#ffcc00] text-black border-[#111111]",
     text: "font-black tracking-[-0.06em]",
     label: "MTN",
   },
@@ -20,9 +20,10 @@ const brandStyles: Record<TelecomBrand, { wrapper: string; text: string; label: 
     label: "telecel",
   },
   AirtelTigo: {
-    wrapper: "bg-white text-[#ed1c24] border-[#0066b3]",
+    wrapper: "bg-gradient-to-r from-[#ed1c24] to-[#0072ce] text-white border-transparent",
     text: "font-black tracking-[-0.05em]",
-    label: "AirtelTigo",
+    label: "AT",
+    short: "AirtelTigo",
   },
 };
 
@@ -42,5 +43,32 @@ export function BrandLogo({ brand, compact = false, className }: BrandLogoProps)
     >
       <span className={config.text}>{config.label}</span>
     </span>
+  );
+}
+
+export function TelecomProviderCard({
+  brand,
+  label,
+  selected,
+  onClick,
+}: {
+  brand: TelecomBrand;
+  label: string;
+  selected: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "flex min-h-[92px] flex-1 flex-col items-center justify-center gap-3 rounded-2xl border bg-card px-3 py-4 text-center transition-smooth",
+        selected ? "border-primary bg-primary/5 shadow-card" : "border-border hover:border-primary/40 hover:bg-muted/30",
+      )}
+      aria-label={`Select ${label}`}
+    >
+      <BrandLogo brand={brand} compact className="h-9 min-w-16" />
+      <span className="text-xs font-bold text-foreground">{label}</span>
+    </button>
   );
 }
