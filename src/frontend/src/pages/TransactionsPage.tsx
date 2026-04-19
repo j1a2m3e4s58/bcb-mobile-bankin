@@ -1,5 +1,7 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { ProfessionalReceipt } from "@/components/ProfessionalReceipt";
 import { ActivityIconGlyph } from "@/lib/activity-icons";
+import { downloadSimplePdf, downloadTextFile } from "@/lib/download";
 import { formatDate, formatGHS } from "@/lib/formatters";
 import type { Transaction, TransactionCategory } from "@/lib/mock-data";
 import { Badge } from "@/components/ui/badge";
@@ -14,11 +16,10 @@ import {
   ChevronDown,
   Clock,
   Download,
+  FileText,
   Flag,
-  QrCode,
   RefreshCcw,
   Search,
-  Share2,
   X,
   XCircle,
 } from "lucide-react";
@@ -175,6 +176,25 @@ function StatusBadge({ status }: { status: Transaction["status"] }) {
   );
 }
 
+function csvEscape(value: string | number) {
+  const text = String(value);
+  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function buildTransactionRows(transactions: Transaction[]) {
+  return transactions.map((txn) => ({
+    Date: formatDate(txn.date),
+    Time: txn.time,
+    Reference: txn.reference,
+    Type: txn.type,
+    Category: CATEGORY_CONFIG[txn.category].label,
+    Title: txn.title,
+    Description: txn.description,
+    Amount: `${txn.type === "credit" ? "" : "-"}${txn.amount.toFixed(2)}`,
+    Status: txn.status,
+  }));
+}
+
 function ReceiptModal({
   txn,
   onClose,
@@ -182,100 +202,102 @@ function ReceiptModal({
   txn: Transaction;
   onClose: () => void;
 }) {
+  const [reported, setReported] = useState(false);
+  const [issueReason, setIssueReason] = useState("Wrong amount");
+  const [issueNote, setIssueNote] = useState("");
   const amountText = `${txn.type === "credit" ? "+" : "-"}${formatGHS(txn.amount)}`;
 
-  const handleShare = async () => {
-    const text = `BCB receipt ${txn.reference}: ${amountText} for ${txn.title} on ${formatDate(txn.date)} at ${txn.time}.`;
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: "BCB Receipt", text });
-      } else {
-        await navigator.clipboard.writeText(text);
-        toast.success("Receipt details copied");
-      }
-    } catch {}
-  };
-
-  const receiptRows: [string, string][] = [
-    ["Reference", txn.reference],
-    ["Transaction ID", txn.id],
-    ["Type", CATEGORY_CONFIG[txn.category].label],
-    ["Amount", amountText],
-    ["Date", formatDate(txn.date)],
-    ["Time", txn.time],
-    ["Status", txn.status.charAt(0).toUpperCase() + txn.status.slice(1)],
-    ["Account", "Kofi Mensah - 1234567890"],
-    ["Description", txn.description],
+  const receiptRows = [
+    { label: "Transaction ID", value: txn.id },
+    { label: "Type", value: CATEGORY_CONFIG[txn.category].label },
+    { label: "Direction", value: txn.type === "credit" ? "Credit" : "Debit" },
+    {
+      label: "Amount",
+      value: amountText,
+      tone: txn.type === "credit" ? ("success" as const) : ("danger" as const),
+    },
+    { label: "Status", value: txn.status.charAt(0).toUpperCase() + txn.status.slice(1) },
+    { label: "Description", value: txn.description },
   ];
+
+  const handleReportIssue = () => {
+    setReported(true);
+    toast.success("Dispute submitted", {
+      description: `Ticket opened for ${txn.reference}: ${issueReason}.`,
+    });
+  };
 
   return (
     <motion.div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-foreground/40 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-foreground/40 p-4 backdrop-blur-sm"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
       data-ocid="receipt.dialog"
-    >
-      <motion.div
-        className="w-full max-w-sm overflow-hidden rounded-2xl bg-card shadow-elevated"
+      >
+        <motion.div
+        className="w-full max-w-sm"
         initial={{ scale: 0.92, opacity: 0, y: 24 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.92, opacity: 0, y: 24 }}
         transition={{ type: "spring", damping: 22, stiffness: 300 }}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="bcb-card-gradient flex flex-col items-center gap-2 px-6 py-5 text-primary-foreground">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] opacity-80">
-            BCB
-          </p>
-          <p className="text-[11px] font-bold tracking-wider">OFFICIAL RECEIPT</p>
-        </div>
+          <ProfessionalReceipt
+            title="Transaction Receipt"
+            subtitle={txn.title}
+            amount={amountText}
+            reference={txn.reference}
+            dateTime={`${formatDate(txn.date)} at ${txn.time}`}
+            rows={receiptRows}
+            status={txn.status.charAt(0).toUpperCase() + txn.status.slice(1)}
+          />
 
-        <div className="space-y-2.5 px-6 py-4 text-xs">
-          {receiptRows.map(([label, value]) => (
-            <div
-              key={label}
-              className="flex justify-between gap-4 border-b border-border/40 py-2 last:border-b-0"
+          <div className="mt-3 rounded-3xl border border-border bg-card p-4 shadow-card">
+            <p className="font-display text-sm font-semibold text-foreground">Report a problem</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Submit a dispute from this receipt if the transaction looks wrong.
+            </p>
+
+            <select
+              value={issueReason}
+              onChange={(event) => setIssueReason(event.target.value)}
+              className="mt-3 h-10 w-full rounded-xl border border-input bg-background px-3 text-sm"
+              disabled={reported}
+              data-ocid="receipt.issue_reason_select"
             >
-              <span className="shrink-0 text-muted-foreground">{label}</span>
-              <span
-                className={cn(
-                  "text-right font-semibold text-foreground",
-                  label === "Amount" && txn.type === "credit" && "text-success",
-                  label === "Amount" && txn.type === "debit" && "text-destructive",
-                )}
+              <option>Wrong amount</option>
+              <option>Duplicate transaction</option>
+              <option>Recipient did not receive funds</option>
+              <option>I do not recognize this transaction</option>
+            </select>
+
+            <textarea
+              value={issueNote}
+              onChange={(event) => setIssueNote(event.target.value)}
+              placeholder="Add a short note for support"
+              className="mt-3 min-h-20 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm"
+              disabled={reported}
+              data-ocid="receipt.issue_note_input"
+            />
+
+            <div className="mt-3 grid grid-cols-2 gap-3">
+              <Button variant="outline" className="h-10 gap-2 text-xs" onClick={onClose}>
+                <X className="h-3.5 w-3.5" />
+                Close
+              </Button>
+              <Button
+                className="h-10 gap-2 text-xs"
+                onClick={handleReportIssue}
+                disabled={reported}
+                data-ocid="receipt.report_issue_button"
               >
-                {value}
-              </span>
+                <Flag className="h-3.5 w-3.5" />
+                {reported ? "Submitted" : "Submit Dispute"}
+              </Button>
             </div>
-          ))}
-        </div>
-
-        <div className="flex flex-col items-center gap-2 pb-4">
-          <div className="flex h-20 w-20 items-center justify-center rounded-xl border border-border bg-muted">
-            <QrCode className="h-10 w-10 text-muted-foreground" />
           </div>
-          <p className="text-[10px] text-muted-foreground">
-            Scan to verify authenticity
-          </p>
-        </div>
-
-        <div className="flex gap-3 border-t border-border bg-muted/40 px-6 py-4">
-          <Button
-            variant="outline"
-            className="h-10 flex-1 gap-2 text-xs"
-            onClick={onClose}
-            data-ocid="receipt.close_button"
-          >
-            <X className="h-3.5 w-3.5" />
-            Close
-          </Button>
-          <Button className="h-10 flex-1 gap-2 text-xs" onClick={handleShare} data-ocid="receipt.share_button">
-            <Share2 className="h-3.5 w-3.5" />
-            Share
-          </Button>
-        </div>
       </motion.div>
     </motion.div>
   );
@@ -423,6 +445,7 @@ export default function TransactionsPage() {
   const [dateRange, setDateRange] = useState<DateRange>("last_3_months");
   const [search, setSearch] = useState("");
   const [showDateMenu, setShowDateMenu] = useState(false);
+  const [showExportMenu, setShowExportMenu] = useState(false);
   const [selectedTxn, setSelectedTxn] = useState<Transaction | null>(null);
 
   const currentDateLabel =
@@ -464,6 +487,37 @@ export default function TransactionsPage() {
     return Array.from(map.entries()).sort((a, b) => b[0].localeCompare(a[0]));
   }, [filtered]);
 
+  const handleExportCsv = () => {
+    const rows = buildTransactionRows(filtered);
+    const header = Object.keys(rows[0] ?? {
+      Date: "",
+      Time: "",
+      Reference: "",
+      Type: "",
+      Category: "",
+      Title: "",
+      Description: "",
+      Amount: "",
+      Status: "",
+    });
+    const csv = [
+      header.join(","),
+      ...rows.map((row) => header.map((key) => csvEscape(row[key as keyof typeof row])).join(",")),
+    ].join("\n");
+    downloadTextFile("BCB-transactions.csv", csv, "text/csv;charset=utf-8");
+    setShowExportMenu(false);
+  };
+
+  const handleExportPdf = () => {
+    const lines = buildTransactionRows(filtered).flatMap((row) => [
+      `${row.Date} ${row.Time} | ${row.Reference}`,
+      `${row.Title} | ${row.Amount} | ${row.Status}`,
+      "",
+    ]);
+    downloadSimplePdf("BCB-transactions.pdf", "BCB Transaction Statement", lines);
+    setShowExportMenu(false);
+  };
+
   return (
     <div
       className="flex min-h-full flex-col bg-background"
@@ -474,6 +528,58 @@ export default function TransactionsPage() {
       <AppBar title="Transactions" showBack showNotifications={false} />
 
       <div className="sticky top-14 z-30 space-y-3 border-b border-border bg-background px-4 pb-3 pt-3">
+        <div className="flex items-center justify-between">
+          <p className="text-xs font-medium text-muted-foreground">
+            Export filtered transactions as CSV or PDF.
+          </p>
+          <div
+            className="relative"
+            onClick={(event) => event.stopPropagation()}
+            onKeyDown={(event) => event.stopPropagation()}
+            role="presentation"
+          >
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-9 gap-2 text-xs"
+              onClick={() => setShowExportMenu((previous) => !previous)}
+              data-ocid="transactions.export_button"
+            >
+              <Download className="h-3.5 w-3.5" />
+              Export
+            </Button>
+            <AnimatePresence>
+              {showExportMenu && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -6, scale: 0.96 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 top-full z-50 mt-1 w-40 overflow-hidden rounded-xl border border-border bg-card shadow-elevated"
+                >
+                  <button
+                    type="button"
+                    onClick={handleExportCsv}
+                    className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-xs font-medium text-foreground transition-smooth hover:bg-muted"
+                    data-ocid="transactions.export_csv_button"
+                  >
+                    <FileText className="h-3.5 w-3.5" />
+                    Download CSV
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleExportPdf}
+                    className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-xs font-medium text-foreground transition-smooth hover:bg-muted"
+                    data-ocid="transactions.export_pdf_button"
+                  >
+                    <Download className="h-3.5 w-3.5" />
+                    Download PDF
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -579,7 +685,7 @@ export default function TransactionsPage() {
             data-ocid="transactions.empty_state"
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted text-3xl">
-              🔍
+              <Search className="h-7 w-7" />
             </div>
             <p className="text-sm font-semibold text-foreground">No transactions found</p>
             <p className="max-w-[220px] text-center text-xs text-muted-foreground">

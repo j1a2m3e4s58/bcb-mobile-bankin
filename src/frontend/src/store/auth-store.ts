@@ -17,7 +17,7 @@ interface AuthState {
   isAuthenticated: boolean;
   user: UserProfile | null;
   darkMode: boolean;
-  login: (phone: string, pin: string) => Promise<boolean>;
+  login: (accountNumber: string, password: string) => Promise<boolean>;
   logout: () => void;
   toggleDarkMode: () => void;
   setDarkMode: (value: boolean) => void;
@@ -42,8 +42,8 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       darkMode: false,
 
-      login: async (_phone: string, _pin: string) => {
-        // Accept any phone/pin combination for testing
+      login: async (_accountNumber: string, _password: string) => {
+        // Demo mode accepts any account number and password.
         await new Promise<void>((resolve) => setTimeout(resolve, 1200));
         set({ isAuthenticated: true, user: MOCK_USER });
         return true;

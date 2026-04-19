@@ -1,0 +1,55 @@
+export const BANK_DETAILS = {
+  shortName: "BCB",
+  legalName: "Bawjiase Area Rural Bank PLC",
+  postalAddress: "P.O. Box 30, Awutu Bawjiase, Central Region, Ghana",
+  headOffice: "Bawjiase Market, Awutu Bawjiase, Central Region",
+  digitalAddress: "CG-0112-1330",
+  phone: "020-7946-0855",
+  phoneInternational: "+2332079460855",
+  email: "info@bawjiasearearuralbank.com",
+  hours: "Monday - Friday, 08:00 - 16:00",
+  website: "https://bawjiasearearuralbank.com",
+};
+
+export const BRANCHES = [
+  {
+    name: "Bawjiase Market Branch",
+    address: "Bawjiase Market, Awutu Bawjiase, Central Region",
+    phone: "+233552571113",
+    displayPhone: "+233 552 571 113",
+    email: "bawjiase@bawjiasearearuralbank.com",
+    hours: "Mon-Fri, 8:00am - 4:00pm",
+  },
+  {
+    name: "Adeiso Branch",
+    address: "Opposite Adeiso Lorry Station",
+    phone: "+233552571122",
+    displayPhone: "+233 552 571 122",
+    email: "adeiso@bawjiasearearuralbank.com",
+    hours: "Mon-Fri, 8:00am - 4:00pm",
+  },
+  {
+    name: "Kasoa Main Branch",
+    address: "Kasoa Winneba Road",
+    phone: "+233552571118",
+    displayPhone: "+233 552 571 118",
+    email: "Kasoa@bawjiasearearuralbank.com",
+    hours: "Mon-Fri, 8:00am - 4:00pm",
+  },
+  {
+    name: "Kasoa New Market Branch",
+    address: "100m Opposite New Market Police Station",
+    phone: "+233552571116",
+    displayPhone: "+233 552 571 116",
+    email: "newmarket@bawjiasearearuralbank.com",
+    hours: "Mon-Fri, 8:00am - 4:00pm",
+  },
+  {
+    name: "Ofaakor Branch",
+    address: "Adjacent to Ofaakor Lorry Station",
+    phone: "+233552571113",
+    displayPhone: "+233 552 571 113",
+    email: "newmarket@bawjiasearearuralbank.com",
+    hours: "Mon-Fri, 8:00am - 4:00pm",
+  },
+];

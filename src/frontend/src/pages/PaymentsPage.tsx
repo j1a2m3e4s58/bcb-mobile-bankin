@@ -1,5 +1,7 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { BrandLogo, type TelecomBrand } from "@/components/BrandLogo";
 import { PinConfirmDialog } from "@/components/PinConfirmDialog";
+import { ProfessionalReceipt } from "@/components/ProfessionalReceipt";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,8 +9,6 @@ import { formatDate, formatGHS } from "@/lib/formatters";
 import { cn } from "@/lib/utils";
 import { useBankStore } from "@/store/bank-store";
 import {
-  CheckCircle2,
-  Copy,
   Droplets,
   Loader2,
   Smartphone,
@@ -25,7 +25,7 @@ interface PaymentState {
   category: PaymentCategory;
   reference: string;
   amount: string;
-  network: "MTN" | "Vodafone" | "AirtelTigo";
+  network: TelecomBrand;
 }
 
 interface CompletedPayment {
@@ -137,54 +137,30 @@ function PaymentReceipt({
   completed: CompletedPayment;
   onDone: () => void;
 }) {
-  const [copied, setCopied] = useState(false);
   const meta = CATEGORY_META[completed.state.category];
   const amount = Number(completed.state.amount);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(completed.reference);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {}
-  };
-
   const rows = [
-    ["Reference", completed.reference],
-    ["Date", `${formatDate(completed.date)} at ${completed.time}`],
-    ["Service", meta.label],
-    [meta.referenceLabel, completed.state.reference],
-    ["Amount", formatGHS(amount)],
-    ["Status", "Completed"],
+    { label: "Service", value: meta.label },
+    { label: meta.referenceLabel, value: completed.state.reference },
+    ...(completed.state.category === "airtime" ? [{ label: "Network", value: completed.state.network }] : []),
+    { label: "Amount", value: formatGHS(amount), tone: "danger" as const },
+    { label: "Status", value: "Completed" },
   ];
 
   return (
     <div className="px-4 py-8">
-      <div className="mx-auto flex max-w-md flex-col items-center rounded-3xl bg-card p-6 text-center shadow-card">
-        <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-          <CheckCircle2 className="h-10 w-10 text-primary" />
-        </div>
-        <h2 className="font-display text-2xl font-bold">Payment Successful</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {meta.label} paid successfully.
-        </p>
-
-        <div className="mt-6 w-full rounded-2xl border border-border p-4 text-left">
-          {rows.map(([label, value]) => (
-            <div key={label} className="flex justify-between gap-4 border-b border-border/50 py-2 text-sm last:border-b-0">
-              <span className="text-muted-foreground">{label}</span>
-              <span className="text-right font-semibold">{value}</span>
-            </div>
-          ))}
-          <button type="button" onClick={handleCopy} className="mt-3 text-xs font-semibold text-primary">
-            <Copy className="mr-1 inline h-3.5 w-3.5" />
-            {copied ? "Reference copied" : "Copy reference"}
-          </button>
-        </div>
-
-        <Button className="mt-6 w-full" onClick={onDone}>
-          Done
-        </Button>
+      <div className="mx-auto max-w-md">
+        <ProfessionalReceipt
+          title="Payment Receipt"
+          subtitle="Payment Successful"
+          amount={formatGHS(amount)}
+          reference={completed.reference}
+          dateTime={`${formatDate(completed.date)} at ${completed.time}`}
+          rows={rows}
+          onDone={onDone}
+          doneLabel="Done"
+        />
       </div>
     </div>
   );
@@ -323,9 +299,25 @@ export default function PaymentsPage() {
                   className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm"
                 >
                   <option value="MTN">MTN</option>
-                  <option value="Vodafone">Vodafone</option>
+                  <option value="Telecel">Telecel</option>
                   <option value="AirtelTigo">AirtelTigo</option>
                 </select>
+                <div className="flex gap-2 pt-2">
+                  {(["MTN", "Telecel", "AirtelTigo"] as TelecomBrand[]).map((brand) => (
+                    <button
+                      key={brand}
+                      type="button"
+                      onClick={() => updateField("network", brand)}
+                      className={cn(
+                        "rounded-2xl border p-1 transition-smooth",
+                        payment.network === brand ? "border-primary bg-primary/5" : "border-border bg-background",
+                      )}
+                      aria-label={`Select ${brand}`}
+                    >
+                      <BrandLogo brand={brand} compact />
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 

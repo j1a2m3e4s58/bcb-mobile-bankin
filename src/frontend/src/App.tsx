@@ -1,5 +1,6 @@
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Toaster } from "@/components/ui/sonner";
+import BranchesPage from "@/pages/BranchesPage";
 import CardsPage from "@/pages/CardsPage";
 import DashboardPage from "@/pages/DashboardPage";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
@@ -11,6 +12,7 @@ import PaymentsPage from "@/pages/PaymentsPage";
 import ProfilePage from "@/pages/ProfilePage";
 import RegisterPage from "@/pages/RegisterPage";
 import SplashPage from "@/pages/SplashPage";
+import SupportPage from "@/pages/SupportPage";
 import TransactionsPage from "@/pages/TransactionsPage";
 import TransfersPage from "@/pages/TransfersPage";
 import { useAuthStore } from "@/store/auth-store";
@@ -130,6 +132,18 @@ const profileRoute = createRoute({
   component: ProfilePage,
 });
 
+const supportRoute = createRoute({
+  getParentRoute: () => appLayoutRoute,
+  path: "/support",
+  component: SupportPage,
+});
+
+const branchesRoute = createRoute({
+  getParentRoute: () => appLayoutRoute,
+  path: "/branches",
+  component: BranchesPage,
+});
+
 const routeTree = rootRoute.addChildren([
   splashRoute,
   loginRoute,
@@ -145,6 +159,8 @@ const routeTree = rootRoute.addChildren([
     loansRoute,
     notificationsRoute,
     profileRoute,
+    supportRoute,
+    branchesRoute,
   ]),
 ]);
 

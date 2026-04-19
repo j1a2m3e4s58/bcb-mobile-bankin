@@ -3,40 +3,38 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuthStore } from "@/store/auth-store";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Eye, EyeOff, Loader2, Phone } from "lucide-react";
+import { Building2, Eye, EyeOff, Loader2, LockKeyhole, ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
-import { useRef, useState } from "react";
-import type { KeyboardEvent } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const login = useAuthStore((s) => s.login);
+  const login = useAuthStore((state) => state.login);
 
-  const [phone, setPhone] = useState("");
-  const [pin, setPin] = useState("");
-  const [showPin, setShowPin] = useState(false);
+  const [accountNumber, setAccountNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const pinRef = useRef<HTMLInputElement>(null);
-
-  const filledDots = pin.length;
 
   async function handleLogin() {
-    if (!phone.trim()) {
-      setError("Please enter your phone number");
+    if (!accountNumber.trim()) {
+      setError("Enter your account number.");
       return;
     }
-    if (pin.length < 4) {
-      setError("Please enter your 4-digit PIN");
+
+    if (!password.trim()) {
+      setError("Enter your password.");
       return;
     }
+
     setError("");
     setLoading(true);
     try {
-      const ok = await login(phone, pin);
+      const ok = await login(accountNumber, password);
       if (ok) {
-        toast.success("Welcome back!");
+        toast.success("Login successful");
         navigate({ to: "/dashboard" });
       }
     } catch {
@@ -46,232 +44,141 @@ export default function LoginPage() {
     }
   }
 
-  function handlePinKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-    if (e.key === "Enter") handleLogin();
-  }
-
   return (
-    <div className="flex items-center justify-center min-h-dvh desktop-bg">
-      <div
-        className="mobile-frame bg-background flex flex-col shadow-elevated overflow-y-auto"
-        data-ocid="login.page"
-      >
-        {/* Green header */}
-        <div
-          className="flex flex-col items-center pt-14 pb-10 px-6 relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(160deg, oklch(0.45 0.14 148) 0%, oklch(0.34 0.11 148) 100%)",
-          }}
-        >
+    <div className="flex min-h-dvh items-center justify-center desktop-bg">
+      <div className="mobile-frame flex flex-col overflow-y-auto bg-background shadow-elevated" data-ocid="login.page">
+        <div className="relative overflow-hidden px-6 pb-10 pt-14 text-primary-foreground bcb-card-gradient">
           <motion.div
-            className="absolute top-[-40px] right-[-40px] w-44 h-44 rounded-full"
-            style={{ background: "oklch(0.99 0.002 0 / 0.07)" }}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.9 }}
-          />
-
-          <motion.div
-            initial={{ scale: 0.7, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-card overflow-hidden mb-4 relative z-10"
-            style={{
-              background: "oklch(0.99 0.002 0 / 0.14)",
-              border: "1px solid oklch(0.99 0.002 0 / 0.22)",
-            }}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.45 }}
+            className="relative z-10 flex items-center gap-4"
           >
-            <img
-              src="/assets/bcb-logo.png"
-              alt="BCB"
-              className="w-14 h-14 object-contain"
-            />
+            <div className="flex h-16 w-16 items-center justify-center rounded-3xl border border-white/20 bg-white/15 shadow-card">
+              <img src="/assets/bcb-logo.png" alt="BCB" className="h-12 w-12 object-contain" />
+            </div>
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.35em] opacity-80">BCB</p>
+              <h1 className="font-display text-2xl font-bold">Secure Login</h1>
+              <p className="mt-1 text-sm opacity-85">Bawjiase Community Bank</p>
+            </div>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-xl font-bold font-display relative z-10"
-            style={{ color: "oklch(0.99 0.002 0)" }}
-          >
-            Welcome Back
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.5 }}
-            className="text-sm mt-1 font-body relative z-10"
-            style={{ color: "oklch(0.88 0.005 140)" }}
-          >
-            Sign in to your BCB account
-          </motion.p>
+          <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-white/10" />
+          <div className="absolute -bottom-20 left-10 h-40 w-40 rounded-full bg-white/10" />
         </div>
 
-        {/* Form card with rounded top */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-          className="flex-1 bg-background rounded-t-3xl -mt-4 px-6 pt-8 pb-10 flex flex-col gap-5"
+          transition={{ delay: 0.15, duration: 0.4 }}
+          className="-mt-5 flex flex-1 flex-col gap-5 rounded-t-[2rem] bg-background px-6 pb-10 pt-8"
         >
-          {/* Phone */}
+          <div className="rounded-2xl border border-primary/15 bg-primary/5 p-4">
+            <div className="flex items-start gap-3">
+              <ShieldCheck className="mt-0.5 h-5 w-5 text-primary" />
+              <div>
+                <p className="text-sm font-semibold text-foreground">Demo access enabled</p>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Type any account number and password to enter the demo banking app.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="space-y-1.5">
-            <Label
-              htmlFor="login-phone"
-              className="text-sm font-medium text-foreground"
-            >
-              Phone Number
-            </Label>
+            <Label htmlFor="login-account">Account Number</Label>
             <div className="relative">
-              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
-                id="login-phone"
-                data-ocid="login.phone_input"
-                type="tel"
-                placeholder="+233 XX XXX XXXX"
-                className="pl-10 h-12 text-base bg-muted/40 border-input focus:border-primary"
-                value={phone}
-                onChange={(e) => {
-                  setPhone(e.target.value);
+                id="login-account"
+                value={accountNumber}
+                onChange={(event) => {
+                  setAccountNumber(event.target.value.replace(/\D/g, "").slice(0, 12));
                   setError("");
                 }}
-                autoComplete="tel"
+                placeholder="Enter account number"
+                inputMode="numeric"
+                autoComplete="username"
+                className="h-12 bg-muted/40 pl-10 text-base"
+                data-ocid="login.account_number_input"
               />
             </div>
           </div>
 
-          {/* PIN */}
           <div className="space-y-1.5">
-            <Label className="text-sm font-medium text-foreground">
-              4-Digit PIN
-            </Label>
-
-            {/* Visual dot indicators */}
-            <div className="flex gap-3 mb-2" aria-hidden="true">
-              {[0, 1, 2, 3].map((i) => (
-                <motion.div
-                  key={i}
-                  animate={{ scale: i < filledDots ? 1.2 : 1 }}
-                  transition={{ type: "spring", stiffness: 420, damping: 14 }}
-                  className="w-3 h-3 rounded-full border-2 transition-smooth"
-                  style={{
-                    borderColor: "oklch(var(--primary))",
-                    background:
-                      i < filledDots ? "oklch(var(--primary))" : "transparent",
-                  }}
-                />
-              ))}
-            </div>
-
+            <Label htmlFor="login-password">Password</Label>
             <div className="relative">
+              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
-                ref={pinRef}
-                id="login-pin"
-                data-ocid="login.pin_input"
-                type={showPin ? "text" : "password"}
-                inputMode="numeric"
-                maxLength={4}
-                placeholder="Enter 4-digit PIN"
-                className="h-12 text-base tracking-widest bg-muted/40 border-input focus:border-primary pr-12"
-                value={pin}
-                onChange={(e) => {
-                  const val = e.target.value.replace(/\D/g, "").slice(0, 4);
-                  setPin(val);
+                id="login-password"
+                value={password}
+                onChange={(event) => {
+                  setPassword(event.target.value);
                   setError("");
                 }}
-                onKeyDown={handlePinKeyDown}
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter password"
                 autoComplete="current-password"
+                className="h-12 bg-muted/40 pl-10 pr-12 text-base"
+                data-ocid="login.password_input"
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") handleLogin();
+                }}
               />
               <button
                 type="button"
-                onClick={() => setShowPin((v) => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-smooth"
-                aria-label={showPin ? "Hide PIN" : "Show PIN"}
+                onClick={() => setShowPassword((value) => !value)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-smooth hover:text-foreground"
+                aria-label={showPassword ? "Hide password" : "Show password"}
               >
-                {showPin ? (
-                  <EyeOff className="w-4 h-4" />
-                ) : (
-                  <Eye className="w-4 h-4" />
-                )}
+                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
           </div>
 
-          {/* Error */}
-          {error && (
-            <p
-              className="text-sm -mt-2"
-              style={{ color: "oklch(var(--destructive))" }}
-              data-ocid="login.error_state"
-            >
-              {error}
-            </p>
-          )}
+          {error && <p className="text-sm font-medium text-destructive" data-ocid="login.error_state">{error}</p>}
 
-          {/* Forgot PIN */}
-          <div className="text-right -mt-3">
-            <Link
-              to="/forgot-password"
-              className="text-sm font-semibold transition-smooth"
-              style={{ color: "oklch(var(--primary))" }}
-              data-ocid="login.forgot_password_link"
-            >
-              Forgot PIN?
+          <div className="flex items-center justify-between">
+            <Link to="/forgot-password" className="text-sm font-semibold text-primary" data-ocid="login.forgot_password_link">
+              Forgot password?
             </Link>
+            <span className="text-xs text-muted-foreground">Protected session</span>
           </div>
 
-          {/* Login Button */}
           <Button
-            data-ocid="login.submit_button"
-            className="h-12 text-base font-semibold font-display rounded-xl transition-smooth w-full"
+            className="h-12 w-full rounded-xl font-display text-base font-semibold"
             onClick={handleLogin}
             disabled={loading}
+            data-ocid="login.submit_button"
           >
             {loading ? (
               <span className="flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Signing in...
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Signing in
               </span>
             ) : (
-              "Login"
+              "Sign In"
             )}
           </Button>
 
-          {/* Biometric hint */}
-          <div className="flex items-center justify-center gap-2">
-            <span className="text-2xl">👆</span>
-            <span className="text-sm text-muted-foreground">
-              Use biometric login
-            </span>
+          <div className="flex items-center gap-3">
+            <div className="h-px flex-1 bg-border" />
+            <span className="text-xs font-medium text-muted-foreground">New customer</span>
+            <div className="h-px flex-1 bg-border" />
           </div>
 
-          {/* Divider */}
-          <div className="flex items-center gap-3 -my-1">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-xs text-muted-foreground">OR</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
-
-          {/* Register */}
           <Button
             variant="outline"
-            data-ocid="login.register_button"
-            className="h-12 text-base font-semibold font-display rounded-xl border-2 transition-smooth w-full"
-            style={{
-              borderColor: "oklch(var(--primary))",
-              color: "oklch(var(--primary))",
-            }}
+            className="h-12 w-full rounded-xl border-2 border-primary/50 font-display text-base font-semibold text-primary"
             onClick={() => navigate({ to: "/register" })}
+            data-ocid="login.register_button"
           >
-            Create New Account
+            Register Account
           </Button>
 
-          <p className="text-center text-xs text-muted-foreground mt-1">
-            By continuing, you agree to BCB's{" "}
-            <span className="underline cursor-pointer">Terms</span> &{" "}
-            <span className="underline cursor-pointer">Privacy Policy</span>
+          <p className="text-center text-xs leading-relaxed text-muted-foreground">
+            By signing in, you agree to BCB digital banking terms and privacy practices.
           </p>
         </motion.div>
       </div>

@@ -89,7 +89,7 @@ function NotificationItem({
           </div>
 
           <p className="mt-2 text-[11px] text-muted-foreground">
-            {formatRelativeTime(notification.date)} · {notification.time}
+            {formatRelativeTime(notification.date)} | {notification.time}
           </p>
         </div>
       </button>

@@ -1,5 +1,7 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { BrandLogo, type TelecomBrand } from "@/components/BrandLogo";
 import { PinConfirmDialog } from "@/components/PinConfirmDialog";
+import { ProfessionalReceipt } from "@/components/ProfessionalReceipt";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -19,10 +21,7 @@ import {
   ArrowLeftRight,
   ArrowRight,
   Building2,
-  CheckCircle2,
-  Copy,
   Edit3,
-  Home,
   Loader2,
   Smartphone,
   Trash2,
@@ -78,7 +77,12 @@ const BANKS = [
   "CalBank",
 ];
 
-const PROVIDERS = ["MTN MoMo", "Vodafone Cash", "AirtelTigo Money"];
+const PROVIDERS = ["MTN MoMo", "Telecel Cash", "AirtelTigo Money"];
+const PROVIDER_BRANDS: Record<string, TelecomBrand> = {
+  "MTN MoMo": "MTN",
+  "Telecel Cash": "Telecel",
+  "AirtelTigo Money": "AirtelTigo",
+};
 
 const INITIAL_BENEFICIARIES: Beneficiary[] = [
   {
@@ -170,7 +174,7 @@ function tabMeta(tab: TabId) {
   return {
     label: "Mobile Money",
     icon: <Smartphone className="h-4 w-4" />,
-    helper: "MTN | Vodafone | AirtelTigo | GHS 1.00 fee",
+    helper: "MTN | Telecel | AirtelTigo | GHS 1.00 fee",
     category: "momo" as const,
     iconKey: "smartphone" as const,
   };
@@ -298,55 +302,31 @@ function TransferReceipt({
   completed: CompletedTransfer;
   onDone: () => void;
 }) {
-  const [copied, setCopied] = useState(false);
   const { payload, reference, date, time } = completed;
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(reference);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {}
-  };
-
   const rows = [
-    ["Reference", reference],
-    ["Date", `${formatDate(date)} at ${time}`],
-    ["Recipient", payload.recipientName],
-    ["Destination", payload.to],
-    ["Amount", formatGHS(payload.amount)],
-    ["Fee", payload.fee === 0 ? "Free" : formatGHS(payload.fee)],
-    ["Total Debit", formatGHS(payload.amount + payload.fee)],
+    { label: "Recipient", value: payload.recipientName },
+    { label: "Destination", value: payload.to },
+    { label: "Transfer Type", value: tabMeta(payload.type).label },
+    { label: "Amount", value: formatGHS(payload.amount), tone: "danger" as const },
+    { label: "Fee", value: payload.fee === 0 ? "Free" : formatGHS(payload.fee) },
+    { label: "Total Debit", value: formatGHS(payload.amount + payload.fee), tone: "danger" as const },
+    ...(payload.description ? [{ label: "Narration", value: payload.description }] : []),
   ];
 
   return (
     <div className="px-4 py-8">
-      <div className="mx-auto flex max-w-md flex-col items-center rounded-3xl bg-card p-6 text-center shadow-card">
-        <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-          <CheckCircle2 className="h-10 w-10 text-primary" />
-        </div>
-        <h2 className="font-display text-2xl font-bold">Transfer Successful</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {formatGHS(payload.amount)} sent to {payload.recipientName}
-        </p>
-
-        <div className="mt-6 w-full rounded-2xl border border-border p-4 text-left">
-          {rows.map(([label, value]) => (
-            <div key={label} className="flex justify-between gap-4 border-b border-border/50 py-2 text-sm last:border-b-0">
-              <span className="text-muted-foreground">{label}</span>
-              <span className="text-right font-semibold">{value}</span>
-            </div>
-          ))}
-          <button type="button" onClick={handleCopy} className="mt-3 text-xs font-semibold text-primary">
-            <Copy className="mr-1 inline h-3.5 w-3.5" />
-            {copied ? "Reference copied" : "Copy reference"}
-          </button>
-        </div>
-
-        <Button className="mt-6 w-full" onClick={onDone}>
-          <Home className="mr-2 h-4 w-4" />
-          Back to Dashboard
-        </Button>
+      <div className="mx-auto max-w-md">
+        <ProfessionalReceipt
+          title="Transfer Receipt"
+          subtitle="Transfer Successful"
+          amount={formatGHS(payload.amount)}
+          reference={reference}
+          dateTime={`${formatDate(date)} at ${time}`}
+          rows={rows}
+          onDone={onDone}
+          doneLabel="Back to Dashboard"
+        />
       </div>
     </div>
   );
@@ -693,6 +673,22 @@ export default function TransfersPage() {
                     <option key={provider} value={provider}>{provider}</option>
                   ))}
                 </select>
+                <div className="flex gap-2 pt-2">
+                  {PROVIDERS.map((provider) => (
+                    <button
+                      key={provider}
+                      type="button"
+                      onClick={() => updateField("provider", provider)}
+                      className={cn(
+                        "rounded-2xl border p-1 transition-smooth",
+                        form.provider === provider ? "border-primary bg-primary/5" : "border-border bg-background",
+                      )}
+                      aria-label={`Select ${provider}`}
+                    >
+                      <BrandLogo brand={PROVIDER_BRANDS[provider]} compact />
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 

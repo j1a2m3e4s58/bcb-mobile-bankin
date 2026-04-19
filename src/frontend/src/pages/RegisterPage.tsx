@@ -2,351 +2,240 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link, useNavigate } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  CreditCard,
-  Eye,
-  EyeOff,
-  Loader2,
-  Mail,
-  Phone,
-  User,
-} from "lucide-react";
+import { ArrowLeft, Building2, Eye, EyeOff, IdCard, Loader2, LockKeyhole, Mail, User } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "sonner";
 
-interface FieldDef {
-  id: keyof FormState;
-  label: string;
-  placeholder: string;
-  type: string;
-  icon: React.ReactNode;
-  hint?: string;
-}
-
 interface FormState {
   fullName: string;
-  phone: string;
+  accountNumber: string;
   email: string;
   ghanaCard: string;
-  pin: string;
-  confirmPin: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [showPin, setShowPin] = useState(false);
-  const [showConfirmPin, setShowConfirmPin] = useState(false);
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [form, setForm] = useState<FormState>({
     fullName: "",
-    phone: "",
+    accountNumber: "",
     email: "",
     ghanaCard: "",
-    pin: "",
-    confirmPin: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  function update(field: keyof FormState) {
-    return (e: React.ChangeEvent<HTMLInputElement>) => {
-      let val = e.target.value;
-      if (field === "pin" || field === "confirmPin") {
-        val = val.replace(/\D/g, "").slice(0, 4);
-      }
-      setForm((f) => ({ ...f, [field]: val }));
-    };
+  function update(field: keyof FormState, value: string) {
+    setForm((current) => ({
+      ...current,
+      [field]: field === "accountNumber" ? value.replace(/\D/g, "").slice(0, 12) : value,
+    }));
   }
 
   async function handleRegister() {
     if (!form.fullName.trim()) {
-      toast.error("Please enter your full name");
+      toast.error("Enter your full name.");
       return;
     }
-    if (!form.phone.trim()) {
-      toast.error("Please enter your phone number");
+    if (!form.accountNumber.trim()) {
+      toast.error("Enter your account number.");
       return;
     }
-    if (form.pin.length < 4) {
-      toast.error("PIN must be 4 digits");
+    if (!form.password.trim()) {
+      toast.error("Create a password.");
       return;
     }
-    if (form.pin !== form.confirmPin) {
-      toast.error("PINs do not match");
+    if (form.password !== form.confirmPassword) {
+      toast.error("Passwords do not match.");
       return;
     }
 
     setLoading(true);
-    await new Promise<void>((res) => setTimeout(res, 1500));
+    await new Promise<void>((resolve) => setTimeout(resolve, 1000));
     setLoading(false);
-    toast.success("Account created! Verify your number.");
-    navigate({ to: "/otp" });
+    toast.success("Registration ready");
+    navigate({ to: "/login" });
   }
 
-  const textFields: FieldDef[] = [
-    {
-      id: "fullName",
-      label: "Full Name",
-      placeholder: "e.g. Kofi Mensah",
-      type: "text",
-      icon: <User className="w-4 h-4" />,
-    },
-    {
-      id: "phone",
-      label: "Phone Number",
-      placeholder: "+233 XX XXX XXXX",
-      type: "tel",
-      icon: <Phone className="w-4 h-4" />,
-    },
-    {
-      id: "email",
-      label: "Email Address",
-      placeholder: "you@example.com",
-      type: "email",
-      icon: <Mail className="w-4 h-4" />,
-    },
-    {
-      id: "ghanaCard",
-      label: "Ghana Card Number",
-      placeholder: "GHA-XXXXXXXXX-X",
-      type: "text",
-      icon: <CreditCard className="w-4 h-4" />,
-      hint: "Format: GHA-XXXXXXXXX-X",
-    },
-  ];
-
   return (
-    <div className="flex items-center justify-center min-h-dvh desktop-bg">
-      <div
-        className="mobile-frame bg-background flex flex-col shadow-elevated"
-        data-ocid="register.page"
-      >
-        {/* Header */}
-        <div
-          className="flex items-center gap-3 px-4 pt-12 pb-8 relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(160deg, oklch(0.45 0.14 148) 0%, oklch(0.34 0.11 148) 100%)",
-          }}
-        >
-          <motion.div
-            className="absolute bottom-[-30px] right-[-30px] w-36 h-36 rounded-full"
-            style={{ background: "oklch(0.99 0.002 0 / 0.07)" }}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.9 }}
-          />
+    <div className="flex min-h-dvh items-center justify-center desktop-bg">
+      <div className="mobile-frame flex flex-col overflow-y-auto bg-background shadow-elevated" data-ocid="register.page">
+        <div className="relative overflow-hidden px-5 pb-9 pt-12 text-primary-foreground bcb-card-gradient">
           <button
             type="button"
             onClick={() => navigate({ to: "/login" })}
+            className="relative z-10 mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 transition-smooth hover:bg-white/20"
+            aria-label="Back to login"
             data-ocid="register.back_button"
-            className="flex items-center gap-2 mr-1 relative z-10 transition-smooth"
-            style={{ color: "oklch(0.99 0.002 0 / 0.8)" }}
-            aria-label="Go back"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="h-5 w-5" />
           </button>
 
-          <div className="flex items-center gap-3 relative z-10">
-            <div
-              className="w-11 h-11 rounded-xl flex items-center justify-center overflow-hidden"
-              style={{
-                background: "oklch(0.99 0.002 0 / 0.14)",
-                border: "1px solid oklch(0.99 0.002 0 / 0.22)",
-              }}
-            >
-              <img
-                src="/assets/bcb-logo.png"
-                alt="BCB"
-                className="w-8 h-8 object-contain"
-              />
+          <div className="relative z-10 flex items-center gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/15">
+              <img src="/assets/bcb-logo.png" alt="BCB" className="h-11 w-11 object-contain" />
             </div>
             <div>
-              <h1
-                className="text-lg font-bold font-display leading-tight"
-                style={{ color: "oklch(0.99 0.002 0)" }}
-              >
-                Create Account
-              </h1>
-              <p
-                className="text-xs font-body"
-                style={{ color: "oklch(0.88 0.005 140)" }}
-              >
-                Open your BCB account today
-              </p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.3em] opacity-80">BCB Digital</p>
+              <h1 className="font-display text-2xl font-bold">Register Account</h1>
+              <p className="mt-1 text-sm opacity-85">Use your account number and password</p>
             </div>
           </div>
+
+          <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-white/10" />
         </div>
 
-        {/* Form */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
-          className="flex-1 overflow-y-auto bg-background rounded-t-3xl -mt-4 px-6 pt-7 pb-10 flex flex-col gap-4"
+          transition={{ delay: 0.15, duration: 0.4 }}
+          className="-mt-5 flex-1 space-y-4 rounded-t-[2rem] bg-background px-6 pb-10 pt-8"
         >
-          {textFields.map((field, idx) => (
-            <motion.div
-              key={field.id}
-              initial={{ opacity: 0, x: -14 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: idx * 0.07, duration: 0.35 }}
-              className="space-y-1.5"
-            >
-              <Label
-                htmlFor={field.id}
-                className="text-sm font-medium text-foreground"
-              >
-                {field.label}
-              </Label>
-              <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-                  {field.icon}
-                </span>
-                <Input
-                  id={field.id}
-                  data-ocid={`register.${field.id}_input`}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  className="pl-10 h-12 text-base bg-muted/40 border-input focus:border-primary"
-                  value={form[field.id]}
-                  onChange={update(field.id)}
-                />
-              </div>
-              {field.hint && (
-                <p className="text-xs text-muted-foreground pl-1">
-                  {field.hint}
-                </p>
-              )}
-            </motion.div>
-          ))}
+          <div className="rounded-2xl border border-primary/15 bg-primary/5 p-4 text-xs leading-relaxed text-muted-foreground">
+            Demo mode is active. You can enter any account number and password to register the screen flow.
+          </div>
 
-          {/* PIN */}
-          <motion.div
-            initial={{ opacity: 0, x: -14 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.28, duration: 0.35 }}
-            className="space-y-1.5"
-          >
-            <Label
-              htmlFor="reg-pin"
-              className="text-sm font-medium text-foreground"
-            >
-              Create 4-Digit PIN
-            </Label>
+          <div className="space-y-1.5">
+            <Label htmlFor="register-name">Full Name</Label>
             <div className="relative">
+              <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
-                id="reg-pin"
-                data-ocid="register.pin_input"
-                type={showPin ? "text" : "password"}
+                id="register-name"
+                value={form.fullName}
+                onChange={(event) => update("fullName", event.target.value)}
+                placeholder="Customer full name"
+                className="h-12 bg-muted/40 pl-10"
+                data-ocid="register.full_name_input"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="register-account">Account Number</Label>
+            <div className="relative">
+              <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                id="register-account"
+                value={form.accountNumber}
+                onChange={(event) => update("accountNumber", event.target.value)}
+                placeholder="Enter account number"
                 inputMode="numeric"
-                maxLength={4}
-                placeholder="Create a 4-digit PIN"
-                className="h-12 text-base tracking-widest bg-muted/40 border-input focus:border-primary pr-12"
-                value={form.pin}
-                onChange={update("pin")}
+                autoComplete="username"
+                className="h-12 bg-muted/40 pl-10"
+                data-ocid="register.account_number_input"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="register-email">Email Address</Label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                id="register-email"
+                value={form.email}
+                onChange={(event) => update("email", event.target.value)}
+                placeholder="you@example.com"
+                type="email"
+                className="h-12 bg-muted/40 pl-10"
+                data-ocid="register.email_input"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="register-ghana-card">Ghana Card Number</Label>
+            <div className="relative">
+              <IdCard className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                id="register-ghana-card"
+                value={form.ghanaCard}
+                onChange={(event) => update("ghanaCard", event.target.value)}
+                placeholder="GHA-XXXXXXXXX-X"
+                className="h-12 bg-muted/40 pl-10"
+                data-ocid="register.ghana_card_input"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="register-password">Password</Label>
+            <div className="relative">
+              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                id="register-password"
+                value={form.password}
+                onChange={(event) => update("password", event.target.value)}
+                type={showPassword ? "text" : "password"}
+                placeholder="Create password"
+                autoComplete="new-password"
+                className="h-12 bg-muted/40 pl-10 pr-12"
+                data-ocid="register.password_input"
               />
               <button
                 type="button"
-                onClick={() => setShowPin((v) => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-smooth"
-                aria-label={showPin ? "Hide PIN" : "Show PIN"}
+                onClick={() => setShowPassword((value) => !value)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                aria-label={showPassword ? "Hide password" : "Show password"}
               >
-                {showPin ? (
-                  <EyeOff className="w-4 h-4" />
-                ) : (
-                  <Eye className="w-4 h-4" />
-                )}
+                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Confirm PIN */}
-          <motion.div
-            initial={{ opacity: 0, x: -14 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.35, duration: 0.35 }}
-            className="space-y-1.5"
-          >
-            <Label
-              htmlFor="reg-confirm-pin"
-              className="text-sm font-medium text-foreground"
-            >
-              Confirm PIN
-            </Label>
+          <div className="space-y-1.5">
+            <Label htmlFor="register-confirm-password">Confirm Password</Label>
             <div className="relative">
+              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
-                id="reg-confirm-pin"
-                data-ocid="register.confirm_pin_input"
-                type={showConfirmPin ? "text" : "password"}
-                inputMode="numeric"
-                maxLength={4}
-                placeholder="Re-enter your PIN"
-                className={`h-12 text-base tracking-widest bg-muted/40 border-input focus:border-primary pr-12 ${
-                  form.confirmPin && form.pin !== form.confirmPin
-                    ? "border-destructive"
-                    : ""
-                }`}
-                value={form.confirmPin}
-                onChange={update("confirmPin")}
+                id="register-confirm-password"
+                value={form.confirmPassword}
+                onChange={(event) => update("confirmPassword", event.target.value)}
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Repeat password"
+                autoComplete="new-password"
+                className="h-12 bg-muted/40 pl-10 pr-12"
+                data-ocid="register.confirm_password_input"
               />
               <button
                 type="button"
-                onClick={() => setShowConfirmPin((v) => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-smooth"
-                aria-label={showConfirmPin ? "Hide PIN" : "Show PIN"}
+                onClick={() => setShowConfirmPassword((value) => !value)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                aria-label={showConfirmPassword ? "Hide password" : "Show password"}
               >
-                {showConfirmPin ? (
-                  <EyeOff className="w-4 h-4" />
-                ) : (
-                  <Eye className="w-4 h-4" />
-                )}
+                {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
-            {form.confirmPin && form.pin !== form.confirmPin && (
-              <p
-                className="text-xs pl-1"
-                style={{ color: "oklch(var(--destructive))" }}
-                data-ocid="register.pin_mismatch_error"
-              >
-                PINs do not match
-              </p>
+            {form.confirmPassword && form.password !== form.confirmPassword && (
+              <p className="text-xs font-medium text-destructive">Passwords do not match.</p>
             )}
-          </motion.div>
+          </div>
 
-          {/* Submit */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.42, duration: 0.35 }}
-            className="mt-2"
+          <Button
+            className="h-12 w-full rounded-xl font-display text-base font-semibold"
+            onClick={handleRegister}
+            disabled={loading}
+            data-ocid="register.submit_button"
           >
-            <Button
-              data-ocid="register.submit_button"
-              className="w-full h-12 text-base font-semibold font-display rounded-xl transition-smooth"
-              onClick={handleRegister}
-              disabled={loading}
-            >
-              {loading ? (
-                <span className="flex items-center gap-2">
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Creating Account...
-                </span>
-              ) : (
-                "Register"
-              )}
-            </Button>
-          </motion.div>
+            {loading ? (
+              <span className="flex items-center gap-2">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Creating account
+              </span>
+            ) : (
+              "Create Demo Account"
+            )}
+          </Button>
 
           <p className="text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
-            <Link
-              to="/login"
-              className="font-semibold text-primary"
-              data-ocid="register.login_link"
-            >
-              Sign In
+            Already registered?{" "}
+            <Link to="/login" className="font-semibold text-primary" data-ocid="register.login_link">
+              Sign in
             </Link>
           </p>
         </motion.div>

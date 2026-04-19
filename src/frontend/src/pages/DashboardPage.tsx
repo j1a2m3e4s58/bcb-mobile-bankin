@@ -31,12 +31,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
-// ─── Constants ──────────────────────────────────────────────────────────────
+// Constants
 
 const IDLE_TIMEOUT_MS = 5 * 60 * 1000;
 const COUNTDOWN_SECONDS = 30;
 
-// ─── Quick actions ───────────────────────────────────────────────────────────
+// Quick actions
 
 const quickActions = [
   {
@@ -66,7 +66,7 @@ const quickActions = [
   },
 ];
 
-// ─── Category icon background colours ────────────────────────────────────────
+// Category icon background colours
 
 const categoryColors: Record<string, string> = {
   salary: "bg-success/15 text-success",
@@ -78,7 +78,7 @@ const categoryColors: Record<string, string> = {
   loan: "bg-destructive/10 text-destructive",
 };
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// Component
 
 export default function DashboardPage() {
   const navigate = useNavigate();
@@ -185,7 +185,7 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col min-h-full bg-background">
-      {/* ── App Bar ── */}
+      {/* App Bar */}
       <AppBar
         showLogo
         showNotifications
@@ -213,12 +213,12 @@ export default function DashboardPage() {
         <div>
           <p className="text-xs text-muted-foreground">{greeting},</p>
           <p className="text-lg font-bold text-foreground font-display">
-            {firstName} 👋
+            {firstName}
           </p>
         </div>
       </div>
 
-      {/* ── Total Balance Card ── */}
+      {/* Total Balance Card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -288,7 +288,7 @@ export default function DashboardPage() {
         </div>
       </motion.div>
 
-      {/* ── Account Cards (Savings + Current) ── */}
+      {/* Account Cards (Savings + Current) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -340,7 +340,7 @@ export default function DashboardPage() {
         </div>
       </motion.div>
 
-      {/* ── Quick Actions ── */}
+      {/* Quick Actions */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -380,7 +380,7 @@ export default function DashboardPage() {
         </div>
       </motion.div>
 
-      {/* ── Recent Transactions ── */}
+      {/* Recent Transactions */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -461,7 +461,7 @@ export default function DashboardPage() {
         </div>
       </motion.div>
 
-      {/* ── Idle Session Warning Modal ── */}
+      {/* Idle Session Warning Modal */}
       <AnimatePresence>
         {showIdleModal && (
           <>

@@ -47,7 +47,7 @@ export default function SplashPage() {
           transition={{ duration: 1.0, ease: "easeOut", delay: 0.4 }}
         />
 
-        {/* Logo + bank name — spring scale+fade */}
+        {/* Logo + bank name - spring scale+fade */}
         <motion.div
           className="flex flex-col items-center gap-7 z-10"
           initial={{ scale: 0.3, opacity: 0 }}

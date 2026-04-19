@@ -24,9 +24,11 @@ import {
   Clock,
   Fingerprint,
   Globe,
+  Headphones,
   Laptop2,
   Lock,
   LogOut,
+  MapPin,
   Moon,
   Shield,
   Smartphone,
@@ -584,6 +586,26 @@ export default function ProfilePage() {
       </motion.div>
 
       <motion.div {...sectionAnimation(5)}>
+        <SectionHeader title="Help" />
+        <div className="mx-4 divide-y divide-border rounded-2xl bg-card shadow-card" data-ocid="profile.help_card">
+          <RowItem
+            icon={<Headphones className="h-5 w-5" />}
+            label="Support Center"
+            desc="Call, email, or get security help"
+            ocid="profile.support_button"
+            onClick={() => navigate({ to: "/support" })}
+          />
+          <RowItem
+            icon={<MapPin className="h-5 w-5" />}
+            label="Branches"
+            desc="Find verified branch contacts"
+            ocid="profile.branches_button"
+            onClick={() => navigate({ to: "/branches" })}
+          />
+        </div>
+      </motion.div>
+
+      <motion.div {...sectionAnimation(6)}>
         <SectionHeader title="Active Sessions" />
         <div className="mx-4 overflow-hidden rounded-2xl bg-card shadow-card" data-ocid="profile.sessions_card">
           <div className="flex items-start gap-3 border-b border-border px-4 py-3.5">
@@ -611,7 +633,7 @@ export default function ProfilePage() {
         </div>
       </motion.div>
 
-      <motion.div {...sectionAnimation(6)} className="mx-4 mt-6 space-y-4">
+      <motion.div {...sectionAnimation(7)} className="mx-4 mt-6 space-y-4">
         <div className="flex items-center justify-center gap-2 py-1">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
             BCB

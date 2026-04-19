@@ -20,7 +20,7 @@ import {
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// Types
 
 interface LoanType {
   id: string;
@@ -50,7 +50,7 @@ interface ApplicationFormData {
   monthlyIncome: string;
 }
 
-// ─── Constants ────────────────────────────────────────────────────────────────
+// Constants
 
 const SAMPLE_LOAN = {
   id: "loan001",
@@ -140,7 +140,7 @@ function generateSchedule(): ScheduleRow[] {
 
 const SCHEDULE = generateSchedule();
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
+// Sub-components
 
 function ProgressBar({
   value,
@@ -184,7 +184,7 @@ function StatusPill({ status }: { status: string }) {
   );
 }
 
-// ─── Repayment Schedule ───────────────────────────────────────────────────────
+// Repayment Schedule
 
 function RepaymentSchedule() {
   const [open, setOpen] = useState(false);
@@ -280,7 +280,7 @@ function RepaymentSchedule() {
   );
 }
 
-// ─── Loan Application Modal ────────────────────────────────────────────────────
+// Loan Application Modal
 
 function LoanApplicationModal({
   initialType,
@@ -386,7 +386,7 @@ function LoanApplicationModal({
                   { label: "Reference Number", value: refNumber, mono: true },
                   {
                     label: "Processing Time",
-                    value: "2–3 business days",
+                    value: "2-3 business days",
                     mono: false,
                   },
                   {
@@ -665,7 +665,7 @@ function LoanApplicationModal({
   );
 }
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
+// Main Page
 
 export default function LoansPage() {
   const loan = SAMPLE_LOAN;

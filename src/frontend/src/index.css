@@ -9,7 +9,7 @@
     --font-mono: "Geist Mono";
     --radius: 0.75rem;
 
-    /* BCB Light — BCB Green #1B7A3E, secondary #145C2E, accent gold #F5A623 */
+    /* BCB Light - BCB Green #1B7A3E, secondary #145C2E, accent gold #F5A623 */
     --background: 0.972 0.006 135;
     --foreground: 0.16 0.025 148;
     --card: 0.995 0.002 0;
@@ -17,18 +17,18 @@
     --popover: 0.995 0.002 0;
     --popover-foreground: 0.16 0.025 148;
 
-    /* Primary: BCB Green #1B7A3E → oklch(0.45 0.14 148) */
+    /* Primary: BCB Green #1B7A3E -> oklch(0.45 0.14 148) */
     --primary: 0.45 0.14 148;
     --primary-foreground: 0.99 0.002 0;
 
-    /* Secondary: dark green #145C2E → oklch(0.34 0.11 148) */
+    /* Secondary: dark green #145C2E -> oklch(0.34 0.11 148) */
     --secondary: 0.34 0.11 148;
     --secondary-foreground: 0.97 0.003 0;
 
     --muted: 0.94 0.006 135;
     --muted-foreground: 0.46 0.012 148;
 
-    /* Accent: gold #F5A623 → oklch(0.76 0.16 70) */
+    /* Accent: gold #F5A623 -> oklch(0.76 0.16 70) */
     --accent: 0.76 0.16 70;
     --accent-foreground: 0.15 0.02 50;
 
@@ -59,7 +59,7 @@
   }
 
   .dark {
-    /* BCB Dark — deep forest, elevated cards */
+    /* BCB Dark - deep forest, elevated cards */
     --background: 0.1 0.018 148;
     --foreground: 0.94 0.008 140;
     --card: 0.14 0.022 148;

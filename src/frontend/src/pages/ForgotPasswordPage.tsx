@@ -2,134 +2,77 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link, useNavigate } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  CheckCircle2,
-  Loader2,
-  Phone,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowLeft, Building2, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 export default function ForgotPasswordPage() {
   const navigate = useNavigate();
-  const [phone, setPhone] = useState("");
+  const [accountNumber, setAccountNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
   async function handleSend() {
-    if (!phone.trim()) {
-      toast.error("Please enter your phone number");
+    if (!accountNumber.trim()) {
+      toast.error("Enter your account number.");
       return;
     }
+
     setLoading(true);
-    await new Promise<void>((res) => setTimeout(res, 1400));
+    await new Promise<void>((resolve) => setTimeout(resolve, 1000));
     setLoading(false);
     setSent(true);
-    toast.success("Reset code sent!");
+    toast.success("Reset instructions prepared");
   }
 
   return (
-    <div className="flex items-center justify-center min-h-dvh desktop-bg">
-      <div
-        className="mobile-frame bg-background flex flex-col shadow-elevated"
-        data-ocid="forgot.page"
-      >
-        {/* Header */}
-        <div
-          className="flex flex-col px-6 pt-12 pb-10 relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(160deg, oklch(0.45 0.14 148) 0%, oklch(0.34 0.11 148) 100%)",
-          }}
-        >
-          <motion.div
-            className="absolute bottom-[-30px] right-[-30px] w-36 h-36 rounded-full"
-            style={{ background: "oklch(0.99 0.002 0 / 0.07)" }}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.9 }}
-          />
+    <div className="flex min-h-dvh items-center justify-center desktop-bg">
+      <div className="mobile-frame flex flex-col bg-background shadow-elevated" data-ocid="forgot.page">
+        <div className="relative overflow-hidden px-6 pb-10 pt-12 text-primary-foreground bcb-card-gradient">
           <button
             type="button"
             onClick={() => navigate({ to: "/login" })}
             data-ocid="forgot.back_button"
-            className="self-start mb-6 flex items-center gap-2 relative z-10 transition-smooth"
-            style={{ color: "oklch(0.99 0.002 0 / 0.8)" }}
+            className="relative z-10 mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 transition-smooth hover:bg-white/20"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="h-5 w-5" />
           </button>
 
-          {/* BCB Logo */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 relative z-10 overflow-hidden"
-            style={{
-              background: "oklch(0.99 0.002 0 / 0.14)",
-              border: "1px solid oklch(0.99 0.002 0 / 0.22)",
-            }}
-          >
-            <img
-              src="/assets/bcb-logo.png"
-              alt="BCB"
-              className="w-10 h-10 object-contain"
-            />
-          </motion.div>
+          <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/15">
+            <img src="/assets/bcb-logo.png" alt="BCB" className="h-10 w-10 object-contain" />
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-            className="text-2xl font-bold font-display relative z-10"
-            style={{ color: "oklch(0.99 0.002 0)" }}
-          >
-            Forgot PIN?
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25 }}
-            className="text-sm mt-2 font-body relative z-10 max-w-xs"
-            style={{ color: "oklch(0.88 0.005 140)" }}
-          >
-            Enter your registered phone number and we'll send you a reset code
-          </motion.p>
+          <h1 className="relative z-10 mt-5 font-display text-2xl font-bold">Reset Password</h1>
+          <p className="relative z-10 mt-2 max-w-xs text-sm opacity-85">
+            Enter your account number to start a secure password reset.
+          </p>
+          <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-white/10" />
         </div>
 
-        {/* Form / success */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.45, ease: "easeOut" }}
-          className="flex-1 bg-background rounded-t-3xl -mt-4 px-6 pt-10 pb-10 flex flex-col"
+          transition={{ delay: 0.15, duration: 0.4 }}
+          className="-mt-5 flex flex-1 flex-col rounded-t-[2rem] bg-background px-6 pb-10 pt-10"
         >
           {!sent ? (
             <>
-              <div className="space-y-1.5 mb-6">
-                <Label
-                  htmlFor="reset-phone"
-                  className="text-sm font-medium text-foreground"
-                >
-                  Phone Number
-                </Label>
+              <div className="mb-6 space-y-1.5">
+                <Label htmlFor="reset-account">Account Number</Label>
                 <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
-                    id="reset-phone"
-                    data-ocid="forgot.phone_input"
-                    type="tel"
-                    placeholder="+233 XX XXX XXXX"
-                    className="pl-10 h-12 text-base bg-muted/40 border-input focus:border-primary"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    autoComplete="tel"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") handleSend();
+                    id="reset-account"
+                    data-ocid="forgot.account_number_input"
+                    value={accountNumber}
+                    onChange={(event) => setAccountNumber(event.target.value.replace(/\D/g, "").slice(0, 12))}
+                    placeholder="Enter account number"
+                    inputMode="numeric"
+                    className="h-12 bg-muted/40 pl-10 text-base"
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") handleSend();
                     }}
                   />
                 </div>
@@ -137,52 +80,35 @@ export default function ForgotPasswordPage() {
 
               <Button
                 data-ocid="forgot.send_button"
-                className="w-full h-12 text-base font-semibold font-display rounded-xl transition-smooth mb-4"
+                className="mb-4 h-12 w-full rounded-xl font-display text-base font-semibold"
                 onClick={handleSend}
                 disabled={loading}
               >
                 {loading ? (
                   <span className="flex items-center gap-2">
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Sending Code...
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Preparing reset
                   </span>
                 ) : (
-                  "Send Reset Code"
+                  "Continue"
                 )}
               </Button>
 
               <p className="text-center text-sm text-muted-foreground">
-                Remembered your PIN?{" "}
-                <Link
-                  to="/login"
-                  className="font-semibold text-primary"
-                  data-ocid="forgot.login_link"
-                >
-                  Sign In
+                Remembered your password?{" "}
+                <Link to="/login" className="font-semibold text-primary" data-ocid="forgot.login_link">
+                  Sign in
                 </Link>
               </p>
 
-              {/* Security notice */}
-              <div
-                className="mt-auto flex items-start gap-3 rounded-xl p-4"
-                style={{ background: "oklch(var(--muted) / 0.6)" }}
-              >
-                <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                  style={{ background: "oklch(var(--primary) / 0.12)" }}
-                >
-                  <ShieldCheck
-                    className="w-4 h-4"
-                    style={{ color: "oklch(var(--primary))" }}
-                  />
+              <div className="mt-auto flex items-start gap-3 rounded-xl bg-muted/60 p-4">
+                <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-primary/12">
+                  <ShieldCheck className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-foreground mb-0.5">
-                    Security Notice
-                  </p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    BCB will never ask for your full PIN. Only use official BCB
-                    channels.
+                  <p className="mb-0.5 text-xs font-semibold text-foreground">Security Notice</p>
+                  <p className="text-xs leading-relaxed text-muted-foreground">
+                    BCB will never ask for your full password. Only use official BCB channels.
                   </p>
                 </div>
               </div>
@@ -192,58 +118,21 @@ export default function ForgotPasswordPage() {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              className="flex flex-col items-center text-center gap-4 py-8"
+              className="flex flex-col items-center gap-4 py-8 text-center"
               data-ocid="forgot.success_state"
             >
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 280,
-                  damping: 18,
-                  delay: 0.1,
-                }}
-                className="w-20 h-20 rounded-full flex items-center justify-center"
-                style={{ background: "oklch(var(--primary) / 0.1)" }}
-              >
-                <CheckCircle2
-                  className="w-10 h-10"
-                  style={{ color: "oklch(var(--primary))" }}
-                />
-              </motion.div>
-
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
+                <CheckCircle2 className="h-10 w-10 text-primary" />
+              </div>
               <div>
-                <h2 className="text-xl font-bold font-display text-foreground mb-2">
-                  Code Sent!
-                </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                  A 6-digit reset code has been sent to{" "}
-                  <span className="font-semibold text-foreground">{phone}</span>
-                  . Please check your messages.
+                <h2 className="font-display text-xl font-bold text-foreground">Reset Started</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  For demo mode, return to login and enter any account number and password.
                 </p>
               </div>
-
-              <Button
-                data-ocid="forgot.continue_button"
-                className="mt-2 w-full h-12 text-base font-semibold font-display rounded-xl transition-smooth"
-                onClick={() => navigate({ to: "/otp" })}
-              >
-                Enter OTP Code
+              <Button className="mt-2 h-12 w-full" onClick={() => navigate({ to: "/login" })}>
+                Back to Login
               </Button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  setSent(false);
-                  setPhone("");
-                }}
-                data-ocid="forgot.try_again_button"
-                className="text-sm font-medium transition-smooth"
-                style={{ color: "oklch(var(--primary))" }}
-              >
-                Try a different number
-              </button>
             </motion.div>
           )}
         </motion.div>
