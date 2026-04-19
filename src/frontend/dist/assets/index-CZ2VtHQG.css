@@ -1366,6 +1366,9 @@ video {
 .min-w-\[8rem\] {
   min-width: 8rem;
 }
+.min-w-\[92px\] {
+  min-width: 92px;
+}
 .min-w-\[var\(--radix-select-trigger-width\)\] {
   min-width: var(--radix-select-trigger-width);
 }

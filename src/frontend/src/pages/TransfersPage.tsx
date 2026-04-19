@@ -26,12 +26,13 @@ import {
   Smartphone,
   Trash2,
   UserPlus,
+  Wallet,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
-type TabId = "bcb" | "interbank" | "momo";
+type TabId = "bcb" | "interbank" | "momo" | "account-wallet" | "wallet-account";
 
 interface TransferFormState {
   account: string;
@@ -127,6 +128,8 @@ function isValidGhanaPhone(value: string) {
 }
 
 function formatDestination(tab: TabId, form: TransferFormState) {
+  if (tab === "account-wallet") return "BCB Mobile Wallet";
+  if (tab === "wallet-account") return "BCB Current Account";
   if (tab === "bcb") return form.account;
   if (tab === "interbank") return `${form.bank} - ${form.account}`;
   return `${form.provider} - ${form.phone}`;
@@ -141,13 +144,25 @@ function getFee(tab: TabId) {
 function buildPayload(tab: TabId, form: TransferFormState): ConfirmPayload {
   return {
     type: tab,
-    from: "My BCB Current Account",
+    from: tab === "wallet-account" ? "BCB Mobile Wallet" : "My BCB Current Account",
     to: formatDestination(tab, form),
-    recipientName: form.recipientName || (tab === "momo" ? "MoMo Subscriber" : "Account Holder"),
+    recipientName:
+      form.recipientName ||
+      (tab === "momo"
+        ? "MoMo Subscriber"
+        : tab === "account-wallet"
+          ? "My BCB Wallet"
+          : tab === "wallet-account"
+            ? "My BCB Current Account"
+            : "Account Holder"),
     amount: Number(form.amount),
     description: form.description,
     fee: getFee(tab),
   };
+}
+
+function isWalletTransfer(tab: TabId) {
+  return tab === "account-wallet" || tab === "wallet-account";
 }
 
 function tabMeta(tab: TabId) {
@@ -171,6 +186,26 @@ function tabMeta(tab: TabId) {
     };
   }
 
+  if (tab === "account-wallet") {
+    return {
+      label: "Account to Wallet",
+      icon: <Wallet className="h-4 w-4" />,
+      helper: "Move funds from current account to wallet | Free",
+      category: "momo" as const,
+      iconKey: "wallet" as const,
+    };
+  }
+
+  if (tab === "wallet-account") {
+    return {
+      label: "Wallet to Account",
+      icon: <Wallet className="h-4 w-4" />,
+      helper: "Move funds from wallet to current account | Free",
+      category: "momo" as const,
+      iconKey: "wallet" as const,
+    };
+  }
+
   return {
     label: "Mobile Money",
     icon: <Smartphone className="h-4 w-4" />,
@@ -180,10 +215,11 @@ function tabMeta(tab: TabId) {
   };
 }
 
-function validateTransfer(tab: TabId, form: TransferFormState, currentBalance: number) {
+function validateTransfer(tab: TabId, form: TransferFormState, currentBalance: number, walletBalance: number) {
   const errors: Partial<Record<keyof TransferFormState | "balance", string>> = {};
   const amount = Number(form.amount);
   const totalDebit = amount + getFee(tab);
+  const sourceBalance = tab === "wallet-account" ? walletBalance : currentBalance;
 
   if (!Number.isFinite(amount) || amount <= 0) {
     errors.amount = "Enter an amount greater than GHS 0.00.";
@@ -191,11 +227,11 @@ function validateTransfer(tab: TabId, form: TransferFormState, currentBalance: n
     errors.amount = "Minimum transfer amount is GHS 1.00.";
   }
 
-  if (totalDebit > currentBalance) {
-    errors.balance = `Insufficient balance. Available: ${formatGHS(currentBalance)}.`;
+  if (totalDebit > sourceBalance) {
+    errors.balance = `Insufficient balance. Available: ${formatGHS(sourceBalance)}.`;
   }
 
-  if (!form.recipientName.trim()) {
+  if (!isWalletTransfer(tab) && !form.recipientName.trim()) {
     errors.recipientName = "Enter the recipient name.";
   }
 
@@ -490,6 +526,9 @@ export default function TransfersPage() {
   const navigate = useNavigate();
   const recordActivity = useBankStore((state) => state.recordActivity);
   const currentBalance = useBankStore((state) => state.currentBalance);
+  const walletBalance = useBankStore((state) => state.walletBalance);
+  const transferAccountToWallet = useBankStore((state) => state.transferAccountToWallet);
+  const transferWalletToAccount = useBankStore((state) => state.transferWalletToAccount);
 
   const [tab, setTab] = useState<TabId>("bcb");
   const [busy, setBusy] = useState(false);
@@ -510,8 +549,8 @@ export default function TransfersPage() {
 
   const meta = tabMeta(tab);
   const errors = useMemo(
-    () => validateTransfer(tab, form, currentBalance),
-    [currentBalance, form, tab],
+    () => validateTransfer(tab, form, currentBalance, walletBalance),
+    [currentBalance, form, tab, walletBalance],
   );
   const canContinue = Object.keys(errors).length === 0;
 
@@ -536,27 +575,44 @@ export default function TransfersPage() {
     const ref = generateRef();
     const date = today();
     const time = nowTime();
-    recordActivity({
-      type: "debit",
-      category: meta.category,
-      title: `Transfer to ${confirmPayload.recipientName}`,
-      description: confirmPayload.description || confirmPayload.to,
-      amount: confirmPayload.amount + confirmPayload.fee,
-      reference: ref,
-      icon: meta.iconKey,
-      notification: {
-        type: "transaction",
-        title: "Transfer Completed",
-        message: `${formatGHS(confirmPayload.amount)} was sent to ${confirmPayload.recipientName}.`,
-      },
-    });
+
+    if (confirmPayload.type === "account-wallet") {
+      transferAccountToWallet(
+        confirmPayload.amount,
+        ref,
+        confirmPayload.description || "Moved from current account to wallet",
+      );
+    } else if (confirmPayload.type === "wallet-account") {
+      transferWalletToAccount(
+        confirmPayload.amount,
+        ref,
+        confirmPayload.description || "Moved from wallet to current account",
+      );
+    } else {
+      recordActivity({
+        type: "debit",
+        category: meta.category,
+        title: `Transfer to ${confirmPayload.recipientName}`,
+        description: confirmPayload.description || confirmPayload.to,
+        amount: confirmPayload.amount + confirmPayload.fee,
+        reference: ref,
+        icon: meta.iconKey,
+        notification: {
+          type: "transaction",
+          title: "Transfer Completed",
+          message: `${formatGHS(confirmPayload.amount)} was sent to ${confirmPayload.recipientName}.`,
+        },
+      });
+    }
 
     setCompleted({ payload: confirmPayload, reference: ref, date, time });
     setConfirmPayload(null);
     setPinOpen(false);
     setBusy(false);
     toast.success("Transfer completed", {
-      description: `${formatGHS(confirmPayload.amount)} sent to ${confirmPayload.recipientName}`,
+      description: isWalletTransfer(confirmPayload.type)
+        ? `${formatGHS(confirmPayload.amount)} moved successfully.`
+        : `${formatGHS(confirmPayload.amount)} sent to ${confirmPayload.recipientName}`,
     });
   };
 
@@ -599,15 +655,15 @@ export default function TransfersPage() {
       <AppBar title="Transfers" showBack />
 
       <div className="sticky top-14 z-20 border-b border-border bg-card px-2">
-        <div className="flex">
-          {(["bcb", "interbank", "momo"] as TabId[]).map((item) => {
+        <div className="scrollbar-hide flex overflow-x-auto">
+          {(["bcb", "interbank", "momo", "account-wallet", "wallet-account"] as TabId[]).map((item) => {
             const itemMeta = tabMeta(item);
             return (
               <button
                 key={item}
                 type="button"
                 className={cn(
-                  "flex flex-1 flex-col items-center gap-1 px-2 py-3 text-xs font-medium transition-smooth",
+                  "flex min-w-[92px] flex-1 flex-col items-center gap-1 px-2 py-3 text-xs font-medium transition-smooth",
                   tab === item ? "text-primary" : "text-muted-foreground",
                 )}
                 onClick={() => {
@@ -624,13 +680,15 @@ export default function TransfersPage() {
       </div>
 
       <div className="flex-1 space-y-4 px-4 py-5">
-        <BeneficiaryManager
-          beneficiaries={beneficiaries}
-          activeType={tab}
-          onUse={useBeneficiary}
-          onSave={saveBeneficiary}
-          onDelete={deleteBeneficiary}
-        />
+        {!isWalletTransfer(tab) && (
+          <BeneficiaryManager
+            beneficiaries={beneficiaries}
+            activeType={tab}
+            onUse={useBeneficiary}
+            onSave={saveBeneficiary}
+            onDelete={deleteBeneficiary}
+          />
+        )}
 
         <div className="rounded-3xl bg-card p-5 shadow-card">
           <div className="mb-5 flex items-center gap-3">
@@ -644,6 +702,27 @@ export default function TransfersPage() {
           </div>
 
           <div className="space-y-4">
+            {isWalletTransfer(tab) && (
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-2xl bg-muted/50 p-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Current Account
+                  </p>
+                  <p className="mt-1 font-display text-sm font-bold text-foreground">
+                    {formatGHS(currentBalance)}
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-muted/50 p-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Wallet
+                  </p>
+                  <p className="mt-1 font-display text-sm font-bold text-foreground">
+                    {formatGHS(walletBalance)}
+                  </p>
+                </div>
+              </div>
+            )}
+
             {tab === "interbank" && (
               <div className="space-y-1.5">
                 <Label htmlFor="bank">Destination Bank</Label>
@@ -692,31 +771,35 @@ export default function TransfersPage() {
               </div>
             )}
 
-            <div className="space-y-1.5">
-              <Label htmlFor="destination">
-                {tab === "momo" ? "Mobile Number" : "Recipient Account Number"}
-              </Label>
-              <Input
-                id="destination"
-                value={tab === "momo" ? form.phone : form.account}
-                onChange={(event) => updateField(tab === "momo" ? "phone" : "account", event.target.value)}
-                placeholder={tab === "momo" ? "0241234567" : "Enter account number"}
-                className="h-12"
-              />
-              <FieldError message={touched ? (tab === "momo" ? errors.phone : errors.account) : undefined} />
-            </div>
+            {!isWalletTransfer(tab) && (
+              <div className="space-y-1.5">
+                <Label htmlFor="destination">
+                  {tab === "momo" ? "Mobile Number" : "Recipient Account Number"}
+                </Label>
+                <Input
+                  id="destination"
+                  value={tab === "momo" ? form.phone : form.account}
+                  onChange={(event) => updateField(tab === "momo" ? "phone" : "account", event.target.value)}
+                  placeholder={tab === "momo" ? "0241234567" : "Enter account number"}
+                  className="h-12"
+                />
+                <FieldError message={touched ? (tab === "momo" ? errors.phone : errors.account) : undefined} />
+              </div>
+            )}
 
-            <div className="space-y-1.5">
-              <Label htmlFor="recipient">Recipient Name</Label>
-              <Input
-                id="recipient"
-                value={form.recipientName}
-                onChange={(event) => updateField("recipientName", event.target.value)}
-                placeholder="Enter recipient name"
-                className="h-12"
-              />
-              <FieldError message={touched ? errors.recipientName : undefined} />
-            </div>
+            {!isWalletTransfer(tab) && (
+              <div className="space-y-1.5">
+                <Label htmlFor="recipient">Recipient Name</Label>
+                <Input
+                  id="recipient"
+                  value={form.recipientName}
+                  onChange={(event) => updateField("recipientName", event.target.value)}
+                  placeholder="Enter recipient name"
+                  className="h-12"
+                />
+                <FieldError message={touched ? errors.recipientName : undefined} />
+              </div>
+            )}
 
             <div className="space-y-1.5">
               <Label htmlFor="amount">Amount</Label>

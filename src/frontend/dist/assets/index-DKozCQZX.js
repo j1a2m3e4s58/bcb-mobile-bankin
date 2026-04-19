@@ -28116,6 +28116,7 @@ const useBankStore = create((set, get) => ({
   unreadCount: mockNotifications.filter((n) => !n.isRead).length,
   currentBalance: INITIAL_CURRENT_BALANCE,
   savingsBalance: INITIAL_SAVINGS_BALANCE,
+  walletBalance: 350,
   toggleFreezeCard: (cardId) => {
     set((state) => ({
       cards: state.cards.map(
@@ -28237,6 +28238,102 @@ const useBankStore = create((set, get) => ({
         transactions: [transaction, ...state.transactions],
         currentBalance,
         savingsBalance,
+        cards,
+        notifications,
+        unreadCount: notifications.filter((n) => !n.isRead).length
+      };
+    });
+    return transaction;
+  },
+  transferAccountToWallet: (amount, reference, note = "Moved from current account to wallet") => {
+    const safeAmount = Math.abs(amount);
+    const transaction = {
+      id: reference,
+      type: "debit",
+      category: "momo",
+      title: "Account to Wallet",
+      description: note,
+      amount: safeAmount,
+      date: nowDate(),
+      time: nowTime$2(),
+      reference,
+      status: "completed",
+      icon: "wallet"
+    };
+    set((state) => {
+      const currentBalance = Math.max(0, state.currentBalance - safeAmount);
+      const walletBalance = state.walletBalance + safeAmount;
+      const cards = state.cards.map((card, index2) => {
+        if (index2 !== 0 || card.type !== "debit") return card;
+        return {
+          ...card,
+          balance: Math.max(0, card.balance - safeAmount),
+          spentToday: card.spentToday + safeAmount
+        };
+      });
+      const notification = {
+        id: buildNotificationId(),
+        type: "transaction",
+        title: "Wallet Top-up Completed",
+        message: `GHS ${safeAmount.toFixed(2)} was moved from your account to wallet.`,
+        date: transaction.date,
+        time: transaction.time,
+        isRead: false,
+        icon: "wallet"
+      };
+      const notifications = [notification, ...state.notifications];
+      return {
+        transactions: [transaction, ...state.transactions],
+        currentBalance,
+        walletBalance,
+        cards,
+        notifications,
+        unreadCount: notifications.filter((n) => !n.isRead).length
+      };
+    });
+    return transaction;
+  },
+  transferWalletToAccount: (amount, reference, note = "Moved from wallet to current account") => {
+    const safeAmount = Math.abs(amount);
+    const transaction = {
+      id: reference,
+      type: "credit",
+      category: "momo",
+      title: "Wallet to Account",
+      description: note,
+      amount: safeAmount,
+      date: nowDate(),
+      time: nowTime$2(),
+      reference,
+      status: "completed",
+      icon: "wallet"
+    };
+    set((state) => {
+      const walletBalance = Math.max(0, state.walletBalance - safeAmount);
+      const currentBalance = state.currentBalance + safeAmount;
+      const cards = state.cards.map((card, index2) => {
+        if (index2 !== 0 || card.type !== "debit") return card;
+        return {
+          ...card,
+          balance: card.balance + safeAmount,
+          spentToday: Math.max(0, card.spentToday - safeAmount)
+        };
+      });
+      const notification = {
+        id: buildNotificationId(),
+        type: "transaction",
+        title: "Wallet Withdrawal Completed",
+        message: `GHS ${safeAmount.toFixed(2)} was moved from wallet to your account.`,
+        date: transaction.date,
+        time: transaction.time,
+        isRead: false,
+        icon: "wallet"
+      };
+      const notifications = [notification, ...state.notifications];
+      return {
+        transactions: [transaction, ...state.transactions],
+        currentBalance,
+        walletBalance,
         cards,
         notifications,
         unreadCount: notifications.filter((n) => !n.isRead).length
@@ -46009,6 +46106,8 @@ function isValidGhanaPhone(value) {
   return /^(0\d{9}|233\d{9})$/.test(digits);
 }
 function formatDestination(tab, form) {
+  if (tab === "account-wallet") return "BCB Mobile Wallet";
+  if (tab === "wallet-account") return "BCB Current Account";
   if (tab === "bcb") return form.account;
   if (tab === "interbank") return `${form.bank} - ${form.account}`;
   return `${form.provider} - ${form.phone}`;
@@ -46021,13 +46120,16 @@ function getFee(tab) {
 function buildPayload(tab, form) {
   return {
     type: tab,
-    from: "My BCB Current Account",
+    from: tab === "wallet-account" ? "BCB Mobile Wallet" : "My BCB Current Account",
     to: formatDestination(tab, form),
-    recipientName: form.recipientName || (tab === "momo" ? "MoMo Subscriber" : "Account Holder"),
+    recipientName: form.recipientName || (tab === "momo" ? "MoMo Subscriber" : tab === "account-wallet" ? "My BCB Wallet" : tab === "wallet-account" ? "My BCB Current Account" : "Account Holder"),
     amount: Number(form.amount),
     description: form.description,
     fee: getFee(tab)
   };
+}
+function isWalletTransfer(tab) {
+  return tab === "account-wallet" || tab === "wallet-account";
 }
 function tabMeta(tab) {
   if (tab === "bcb") {
@@ -46048,6 +46150,24 @@ function tabMeta(tab) {
       iconKey: "landmark"
     };
   }
+  if (tab === "account-wallet") {
+    return {
+      label: "Account to Wallet",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Wallet, { className: "h-4 w-4" }),
+      helper: "Move funds from current account to wallet | Free",
+      category: "momo",
+      iconKey: "wallet"
+    };
+  }
+  if (tab === "wallet-account") {
+    return {
+      label: "Wallet to Account",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Wallet, { className: "h-4 w-4" }),
+      helper: "Move funds from wallet to current account | Free",
+      category: "momo",
+      iconKey: "wallet"
+    };
+  }
   return {
     label: "Mobile Money",
     icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Smartphone, { className: "h-4 w-4" }),
@@ -46056,19 +46176,20 @@ function tabMeta(tab) {
     iconKey: "smartphone"
   };
 }
-function validateTransfer(tab, form, currentBalance) {
+function validateTransfer(tab, form, currentBalance, walletBalance) {
   const errors = {};
   const amount = Number(form.amount);
   const totalDebit = amount + getFee(tab);
+  const sourceBalance = tab === "wallet-account" ? walletBalance : currentBalance;
   if (!Number.isFinite(amount) || amount <= 0) {
     errors.amount = "Enter an amount greater than GHS 0.00.";
   } else if (amount < 1) {
     errors.amount = "Minimum transfer amount is GHS 1.00.";
   }
-  if (totalDebit > currentBalance) {
-    errors.balance = `Insufficient balance. Available: ${formatGHS(currentBalance)}.`;
+  if (totalDebit > sourceBalance) {
+    errors.balance = `Insufficient balance. Available: ${formatGHS(sourceBalance)}.`;
   }
-  if (!form.recipientName.trim()) {
+  if (!isWalletTransfer(tab) && !form.recipientName.trim()) {
     errors.recipientName = "Enter the recipient name.";
   }
   if (tab === "bcb" && digitsOnly(form.account).length !== 10) {
@@ -46292,6 +46413,9 @@ function TransfersPage() {
   const navigate = useNavigate();
   const recordActivity = useBankStore((state) => state.recordActivity);
   const currentBalance = useBankStore((state) => state.currentBalance);
+  const walletBalance = useBankStore((state) => state.walletBalance);
+  const transferAccountToWallet = useBankStore((state) => state.transferAccountToWallet);
+  const transferWalletToAccount = useBankStore((state) => state.transferWalletToAccount);
   const [tab, setTab] = reactExports.useState("bcb");
   const [busy, setBusy] = reactExports.useState(false);
   const [confirmPayload, setConfirmPayload] = reactExports.useState(null);
@@ -46310,8 +46434,8 @@ function TransfersPage() {
   const [touched, setTouched] = reactExports.useState(false);
   const meta = tabMeta(tab);
   const errors = reactExports.useMemo(
-    () => validateTransfer(tab, form, currentBalance),
-    [currentBalance, form, tab]
+    () => validateTransfer(tab, form, currentBalance, walletBalance),
+    [currentBalance, form, tab, walletBalance]
   );
   const canContinue = Object.keys(errors).length === 0;
   const updateField = (field, value) => {
@@ -46330,26 +46454,40 @@ function TransfersPage() {
     const ref = generateRef();
     const date = today();
     const time2 = nowTime();
-    recordActivity({
-      type: "debit",
-      category: meta.category,
-      title: `Transfer to ${confirmPayload.recipientName}`,
-      description: confirmPayload.description || confirmPayload.to,
-      amount: confirmPayload.amount + confirmPayload.fee,
-      reference: ref,
-      icon: meta.iconKey,
-      notification: {
-        type: "transaction",
-        title: "Transfer Completed",
-        message: `${formatGHS(confirmPayload.amount)} was sent to ${confirmPayload.recipientName}.`
-      }
-    });
+    if (confirmPayload.type === "account-wallet") {
+      transferAccountToWallet(
+        confirmPayload.amount,
+        ref,
+        confirmPayload.description || "Moved from current account to wallet"
+      );
+    } else if (confirmPayload.type === "wallet-account") {
+      transferWalletToAccount(
+        confirmPayload.amount,
+        ref,
+        confirmPayload.description || "Moved from wallet to current account"
+      );
+    } else {
+      recordActivity({
+        type: "debit",
+        category: meta.category,
+        title: `Transfer to ${confirmPayload.recipientName}`,
+        description: confirmPayload.description || confirmPayload.to,
+        amount: confirmPayload.amount + confirmPayload.fee,
+        reference: ref,
+        icon: meta.iconKey,
+        notification: {
+          type: "transaction",
+          title: "Transfer Completed",
+          message: `${formatGHS(confirmPayload.amount)} was sent to ${confirmPayload.recipientName}.`
+        }
+      });
+    }
     setCompleted({ payload: confirmPayload, reference: ref, date, time: time2 });
     setConfirmPayload(null);
     setPinOpen(false);
     setBusy(false);
     ue.success("Transfer completed", {
-      description: `${formatGHS(confirmPayload.amount)} sent to ${confirmPayload.recipientName}`
+      description: isWalletTransfer(confirmPayload.type) ? `${formatGHS(confirmPayload.amount)} moved successfully.` : `${formatGHS(confirmPayload.amount)} sent to ${confirmPayload.recipientName}`
     });
   };
   const useBeneficiary = (beneficiary) => {
@@ -46380,14 +46518,14 @@ function TransfersPage() {
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-h-full flex-col bg-background", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(AppBar, { title: "Transfers", showBack: true }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "sticky top-14 z-20 border-b border-border bg-card px-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex", children: ["bcb", "interbank", "momo"].map((item) => {
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "sticky top-14 z-20 border-b border-border bg-card px-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "scrollbar-hide flex overflow-x-auto", children: ["bcb", "interbank", "momo", "account-wallet", "wallet-account"].map((item) => {
       const itemMeta = tabMeta(item);
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
           type: "button",
           className: cn(
-            "flex flex-1 flex-col items-center gap-1 px-2 py-3 text-xs font-medium transition-smooth",
+            "flex min-w-[92px] flex-1 flex-col items-center gap-1 px-2 py-3 text-xs font-medium transition-smooth",
             tab === item ? "text-primary" : "text-muted-foreground"
           ),
           onClick: () => {
@@ -46403,7 +46541,7 @@ function TransfersPage() {
       );
     }) }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 space-y-4 px-4 py-5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
+      !isWalletTransfer(tab) && /* @__PURE__ */ jsxRuntimeExports.jsx(
         BeneficiaryManager,
         {
           beneficiaries,
@@ -46422,6 +46560,16 @@ function TransfersPage() {
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+          isWalletTransfer(tab) && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-2 gap-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-2xl bg-muted/50 p-3", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] font-semibold uppercase tracking-wider text-muted-foreground", children: "Current Account" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 font-display text-sm font-bold text-foreground", children: formatGHS(currentBalance) })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-2xl bg-muted/50 p-3", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] font-semibold uppercase tracking-wider text-muted-foreground", children: "Wallet" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 font-display text-sm font-bold text-foreground", children: formatGHS(walletBalance) })
+            ] })
+          ] }),
           tab === "interbank" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "bank", children: "Destination Bank" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -46462,7 +46610,7 @@ function TransfersPage() {
               provider
             )) })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          !isWalletTransfer(tab) && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "destination", children: tab === "momo" ? "Mobile Number" : "Recipient Account Number" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               Input,
@@ -46476,7 +46624,7 @@ function TransfersPage() {
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsx(FieldError, { message: touched ? tab === "momo" ? errors.phone : errors.account : void 0 })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+          !isWalletTransfer(tab) && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "recipient", children: "Recipient Name" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               Input,
