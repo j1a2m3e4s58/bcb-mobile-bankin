@@ -1,4 +1,5 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -119,6 +120,7 @@ export default function PaymentsPage() {
 
   const [busy, setBusy] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [pinOpen, setPinOpen] = useState(false);
   const [successRef, setSuccessRef] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
   const [payment, setPayment] = useState<PaymentState>({
@@ -139,7 +141,11 @@ export default function PaymentsPage() {
     setPayment((current) => ({ ...current, [field]: value }));
   };
 
-  const handleConfirm = async () => {
+  const handleConfirm = () => {
+    setPinOpen(true);
+  };
+
+  const handlePinConfirmed = async () => {
     setBusy(true);
     await new Promise((resolve) => setTimeout(resolve, 1200));
 
@@ -160,6 +166,7 @@ export default function PaymentsPage() {
     });
 
     setBusy(false);
+    setPinOpen(false);
     setConfirmOpen(false);
     setSuccessRef(ref);
     setShowSuccess(true);
@@ -363,6 +370,16 @@ export default function PaymentsPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <PinConfirmDialog
+        open={pinOpen}
+        title="Confirm Payment PIN"
+        description="Enter your 4-digit PIN to authorize this payment."
+        confirmLabel="Authorize Payment"
+        busy={busy}
+        onOpenChange={setPinOpen}
+        onConfirm={handlePinConfirmed}
+      />
     </div>
   );
 }

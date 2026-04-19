@@ -49,6 +49,7 @@ interface BankState {
   addTransaction: (tx: Transaction, account?: AccountBucket) => void;
   postNotification: (notification: Notification) => void;
   recordActivity: (input: ActivityInput) => Transaction;
+  topUpSavings: (amount: number, reference: string) => Transaction;
 }
 
 function nowDate(): string {
@@ -193,6 +194,58 @@ export const useBankStore = create<BankState>((set, get) => ({
         icon: input.notification.icon ?? input.icon,
       });
     }
+
+    return transaction;
+  },
+
+  topUpSavings: (amount: number, reference: string) => {
+    const safeAmount = Math.abs(amount);
+    const transaction: Transaction = {
+      id: reference,
+      type: "debit",
+      category: "savings",
+      title: "Savings Top-up",
+      description: "Moved from current account to savings",
+      amount: safeAmount,
+      date: nowDate(),
+      time: nowTime(),
+      reference,
+      status: "completed",
+      icon: "wallet",
+    };
+
+    set((state) => {
+      const currentBalance = Math.max(0, state.currentBalance - safeAmount);
+      const savingsBalance = state.savingsBalance + safeAmount;
+      const cards = state.cards.map((card, index) => {
+        if (index !== 0 || card.type !== "debit") return card;
+        return {
+          ...card,
+          balance: Math.max(0, card.balance - safeAmount),
+          spentToday: card.spentToday + safeAmount,
+        };
+      });
+      const notification: Notification = {
+        id: buildNotificationId(),
+        type: "transaction",
+        title: "Savings Top-up Completed",
+        message: `GHS ${safeAmount.toFixed(2)} was moved to your savings account.`,
+        date: transaction.date,
+        time: transaction.time,
+        isRead: false,
+        icon: "wallet",
+      };
+      const notifications = [notification, ...state.notifications];
+
+      return {
+        transactions: [transaction, ...state.transactions],
+        currentBalance,
+        savingsBalance,
+        cards,
+        notifications,
+        unreadCount: notifications.filter((n) => !n.isRead).length,
+      };
+    });
 
     return transaction;
   },

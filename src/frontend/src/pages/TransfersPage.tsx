@@ -1,4 +1,5 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -260,6 +261,7 @@ export default function TransfersPage() {
   const [tab, setTab] = useState<TabId>("bcb");
   const [busy, setBusy] = useState(false);
   const [confirmPayload, setConfirmPayload] = useState<ConfirmPayload | null>(null);
+  const [pinOpen, setPinOpen] = useState(false);
   const [successPayload, setSuccessPayload] = useState<ConfirmPayload | null>(null);
   const [reference, setReference] = useState("");
   const [form, setForm] = useState<TransferFormState>({
@@ -289,7 +291,11 @@ export default function TransfersPage() {
     setConfirmPayload(buildPayload(tab, form));
   };
 
-  const handleConfirm = async () => {
+  const handleConfirm = () => {
+    setPinOpen(true);
+  };
+
+  const handlePinConfirmed = async () => {
     if (!confirmPayload) return;
 
     setBusy(true);
@@ -314,6 +320,7 @@ export default function TransfersPage() {
     setReference(ref);
     setSuccessPayload(confirmPayload);
     setConfirmPayload(null);
+    setPinOpen(false);
     setBusy(false);
     toast.success("Transfer completed", {
       description: `${formatGHS(confirmPayload.amount)} sent to ${confirmPayload.recipientName}`,
@@ -478,6 +485,16 @@ export default function TransfersPage() {
           />
         )}
       </AnimatePresence>
+
+      <PinConfirmDialog
+        open={pinOpen}
+        title="Confirm Transfer PIN"
+        description="Enter your 4-digit PIN to authorize this transfer."
+        confirmLabel="Authorize Transfer"
+        busy={busy}
+        onOpenChange={setPinOpen}
+        onConfirm={handlePinConfirmed}
+      />
     </div>
   );
 }

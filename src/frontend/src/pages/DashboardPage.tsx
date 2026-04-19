@@ -1,6 +1,17 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { ActivityIconGlyph } from "@/lib/activity-icons";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { formatAccountNumber, formatDate, formatGHS } from "@/lib/formatters";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/store/auth-store";
@@ -18,6 +29,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
 
 // ─── Constants ──────────────────────────────────────────────────────────────
 
@@ -75,10 +87,15 @@ export default function DashboardPage() {
   const transactions = useBankStore((s) => s.transactions);
   const currentBalance = useBankStore((s) => s.currentBalance);
   const savingsBalance = useBankStore((s) => s.savingsBalance);
+  const topUpSavings = useBankStore((s) => s.topUpSavings);
 
   const [hideBalance, setHideBalance] = useState(false);
   const [showIdleModal, setShowIdleModal] = useState(false);
   const [countdown, setCountdown] = useState(COUNTDOWN_SECONDS);
+  const [savingsDialogOpen, setSavingsDialogOpen] = useState(false);
+  const [savingsPinOpen, setSavingsPinOpen] = useState(false);
+  const [savingsBusy, setSavingsBusy] = useState(false);
+  const [savingsAmount, setSavingsAmount] = useState("");
 
   const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const countdownTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -140,6 +157,31 @@ export default function DashboardPage() {
   const hour = new Date().getHours();
   const greeting =
     hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+
+  const savingsTopUpAmount = Number(savingsAmount);
+  const canTopUpSavings =
+    Number.isFinite(savingsTopUpAmount) &&
+    savingsTopUpAmount > 0 &&
+    savingsTopUpAmount <= currentBalance;
+
+  const handleSavingsTopUp = () => {
+    if (!canTopUpSavings) return;
+    setSavingsPinOpen(true);
+  };
+
+  const handleSavingsPinConfirmed = async () => {
+    setSavingsBusy(true);
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    const reference = `SAV${Date.now().toString().slice(-8)}`;
+    topUpSavings(savingsTopUpAmount, reference);
+    setSavingsBusy(false);
+    setSavingsPinOpen(false);
+    setSavingsDialogOpen(false);
+    setSavingsAmount("");
+    toast.success("Savings top-up completed", {
+      description: `${formatGHS(savingsTopUpAmount)} moved to your savings account.`,
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-full bg-background">
@@ -269,6 +311,14 @@ export default function DashboardPage() {
             <div className="w-1.5 h-1.5 rounded-full bg-success" />
             <span className="text-[10px] text-success font-medium">Active</span>
           </div>
+          <button
+            type="button"
+            onClick={() => setSavingsDialogOpen(true)}
+            className="mt-3 text-[11px] font-semibold text-primary"
+            data-ocid="dashboard.savings_top_up_button"
+          >
+            Top up savings
+          </button>
         </div>
 
         {/* Current */}
@@ -508,6 +558,75 @@ export default function DashboardPage() {
           </>
         )}
       </AnimatePresence>
+
+      <Dialog open={savingsDialogOpen} onOpenChange={setSavingsDialogOpen}>
+        <DialogContent className="max-w-sm" data-ocid="dashboard.savings_top_up_dialog">
+          <DialogHeader>
+            <DialogTitle className="font-display">Top Up Savings</DialogTitle>
+            <DialogDescription>
+              Move money from your current account into your savings account.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-3 py-2">
+            <div className="rounded-2xl bg-muted/50 p-3 text-sm">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Available current balance</span>
+                <span className="font-semibold">{formatGHS(currentBalance)}</span>
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="savings-top-up-amount">Amount</Label>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground">
+                  GHS
+                </span>
+                <Input
+                  id="savings-top-up-amount"
+                  value={savingsAmount}
+                  onChange={(event) => setSavingsAmount(event.target.value)}
+                  placeholder="0.00"
+                  inputMode="decimal"
+                  className="h-12 pl-14"
+                  data-ocid="dashboard.savings_top_up_amount"
+                />
+              </div>
+              {savingsTopUpAmount > currentBalance && (
+                <p className="text-xs text-destructive">
+                  Amount cannot exceed your current account balance.
+                </p>
+              )}
+            </div>
+          </div>
+
+          <DialogFooter className="gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setSavingsDialogOpen(false)}
+              disabled={savingsBusy}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleSavingsTopUp}
+              disabled={!canTopUpSavings || savingsBusy}
+              data-ocid="dashboard.savings_top_up_continue"
+            >
+              Continue
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <PinConfirmDialog
+        open={savingsPinOpen}
+        title="Confirm Savings Top-up"
+        description="Enter your 4-digit PIN to move money into savings."
+        confirmLabel="Top Up Savings"
+        busy={savingsBusy}
+        onOpenChange={setSavingsPinOpen}
+        onConfirm={handleSavingsPinConfirmed}
+      />
     </div>
   );
 }

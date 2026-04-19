@@ -1,4 +1,5 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatDate, formatGHS } from "@/lib/formatters";
@@ -298,6 +299,7 @@ function LoanApplicationModal({
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [pinOpen, setPinOpen] = useState(false);
   const [refNumber] = useState(
     `BCB-LN-${String(Math.floor(100000 + Math.random() * 900000))}`,
   );
@@ -313,10 +315,15 @@ function LoanApplicationModal({
     return (P * r * (1 + r) ** n) / ((1 + r) ** n - 1);
   }, [form.amount, form.tenure, monthlyRate]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
+    setPinOpen(true);
+  };
+
+  const handlePinConfirmed = async () => {
     setSubmitting(true);
     await new Promise<void>((res) => setTimeout(res, 1500));
     setSubmitting(false);
+    setPinOpen(false);
     setSubmitted(true);
   };
 
@@ -644,6 +651,16 @@ function LoanApplicationModal({
           )}
         </AnimatePresence>
       </div>
+
+      <PinConfirmDialog
+        open={pinOpen}
+        title="Confirm Loan Application"
+        description="Enter your 4-digit PIN to submit this loan application."
+        confirmLabel="Submit Application"
+        busy={submitting}
+        onOpenChange={setPinOpen}
+        onConfirm={handlePinConfirmed}
+      />
     </motion.div>
   );
 }

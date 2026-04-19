@@ -2328,6 +2328,9 @@ video {
 .tracking-\[0\.35em\] {
   letter-spacing: 0.35em;
 }
+.tracking-\[0\.6em\] {
+  letter-spacing: 0.6em;
+}
 .tracking-tight {
   letter-spacing: -0.025em;
 }

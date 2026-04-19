@@ -1,4 +1,5 @@
 import { AppBar } from "@/components/layout/AppBar";
+import { PinConfirmDialog } from "@/components/PinConfirmDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -216,95 +217,112 @@ function SpendingLimitDialog({
   const setSpendingLimit = useBankStore((state) => state.setSpendingLimit);
   const [daily, setDaily] = useState(card.spendingLimit);
   const [monthly, setMonthly] = useState(card.spendingLimit * 6);
+  const [pinOpen, setPinOpen] = useState(false);
 
   const handleSave = () => {
+    setPinOpen(true);
+  };
+
+  const handlePinConfirmed = () => {
     setSpendingLimit(card.id, daily);
     toast.success("Spending limits updated", {
       description: `Daily ${formatGHS(daily)} | Monthly ${formatGHS(monthly)}`,
     });
+    setPinOpen(false);
     onClose();
   };
 
   return (
-    <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-sm" data-ocid="cards.limit_dialog">
-        <DialogHeader>
-          <DialogTitle className="font-display">Set spending limits</DialogTitle>
-          <DialogDescription className="text-xs text-muted-foreground">
-            Adjust daily and monthly transaction limits for this card.
-          </DialogDescription>
-        </DialogHeader>
+    <>
+      <Dialog open={open} onOpenChange={onClose}>
+        <DialogContent className="max-w-sm" data-ocid="cards.limit_dialog">
+          <DialogHeader>
+            <DialogTitle className="font-display">Set spending limits</DialogTitle>
+            <DialogDescription className="text-xs text-muted-foreground">
+              Adjust daily and monthly transaction limits for this card.
+            </DialogDescription>
+          </DialogHeader>
 
-        <div className="space-y-5 py-1">
-          <div className="space-y-2.5">
-            <div className="flex items-center justify-between">
-              <Label className="text-sm font-semibold">Daily limit</Label>
-              <div className="flex items-center gap-1.5">
-                <span className="text-xs text-muted-foreground">GHS</span>
-                <Input
-                  type="number"
-                  min={100}
-                  max={50000}
-                  value={daily}
-                  onChange={(event) => setDaily(Number(event.target.value))}
-                  className="h-8 w-24 text-right text-sm font-bold"
-                  data-ocid="cards.daily_limit_input"
-                />
+          <div className="space-y-5 py-1">
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm font-semibold">Daily limit</Label>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs text-muted-foreground">GHS</span>
+                  <Input
+                    type="number"
+                    min={100}
+                    max={50000}
+                    value={daily}
+                    onChange={(event) => setDaily(Number(event.target.value))}
+                    className="h-8 w-24 text-right text-sm font-bold"
+                    data-ocid="cards.daily_limit_input"
+                  />
+                </div>
               </div>
+              <Slider
+                value={[daily]}
+                min={100}
+                max={20000}
+                step={100}
+                onValueChange={([value]) => setDaily(value)}
+                data-ocid="cards.daily_limit_slider"
+              />
             </div>
-            <Slider
-              value={[daily]}
-              min={100}
-              max={20000}
-              step={100}
-              onValueChange={([value]) => setDaily(value)}
-              data-ocid="cards.daily_limit_slider"
-            />
+
+            <Separator />
+
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm font-semibold">Monthly limit</Label>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs text-muted-foreground">GHS</span>
+                  <Input
+                    type="number"
+                    min={500}
+                    max={200000}
+                    value={monthly}
+                    onChange={(event) => setMonthly(Number(event.target.value))}
+                    className="h-8 w-24 text-right text-sm font-bold"
+                    data-ocid="cards.monthly_limit_input"
+                  />
+                </div>
+              </div>
+              <Slider
+                value={[monthly]}
+                min={500}
+                max={100000}
+                step={500}
+                onValueChange={([value]) => setMonthly(value)}
+                data-ocid="cards.monthly_limit_slider"
+              />
+            </div>
           </div>
 
-          <Separator />
+          <DialogFooter className="gap-2">
+            <Button
+              variant="outline"
+              onClick={onClose}
+              data-ocid="cards.limit_cancel_button"
+            >
+              Cancel
+            </Button>
+            <Button onClick={handleSave} data-ocid="cards.limit_confirm_button">
+              Save limits
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
-          <div className="space-y-2.5">
-            <div className="flex items-center justify-between">
-              <Label className="text-sm font-semibold">Monthly limit</Label>
-              <div className="flex items-center gap-1.5">
-                <span className="text-xs text-muted-foreground">GHS</span>
-                <Input
-                  type="number"
-                  min={500}
-                  max={200000}
-                  value={monthly}
-                  onChange={(event) => setMonthly(Number(event.target.value))}
-                  className="h-8 w-24 text-right text-sm font-bold"
-                  data-ocid="cards.monthly_limit_input"
-                />
-              </div>
-            </div>
-            <Slider
-              value={[monthly]}
-              min={500}
-              max={100000}
-              step={500}
-              onValueChange={([value]) => setMonthly(value)}
-              data-ocid="cards.monthly_limit_slider"
-            />
-          </div>
-        </div>
-
-        <DialogFooter className="gap-2">
-          <Button
-            variant="outline"
-            onClick={onClose}
-            data-ocid="cards.limit_cancel_button"
-          >
-            Cancel
-          </Button>
-          <Button onClick={handleSave} data-ocid="cards.limit_confirm_button">
-            Save limits
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+      <PinConfirmDialog
+        open={pinOpen}
+        title="Confirm Card Settings"
+        description="Enter your 4-digit PIN to update this card's spending limits."
+        confirmLabel="Update Limits"
+        onOpenChange={setPinOpen}
+        onConfirm={handlePinConfirmed}
+      />
+    </>
   );
 }
 
@@ -542,13 +560,19 @@ export default function CardsPage() {
   const [showRequestDialog, setShowRequestDialog] = useState<
     "debit" | "credit" | null
   >(null);
+  const [pinOpen, setPinOpen] = useState(false);
 
   const activeCard = cards.find((card) => card.id === activeCardId) ?? cards[0];
 
   const handleFreezeToggle = () => {
+    setPinOpen(true);
+  };
+
+  const handleFreezePinConfirmed = () => {
     if (!activeCard) return;
     const wasFrozen = activeCard.isFrozen;
     toggleFreezeCard(activeCard.id);
+    setPinOpen(false);
     toast.success(wasFrozen ? "Card unfrozen" : "Card frozen", {
       description: wasFrozen
         ? "Your card is active and ready for transactions."
@@ -772,6 +796,15 @@ export default function CardsPage() {
         cardType={showRequestDialog ?? "debit"}
         open={showRequestDialog !== null}
         onClose={() => setShowRequestDialog(null)}
+      />
+
+      <PinConfirmDialog
+        open={pinOpen}
+        title={activeCard?.isFrozen ? "Confirm Card Unfreeze" : "Confirm Card Freeze"}
+        description="Enter your 4-digit PIN to change this card's freeze status."
+        confirmLabel={activeCard?.isFrozen ? "Unfreeze Card" : "Freeze Card"}
+        onOpenChange={setPinOpen}
+        onConfirm={handleFreezePinConfirmed}
       />
     </div>
   );
