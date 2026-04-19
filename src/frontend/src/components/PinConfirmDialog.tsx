@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { useAuthStore } from "@/store/auth-store";
 import { Loader2, LockKeyhole, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -32,6 +33,7 @@ export function PinConfirmDialog({
   onOpenChange,
   onConfirm,
 }: PinConfirmDialogProps) {
+  const verifyTransactionPin = useAuthStore((state) => state.verifyTransactionPin);
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
 
@@ -50,6 +52,11 @@ export function PinConfirmDialog({
   const handleConfirm = () => {
     if (pin.length !== 4) {
       setError("Enter your 4-digit PIN to continue.");
+      return;
+    }
+
+    if (!verifyTransactionPin(pin)) {
+      setError("That PIN is incorrect. Try the transaction PIN you created.");
       return;
     }
 

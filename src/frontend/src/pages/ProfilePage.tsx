@@ -21,6 +21,7 @@ import {
   Bell,
   CheckCircle2,
   ChevronRight,
+  ClipboardCheck,
   Clock,
   Fingerprint,
   Globe,
@@ -601,6 +602,13 @@ export default function ProfilePage() {
             desc="Find verified branch contacts"
             ocid="profile.branches_button"
             onClick={() => navigate({ to: "/branches" })}
+          />
+          <RowItem
+            icon={<ClipboardCheck className="h-5 w-5" />}
+            label="Back Office"
+            desc="Review applications and support queues"
+            ocid="profile.admin_button"
+            onClick={() => navigate({ to: "/admin" })}
           />
         </div>
       </motion.div>

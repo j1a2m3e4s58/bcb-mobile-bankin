@@ -1,5 +1,6 @@
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Toaster } from "@/components/ui/sonner";
+import AdminPage from "@/pages/AdminPage";
 import BranchesPage from "@/pages/BranchesPage";
 import CardsPage from "@/pages/CardsPage";
 import DashboardPage from "@/pages/DashboardPage";
@@ -144,6 +145,12 @@ const branchesRoute = createRoute({
   component: BranchesPage,
 });
 
+const adminRoute = createRoute({
+  getParentRoute: () => appLayoutRoute,
+  path: "/admin",
+  component: AdminPage,
+});
+
 const routeTree = rootRoute.addChildren([
   splashRoute,
   loginRoute,
@@ -161,6 +168,7 @@ const routeTree = rootRoute.addChildren([
     profileRoute,
     supportRoute,
     branchesRoute,
+    adminRoute,
   ]),
 ]);
 
